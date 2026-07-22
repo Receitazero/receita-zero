@@ -40,7 +40,10 @@
   --sans:'Instrument Sans',system-ui,sans-serif;
   --s1:4px; --s2:8px; --s3:12px; --s4:16px; --s5:24px; --s6:40px; --s7:64px; --s8:104px;
   --ease:cubic-bezier(.22,1,.36,1);
-  --transicao:color .6s linear, background-color .6s linear, border-color .6s linear;
+  /* fundo/bordas fazem crossfade; a COR DO TEXTO vira de uma vez no meio do
+     caminho (delay .25s, duração 0) — senão texto e fundo se encontram no
+     mesmo cinza e o contraste vai a 1:1 no meio da transição. */
+  --transicao:background-color .5s linear, border-color .5s linear, color 0s linear .25s;
 }
 
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
@@ -150,7 +153,7 @@ em{font-style:italic}
 .forno .tijolo{fill:none;stroke:var(--linha);stroke-width:1.1}
 .forno .arco{fill:var(--tinta2);stroke:var(--linha);stroke-width:1.5}
 .forno .bancada{fill:var(--tinta2);stroke:var(--linha);stroke-width:1.5}
-.forno .boca{fill:color-mix(in oklab, var(--n-carvao), var(--n-tinta2) 22%)}
+.forno .boca{fill:color-mix(in oklab, var(--n-carvao), var(--n-tinta2) calc(22% + var(--dia)*20%))}
 .forno .piso{fill:color-mix(in oklab, var(--n-tinta2), var(--n-giz) 8%)}
 .forno .lenha{fill:color-mix(in oklab, var(--n-tinta2), var(--n-giz) 18%)}
 .forma{transform-box:fill-box;transform-origin:center;animation:gira 26s linear infinite}
@@ -192,14 +195,17 @@ em{font-style:italic}
 @media (max-width:860px){
   .hero{min-block-size:auto;padding-block:calc(var(--s7) + 24px) var(--s6)}
   .hero-grid{grid-template-columns:1fr;gap:var(--s6)}
-  .hero-arte{order:-1;max-inline-size:340px}
+  .hero-arte{order:-1;max-inline-size:300px;margin-inline:auto}
   .marca{margin-block-end:var(--s5)}
   .fita{grid-template-columns:1fr}
   .prova{border-inline-start:0;border-block-start:1px solid var(--linha)}
   .prova:first-child{border-block-start:0}
   .regua-in{gap:var(--s3);padding-inline:var(--s4)}
   .trilho{display:none}
-  .relogio{flex:1}
+  .relogio{flex:1;min-inline-size:0}
+  .pill{font-size:.68rem;padding:3px 8px;min-inline-size:0}
+  #pill-txt{overflow:hidden;text-overflow:ellipsis}
+  .proxima-fx{display:none}                    /* no mobile a próxima seção já está logo abaixo */
 }
 
 @media (prefers-reduced-motion:reduce){
@@ -304,8 +310,9 @@ em{font-style:italic}
             <path d="M296 272 q7-19 2-28 q13 10 12 23 q6-7 6-14 q7 12 1 21 z"/>
             <path d="M276 274 q5-13 1-20 q10 7 9 17 z"/>
           </g>
-          <!-- pizza deitada no piso: disco achatado que gira de verdade -->
-          <g transform="translate(200 288) scale(1 .4)">
+          <!-- pizza deitada no piso, deslocada pra esquerda: em forno a lenha real
+               o fogo fica de um lado e a pizza do outro -->
+          <g transform="translate(198 284) scale(1 .4)">
             <g class="forma">
               <circle class="massa" r="66"/>
               <circle class="crosta" r="66"/>
@@ -417,13 +424,11 @@ function estadoDe(h){
           msg:'Oi! Queria deixar um pedido pra hoje às 18h:'};
 }
 
-/* tema pela hora: claro até 17h, crepúsculo 17–18h, noite depois */
-function diaDe(h){
-  if (h < CASA.amanhece) return 0;
-  if (h < CASA.anoitece) return 1;
-  if (h < CASA.abre) return 1 - (h - CASA.anoitece) / (CASA.abre - CASA.anoitece);
-  return 0;
-}
+/* Tema pela hora — DEGRAU, nunca interpolado.
+   Um crepúsculo contínuo cruza fundo e texto no mesmo cinza médio:
+   medido em 22/07, o contraste caía a 1,02:1 (texto invisível) em --dia≈.5.
+   O virar do dia é instantâneo às 17:30; só o fundo faz crossfade. */
+function diaDe(h){ return (h >= CASA.amanhece && h < CASA.anoitece) ? 1 : 0; }
 
 /* relógio odômetro — cada dígito é uma fita que desliza */
 function montaRelogio(txt){
