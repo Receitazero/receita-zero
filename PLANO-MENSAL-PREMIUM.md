@@ -69,10 +69,14 @@
 - **Leads**: nº de leads capturados via gerador (meta: 20/mês)
 
 ## Backlog futuro (decisão de negócio)
-- [ ] **ATLAS para funcionários**: avaliar uso do sistema ATLAS (white-label AAPSON)
-      para operação interna da Vitrine Certa — funcionários IA 24/7 cuidando de:
-      prospecção, follow-up de leads, suporte pós-venda, atualização de cardápios.
-      Dono decide viabilidade/custo antes de implementar.
+- [ ] **ATLAS como backend IA da VC** (integração, não rebuild):
+      O ATLAS (AAPSON) JÁ tem 6/6 funcionários (receptionist, dunning, auditor...),
+      RAG por nicho e white-label (`tenant_brand.py`). A VC vira um TENANT.
+      - Fase 0: `tenant_vitrinecerta.json` + doc `ATLAS-INTEGRACAO.md` (Hermes)
+      - Fase 1: Sheets→webhook ATLAS, F4 follow-up, brandmark VC (GATE 👤: NIM+Z-API)
+      - Fase 2: cardápio via F1+prompt (sem novo funcionário)
+      - Decisão 👤: usar ATLAS como backend? custo NIM+Z-API vale?
+      - Ver skill `vitrine-certa-atlas-integracao` + `atlas-po-estado-real`
 
 ## Comandos essenciais
 ```bash
