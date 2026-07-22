@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Painel do dia — Fio &amp; Companhia</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Gloock&display=swap" rel="stylesheet">
+<style>
+/* Mesmos tokens do index.html. Se lá mudar, mudar aqui — o painel não herda
+   nada do site, ele só o carrega dentro de iframes. */
+:root{
+  --papel:#F3EBE7;--papel2:#E7DAD4;--linha:#D3C1B9;
+  --tinta:#241A16;--fumo:#6B564E;--claro:#FAF6F4;
+  --acaju:#8C2F39;--mel:#8A5C24;--platina:#5C6673;
+  --display:'Gloock',Georgia,serif;--sans:'DM Sans',system-ui,sans-serif;
+  --s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:40px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+body{background:var(--papel);color:var(--tinta);font-family:var(--sans);
+  font-size:.95rem;line-height:1.5;padding:var(--s5)}
+h1{font-family:var(--display);font-weight:400;font-size:2.2rem;letter-spacing:-.015em}
+.sub{color:var(--fumo);font-size:.9rem;max-inline-size:78ch;margin:10px 0 var(--s5)}
+code{font-family:ui-monospace,monospace;font-size:.88em;color:var(--tinta)}
+.num{font-variant-numeric:tabular-nums}
+
+/* ── controles ─────────────────────────────────────────────── */
+.ctrl{display:flex;gap:var(--s5);align-items:center;flex-wrap:wrap;
+  border:1px solid var(--linha);background:var(--claro);
+  padding:var(--s4) var(--s5);margin-block-end:var(--s5)}
+.agora{font-size:2.1rem;font-weight:500;letter-spacing:-.03em;min-inline-size:4.6ch}
+.rot{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fumo)}
+input[type=range]{inline-size:260px;accent-color:var(--tinta)}
+button{background:transparent;border:1px solid var(--linha);border-radius:999px;
+  padding:7px 14px;color:var(--tinta);font:500 .85rem var(--sans);cursor:pointer;
+  transition:border-color .2s,background .2s,color .2s}
+button:hover{border-color:var(--tinta)}
+button[aria-pressed="true"]{background:var(--tinta);color:var(--claro);border-color:var(--tinta)}
+.linha-btn{display:flex;gap:6px;flex-wrap:wrap}
+.viewport{margin-inline-start:auto;display:flex;gap:6px}
+
+/* ── palco ─────────────────────────────────────────────────── */
+.palco{border:1px solid var(--linha);background:var(--papel2);overflow:hidden;
+  margin-block-end:var(--s6);position:relative}
+.palco-in{inline-size:100%;aspect-ratio:16/10;position:relative}
+.palco iframe{position:absolute;inset-block-start:0;inset-inline-start:0;border:0;
+  transform-origin:0 0;background:var(--papel)}
+.carimbo{position:absolute;inset-block-end:10px;inset-inline-start:12px;z-index:2;
+  background:var(--tinta);color:var(--claro);padding:5px 12px;
+  font:500 .68rem/1 var(--sans);letter-spacing:.12em;text-transform:uppercase}
+
+/* ── grade ─────────────────────────────────────────────────── */
+h2{font-family:var(--display);font-weight:400;font-size:1.5rem;margin-block-end:var(--s3)}
+.grade{display:grid;gap:var(--s5);grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.tile{border:1px solid var(--linha);background:var(--claro)}
+.tile .janela{position:relative;inline-size:100%;aspect-ratio:16/10;overflow:hidden;
+  background:var(--papel)}
+.tile iframe{position:absolute;inset-block-start:0;inset-inline-start:0;border:0;
+  transform-origin:0 0}
+.tile figcaption{padding:var(--s3) var(--s4) var(--s4);
+  border-block-start:1px solid var(--linha);display:grid;gap:var(--s2)}
+.tile b{font-family:var(--display);font-weight:400;font-size:1.15rem}
+.tile .tom{inline-size:100%;block-size:4px;margin-block-end:var(--s2)}
+.tile p{color:var(--fumo);font-size:.86rem}
+footer{margin-block-start:var(--s6);color:var(--fumo);font-size:.82rem;
+  border-block-start:1px solid var(--linha);padding-block-start:var(--s4);
+  max-inline-size:78ch}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<h1>Painel do dia</h1>
+<p class="sub">O site de verdade, com o relógio congelado e o serviço marcado.
+É o mesmo <code>index.html</code> — nada aqui é montagem. Serve para conferir os
+estados sem esperar o dia passar, e para mostrar o encaixe funcionando numa reunião.
+Puxe o cursor da hora ou toque num serviço.</p>
+
+<div class="ctrl">
+  <div>
+    <p class="agora num" id="agora">14:30</p>
+    <p class="rot" id="rot-serv">nenhum serviço</p>
+  </div>
+  <input type="range" id="cursor" min="480" max="1260" step="15" value="870" aria-label="Hora do dia">
+  <div class="linha-btn" id="servs"></div>
+  <div class="viewport">
+    <button id="vw-desk" aria-pressed="true">desktop</button>
+    <button id="vw-mob" aria-pressed="false">celular</button>
+  </div>
+</div>
+
+<div class="palco">
+  <div class="palco-in" id="palco-in">
+    <span class="carimbo" id="carimbo">14:30 · sem serviço</span>
+    <iframe id="palco-frame" title="Pré-visualização do site na hora e serviço escolhidos"></iframe>
+  </div>
+</div>
+
+<h2>Os estados que importam, lado a lado</h2>
+<div class="grade" id="grade"></div>
+
+<footer>
+  Cada quadro é um <code>&lt;iframe&gt;</code> do site real com <code>?agora=</code> e
+  <code>?servico=</code>. Os dois parâmetros servem na vida real: o salão manda
+  <code>…/index.html?servico=cor</code> no WhatsApp e a cliente cai na página já
+  mostrando onde a coloração dela cabe hoje.
+</footer>
+
+<script>
+/* Espelha SALAO.servicos do index.html. Se lá mudar, mudar aqui. */
+const SERV = [
+  { id:'',       nome:'nenhum',            tom:'--fumo'     },
+  { id:'escova', nome:'Escova · 45min',    tom:'--tinta'    },
+  { id:'corte',  nome:'Corte · 1h',        tom:'--tinta'    },
+  { id:'cor',    nome:'Coloração · 3h',    tom:'--acaju'    },
+  { id:'luzes',  nome:'Luzes · 4h',        tom:'--mel'      },
+  { id:'plat',   nome:'Platinado · 5h',    tom:'--platina'  },
+];
+/* Os quadros foram escolhidos por serem os que decidem a venda, não por cobrir
+   a matriz inteira: manhã com o dia inteiro pela frente, tarde com o dia pela
+   metade, o serviço longo que NÃO cabe, e o salão fechado. */
+const ESTADOS = [
+  { h:'09:00', s:'',      rot:'Abertura, nada escolhido',
+    nota:'O que a cliente vê ao abrir de manhã. A agenda inteira à mostra, e o site pedindo o serviço.' },
+  { h:'10:00', s:'corte', rot:'Corte de manhã',
+    nota:'Serviço curto com o dia todo pela frente: cabe em várias cadeiras e em vários horários.' },
+  { h:'14:30', s:'cor',   rot:'Coloração à tarde',
+    nota:'3h na cadeira com o dia pela metade: sobra um encaixe só. É o caso que mostra o mecanismo funcionando.' },
+  { h:'14:30', s:'plat',  rot:'Platinado — não cabe',
+    nota:'5h não entram no que sobrou. O site diz isso na cara e oferece amanhã, em vez de empurrar.' },
+  { h:'20:00', s:'escova',rot:'Salão fechado',
+    nota:'Depois das 19:00 a barra vira “abre amanhã 09:00” e a contagem some — não repete o óbvio.' },
+];
+const SITE = '../index.html';
+const LARG = { desk:1280, mob:390 };
+const ALT  = { desk:860,  mob:820 };
+let vw = 'desk', hora = 870, serv = '';
+
+const $ = s => document.querySelector(s);
+const hhmm = m => String(Math.floor(m/60)).padStart(2,'0') + ':' + String(m%60).padStart(2,'0');
+const url = (h, s) => `${SITE}?agora=${encodeURIComponent(h)}` + (s ? `&servico=${s}` : '');
+const nomeServ = id => (SERV.find(x => x.id === id) || SERV[0]).nome;
+
+/* Encaixa um iframe de LARG×ALT dentro da caixa. Nunca AMPLIAR (Math.min com 1):
+   no modo celular a caixa é mais larga que os 390px do aparelho, e sem o teto o
+   telefone vira pôster. Centraliza por `left` — mexer no transform brigaria com
+   a escala. (Mesma função dos painéis da pizzaria e da oficina.) */
+function encaixar(frame, caixa){
+  const k  = Math.min(1, caixa.clientWidth / LARG[vw]);
+  const dx = Math.max(0, (caixa.clientWidth - LARG[vw] * k) / 2);
+  frame.style.width  = LARG[vw] + 'px';
+  frame.style.height = ALT[vw] + 'px';
+  frame.style.left = dx + 'px';
+  frame.style.transform = `scale(${k})`;
+  caixa.style.aspectRatio = 'auto';
+  caixa.style.height = Math.round(ALT[vw] * k) + 'px';
+}
+
+/* ── palco ─────────────────────────────────────────────────── */
+const palco = $('#palco-frame'), caixaPalco = $('#palco-in');
+let ultimo = null;
+function pintarPalco(recarregar){
+  const h = hhmm(hora);
+  $('#agora').textContent = h;
+  $('#rot-serv').textContent = serv ? nomeServ(serv) : 'nenhum serviço';
+  $('#carimbo').textContent = `${h} · ${serv ? nomeServ(serv) : 'sem serviço'}`;
+  const alvo = url(h, serv);
+  if (recarregar && alvo !== ultimo){ ultimo = alvo; palco.src = alvo; }
+}
+$('#cursor').addEventListener('input',  e => { hora = +e.target.value; pintarPalco(false); });
+$('#cursor').addEventListener('change', e => { hora = +e.target.value; pintarPalco(true); });
+
+$('#servs').innerHTML = SERV.map(s =>
+  `<button type="button" data-id="${s.id}" aria-pressed="${s.id === '' ? 'true' : 'false'}">${s.nome}</button>`).join('');
+$('#servs').addEventListener('click', ev => {
+  const b = ev.target.closest('button'); if (!b) return;
+  serv = b.dataset.id;
+  [...$('#servs').children].forEach(x =>
+    x.setAttribute('aria-pressed', String(x.dataset.id === serv)));
+  pintarPalco(true);
+});
+
+/* ── grade ─────────────────────────────────────────────────── */
+$('#grade').innerHTML = ESTADOS.map(e => {
+  const tom = (SERV.find(x => x.id === e.s) || SERV[0]).tom;
+  return `
+  <figure class="tile">
+    <div class="janela"><iframe loading="lazy" title="${e.rot}" src="${url(e.h, e.s)}"></iframe></div>
+    <figcaption>
+      <span class="tom" style="background:var(${tom})"></span>
+      <b>${e.rot}</b>
+      <span class="num" style="color:var(--fumo);font-size:.82rem">${e.h} · ${e.s || 'sem serviço'}</span>
+      <p>${e.nota}</p>
+    </figcaption>
+  </figure>`;
+}).join('');
+
+function reencaixarTudo(){
+  encaixar(palco, caixaPalco);
+  document.querySelectorAll('.tile').forEach(t =>
+    encaixar(t.querySelector('iframe'), t.querySelector('.janela')));
+}
+for (const [id, modo] of [['#vw-desk','desk'], ['#vw-mob','mob']]) {
+  $(id).addEventListener('click', () => {
+    vw = modo;
+    $('#vw-desk').setAttribute('aria-pressed', String(modo === 'desk'));
+    $('#vw-mob').setAttribute('aria-pressed',  String(modo === 'mob'));
+    reencaixarTudo();
+  });
+}
+addEventListener('resize', reencaixarTudo);
+
+serv = 'cor'; hora = 870;              /* abre no estado que vende */
+[...$('#servs').children].forEach(x => x.setAttribute('aria-pressed', String(x.dataset.id === serv)));
+$('#cursor').value = hora;
+pintarPalco(true);
+reencaixarTudo();
+</script>
+</body>
+</html>

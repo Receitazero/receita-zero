@@ -1,187 +1,668 @@
-<!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- SEO Vitrine Certa -->
-<meta property="og:title" content="Salão de Beleza em São Vicente — site Premium | Vitrine Certa">
-<meta property="og:description" content="Salão de beleza com agenda online e agendamento no WhatsApp. Site Premium da Vitrine Certa, pronto em 48h. A partir de R<meta name="viewport" content="width=device-width, initial-scale=1.0">49/mês.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://receitazero.github.io/receita-zero/site-dfy/salão/premium/index.html">
-<meta property="og:image" content="https://receitazero.github.io/receita-zero/site-dfy/salão/premium/preview.png">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Salão de Beleza em São Vicente",
-  "description": "Salão de beleza com agenda online e agendamento no WhatsApp. Site Premium da Vitrine Certa, pronto em 48h. A partir de R<meta name="viewport" content="width=device-width, initial-scale=1.0">49/mês.",
-  "url": "https://receitazero.github.io/receita-zero/site-dfy/salão/premium/index.html",
-  "image": "https://receitazero.github.io/receita-zero/site-dfy/salão/premium/preview.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "São Vicente",
-    "addressRegion": "SP",
-    "addressCountry": "BR"
-  },
-  "telephone": "+555511970776856",
-  "priceRange": "R<meta name="viewport" content="width=device-width, initial-scale=1.0">49-R<meta name="viewport" content="width=device-width, initial-scale=1.0">99",
-  "provider": {
-    "@type": "Organization",
-    "name": "Vitrine Certa",
-    "url": "https://receitazero.github.io/receita-zero/receita-zero/"
-  }
-}
-</script>
-<title>Bella Hair — salão premium em São Vicente</title>
-<meta name="description" content="Salão premium em São Vicente: agenda online ao vivo, antes/depois real e pacotes de cabelo, barba e unha.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fio &amp; Companhia — o que sobrou de hoje</title>
+<meta name="description" content="Salão em São Vicente. A agenda das três cadeiras, aberta: escolha o serviço e veja onde ele cabe ainda hoje.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&family=Gloock&display=swap" rel="stylesheet">
 <style>
+/* Hallmark · macrostructure: 19 Map/Diagram · Vitrine Certa / Salão Premium
+   governado por=duração do serviço · cor=tom de tintura, sem cor de marca
+   display=Gloock · dados=DM Sans tabular
+   pre-emit critique: P5 H4 E5 S4 R4 V5
+   Tokens e justificativas: DESIGN.md ao lado. Zero hex fora deste :root. */
 :root{
-  --bg:#0B0710;--bg2:#140C1A;--surface:#1A1020;--surface2:#241530;--line:#36223F;--line2:#50335E;
-  --fg:#FBF0FF;--muted:#E2B8F0;--faint:#A87AC0;
-  --a1:#FF5FB0;--a2:#B15BFF;--a3:#FF9BD6;--off:#FBF0FF;
-  --grad:linear-gradient(120deg,var(--a1),var(--a2));
-  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
-  --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
-  --font-display:'Playfair Display',Georgia,serif;
+  --papel:#F3EBE7; --papel2:#E7DAD4; --linha:#D3C1B9;
+  --tinta:#241A16;  --fumo:#6B564E;  --claro:#FAF6F4;
+
+  /* tons de tintura — o acento é a cor do cabelo, não uma cor de marca.
+     Escurecidos até passarem 4.5:1 sobre --papel (o mel e a platina não
+     passavam nos tons "reais"; ver DESIGN.md). Um ativo por vez. */
+  --acaju:#8C2F39; --mel:#8A5C24; --platina:#5C6673;
+  --wa:#25D366;
+
+  --tom:var(--tinta);   /* trocado pelo serviço escolhido */
+
+  --display:'Gloock',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:40px;--s7:64px;--s8:104px;
+  --ease:cubic-bezier(.22,1,.36,1);
 }
-*{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
-body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(45% 42% at 85% 6%,color-mix(in srgb,var(--a1) 20%,transparent),transparent 70%),radial-gradient(40% 40% at 10% 95%,color-mix(in srgb,var(--a2) 18%,transparent),transparent 70%);filter:blur(12px);animation:glow 17s ease-in-out infinite alternate}
-@keyframes glow{0%{transform:translateY(0)}100%{transform:translateY(-2%)}}
-.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
-section{padding-block:var(--s-3xl)}
-h1,h2,h3{font-family:var(--font-display);line-height:1.05;letter-spacing:-.01em}
-.eyebrow{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--a1);margin-bottom:var(--s-sm)}
-.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-weight:800;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;text-decoration:none}
-.btn-solid{background:var(--grad);color:#1a0414;box-shadow:0 16px 40px -14px color-mix(in srgb,var(--a1) 70%,transparent)}
-.btn-solid:hover{transform:translateY(-3px)}
-.btn-outline{background:color-mix(in srgb,var(--surface) 60%,transparent);border-color:var(--line2);color:var(--fg);backdrop-filter:blur(6px)}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1;transform:none}
-.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.9rem}
-.brand{font-family:var(--font-display);font-weight:800;font-size:1.3rem}
-.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-/* HERO */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-2xl);align-items:center;padding-block:var(--s-3xl)}
-.hero h1{font-size:clamp(2.6rem,5.5vw,4.4rem);margin-bottom:var(--s-md)}
-.hero .lede{color:var(--muted);font-size:1.15rem;max-width:42ch;margin-bottom:var(--s-xl)}
-.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
-.hero .fig{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/4;background:linear-gradient(160deg,var(--surface2),var(--surface));border:1px solid var(--line);box-shadow:0 40px 90px -40px color-mix(in srgb,var(--a1) 50%,transparent)}
-.hero .fig img{width:100%;height:100%;object-fit:cover}
-/* AGENDA */
-.agenda{background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:var(--s-2xl)}
-.agenda .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--s-lg);flex-wrap:wrap;gap:.6rem}
-.agenda .days{display:flex;gap:.5rem;flex-wrap:wrap}
-.agenda .day{padding:.5rem .9rem;border-radius:999px;border:1px solid var(--line2);background:var(--surface);color:var(--muted);cursor:pointer;font-weight:700;transition:.2s}
-.agenda .day.on{background:var(--grad);color:#1a0414;border-color:transparent}
-.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:.6rem;margin-top:var(--s-lg)}
-.slot{padding:.7rem .4rem;text-align:center;border-radius:12px;border:1px solid var(--line2);background:var(--surface);color:var(--fg);cursor:pointer;font-weight:700;transition:.2s;position:relative}
-.slot:hover{transform:translateY(-3px);border-color:var(--a1)}
-.slot.taken{opacity:.4;cursor:not-allowed;text-decoration:line-through;background:var(--bg);color:var(--faint)}
-.slot.sel{background:var(--grad);color:#1a0414;border-color:transparent}
-.agenda .conf{margin-top:var(--s-lg);padding:var(--s-md) var(--s-lg);border-radius:14px;background:var(--surface);text-align:center;font-family:var(--font-display);font-size:1.2rem;color:var(--a3);min-height:1.2em}
-.agenda .conf a{margin-top:.6rem}
-/* BEFORE/AFTER */
-.ba{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
-.ba .item{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--surface);position:relative}
-.ba .item .pair{display:grid;grid-template-columns:1fr 1fr}
-.ba .item .pair div{aspect-ratio:1;position:relative}
-.ba .item .pair .before{background:linear-gradient(135deg,#3a2a40,#2a1c30)}
-.ba .item .pair .after{background:linear-gradient(135deg,var(--a1),var(--a2))}
-.ba .item .pair span{position:absolute;bottom:8px;left:8px;font-size:.7rem;font-weight:800;background:rgba(0,0,0,.5);color:#fff;padding:.15rem .5rem;border-radius:999px}
-.ba .item h4{font-family:var(--font-display);font-size:1.05rem;padding:.8rem 1rem 0}
-.ba .item p{color:var(--muted);font-size:.85rem;padding:0 1rem 1rem}
-/* PACOTES */
-.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
-.pack{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:var(--s-xl);text-align:center}
-.pack.feat{border-color:var(--a1);box-shadow:0 0 0 1px color-mix(in srgb,var(--a1) 40%,transparent),0 30px 70px -30px color-mix(in srgb,var(--a1) 50%,transparent)}
-.pack .price{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--a3);margin:.4rem 0}
-.pack ul{list-style:none;padding:0;margin:var(--s-md) 0 var(--s-lg);color:var(--muted);font-size:.92rem}
-.pack li{padding:.35rem 0}
-.cta-final{text-align:center}
-footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.85rem}
-@media(max-width:860px){.hero{grid-template-columns:1fr}.ba{grid-template-columns:1fr}.packs{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+html,body{overflow-x:clip}
+body{background:var(--papel);color:var(--tinta);font-family:var(--sans);
+  font-size:1rem;line-height:1.6;-webkit-font-smoothing:antialiased}
+.num{font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.02;letter-spacing:-.015em}
+a{color:inherit}
+.wrap{max-inline-size:1140px;margin-inline:auto;padding-inline:var(--s5)}
+
+/* ── barra de estado ──────────────────────────────────────────── */
+.barra{background:var(--tinta);color:var(--claro);font-size:.78rem;
+  letter-spacing:.06em;text-transform:uppercase}
+.barra .wrap{display:flex;gap:var(--s5);align-items:center;flex-wrap:wrap;
+  padding-block:var(--s3)}
+.barra b{font-weight:500}
+.barra .marca{margin-inline-start:auto;font-family:var(--display);
+  font-size:.95rem;letter-spacing:.02em;text-transform:none}
+.pip{display:inline-block;inline-size:7px;block-size:7px;border-radius:999px;
+  background:currentColor;margin-inline-end:var(--s2);vertical-align:middle}
+
+/* ── hero: o dia desenhado ────────────────────────────────────── */
+.hero{padding-block:var(--s7) var(--s6)}
+.olho{font-size:.74rem;letter-spacing:.18em;text-transform:uppercase;color:var(--fumo);
+  margin-block-end:var(--s4)}
+h1{font-size:clamp(2.6rem,7vw,5.2rem)}
+.lede{font-size:clamp(1.02rem,1.6vw,1.18rem);color:var(--fumo);
+  max-inline-size:54ch;margin-block-start:var(--s4)}
+
+/* escolha do serviço — chips */
+.escolha{margin-block-start:var(--s6);border-block-start:1px solid var(--linha);
+  padding-block-start:var(--s5)}
+.escolha p{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--fumo);margin-block-end:var(--s3)}
+.chips{display:flex;gap:var(--s2);flex-wrap:wrap}
+.chip{background:transparent;border:1px solid var(--linha);border-radius:999px;
+  padding:.55rem 1rem;font:500 .92rem var(--sans);color:var(--tinta);cursor:pointer;
+  display:flex;align-items:baseline;gap:.5rem;
+  transition:border-color .2s var(--ease),background .2s var(--ease),color .2s var(--ease)}
+.chip small{font-size:.78rem;color:var(--fumo);font-variant-numeric:tabular-nums;
+  transition:color .2s var(--ease)}
+.chip:hover{border-color:var(--tinta)}
+.chip[aria-pressed="true"]{background:var(--tom);border-color:var(--tom);color:var(--claro)}
+.chip[aria-pressed="true"] small{color:var(--claro);opacity:.75}
+
+/* faixa do dia */
+.faixa-wrap{margin-block-start:var(--s5);overflow-x:auto;padding-block-end:var(--s2)}
+.faixa{min-inline-size:790px;position:relative}
+.regua{position:relative;block-size:22px;margin-inline-start:132px}
+.regua span{position:absolute;transform:translateX(-50%);font-size:.72rem;
+  color:var(--fumo);font-variant-numeric:tabular-nums}
+/* as pontas da régua não podem sangrar para fora da faixa. Marcadas por atributo,
+   não por :first-child — a primeira etiqueta pode ter sido suprimida pelo "agora". */
+.regua span[data-ponta="ini"]{transform:none}
+.regua span[data-ponta="fim"]{transform:translateX(-100%)}
+.cad{display:grid;grid-template-columns:132px minmax(0,1fr);align-items:stretch;
+  border-block-start:1px solid var(--linha)}
+.cad:last-of-type{border-block-end:1px solid var(--linha)}
+.cad .quem{padding:var(--s4) var(--s3) var(--s4) 0}
+.cad .quem b{display:block;font-family:var(--display);font-size:1.05rem;line-height:1.1}
+/* 92px empurrava "escova e tratamento" para 3 linhas e a etiqueta ficava mais
+   alta que a própria pista. Coluna mais larga + corpo menor resolve sem cortar. */
+.cad .quem small{display:block;font-size:.7rem;line-height:1.35;color:var(--fumo)}
+.pista{position:relative;block-size:62px;background:
+  /* meia-hora em risco fino: a grade do tempo é a grade da página */
+  repeating-linear-gradient(90deg,var(--linha) 0 1px,transparent 1px calc(100%/20))}
+
+.bloco{position:absolute;inset-block:9px;border-radius:3px;overflow:hidden;
+  display:flex;align-items:center;padding-inline:.55rem;font-size:.75rem;
+  white-space:nowrap}
+/* ocupado: hachura, não bloco chapado — lê como "não é para você" sem virar cor */
+.ocup{background:repeating-linear-gradient(-45deg,var(--papel2) 0 5px,transparent 5px 10px);
+  border:1px solid var(--linha);color:var(--fumo)}
+.vago{border:1px dashed var(--linha);color:var(--fumo);
+  transition:opacity .3s var(--ease),border-color .3s var(--ease)}
+.vago[data-cabe="0"]{opacity:.3}
+.vago[data-cabe="1"]{border-style:solid;border-color:var(--tom);color:var(--tom)}
+/* barra-fantasma: o serviço escolhido, do tamanho exato da duração,
+   pousado onde ele caberia. É a única animação da página. */
+.fantasma{position:absolute;inset-block:0;background:var(--tom);color:var(--claro);
+  border-radius:2px;display:flex;align-items:center;padding-inline:.5rem;
+  font-size:.72rem;font-weight:500;
+  animation:pousa .45s var(--ease) both}
+@keyframes pousa{from{opacity:0;transform:scaleX(.4);transform-origin:0 50%}
+                 to{opacity:1;transform:scaleX(1)}}
+.passado{position:absolute;inset-block:0;inset-inline-start:0;
+  background:var(--papel);opacity:.72;pointer-events:none}
+.agora-linha{position:absolute;inset-block:-4px;inline-size:2px;background:var(--tinta);
+  pointer-events:none}
+.agora-linha::after{content:"agora";position:absolute;inset-block-start:-19px;
+  inset-inline-start:-3px;font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--tinta)}
+.agora-linha[data-mudo]::after{content:none}
+
+/* lista de encaixes — o que age, no celular e no desktop */
+.encaixes{margin-block-start:var(--s6)}
+.encaixes>p{font-size:.74rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--fumo);margin-block-end:var(--s3)}
+.enc{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:var(--s4);
+  align-items:center;border-block-start:1px solid var(--linha);padding-block:var(--s4)}
+.enc:last-child{border-block-end:1px solid var(--linha)}
+.enc .hora{font-size:1.5rem;font-weight:500;font-variant-numeric:tabular-nums;
+  letter-spacing:-.02em;color:var(--tom);min-inline-size:6.5ch}
+.enc .quem2{font-size:.95rem}
+.enc .quem2 small{display:block;font-size:.8rem;color:var(--fumo)}
+.nada{border:1px solid var(--linha);background:var(--papel2);padding:var(--s5);
+  display:grid;gap:var(--s3)}
+.nada b{font-family:var(--display);font-size:1.25rem;font-weight:400}
+.nada p{color:var(--fumo);font-size:.95rem;max-inline-size:56ch}
+
+.wa-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--wa);
+  color:#0B2E19;border:0;border-radius:999px;padding:.7rem 1.15rem;
+  font:700 .9rem var(--sans);text-decoration:none;white-space:nowrap;justify-self:end;
+  transition:filter .2s var(--ease)}
+.wa-btn:hover{filter:brightness(1.06)}
+.wa-btn svg{inline-size:16px;block-size:16px;fill:currentColor;flex:none}
+
+/* ── seções ───────────────────────────────────────────────────── */
+.sec{border-block-start:1px solid var(--linha);padding-block:var(--s7)}
+.sec h2{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+.sec .sub{color:var(--fumo);max-inline-size:58ch;margin-block-start:var(--s3)}
+.grade{margin-block-start:var(--s6)}
+
+/* tabela de duração e preço */
+.tab-wrap{overflow-x:auto}
+.tab{inline-size:100%;min-inline-size:580px;border-collapse:collapse;
+  border:1px solid var(--linha);background:var(--claro)}
+.tab th,.tab td{text-align:start;padding:var(--s4) var(--s5);
+  border-block-start:1px solid var(--linha);font-size:.95rem;vertical-align:top}
+.tab thead th{background:var(--papel2);border-block-start:0;font-size:.72rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--fumo);font-weight:500}
+.tab .n{font-variant-numeric:tabular-nums;white-space:nowrap}
+.tab .fora{color:var(--fumo);font-size:.88rem}
+.nota-tab{margin-block-start:var(--s4);font-size:.88rem;color:var(--fumo);max-inline-size:62ch}
+
+/* equipe */
+.equipe{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--linha);border:1px solid var(--linha)}
+.pessoa{background:var(--claro);padding:var(--s5)}
+.pessoa h3{font-size:1.5rem}
+.pessoa .esp{color:var(--tom);font-size:.78rem;letter-spacing:.12em;
+  text-transform:uppercase;margin-block:var(--s2) var(--s3)}
+.pessoa p{font-size:.92rem;color:var(--fumo)}
+.pessoa dl{margin-block-start:var(--s4);display:grid;grid-template-columns:auto 1fr;
+  gap:var(--s1) var(--s3);font-size:.85rem}
+.pessoa dt{color:var(--fumo)}
+.pessoa dd{font-variant-numeric:tabular-nums}
+
+/* o que não fazemos */
+.naofaz{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;
+  background:var(--linha);border:1px solid var(--linha)}
+.naofaz div{background:var(--papel);padding:var(--s5)}
+.naofaz b{font-family:var(--display);font-weight:400;font-size:1.15rem;display:block;
+  margin-block-end:var(--s2)}
+.naofaz p{font-size:.92rem;color:var(--fumo)}
+
+/* e se… */
+.sees{display:grid;gap:var(--s5);grid-template-columns:repeat(2,minmax(0,1fr))}
+.sees div{border-block-start:1px solid var(--linha);padding-block-start:var(--s4)}
+.sees b{display:block;font-size:1rem;margin-block-end:var(--s2)}
+.sees p{font-size:.93rem;color:var(--fumo)}
+
+/* retoque */
+.retoque{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s6);
+  align-items:center;background:var(--tinta);color:var(--claro);padding:var(--s6)}
+.retoque .selo{font-family:var(--display);font-size:clamp(3rem,8vw,5rem);line-height:.9;
+  text-align:center}
+.retoque .selo small{display:block;font-family:var(--sans);font-size:.72rem;
+  letter-spacing:.16em;text-transform:uppercase;opacity:.7;margin-block-start:var(--s2)}
+.retoque ol{margin-block-start:var(--s4);padding-inline-start:1.15rem;display:grid;
+  gap:var(--s2);font-size:.93rem;opacity:.88}
+.retoque h2{color:var(--claro)}
+
+/* rodapé = quadro de horários */
+.rodape{border-block-start:1px solid var(--linha);padding-block:var(--s7)}
+.rod-grade{display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:var(--s6)}
+.rod-grade h3{font-size:1.6rem}
+.rod-grade p,.rod-grade li{font-size:.93rem;color:var(--fumo)}
+.horarios{list-style:none;display:grid;gap:var(--s2);margin-block-start:var(--s3)}
+.horarios li{display:flex;justify-content:space-between;gap:var(--s4);
+  border-block-end:1px solid var(--linha);padding-block-end:var(--s2)}
+.horarios b{color:var(--tinta);font-weight:500;font-variant-numeric:tabular-nums}
+
+/* venda própria só aqui — regra de isolamento do braço Vitrine Certa */
+.vc{border-block-start:1px solid var(--linha);padding-block:var(--s6);
+  font-size:.8rem;letter-spacing:.04em;color:var(--fumo);text-align:center}
+.vc a{color:var(--tinta)}
+
+@media (max-width:900px){
+  .equipe,.naofaz,.sees,.rod-grade{grid-template-columns:1fr}
+  .retoque{grid-template-columns:1fr;gap:var(--s5)}
+  .retoque .selo{text-align:start}
+}
+@media (max-width:640px){
+  /* o botão desce para baixo do encaixe em vez de espremer 3 colunas */
+  .enc{grid-template-columns:auto minmax(0,1fr);row-gap:var(--s3)}
+  .enc .wa-btn{grid-column:1/-1;justify-self:start}
+  .barra .marca{margin-inline-start:0;inline-size:100%}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="wrap"><div class="brand">Bella<b>Hair</b></div><a class="btn btn-solid" href="#agenda" style="padding:.6rem 1.2rem;font-size:.9rem">Agendar</a></div></nav>
 
-<header class="hero"><div class="wrap">
-  <div class="reveal d1">
-    <span class="eyebrow">Salão premium · São Vicente</span>
-    <h1>Seu cabelo, <span class="grad">no ponto certo</span></h1>
-    <p class="lede">Agende online vendo os horários reais, veja transformações antes/depois e monte seu pacote. Sai se sentindo outro(a).</p>
-    <div class="cta"><a class="btn btn-solid" href="#agenda">Ver horários</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">WhatsApp</a></div>
+<div class="barra"><div class="wrap">
+  <span><span class="pip"></span><b id="b-dia">hoje</b></span>
+  <span id="b-conta"><b id="b-livres">—</b> de <b id="b-total">5</b> serviços ainda cabem hoje</span>
+  <span id="b-fecha">fecha <b class="num">19:00</b></span>
+  <span class="marca">Fio &amp; Companhia</span>
+</div></div>
+
+<main>
+
+<section class="hero"><div class="wrap">
+  <p class="olho">Salão · São Vicente</p>
+  <h1>O que sobrou<br>de hoje</h1>
+  <p class="lede">A agenda das três cadeiras, aberta. Escolha o serviço e a gente
+    mostra onde ele cabe ainda hoje — com hora, cadeira e nome de quem atende.
+    Sem “me manda seu horário preferido”.</p>
+
+  <div class="escolha">
+    <p>1 · escolha o serviço</p>
+    <div class="chips" id="chips" role="group" aria-label="Serviço"></div>
   </div>
-  <div class="fig reveal d2"><img src="assets/cabelo.jpg" alt="Cabelo tratado no salão"></div>
-</div></header>
 
-<section id="agenda"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Agenda ao vivo</span><h2 class="reveal">Escolha seu horário</h2><p class="reveal" style="color:var(--muted)">Os horários marcados já estão ocupados — o que sobra, é seu.</p></div>
-  <div class="agenda reveal">
-    <div class="head">
-      <div class="days" id="days"></div>
-      <div style="color:var(--faint);font-size:.85rem">⚪ livre &nbsp; ⚫ ocupado</div>
+  <div class="faixa-wrap">
+    <div class="faixa" id="faixa">
+      <div class="regua" id="regua"></div>
     </div>
-    <div class="slots" id="slots"></div>
-    <div class="conf" id="conf">Selecione um horário livre ↓</div>
+  </div>
+
+  <div class="encaixes">
+    <p>2 · onde ele cabe</p>
+    <div id="lista"></div>
   </div>
 </div></section>
 
-<section id="antesdepois"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Transformações</span><h2 class="reveal">Antes &amp; depois reais</h2></div>
-  <div class="ba">
-    <div class="item reveal"><div class="pair"><div class="before"><span>antes</span></div><div class="after"><span>depois</span></div></div><h4>Luzes loiro</h4><p>Transição natural do castanho ao loiro iluminado.</p></div>
-    <div class="item reveal"><div class="pair"><div class="before"><span>antes</span></div><div class="after"><span>depois</span></div></div><h4>Corte repicado</h4><p>Volume e movimento pra quem tem cabelo fino.</p></div>
-    <div class="item reveal"><div class="pair"><div class="before"><span>antes</span></div><div class="after"><span>depois</span></div></div><h4>Escova progressiva</h4><p>Adeus frizz — liso que dura sem chapinha.</p></div>
+<section class="sec"><div class="wrap">
+  <h2>Quanto tempo leva de verdade</h2>
+  <p class="sub">É esta tabela que desenha a agenda ali em cima — não é número de
+    enfeite. Se a coloração leva 3 horas, ela ocupa 3 horas da cadeira.</p>
+  <div class="grade tab-wrap">
+    <table class="tab">
+      <thead><tr><th>Serviço</th><th>Tempo na cadeira</th><th>A partir de</th><th>O que não está incluso</th></tr></thead>
+      <tbody id="tab-serv"></tbody>
+    </table>
+  </div>
+  <p class="nota-tab">“A partir de” é o preço do cabelo curto a médio. Cabelo muito
+    longo ou muito grosso consome mais produto e mais tempo — a diferença é dita
+    <b>antes</b> de começar, com o preço fechado. Nunca no fim.</p>
+</div></section>
+
+<section class="sec"><div class="wrap">
+  <h2>Quem senta na cadeira ao lado</h2>
+  <p class="sub">Você escolhe a pessoa, não “um profissional disponível”.</p>
+  <div class="grade equipe">
+    <article class="pessoa">
+      <h3>Rita</h3>
+      <p class="esp">Coloração e correção de cor</p>
+      <p>Faz o teste de mecha antes de qualquer química. Se o cabelo não aguentar
+        o tom que você quer, ela diz na consulta — não no meio do processo.</p>
+      <dl><dt>Cadeira</dt><dd>01</dd><dt>Na casa há</dt><dd>9 anos</dd></dl>
+    </article>
+    <article class="pessoa">
+      <h3>Dani</h3>
+      <p class="esp">Corte e repicado</p>
+      <p>Corta a seco para ver o cabelo cair como ele cai de verdade. Atende
+        cabelo cacheado e crespo sem alisar para “facilitar”.</p>
+      <dl><dt>Cadeira</dt><dd>02</dd><dt>Na casa há</dt><dd>4 anos</dd></dl>
+    </article>
+    <article class="pessoa">
+      <h3>Sol</h3>
+      <p class="esp">Escova e tratamento</p>
+      <p>Cuida da parte que ninguém fotografa: hidratação, reconstrução e o
+        cronograma capilar depois de uma química pesada.</p>
+      <dl><dt>Cadeira</dt><dd>03</dd><dt>Na casa há</dt><dd>6 anos</dd></dl>
+    </article>
   </div>
 </div></section>
 
-<section id="pacotes"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Pacotes</span><h2 class="reveal">Escolha o seu</h2></div>
-  <div class="packs">
-    <div class="pack reveal"><h4>Básico</h4><div class="price">R$ 59</div><ul><li>Corte + lavagem</li><li>Finalização</li><li>1h</li></ul><a class="btn btn-outline" style="width:100%;justify-content:center" href="https://wa.me/5511970776856?text=Quero%20pacote%20B%C3%A1sico%20Bella%20Hair" target="_blank" rel="noopener">Quero</a></div>
-    <div class="pack feat reveal"><h4>Completo</h4><div class="price">R$ 129</div><ul><li>Corte + coloração</li><li>Hidratação profunda</li><li>Sobrancelha</li></ul><a class="btn btn-solid" style="width:100%;justify-content:center" href="https://wa.me/5511970776856?text=Quero%20pacote%20Completo%20Bella%20Hair" target="_blank" rel="noopener">Quero</a></div>
-    <div class="pack reveal"><h4>Noiva/Evento</h4><div class="price">R$ 239</div><ul><li>Penteado + maquiagem</li><li>Teste prévio</li><li>3h</li></ul><a class="btn btn-outline" style="width:100%;justify-content:center" href="https://wa.me/5511970776856?text=Quero%20pacote%20Noiva%20Bella%20Hair" target="_blank" rel="noopener">Quero</a></div>
+<section class="sec"><div class="wrap">
+  <h2>O que a gente não faz</h2>
+  <p class="sub">Dizer o que não fazemos economiza o seu sábado.</p>
+  <div class="grade naofaz">
+    <div><b>Progressiva com formol</b>
+      <p>É proibido em salão e estraga o cabelo e o pulmão de quem trabalha aqui.
+        Fazemos alisamento sem formol — o resultado é mais discreto e a gente
+        avisa disso antes.</p></div>
+    <div><b>Encaixe sem hora marcada</b>
+      <p>Se a gente aceita “dou um jeitinho”, quem está na cadeira espera. As três
+        cadeiras trabalham com hora marcada, e é por isso que a agenda ali em cima
+        é confiável.</p></div>
+    <div><b>Loiro platinado em uma sessão</b>
+      <p>Sair de castanho escuro para platinado em um dia é o que arrebenta o fio.
+        Fazemos em duas ou três sessões, com intervalo, e o orçamento cobre todas.</p></div>
+    <div><b>Preço por telefone sem ver o cabelo</b>
+      <p>Para corte e escova, o preço é o da tabela. Para química, a gente olha o
+        cabelo primeiro — quinze minutos de avaliação, sem custo e sem compromisso.</p></div>
   </div>
 </div></section>
 
-<section class="cta-final"><div class="wrap">
-  <h2 class="reveal">Pronta pra sua transformação?</h2>
-  <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
-    <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20agendar%20Bella%20Hair" target="_blank" rel="noopener">Falar no WhatsApp</a>
-    <a class="btn btn-outline" href="#agenda">Ver horários</a>
+<section class="sec"><div class="wrap">
+  <h2>E se…</h2>
+  <div class="grade sees">
+    <div><b>…eu atrasar 15 minutos?</b>
+      <p>A gente atende. Passando de 20, o serviço pode ter que virar uma versão
+        mais curta para não empurrar quem vem depois — e você decide se prefere remarcar.</p></div>
+    <div><b>…eu precisar desmarcar?</b>
+      <p>Avise até 3 horas antes, pelo WhatsApp, sem multa e sem sermão. É esse
+        aviso que libera o buraco para outra pessoa no mesmo dia.</p></div>
+    <div><b>…eu não gostar da cor?</b>
+      <p>Volte em até 7 dias. Ajuste de tom dentro da mesma família de cor é sem
+        custo — está escrito na política de retoque aqui embaixo.</p></div>
+    <div><b>…eu quiser levar minha filha junto?</b>
+      <p>Pode. Só marque as duas cadeiras no mesmo horário pelo WhatsApp, senão
+        uma de vocês espera — a agenda é por cadeira, não por pessoa.</p></div>
   </div>
-  <p style="color:var(--faint);margin-top:var(--s-xl);font-size:.9rem">Site premium Vitrine Certa · braço independente</p>
 </div></section>
 
-<footer><div class="wrap">Bella Hair · salão premium em São Vicente · © 2026</div></footer>
+<section class="sec"><div class="wrap">
+  <div class="retoque">
+    <p class="selo">7<small>dias de retoque</small></p>
+    <div>
+      <h2>A política, escrita</h2>
+      <ol>
+        <li>Ajuste de tom dentro da mesma família de cor: <b>sem custo</b>, uma vez, em até 7 dias.</li>
+        <li>Corte: ajuste de comprimento ou de franja sem custo em até 7 dias.</li>
+        <li>Mudar de ideia sobre a cor (do acaju para o loiro, por exemplo) é serviço novo — não é retoque.</li>
+        <li>Retoque é feito por quem atendeu você. Se a agenda dela estiver cheia, a gente encaixa fora do horário normal.</li>
+        <li>Química feita em outro salão nos últimos 30 dias: a gente atende, mas o retoque não cobre — não sabemos o que já foi usado no fio.</li>
+      </ol>
+    </div>
+  </div>
+</div></section>
+
+<footer class="rodape"><div class="wrap">
+  <div class="rod-grade">
+    <div>
+      <h3>Fio &amp; Companhia</h3>
+      <p>Rua Frei Gaspar, 000 · Centro · São Vicente/SP<br>
+        Três cadeiras, hora marcada.</p>
+      <p style="margin-block-start:var(--s4)">
+        <a class="wa-btn" id="wa-geral" href="#" style="justify-self:start">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.06 24l1.68-6.16A11.9 11.9 0 010 11.9C0 5.33 5.34 0 11.9 0a11.9 11.9 0 018.42 20.32 11.82 11.82 0 01-8.42 3.49h-.01c-2 0-3.98-.5-5.73-1.46L.06 24zm6.6-3.8l.36.21a9.9 9.9 0 004.85 1.33h.01a9.87 9.87 0 007-16.86 9.82 9.82 0 00-7-2.9 9.88 9.88 0 00-8.37 15.15l.23.37-1 3.65 3.92-.95z"/></svg>
+          Falar com o salão
+        </a>
+      </p>
+    </div>
+    <div>
+      <h3 style="font-size:1.1rem">Quando a gente abre</h3>
+      <ul class="horarios" id="horarios"></ul>
+    </div>
+    <div>
+      <h3 style="font-size:1.1rem">Como funciona</h3>
+      <p>Só com hora marcada. A agenda desta página é a agenda de verdade das três
+        cadeiras — quando um horário some daqui, é porque alguém marcou.</p>
+      <p style="margin-block-start:var(--s3)">Pagamento: dinheiro, Pix, débito e
+        crédito em até 3× sem juros.</p>
+    </div>
+  </div>
+</div></footer>
+
+</main>
+
+<div class="vc"><div class="wrap">
+  Site feito pela <a href="../../../receita-zero/index.html">Vitrine Certa</a> —
+  sites prontos para negócio de bairro, a partir de R$ 49/mês.
+</div></div>
 
 <script>
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
-setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
-// AGENDA
-const days=['Seg 22','Ter 23','Qua 24','Qui 25','Sex 26'];
-const hours=['09:00','10:00','11:00','14:00','15:00','16:00','17:00'];
-// ocupados pseudo-aleatorios mas deterministicos por dia
-const takenSeed={0:[2,4],1:[0,6],2:[3,5],3:[1,2,4],4:[0,3,6]};
-const st={day:0,slot:null};
-const daysEl=document.getElementById('days'),slotsEl=document.getElementById('slots'),conf=document.getElementById('conf');
-days.forEach((d,i)=>{const b=document.createElement('span');b.className='day'+(i===0?' on':'');b.textContent=d;b.addEventListener('click',()=>{st.day=i;st.slot=null;render();});daysEl.appendChild(b);});
-function render(){
-  document.querySelectorAll('.day').forEach((x,i)=>x.classList.toggle('on',i===st.day));
-  const taken=takenSeed[st.day]||[];
-  slotsEl.innerHTML='';
-  hours.forEach((h,i)=>{const s=document.createElement('div');const isT=taken.includes(i);s.className='slot'+(isT?' taken':'')+(st.slot===i?' sel':'');s.textContent=h;if(!isT)s.addEventListener('click',()=>{st.slot=i;render();});slotsEl.appendChild(s);});
-  if(st.slot!==null){const h=hours[st.slot];conf.innerHTML='Horário: <b>'+days[st.day]+' às '+h+'</b><br><a class="btn btn-solid" style="margin-top:.6rem" href="https://wa.me/5511970776856?text='+encodeURIComponent('Quero agendar Bella Hair: '+days[st.day]+' às '+h)+'" target="_blank" rel="noopener">Confirmar no WhatsApp →</a>';}
-  else{conf.textContent='Selecione um horário livre ↓';}
+/* ⚠️ DEMO — salão, equipe, agenda e preços são fictícios, para portfólio.
+   Trocar este bloco (e só ele) pelos dados reais antes de entregar. */
+const SALAO = {
+  whats:'5511970776856',
+  abre:9, fecha:19,               /* horas cheias; o dia tem 600 minutos */
+  passo:15,                       /* encaixes começam de 15 em 15 min */
+  cadeiras:[
+    {n:1, quem:'Rita', esp:'coloração'},
+    {n:2, quem:'Dani', esp:'corte'},
+    {n:3, quem:'Sol',  esp:'escova e tratamento'}
+  ],
+  /* min = tempo REAL na cadeira. É este número que desenha a faixa. */
+  servicos:[
+    {id:'escova', nome:'Escova',            min:45,  preco:60,  tom:'--tinta',
+     fora:'Corte. A escova é a finalização, não inclui cortar.'},
+    {id:'corte',  nome:'Corte',             min:60,  preco:80,  tom:'--tinta',
+     fora:'Coloração e tratamento. Sai lavado e finalizado.'},
+    {id:'cor',    nome:'Coloração de raiz', min:180, preco:260, tom:'--acaju',
+     fora:'Comprimento. Pintar o cabelo todo é outro serviço, com outro tempo.'},
+    {id:'luzes',  nome:'Luzes / mechas',    min:240, preco:420, tom:'--mel',
+     fora:'Matização depois de 20 dias. Fica marcada na hora, cobrada à parte.'},
+    {id:'plat',   nome:'Loiro platinado',   min:300, preco:620, tom:'--platina',
+     fora:'A segunda sessão, se o cabelo pedir. O orçamento diz antes se vai pedir.'}
+  ],
+  /* agenda de hoje, em minutos desde a abertura. Só o TIPO de serviço aparece:
+     nome de cliente na vitrine do salão é vazamento, não prova social. */
+  ocupado:{
+    1:[[0,180,'Coloração'],[240,300,'Corte'],[420,540,'Luzes']],
+    2:[[60,120,'Corte'],[150,210,'Corte'],[330,375,'Escova']],
+    3:[[0,45,'Escova'],[90,180,'Tratamento'],[300,345,'Escova'],[480,540,'Escova']]
+  },
+  semana:[['Segunda','fechado'],['Terça a sexta','9:00 – 19:00'],
+          ['Sábado','8:00 – 17:00'],['Domingo','fechado']]
+};
+
+const $ = s => document.querySelector(s);
+const DIA = (SALAO.fecha - SALAO.abre) * 60;          /* 600 min */
+const pct = m => (m / DIA * 100) + '%';
+const hhmm = m => {
+  const t = SALAO.abre * 60 + m;
+  return String(Math.floor(t / 60)).padStart(2,'0') + ':' + String(t % 60).padStart(2,'0');
+};
+const dur = m => m >= 60 ? (m % 60 ? `${Math.floor(m/60)}h${m%60}` : `${Math.floor(m/60)}h`) : `${m}min`;
+const din = v => 'R$ ' + v.toFixed(2).replace('.', ',');
+
+/* ── que horas são ────────────────────────────────────────────────
+   ?agora=14:30 congela um instante (serve ao painel de demonstração e a
+   um print). Sem o parâmetro, é o relógio de verdade. */
+const qs = new URLSearchParams(location.search);
+function agoraMin(){
+  const q = qs.get('agora');
+  let h;
+  if (q && /^\d{1,2}:\d{2}$/.test(q)){ const [a,b] = q.split(':').map(Number); h = a + b/60; }
+  else { const d = new Date(); h = d.getHours() + d.getMinutes()/60; }
+  return Math.round((h - SALAO.abre) * 60);           /* pode ser <0 ou >DIA */
 }
-render();
+const AGORA = agoraMin();
+const FECHADO = AGORA >= DIA;                         /* já passou das 19:00 */
+const ini = Math.max(0, AGORA);                       /* antes de abrir = dia inteiro livre */
+
+/* ── buracos: o complemento do que está ocupado ──────────────────── */
+function buracos(nCad){
+  const oc = [...(SALAO.ocupado[nCad] || [])].sort((a,b) => a[0] - b[0]);
+  const out = []; let cur = 0;
+  for (const [a,b] of oc){ if (a > cur) out.push([cur, a]); cur = Math.max(cur, b); }
+  if (cur < DIA) out.push([cur, DIA]);
+  return out;
+}
+/* Um buraco serve se, DEPOIS de descontar o que já passou e arredondar para o
+   próximo passo de 15 min, ainda sobra a duração inteira do serviço. */
+function encaixe(b, min){
+  const bruto = Math.max(b[0], ini);
+  const inicio = Math.ceil(bruto / SALAO.passo) * SALAO.passo;
+  return (!FECHADO && b[1] - inicio >= min) ? inicio : null;
+}
+
+/* ── chips ────────────────────────────────────────────────────────── */
+$('#chips').innerHTML = SALAO.servicos.map(s =>
+  `<button type="button" class="chip" data-id="${s.id}" aria-pressed="false">
+     ${s.nome} <small>${dur(s.min)}</small></button>`).join('');
+
+/* ── faixa: régua + 3 pistas, montadas dos dados ──────────────────── */
+const regua = $('#regua');
+for (let h = SALAO.abre; h <= SALAO.fecha; h++){
+  const m = (h - SALAO.abre) * 60;
+  /* a etiqueta "agora" mora na régua; a hora cheia que cair em cima dela sai.
+     Duas palavras sobrepostas no mesmo pixel é o que parece defeito — faltar
+     um "15h" ao lado de um marcador de agora, não. */
+  if (AGORA > 0 && AGORA < DIA && Math.abs(m - AGORA) < 45) continue;
+  const sp = document.createElement('span');
+  sp.style.insetInlineStart = pct(m);
+  sp.className = 'num'; sp.textContent = h + 'h';
+  if (m === 0) sp.dataset.ponta = 'ini';
+  if (m === DIA) sp.dataset.ponta = 'fim';
+  regua.appendChild(sp);
+}
+const faixa = $('#faixa');
+for (const c of SALAO.cadeiras){
+  const row = document.createElement('div');
+  row.className = 'cad';
+  row.innerHTML = `<div class="quem"><b>${c.quem}</b><small>cadeira 0${c.n} · ${c.esp}</small></div>
+                   <div class="pista" data-cad="${c.n}"></div>`;
+  faixa.appendChild(row);
+}
+
+/* ── pintar ───────────────────────────────────────────────────────── */
+function pintar(sel){
+  const tom = sel ? sel.tom : '--tinta';
+  document.documentElement.style.setProperty('--tom', `var(${tom})`);
+
+  const achados = [];
+  for (const c of SALAO.cadeiras){
+    const pista = faixa.querySelector(`.pista[data-cad="${c.n}"]`);
+    pista.innerHTML = '';
+
+    for (const [a,b,rot] of (SALAO.ocupado[c.n] || [])){
+      const d = document.createElement('div');
+      d.className = 'bloco ocup';
+      d.style.insetInlineStart = pct(a); d.style.inlineSize = pct(b - a);
+      d.textContent = rot;
+      pista.appendChild(d);
+    }
+    for (const b of buracos(c.n)){
+      const d = document.createElement('div');
+      d.className = 'bloco vago';
+      d.style.insetInlineStart = pct(b[0]); d.style.inlineSize = pct(b[1] - b[0]);
+      const inicio = sel ? encaixe(b, sel.min) : null;
+      d.dataset.cabe = sel ? (inicio !== null ? '1' : '0') : '';
+      if (inicio !== null && sel){
+        achados.push({cad:c, inicio, fim:inicio + sel.min});
+        const g = document.createElement('div');
+        g.className = 'fantasma';
+        /* posição relativa ao buraco, não à pista */
+        g.style.insetInlineStart = ((inicio - b[0]) / (b[1] - b[0]) * 100) + '%';
+        g.style.inlineSize = (sel.min / (b[1] - b[0]) * 100) + '%';
+        g.textContent = hhmm(inicio);
+        d.appendChild(g);
+      } else {
+        /* o rótulo conta o que AINDA dá para usar, não o tamanho do buraco no
+           papel: às 14:30 um vão de 14h–16h não é "livre · 2h", é 1h30. E vão
+           que já passou inteiro não recebe rótulo nenhum — não está livre, acabou. */
+        const resta = b[1] - Math.max(b[0], ini);
+        if (!FECHADO && resta >= 45) d.textContent = 'livre · ' + dur(resta);
+      }
+      pista.appendChild(d);
+    }
+    /* o que já passou fica apagado, e a linha do agora mostra por quê */
+    if (AGORA > 0 && AGORA < DIA){
+      const sombra = document.createElement('div');
+      sombra.className = 'passado'; sombra.style.inlineSize = pct(AGORA);
+      pista.appendChild(sombra);
+      /* a linha do agora atravessa as três cadeiras — é um corte no dia inteiro,
+         não um detalhe da primeira. Só a de cima leva o rótulo. */
+      const linha = document.createElement('div');
+      linha.className = 'agora-linha'; linha.style.insetInlineStart = pct(AGORA);
+      if (c.n !== 1) linha.dataset.mudo = '1';
+      pista.appendChild(linha);
+    }
+  }
+  achados.sort((x,y) => x.inicio - y.inicio);
+  listar(sel, achados);
+  return achados;
+}
+
+/* ── lista de encaixes ────────────────────────────────────────────── */
+function listar(sel, achados){
+  const lista = $('#lista');
+  if (!sel){
+    lista.innerHTML = `<div class="nada"><b>Escolha um serviço ali em cima.</b>
+      <p>Cada serviço leva um tempo diferente, então cada um cabe num lugar
+      diferente do dia. Sem saber qual é, a gente só teria como mostrar a agenda
+      cheia — que é o que todo site de salão faz.</p></div>`;
+    return;
+  }
+  if (!achados.length){
+    /* Dois motivos diferentes para não caber — e cada um pede a sua frase.
+       Reaproveitar o mesmo parágrafo fazia o salão fechado dizer que não queria
+       "correr até as 20:30", o que não vinha ao caso. */
+    const titulo = FECHADO
+      ? `Hoje já fechamos. ${sel.nome} leva ${dur(sel.min)} — o primeiro encaixe é amanhã, na abertura.`
+      : `Hoje não cabe mais ${sel.nome.toLowerCase()}: são ${dur(sel.min)} na cadeira `
+        + `e não sobra esse tanto até as ${hhmm(DIA)}.`;
+    const corpo = FECHADO
+      ? `A agenda de amanhã abre às ${hhmm(0)} e ainda está inteira. Mande a mensagem
+         agora que a gente já deixa a cadeira reservada no seu nome.`
+      : `Preferimos dizer isso agora a encaixar você no fim do dia e correr com o
+         salão fechando — ${sel.nome.toLowerCase()} apressado é ${sel.nome.toLowerCase()}
+         mal feito. O primeiro horário livre é amanhã às ${hhmm(0)}, com a
+         ${SALAO.cadeiras[0].quem}.`;
+    lista.innerHTML = `<div class="nada">
+      <b>${titulo}</b>
+      <p>${corpo}</p>
+      <a class="wa-btn" style="justify-self:start" id="amanha" href="#">
+        ${waIcon()} Marcar para amanhã</a></div>`;
+    $('#amanha').href = wa(`Oi! Queria marcar ${sel.nome} (${dur(sel.min)}) para amanhã de manhã, se puder.`);
+    return;
+  }
+  lista.innerHTML = achados.map(a => `
+    <div class="enc">
+      <span class="hora num">${hhmm(a.inicio)}</span>
+      <span class="quem2">com a <b>${a.cad.quem}</b>
+        <small>cadeira 0${a.cad.n} · termina ${hhmm(a.fim)} · ${sel.nome} · ${din(sel.preco)}</small></span>
+      <a class="wa-btn" href="${wa(msgEncaixe(sel, a))}">${waIcon()} Marcar ${hhmm(a.inicio)}</a>
+    </div>`).join('');
+}
+function msgEncaixe(sel, a){
+  return `Oi! Vi no site que sobrou ${hhmm(a.inicio)} hoje com a ${a.cad.quem} `
+       + `(cadeira 0${a.cad.n}). Quero marcar ${sel.nome} — ${dur(sel.min)}, `
+       + `${din(sel.preco)}. Pode confirmar?`;
+}
+const wa = t => 'https://wa.me/' + SALAO.whats + '?text=' + encodeURIComponent(t);
+const waIcon = () => `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M.06 24l1.68-6.16A11.9 11.9 0 010 11.9C0 5.33 5.34 0 11.9 0a11.9 11.9 0 018.42 20.32 11.82 11.82 0 01-8.42 3.49h-.01c-2 0-3.98-.5-5.73-1.46L.06 24zm6.6-3.8l.36.21a9.9 9.9 0 004.85 1.33h.01a9.87 9.87 0 007-16.86 9.82 9.82 0 00-7-2.9 9.88 9.88 0 00-8.37 15.15l.23.37-1 3.65 3.92-.95z"/></svg>`;
+
+/* ── interação ────────────────────────────────────────────────────── */
+let atual = null;
+$('#chips').addEventListener('click', ev => {
+  const b = ev.target.closest('.chip'); if (!b) return;
+  const s = SALAO.servicos.find(x => x.id === b.dataset.id);
+  atual = (atual && atual.id === s.id) ? null : s;        /* clicar de novo desmarca */
+  [...$('#chips').children].forEach(c =>
+    c.setAttribute('aria-pressed', String(!!atual && c.dataset.id === atual.id)));
+  pintar(atual);
+});
+
+/* ── tabela e rodapé, dos mesmos dados ────────────────────────────── */
+$('#tab-serv').innerHTML = SALAO.servicos.map(s => `
+  <tr><td><b>${s.nome}</b></td>
+      <td class="n">${dur(s.min)}</td>
+      <td class="n">${din(s.preco)}</td>
+      <td class="fora">${s.fora}</td></tr>`).join('');
+$('#horarios').innerHTML = SALAO.semana.map(([d,h]) =>
+  `<li><span>${d}</span><b>${h}</b></li>`).join('');
+
+/* ── barra de estado ──────────────────────────────────────────────── */
+const DIAS = ['domingo','segunda','terça','quarta','quinta','sexta','sábado'];
+$('#b-dia').textContent = FECHADO ? 'hoje já fechamos' : DIAS[new Date().getDay()];
+/* fechado: contar "0 de 5 cabem hoje" logo depois de "já fechamos" é dizer duas
+   vezes a mesma coisa. Some a contagem e a barra vira o aviso útil. */
+$('#b-fecha').innerHTML = FECHADO
+  ? 'abre amanhã <b class="num">' + hhmm(0) + '</b>'
+  : 'fecha <b class="num">' + hhmm(DIA) + '</b>';
+if (FECHADO) $('#b-conta').hidden = true;
+$('#wa-geral').href = wa('Oi! Vi o site de vocês e queria falar sobre um horário.');
+
+/* Contagem honesta: quantos dos serviços ainda cabem hoje. Sai do mesmo cálculo
+   da faixa — não é número escrito na mão. O rótulo diz exatamente isto: dizer
+   "3 encaixes livres" seria contar outra coisa e mentir de leve. */
+const livres = SALAO.servicos.filter(s =>
+  SALAO.cadeiras.some(c => buracos(c.n).some(b => encaixe(b, s.min) !== null))).length;
+$('#b-livres').textContent = FECHADO ? '0' : String(livres);
+$('#b-total').textContent  = String(SALAO.servicos.length);
+
+/* ?servico=cor já abre com o serviço marcado. Serve ao painel de demonstração e,
+   na vida real, ao link que o salão manda: "olha onde cabe sua coloração hoje". */
+const qServ = qs.get('servico');
+atual = (qServ && SALAO.servicos.find(s => s.id === qServ)) || null;
+if (atual) [...$('#chips').children].forEach(c =>
+  c.setAttribute('aria-pressed', String(c.dataset.id === atual.id)));
+pintar(atual);
 </script>
 </body>
 </html>
