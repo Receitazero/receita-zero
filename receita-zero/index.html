@@ -86,6 +86,14 @@ a{color:var(--a2);text-decoration:none}
 .pg:hover{transform:translateY(-6px);border-color:var(--a1);box-shadow:0 24px 60px -30px color-mix(in srgb,var(--a1) 50%,transparent)}
 .pg b{font-family:var(--font-display);font-size:1.15rem}
 .pg span{color:var(--faint);font-size:.85rem}
+/* price filter */
+.price-filter{display:flex;justify-content:center;gap:.5rem;margin:var(--s-xl) 0 var(--s-lg);flex-wrap:wrap}
+.price-filter button{background:var(--surface2);color:var(--muted);border:1px solid var(--line2);border-radius:999px;padding:.55rem 1.1rem;font-family:var(--font-body);font-size:.9rem;cursor:pointer;transition:all .2s}
+.price-filter button:hover{color:var(--fg);border-color:var(--line)}
+.price-filter button.active{background:var(--a1);color:#0a0a12;border-color:var(--a1);font-weight:700}
+.price-filter button[data-tier="all"]{background:var(--grad);color:#0a0a12;border-color:transparent;font-weight:700}
+.pg[data-tier]{display:flex}
+.pg[data-tier].hide{display:none}
 @media(max-width:860px){.premium-grid{grid-template-columns:1fr 1fr}}
 /* plans */
 .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-lg);max-width:760px;margin:var(--s-xl) auto 0}
@@ -243,17 +251,46 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(
   <div style="text-align:center;margin-bottom:var(--s-2xl)">
     <span class="eyebrow reveal">Quer a versão completa?</span>
     <h2 class="reveal">Sites Premium — cada nicho com seu diferencial</h2>
-    <p class="reveal" style="color:var(--muted);max-width:60ch;margin:0 auto">O plano Premium (R$149/mês) entrega um site com mecânica única por nicho: cardápio imersivo, avatar do pet, orçamento ao vivo, agenda, tour virtual e muito mais. Veja um exemplo de cada:</p>
+    <p class="reveal" style="color:var(--muted);max-width:60ch;margin:0 auto">O plano Premium (R$149/mês) entrega um site com mecânica única por nicho: cardápio imersivo, avatar do pet, orçamento ao vivo, agenda, tour virtual e muito mais. Filtre por faixa de preço e veja o exemplo real de cada:</p>
+  </div>
+  <div class="price-filter reveal">
+    <button data-tier="all" class="active">Todos os planos</button>
+    <button data-tier="essencial">Essencial R$49</button>
+    <button data-tier="plus">Plus R$99</button>
+    <button data-tier="premium">Premium R$149</button>
   </div>
   <div class="premium-grid reveal">
-    <a class="pg" href="../site-dfy/pet/premium/index.html" target="_blank" rel="noopener">🐾 <b>Pet shop</b><span>Avatar + calculadora</span></a>
-    <a class="pg" href="../site-dfy/pizzaria/premium/index.html" target="_blank" rel="noopener">🍕 <b>Pizzaria</b><span>Cardápio imersivo</span></a>
-    <a class="pg" href="../site-dfy/padaria/premium/index.html" target="_blank" rel="noopener">🥖 <b>Padaria</b><span>Story + encomenda</span></a>
-    <a class="pg" href="../site-dfy/oficina/premium/index.html" target="_blank" rel="noopener">🔧 <b>Oficina</b><span>Orçamento ao vivo</span></a>
-    <a class="pg" href="../site-dfy/salão/premium/index.html" target="_blank" rel="noopener">💇 <b>Salão</b><span>Agenda + antes/depois</span></a>
-    <a class="pg" href="../site-dfy/clínica/premium/index.html" target="_blank" rel="noopener">🦷 <b>Clínica</b><span>Booking + tour</span></a>
-    <a class="pg" href="../site-dfy/lavanderia/premium/index.html" target="_blank" rel="noopener">🧺 <b>Lavanderia</b><span>Simulador + timeline</span></a>
-    <a class="pg" href="../site-dfy/imobiliária/premium/index.html" target="_blank" rel="noopener">🏠 <b>Imobiliária</b><span>Filtro + mini-mapa</span></a>
+    <!-- PET -->
+    <a class="pg" data-tier="essencial" href="../site-dfy/pet/index.html" target="_blank" rel="noopener">🐾 <b>Pet shop</b><span>Vitrine + contato</span></a>
+    <a class="pg" data-tier="plus" href="../site-dfy/pet/plus/index.html" target="_blank" rel="noopener">🐾 <b>Pet shop</b><span>Quiz de preço + WhatsApp</span></a>
+    <a class="pg" data-tier="premium" href="../site-dfy/pet/premium/index.html" target="_blank" rel="noopener">🐾 <b>Pet shop</b><span>Avatar + calculadora</span></a>
+    <!-- PIZZARIA -->
+    <a class="pg" data-tier="essencial" href="../site-dfy/pizzaria/index.html" target="_blank" rel="noopener">🍕 <b>Pizzaria</b><span>Cardápio + delivery</span></a>
+    <a class="pg" data-tier="plus" href="../site-dfy/pizzaria/plus/index.html" target="_blank" rel="noopener">🍕 <b>Pizzaria</b><span>Montar pizza clicável</span></a>
+    <a class="pg" data-tier="premium" href="../site-dfy/pizzaria/premium/index.html" target="_blank" rel="noopener">🍕 <b>Pizzaria</b><span>Cardápio imersivo</span></a>
+    <!-- PADARIA -->
+    <a class="pg" data-tier="essencial" href="../site-dfy/padaria/index.html" target="_blank" rel="noopener">🥖 <b>Padaria</b><span>Cardápio + encomenda</span></a>
+    <a class="pg" data-tier="plus" href="../site-dfy/padaria/plus/index.html" target="_blank" rel="noopener">🥖 <b>Padaria</b><span>Encomendar bolo</span></a>
+    <a class="pg" data-tier="premium" href="../site-dfy/padaria/premium/index.html" target="_blank" rel="noopener">🥖 <b>Padaria</b><span>Story + encomenda</span></a>
+    <!-- OFICINA -->
+    <a class="pg" data-tier="essencial" href="../site-dfy/oficina/index.html" target="_blank" rel="noopener">🔧 <b>Oficina</b><span>Serviços + contato</span></a>
+    <a class="pg" data-tier="plus" href="../site-dfy/oficina/plus/index.html" target="_blank" rel="noopener">🔧 <b>Oficina</b><span>Orçamento clicável</span></a>
+    <a class="pg" data-tier="premium" href="../site-dfy/oficina/premium/index.html" target="_blank" rel="noopener">🔧 <b>Oficina</b><span>Orçamento ao vivo</span></a>
+    <!-- SALÃO -->
+    <a class="pg" data-tier="essencial" href="../site-dfy/salão/index.html" target="_blank" rel="noopener">💇 <b>Salão</b><span>Serviços + agenda</span></a>
+    <a class="pg" data-tier="plus" href="../site-dfy/salão/plus/index.html" target="_blank" rel="noopener">💇 <b>Salão</b><span>Before/after slider</span></a>
+    <a class="pg" data-tier="premium" href="../site-dfy/salão/premium/index.html" target="_blank" rel="noopener">💇 <b>Salão</b><span>Agenda + antes/depois</span></a>
+    <!-- CLÍNICA -->
+    <a class="pg" data-tier="essencial" href="../site-dfy/clínica/index.html" target="_blank" rel="noopener">🦷 <b>Clínica</b><span>Especialidades + marcação</span></a>
+    <a class="pg" data-tier="plus" href="../site-dfy/clínica/plus/index.html" target="_blank" rel="noopener">🦷 <b>Clínica</b><span>Simulador de preço</span></a>
+    <a class="pg" data-tier="premium" href="../site-dfy/clínica/premium/index.html" target="_blank" rel="noopener">🦷 <b>Clínica</b><span>Booking + tour</span></a>
+    <!-- LAVANDERIA -->
+    <a class="pg" data-tier="essencial" href="../site-dfy/lavanderia/index.html" target="_blank" rel="noopener">🧺 <b>Lavanderia</b><span>Serviços + coleta</span></a>
+    <a class="pg" data-tier="plus" href="../site-dfy/lavanderia/plus/index.html" target="_blank" rel="noopener">🧺 <b>Lavanderia</b><span>Simulador de preço</span></a>
+    <!-- IMOBILIÁRIA -->
+    <a class="pg" data-tier="essencial" href="../site-dfy/imobiliária/index.html" target="_blank" rel="noopener">🏠 <b>Imobiliária</b><span>Imóveis + contato</span></a>
+    <a class="pg" data-tier="plus" href="../site-dfy/imobiliária/plus/index.html" target="_blank" rel="noopener">🏠 <b>Imobiliária</b><span>Filtro de imóveis</span></a>
+    <a class="pg" data-tier="premium" href="../site-dfy/imobiliária/premium/index.html" target="_blank" rel="noopener">🏠 <b>Imobiliária</b><span>Filtro + mini-mapa</span></a>
   </div>
 </div></section>
 
@@ -394,6 +431,18 @@ setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add
 // preview interativo
 const pv=document.getElementById('pv'),pvf=document.getElementById('pvf');
 if(pv)pv.addEventListener('change',()=>{pvf.src=pv.value;});
+// price filter: mostra/esconde cards de exemplo por faixa de preço
+document.querySelectorAll('.price-filter button').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    document.querySelector('.price-filter button.active').classList.remove('active');
+    btn.classList.add('active');
+    const tier=btn.getAttribute('data-tier');
+    document.querySelectorAll('.pg').forEach(card=>{
+      card.classList.remove('hide');
+      if(tier!=='all' && card.getAttribute('data-tier')!==tier){card.classList.add('hide');}
+    });
+  });
+});
 // scroll motion: parallax sutil no hero e aurora (mobile-safe, respeita reduced-motion)
 const heroFig=document.querySelector('.hero-fig');
 const aurora=document.body;
