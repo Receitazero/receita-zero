@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="light">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Forno & Lenha — galeria de pizzas artesanais</title>
-<meta name="description" content="Pizzaria premium em São Vicente: galeria de pizzas, monte a sua e peça no WhatsApp.">
+<title>Forno & Lenha — do forno ao seu cliente</title>
+<meta name="description" content="Pizzaria premium em São Vicente: massa de fermentação natural, forno a lenha e entrega quentinha. Siga a jornada da nossa pizza.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#3D2B1F;--bg2:#5D4B3A;--surface:#F5E9DA;--surface2:#E0D2C0;--line:#8A7A63;
+  --bg:#2A1A0F;--bg2:#3D2B1F;--surface:#F5E9DA;--surface2:#E0D2C0;--line:#8A7A63;
   --fg:#2A1F14;--muted:#6B5B4B;--faint:#9DA9A0;
   --a1:#A3D9A5;--a2:#D4A373;--a3:#8B5A2B;--off:#F5E9DA;
   --grad:linear-gradient(120deg,var(--a1),var(--a3));
@@ -20,7 +20,7 @@
   --radius:14px;
 }
 *{box-sizing:border-box;margin:0}
-body{background:var(--surface);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
 .wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
 section{padding-block:var(--s-3xl)}
 h1,h2,h3{font-family:var(--font-display);line-height:1.04;letter-spacing:-.02em;text-transform:uppercase;font-weight:normal}
@@ -32,252 +32,239 @@ h3{font-size:clamp(1.2rem,2.5vw,1.6rem)}
 .btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;text-decoration:none}
 .btn-solid{background:var(--grad);color:#2A1F14;box-shadow:0 16px 40px -14px color-mix(in srgb,var(--a1) 70%,transparent)}
 .btn-solid:hover{transform:translateY(-3px);box-shadow:0 22px 55px -12px color-mix(in srgb,var(--a3) 60%,transparent)}
-.btn-outline{background:transparent;border-color:var(--line);color:var(--fg);backdrop-filter:blur(6px)}
-.btn-ghost{background:transparent;border-color:transparent;color:var(--a3);padding:.4rem .8rem;font-size:.85rem}
+.btn-outline{background:transparent;border-color:var(--line);color:var(--off);backdrop-filter:blur(6px)}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
 .reveal.in{opacity:1;transform:none}
 /* NAV */
-.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--surface) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
 .nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.9rem}
 .brand{font-family:var(--font-display);font-weight:normal;font-size:1.4rem;color:var(--a3)}
-/* HERO — vídeo loop + grid thumbnails */
-.hero{position:relative;min-height:90vh;display:grid;place-items:center;text-align:center;overflow:hidden;background:linear-gradient(160deg,var(--bg) 0%,var(--bg2) 100%)}
-.hero video,.hero .hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35}
-.hero .hero-bg{background-size:cover;background-position:center}
-.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 40%,transparent),var(--bg))}
-.hero .wrap{position:relative;z-index:2}
-.hero .tag{display:inline-block;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;font-weight:700;color:var(--a1);border:1px solid var(--a1);border-radius:999px;padding:.3rem .9rem;margin-bottom:var(--s-md)}
-.hero h1{font-size:clamp(2.4rem,6vw,4.2rem);margin-bottom:var(--s-md);color:var(--off)}
-.hero h1 .grad{color:var(--a1)}
-.hero p.lede{color:var(--surface2);font-size:1.15rem;max-width:48ch;margin:0 auto var(--s-xl);font-weight:400}
-.hero .cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
-.hero .thumbs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-sm);margin-top:var(--s-2xl);max-width:720px;margin-inline:auto}
-.hero .thumb{aspect-ratio:1/1;border-radius:var(--radius);overflow:hidden;border:2px solid transparent;transition:all .3s;cursor:pointer}
-.hero .thumb:hover{transform:scale(1.08);border-color:var(--a1);box-shadow:0 12px 30px -10px color-mix(in srgb,var(--a3) 50%,transparent)}
-.hero .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-/* CARDÁPIO — accordion vertical */
-.menu{max-width:760px;margin-inline:auto}
-.flavor{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);margin-bottom:var(--s-sm);overflow:hidden;box-shadow:0 4px 20px -5px color-mix(in srgb,var(--bg) 8%,transparent)}
-.flavor[open]{border-color:var(--a1);box-shadow:0 8px 30px -5px color-mix(in srgb,var(--a3) 15%,transparent)}
-.flavor summary{cursor:pointer;padding:var(--s-lg);display:flex;align-items:center;gap:var(--s-md)};
-.flavor summary img{width:70px;height:70px;border-radius:8px;object-fit:cover;flex-shrink:0}
-.flavor summary .info{flex:1;text-align:left}
-.flavor summary .info h3{font-size:1.3rem;color:var(--a3);margin-bottom:.2rem}
-.flavor summary .info .price{font-family:var(--font-display);font-size:1.4rem;color:var(--a1)}
-.flavor summary .tag{font-size:.68rem;background:var(--a3);color:var(--off);padding:.15rem .6rem;border-radius:999px}
-.flavor summary .arrow{transition:transform .3s;margin-left:auto}
-.flavor[open] summary .arrow{transform:rotate(180deg)}
-.flavor .content{padding:0 var(--s-lg);max-height:0;overflow:hidden;transition:max-height .5s ease}
-.flavor[open] .content{max-height:600px;padding-top:0}
-.flavor .content .ingredients{list-style:none;padding:var(--s-md) 0;border-top:1px solid var(--line)}
-.flavor .ingredients li{padding:.4rem 0;color:var(--muted);font-size:.9rem;display:flex;gap:.5rem}
-.flavor .ingredients li::before{content:'•';color:var(--a1)}
-.flavor .content .actions{padding:var(--s-md) 0;border-top:1px solid var(--line);display:flex;gap:.6rem}
-/* BUILDER — radial menu */
-.builder{background:var(--bg);border-radius:var(--radius);padding:var(--s-2xl);text-align:center}
-.builder h2{color:var(--off);margin-bottom:var(--s-lg)}
-.radial{position:relative;width:280px;height:280px;margin:0 auto}
-.radial .center{width:80px;height:80px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1.1rem;color:#2A1F14;cursor:pointer;z-index:10;position:relative;margin:auto;top:50%;transform:translateY(-50%)}
-.radial .item{position:absolute;width:60px;height:60px;border-radius:50%;background:var(--surface);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.6rem;text-align:center;cursor:pointer;transition:all .4s;opacity:0;transform:scale(0);pointer-events:none}
-.radial .item.show{opacity:1;transform:scale(1);pointer-events:auto}
-.radial .item[data-pos="top-left"]{top:20px;left:50%;transform:translateX(-50%)}
-.radial .item[data-pos="top-right"]{top:20px;right:20px}
-.radial .item[data-pos="bottom-left"]{bottom:20px;left:50%;transform:translateX(-50%)}
-.radial .item[data-pos="bottom-right"]{bottom:20px;right:20px}
-.builder .total{font-family:var(--font-display);font-size:2.8rem;color:var(--a1);margin:var(--s-xl) 0}
-.builder .extras{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin:var(--s-md) 0}
-.builder .extra{background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.85rem;cursor:pointer;transition:all .2s}
-.builder .extra:hover{background:var(--a1);color:#2A1F14}
-.builder .extra.active{background:var(--a1);color:#2A1F14}
-/* TIMELINE footer */
-.timeline{position:relative;padding:var(--s-xl) 0}
-.timeline::before{content:'';position:absolute;top:50%;left:0;right:0;height:4px;background:var(--line);transform:translateY(-50%)}
-.timeline .step{position:relative;z-index:2;width:25%;float:left;text-align:center}
-.timeline .dot{width:36px;height:36px;border-radius:50%;background:var(--surface);border:3px solid var(--line);margin:0 auto;transition:all .5s}
-.timeline .step.active .dot{border-color:var(--a1);background:var(--a1);box-shadow:0 0 16px var(--a1)}
-.timeline .step .label{font-size:.75rem;color:var(--muted);margin-top:.4rem;transition:color .3s}
-.timeline .step.active .label{color:var(--a3);font-weight:700}
-/* FAQ */
-.faq details{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:var(--s-md) var(--s-lg);margin-bottom:var(--s-sm)}
-.faq summary{font-weight:700;cursor:pointer;font-family:var(--font-display);color:var(--a3)}
-.faq p{color:var(--muted);margin-top:.6rem;font-size:.94rem}
+/* ACT 1 — FORNO */
+.act1{position:relative;min-height:90vh;display:grid;place-items:center;text-align:center;background:linear-gradient(160deg,var(--bg) 0%,var(--bg2) 100%)}
+.act1 .oven{width:120px;height:120px;border:4px solid var(--a3);border-radius:50%;margin:0 auto var(--s-lg);position:relative}
+.act1 .oven::before{content:'';position:absolute;inset:8px;border:2px solid var(--a3);border-radius:50%;opacity:.3}
+.act1 .oven::after{content:'🔥';position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:2rem}
+.act1 h1{color:var(--off);margin-bottom:var(--s-md)}
+.act1 h1 .grad{color:var(--a1)}
+.act1 p.lede{color:var(--surface2);font-size:1.15rem;max-width:48ch;margin:0 auto var(--s-xl);font-weight:400}
+/* ACT 2 — MASSA (scroll horizontal) */
+.act2 .story{width:100%;overflow-x:auto;padding:var(--s-xl) 0}
+.act2 .story-inner{display:flex;gap:var(--s-2xl);width:max-content;padding-bottom:var(--s-md)}
+.act2 .step{width:280px;flex-shrink:0;text-align:center}
+.act2 .step .num{font-family:var(--font-display);font-size:2.5rem;color:var(--a3);margin-bottom:.5rem}
+.act2 .step .label{font-weight:700;margin-bottom:.3rem}
+.act2 .step .desc{color:var(--muted);font-size:.9rem}
+.act2 .step .img{width:100%;height:200px;border-radius:var(--radius);overflow:hidden;border:1px solid var(--line)}
+.act2 .step .img img{width:100%;height:100%;object-fit:cover}
+/* ACT 3 — SABORES (grid de arte) */
+.act3 .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
+.act3 .pizza{position:relative;border-radius:var(--radius);overflow:hidden;cursor:pointer;group}
+.act3 .pizza img{width:100%;height:240px;object-fit:cover;transition:transform .6s;display:block}
+.act3 .pizza:hover img{transform:scale(1.08)}
+.act3 .pizza .info{position:absolute;inset:0;background:linear-gradient(transparent,rgba(0,0,0,.8));color:var(--off);padding:var(--s-lg);display:flex;flex-direction:column;justify-end;opacity:0;transition:opacity .3s}
+.act3 .pizza:hover .info{opacity:1}
+.act3 .pizza .info h3{color:var(--off)}
+.act3 .pizza .info .price{color:var(--a1);font-family:var(--font-display);font-size:1.4rem}
+/* ACT 4 — MONTAR */
+.act4{background:var(--bg2);text-align:center}
+.act4 .radial{position:relative;width:260px;height:260px;margin:0 auto}
+.act4 .center{width:70px;height:70px;border-radius:50%;background:var(--grad);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:1rem;color:#2A1F14;cursor:pointer;z-index:10;position:relative;margin:auto;top:50%;transform:translateY(-50%)}
+.act4 .item{position:absolute;width:55px;height:55px;border-radius:50%;background:var(--surface);border:2px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:.6rem;text-align:center;cursor:pointer;transition:all .4s;opacity:0;transform:scale(0);pointer-events:none}
+.act4 .item.show{opacity:1;transform:scale(1);pointer-events:auto}
+.act4 .item[data-pos="tl"]{top:10px;left:50%;transform:translateX(-50%)}
+.act4 .item[data-pos="tr"]{top:10px;right:10px}
+.act4 .item[data-pos="bl"]{bottom:10px;left:50%;transform:translateX(-50%)}
+.act4 .item[data-pos="br"]{bottom:10px;right:10px}
+.act4 .total{font-family:var(--font-display);font-size:2.5rem;color:var(--a1);margin:var(--s-xl) 0}
+.act4 .extras{display:flex;gap:.5rem;justify-content:center;flex-wrap:wrap;margin:var(--s-md) 0}
+.act4 .extra{background:var(--surface2);border:1px solid var(--line);border-radius:999px;padding:.4rem .9rem;font-size:.85rem;cursor:pointer;transition:all .2s}
+.act4 .extra:hover{background:var(--a1);color:#2A1F14}
+.act4 .extra.active{background:var(--a1);color:#2A1F14}
+/* ACT 5 — ENTREGA */
+.act5 .tracker{position:relative;padding:var(--s-xl) 0}
+.act5 .tracker::before{content:'';position:absolute;top:50%;left:0;right:0;height:4px;background:var(--line);transform:translateY(-50%)}
+.act5 .step{position:relative;z-index:2;width:20%;float:left;text-align:center}
+.act5 .dot{width:32px;height:32px;border-radius:50%;background:var(--surface);border:3px solid var(--line);margin:0 auto;transition:all .5s}
+.act5 .step.active .dot{border-color:var(--a1);background:var(--a1);box-shadow:0 0 12px var(--a1)}
+.act5 .step .label{font-size:.75rem;color:var(--muted);margin-top:.3rem;transition:color .3s}
+.act5 .step.active .label{color:var(--a3);font-weight:700}
+/* depoimentos */
+.act5 .testimonials{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-lg);margin-top:var(--s-2xl)}
+.act5 .testimonial{background:var(--bg2);border-radius:var(--radius);padding:var(--s-lg);border:1px solid var(--line)}
+.act5 .testimonial .stars{color:var(--a3);margin-bottom:.3rem}
+.act5 .testimonial p{color:var(--surface2);font-size:.9rem;font-style:italic;margin-bottom:.5rem}
+.act5 .testimonial .author{font-weight:700;color:var(--off);font-size:.85rem}
 /* CTA final */
-.cta-final{text-align:center;background:var(--bg);padding:var(--s-3xl);border-radius:var(--radius)}
-.cta-final h2{color:var(--off);margin-bottom:var(--s-lg)}
+.cta-final{text-align:center;background:var(--a3);padding:var(--s-3xl);border-radius:var(--radius)}
+.cta-final h2{color:var(--bg);margin-bottom:var(--s-lg)}
 /* footer */
 footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--muted);font-size:.85rem}
 /* responsive */
 @media(max-width:820px){
-  .hero .thumbs{grid-template-columns:repeat(2,1fr)}
-  .radial{width:220px;height:220px}
-  .timeline::before{top:30px}
-  .timeline .step{width:50%;float:left;margin-top:40px}
-  .timeline .step .dot{position:relative;top:-50px}
+  .act3 .gallery{grid-template-columns:1fr}
+  .act5 .testimonials{grid-template-columns:1fr}
+  .act5 .tracker::before{top:30px}
+  .act5 .step{width:50%;float:left;margin-top:40px}
+  .act5 .step .dot{position:relative;top:-50px}
+  .act2 .story-inner{scroll-snap-type:x mandatory}
+  .act2 .step{scroll-snap-align:start}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="wrap"><div class="brand">Forno &amp; Lenha</div><a class="btn btn-solid" href="#cardapio" style="padding:.6rem 1.2rem;font-size:.9rem">Cardápio</a></div></nav>
+<nav class="nav"><div class="wrap"><div class="brand">Forno &amp; Lenha</div><a class="btn btn-solid" href="#sabores" style="padding:.6rem 1.2rem;font-size:.9rem">Cardápio</a></div></nav>
 
-<header class="hero">
-  <div class="hero-bg" style="background-image:url(assets/banner.jpg)"></div>
+<!-- ACT 1: O FORNO -->
+<section class="act1 reveal">
   <div class="wrap">
-    <span class="tag reveal">★ pizzaria premium · São Vicente</span>
-    <h1 class="reveal d1">Cada pizza é uma <span class="grad">obra de arte</span></h1>
-    <p class="lede reveal d2">Massa de fermentação natural, forno a lenha e ingredientes que contam história. Navegue pela galeria e escolha a sua.</p>
-    <div class="cta reveal d3"><a class="btn btn-solid" href="#cardapio">Ver galeria</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">Pedir no WhatsApp</a></div>
-    <div class="thumbs reveal d4">
-      <div class="thumb" onclick="scrollToFlavor('trad')"><img src="assets/p1.jpg" alt="Margherita"></div>
-      <div class="thumb" onclick="scrollToFlavor('esp')"><img src="assets/p2.jpg" alt="Pepperoni"></div>
-      <div class="thumb" onclick="scrollToFlavor('esp')"><img src="assets/p3.jpg" alt="Quatro Queijos"></div>
-      <div class="thumb" onclick="scrollToFlavor('doc')"><img src="assets/p1.jpg" alt="Brigadeiro"></div>
-    </div>
+    <div class="oven"></div>
+    <h1 class="d1">Do <span class="grad">forno ao seu cliente</span></h1>
+    <p class="lede d2">Massa de fermentação natural, forno a lenha e ingredientes que contam história. Siga a jornada da nossa pizza.</p>
+    <div class="cta d3"><a class="btn btn-solid" href="#massa">Ver o processo</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">Pedir no WhatsApp</a></div>
   </div>
-</header>
+</section>
 
-<section id="cardapio">
+<!-- ACT 2: A MASSA -->
+<section id="massa" class="act2">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:var(--s-2xl)">
-      <span class="eyebrow reveal">Galeria de sabores</span>
-      <h2 class="reveal">O cardápio como você nunca viu</h2>
+      <span class="eyebrow reveal">O processo</span>
+      <h2 class="reveal">Cada etapa, uma história</h2>
     </div>
-    <div class="menu">
-      <details class="flavor reveal" data-g="trad" id="f-trad">
-        <summary>
-          <img src="assets/p1.jpg" alt="Margherita">
-          <div class="info"><span class="tag">TRADICIONAL</span><h3>Margherita</h3><div class="price">R$ 49</div></div>
-          <span class="arrow">▼</span>
-        </summary>
-        <div class="content">
-          <ul class="ingredients">
-            <li>Tomate San Marzano importado</li>
-            <li>Mussarela de búfala artesanal</li>
-            <li>Manjericão fresco da horta</li>
-            <li>Azeite de oliva extra virgem</li>
-          </ul>
-          <div class="actions">
-            <button class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" onclick="pickFlavor('Margherita',49)">Adicionar</button>
-            <a class="btn btn-ghost" href="https://wa.me/5511970776856?text=Quero%20uma%20Margherita" target="_blank" rel="noopener">Pedir só essa</a>
-          </div>
+    <div class="story reveal">
+      <div class="story-inner">
+        <div class="step">
+          <div class="num">1</div>
+          <div class="img"><img src="assets/p1.jpg" alt="Farinha"></div>
+          <div class="label">Farinha de grão</div>
+          <div class="desc">Selecionamos farinha de trigo de grão inteiro, moinho local.</div>
         </div>
-      </details>
-      <details class="flavor reveal" data-g="trad">
-        <summary>
-          <img src="assets/p2.jpg" alt="Pepperoni">
-          <div class="info"><span class="tag">TRADICIONAL</span><h3>Pepperoni</h3><div class="price">R$ 55</div></div>
-          <span class="arrow">▼</span>
-        </summary>
-        <div class="content">
-          <ul class="ingredients">
-            <li>Linguiça pepperoni artesanal curada</li>
-            <li>Mussarela especial</li>
-            <li>Orégano fresco</li>
-          </ul>
-          <div class="actions">
-            <button class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" onclick="pickFlavor('Pepperoni',55)">Adicionar</button>
-            <a class="btn btn-ghost" href="https://wa.me/5511970776856?text=Quero%20uma%20Pepperoni" target="_blank" rel="noopener">Pedir só essa</a>
-          </div>
+        <div class="step">
+          <div class="num">2</div>
+          <div class="img"><img src="assets/p2.jpg" alt="Massa"></div>
+          <div class="label">Fermentação</div>
+          <div class="desc">24h de fermentação natural para uma massa leve e digestiva.</div>
         </div>
-      </details>
-      <details class="flavor reveal" data-g="esp">
-        <summary>
-          <img src="assets/p3.jpg" alt="Quatro Queijos">
-          <div class="info"><span class="tag">ESPECIAL</span><h3>Quatro Queijos</h3><div class="price">R$ 62</div></div>
-          <span class="arrow">▼</span>
-        </summary>
-        <div class="content">
-          <ul class="ingredients">
-            <li>Brie de vaca criada em pasto</li>
-            <li>Gorgonzola DOP</li>
-            <li>Parmesão envelhecido 24 meses</li>
-            <li>Catupiry artesanal</li>
-          </ul>
-          <div class="actions">
-            <button class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" onclick="pickFlavor('Quatro Queijos',62)">Adicionar</button>
-            <a class="btn btn-ghost" href="https://wa.me/5511970776856?text=Quero%20uma%20Quatro%20Queijos" target="_blank" rel="noopener">Pedir só essa</a>
-          </div>
+        <div class="step">
+          <div class="num">3</div>
+          <div class="img"><img src="assets/p3.jpg" alt="Forno"></div>
+          <div class="label">Forno a lenha</div>
+          <div class="desc">Assamos em forno a lenha a 480°C por 90 segundos.</div>
         </div>
-      </details>
-      <details class="flavor reveal" data-g="esp">
-        <summary>
-          <img src="assets/banner.jpg" alt="Calabresa">
-          <div class="info"><span class="tag">ESPECIAL</span><h3>Calabresa</h3><div class="price">R$ 58</div></div>
-          <span class="arrow">▼</span>
-        </summary>
-        <div class="content">
-          <ul class="ingredients">
-            <li>Calabresa defumada em carvalho</li>
-            <li>Cebola roxa caramelizada</li>
-            <li>Azeitonas negras importadas</li>
-          </ul>
-          <div class="actions">
-            <button class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" onclick="pickFlavor('Calabresa',58)">Adicionar</button>
-            <a class="btn btn-ghost" href="https://wa.me/5511970776856?text=Quero%20uma%20Calabresa" target="_blank" rel="noopener">Pedir só essa</a>
-          </div>
+        <div class="step">
+          <div class="num">4</div>
+          <div class="img"><img src="assets/banner.jpg" alt="Prateleira"></div>
+          <div class="label">Prateleira</div>
+          <div class="desc">Saída quentinha, embalada para preservar o sabor.</div>
         </div>
-      </details>
-      <details class="flavor reveal" data-g="doc">
-        <summary>
-          <img src="assets/p1.jpg" alt="Brigadeiro">
-          <div class="info"><span class="tag">DOCE</span><h3>Brigadeiro</h3><div class="price">R$ 45</div></div>
-          <span class="arrow">▼</span>
-        </summary>
-        <div class="content">
-          <ul class="ingredients">
-            <li>Chocolate meio amargo 70%</li>
-            <li>Granulado crocante</li>
-            <li>Doce de leite artesanal</li>
-          </ul>
-          <div class="actions">
-            <button class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" onclick="pickFlavor('Brigadeiro',45)">Adicionar</button>
-            <a class="btn btn-ghost" href="https://wa.me/5511970776856?text=Quero%20uma%20Brigadeiro" target="_blank" rel="noopener">Pedir só essa</a>
-          </div>
-        </div>
-      </details>
-      <details class="flavor reveal" data-g="doc">
-        <summary>
-          <img src="assets/p2.jpg" alt="Romeu e Julieta">
-          <div class="info"><span class="tag">DOCE</span><h3>Romeu e Julieta</h3><div class="price">R$ 47</div></div>
-          <span class="arrow">▼</span>
-        </summary>
-        <div class="content">
-          <ul class="ingredients">
-            <li>Goiabada artesanal caseira</li>
-            <li>Mussarela de búfala</li>
-            <li>Canela em pó</li>
-          </ul>
-          <div class="actions">
-            <button class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" onclick="pickFlavor('Romeu e Julieta',47)">Adicionar</button>
-            <a class="btn btn-ghost" href="https://wa.me/5511970776856?text=Quero%20uma%20Romeu%20e%20Julieta" target="_blank" rel="noopener">Pedir só essa</a>
-          </div>
-        </div>
-      </details>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="monte">
+<!-- ACT 3: OS SABORES -->
+<section id="sabores" class="act3">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:var(--s-2xl)">
+      <span class="eyebrow reveal">Galeria de sabores</span>
+      <h2 class="reveal">Cada pizza é uma obra de arte</h2>
+    </div>
+    <div class="gallery">
+      <div class="pizza reveal" data-flavor="Margherita" data-price="49">
+        <img src="assets/p1.jpg" alt="Margherita">
+        <div class="info">
+          <h3>Margherita</h3>
+          <div class="price">R$ 49</div>
+        </div>
+      </div>
+      <div class="pizza reveal" data-flavor="Pepperoni" data-price="55">
+        <img src="assets/p2.jpg" alt="Pepperoni">
+        <div class="info">
+          <h3>Pepperoni</h3>
+          <div class="price">R$ 55</div>
+        </div>
+      </div>
+      <div class="pizza reveal" data-flavor="Quatro Queijos" data-price="62">
+        <img src="assets/p3.jpg" alt="Quatro Queijos">
+        <div class="info">
+          <h3>4 Queijos</h3>
+          <div class="price">R$ 62</div>
+        </div>
+      </div>
+      <div class="pizza reveal" data-flavor="Calabresa" data-price="58">
+        <img src="assets/banner.jpg" alt="Calabresa">
+        <div class="info">
+          <h3>Calabresa</h3>
+          <div class="price">R$ 58</div>
+        </div>
+      </div>
+      <div class="pizza reveal" data-flavor="Brigadeiro" data-price="45">
+        <img src="assets/p1.jpg" alt="Brigadeiro">
+        <div class="info">
+          <h3>Brigadeiro</h3>
+          <div class="price">R$ 45</div>
+        </div>
+      </div>
+      <div class="pizza reveal" data-flavor="Romeu e Julieta" data-price="47">
+        <img src="assets/p2.jpg" alt="Romeu e Julieta">
+        <div class="info">
+          <h3>Romeu e Julieta</h3>
+          <div class="price">R$ 47</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ACT 4: MONTAR -->
+<section id="montar" class="act4">
   <div class="wrap">
     <div style="text-align:center;margin-bottom:var(--s-2xl)">
       <span class="eyebrow reveal">Monte a sua</span>
       <h2 class="reveal">Clique no centro e escolha</h2>
     </div>
-    <div class="builder reveal">
-      <div class="radial">
-        <div class="center" id="radial-center">Escolher</div>
-        <div class="item" data-pos="top-left" data-flavor="Margherita" data-price="49">Margherita<br><b>R$49</b></div>
-        <div class="item" data-pos="top-right" data-flavor="Pepperoni" data-price="55">Pepperoni<br><b>R$55</b></div>
-        <div class="item" data-pos="bottom-left" data-flavor="Quatro Queijos" data-price="62">4 Queijos<br><b>R$62</b></div>
-        <div class="item" data-pos="bottom-right" data-flavor="Calabresa" data-price="58">Calabresa<br><b>R$58</b></div>
+    <div class="radial reveal">
+      <div class="center" id="radial-center">Escolher</div>
+      <div class="item" data-pos="tl" data-flavor="Margherita" data-price="49">Margherita<br><b>R$49</b></div>
+      <div class="item" data-pos="tr" data-flavor="Pepperoni" data-price="55">Pepperoni<br><b>R$55</b></div>
+      <div class="item" data-pos="bl" data-flavor="Quatro Queijos" data-price="62">4 Queijos<br><b>R$62</b></div>
+      <div class="item" data-pos="br" data-flavor="Calabresa" data-price="58">Calabresa<br><b>R$58</b></div>
+    </div>
+    <div class="total" id="builder-total">R$ 49</div>
+    <div class="extras">
+      <span class="extra" data-add="5">Borda recheada (+R$5)</span>
+      <span class="extra" data-add="3">Extra mussarela (+R$3)</span>
+      <span class="extra" data-add="4">Azeitonas (+R$4)</span>
+    </div>
+    <a class="btn btn-solid" id="builder-wa" href="https://wa.me/5511970776856" target="_blank" rel="noopener" style="margin-top:1rem">Pedir essa pizza →</a>
+  </div>
+</section>
+
+<!-- ACT 5: ENTREGA -->
+<section class="act5">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:var(--s-2xl)">
+      <span class="eyebrow reveal">Sua entrega</span>
+      <h2 class="reveal">Acompanhe em tempo real</h2>
+    </div>
+    <div class="tracker reveal">
+      <div class="step reveal" data-step="1"><div class="dot"></div><div class="label">Pedido</div></div>
+      <div class="step reveal" data-step="2"><div class="dot"></div><div class="label">Forno</div></div>
+      <div class="step reveal" data-step="3"><div class="dot"></div><div class="label">Em trânsito</div></div>
+      <div class="step reveal" data-step="4"><div class="dot"></div><div class="label">Entregue</div></div>
+    </div>
+    <div class="testimonials">
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p>"A massa é perfeita, borda crocante e o coração derretido. Já é minha terceira pizza!"</p>
+        <div class="author">— Maria S., São Vicente</div>
       </div>
-      <div class="total" id="builder-total">R$ 49</div>
-      <div class="extras">
-        <span class="extra" data-add="5">Borda recheada (+R$5)</span>
-        <span class="extra" data-add="3">Extra mussarela (+R$3)</span>
-        <span class="extra" data-add="4">Azeitonas (+R$4)</span>
+      <div class="testimonial reveal">
+        <div class="stars">★★★★★</div>
+        <p>"Pedir pelo WhatsApp foi super prático. Chegou quentinha em 35 min."</p>
+        <div class="author">— João P., São Vicente</div>
       </div>
-      <a class="btn btn-solid" id="builder-wa" href="https://wa.me/5511970776856" target="_blank" rel="noopener" style="margin-top:1rem">Pedir essa pizza →</a>
     </div>
   </div>
 </section>
@@ -287,17 +274,10 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(
     <h2 class="reveal">Quer a sua agora?</h2>
     <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
       <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20minha%20pizza%20Forno%20e%20Lenha" target="_blank" rel="noopener">Pedir no WhatsApp</a>
-      <a class="btn btn-outline" href="#cardapio">Ver cardápio</a>
+      <a class="btn btn-outline" href="#sabores">Ver sabores</a>
     </div>
   </div>
 </section>
-
-<div class="timeline">
-  <div class="step reveal" data-step="1"><div class="dot"></div><div class="label">Massa</div></div>
-  <div class="step reveal" data-step="2"><div class="dot"></div><div class="label">Forno a lenha</div></div>
-  <div class="step reveal" data-step="3"><div class="dot"></div><div class="label">Embalagem</div></div>
-  <div class="step reveal" data-step="4"><div class="dot"></div><div class="label">Entrega</div></div>
-</div>
 
 <footer><div class="wrap">Forno &amp; Lenha · pizzaria premium em São Vicente · © 2026 · braço independente</div></footer>
 
@@ -306,15 +286,9 @@ const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.t
 document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
 setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
 
-// accordion: abrir primeiro por padrão
-document.getElementById('f-trad').setAttribute('open','');
-
-// scroll suave pra thumbnails
-function scrollToFlavor(g){const f=document.querySelector('.flavor[data-g="'+g+'"]');if(f){f.scrollIntoView({behavior:'smooth'});f.setAttribute('open','');}}
-
-// builder radial menu
+// radial menu
 const center=document.getElementById('radial-center');
-const items=document.querySelectorAll('.radial .item');
+const items=document.querySelectorAll('.act4 .item');
 const totalEl=document.getElementById('builder-total');
 const waEl=document.getElementById('builder-wa');
 let currentFlavor='Margherita',currentPrice=49,extras=0;
@@ -326,18 +300,16 @@ items.forEach(it=>{it.addEventListener('click',()=>{currentFlavor=it.dataset.fla
 document.querySelectorAll('.extra').forEach(ex=>{ex.addEventListener('click',()=>{ex.classList.toggle('active');const add=+ex.dataset.add;if(ex.classList.contains('active')){extras+=add}else{extras-=add}updateTotal();});});
 updateTotal();
 
-// timeline ao rolar
-const steps=document.querySelectorAll('.timeline .step');
-const timelineEl=document.querySelector('.timeline');
-const timelineObserver=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');}});},{threshold:0.1,rootMargin:'0px 0px -50px 0px'});
-steps.forEach(s=>timelineObserver.observe(s));
-// fallback: ativa via scroll
-function checkTimeline(){if(timelineEl){const r=timelineEl.getBoundingClientRect();if(r.top<window.innerHeight*0.8){steps.forEach(s=>s.classList.add('active'));}}}
-window.addEventListener('scroll',checkTimeline,{passive:true});
-checkTimeline();
+// pizza click -> sincroniza com builder
+document.querySelectorAll('.pizza').forEach(p=>{p.addEventListener('click',()=>{const f=p.dataset.flavor;const pr=+p.dataset.price;currentFlavor=f;currentPrice=pr;center.textContent=f;updateTotal();document.getElementById('montar').scrollIntoView({behavior:'smooth'});});});
 
-// pickFlavor do cardapio -> sincroniza com builder
-function pickFlavor(flavor,price){currentFlavor=flavor;currentPrice=price;center.textContent=flavor;updateTotal();const builder=document.getElementById('monte');builder.scrollIntoView({behavior:'smooth'});}
+// tracker timeline
+const steps=document.querySelectorAll('.act5 .step');
+const trackerObserver=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('active');}});},{threshold:0.3,rootMargin:'0px 0px -50px 0px'});
+steps.forEach(s=>trackerObserver.observe(s));
+function checkTracker(){const t=document.querySelector('.act5 .tracker');if(t){const r=t.getBoundingClientRect();if(r.top<window.innerHeight*0.8){steps.forEach(s=>s.classList.add('active'));}}}
+window.addEventListener('scroll',checkTracker,{passive:true});
+checkTracker();
 </script>
 </body>
 </html>
