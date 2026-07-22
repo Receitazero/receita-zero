@@ -35,12 +35,15 @@ inglesa, fundo de fibra de carbono.
 
 ## Tokens — código de status (a única cor da página)
 
-| Token | Hex | Significado | Sobre `--concreto` |
+Contraste aferido em pixel **sobre `--giz` (`#F5F4F1`)**, que é a superfície mais clara da
+página — é onde a ficha e o laudo vivem. Aferir sobre `--concreto` mentia por ~1 ponto.
+
+| Token | Hex | Significado | Sobre `--giz` |
 |---|---|---|---|
-| `--aguardando` | `#B06E05` | aguardando sua aprovação | 4,6:1 ✔ |
-| `--exec` | `#2A6288` | em execução / em teste | 5,9:1 ✔ |
-| `--pronto` | `#256B44` | pronto para retirada | 5,7:1 ✔ |
-| `--urgente` | `#A3372A` | achado urgente no laudo | 6,4:1 ✔ |
+| `--aguardando` | `#8F5A05` | aguardando sua aprovação | 5,26:1 ✔ |
+| `--exec` | `#2A6288` | em execução / em teste | 5,96:1 ✔ |
+| `--pronto` | `#256B44` | pronto para retirada | 5,85:1 ✔ |
+| `--urgente` | `#A3372A` | achado urgente no laudo | 6,09:1 ✔ |
 
 Teto: cor de status ≤ 6% da tela. Se passar disso virou dashboard.
 

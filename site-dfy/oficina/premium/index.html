@@ -20,7 +20,9 @@
   --concreto:#E9E7E2; --concreto2:#DCD9D2; --risco:#C9C6BF;
   --grafite:#191C21;  --fumo:#5E646E;      --giz:#F5F4F1;
   /* código de status — a ÚNICA cor da página */
-  --aguardando:#B06E05; --exec:#2A6288; --pronto:#256B44; --urgente:#A3372A;
+  /* #B06E05 dava 4,6:1 sobre --concreto mas só 3,76:1 sobre --giz, que é a
+     superfície da ficha e do laudo. Aferido em pixel: escurecido até passar lá. */
+  --aguardando:#8F5A05; --exec:#2A6288; --pronto:#256B44; --urgente:#A3372A;
   --wa:#25D366;
   --sans:'Archivo',system-ui,sans-serif;
   --mono:'IBM Plex Mono',ui-monospace,monospace;
@@ -131,6 +133,9 @@ button,input{font:inherit;color:inherit}
   font-size:clamp(1.5rem,3.2vw,2.3rem);letter-spacing:-.03em;line-height:1}
 .numeros span{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
   text-transform:uppercase;color:var(--fumo)}
+/* "qua 17:00" não é número puro: no tamanho dos outros dois ele quebra em duas
+   linhas e desalinha a régua da linha. Um degrau abaixo e sem quebra. */
+#f-previsao{font-size:clamp(1.15rem,2.3vw,1.65rem);white-space:nowrap}
 
 /* trilho de estágios */
 .trilho{padding:var(--s6) var(--s5) var(--s5)}
@@ -160,7 +165,9 @@ button,input{font:inherit;color:inherit}
 .linha-ficha dd{font-weight:500}
 .acao{padding:var(--s5);border-block-start:1px solid var(--risco);
   display:flex;gap:var(--s4);align-items:center;flex-wrap:wrap}
-.acao p{font-family:var(--mono);font-size:.82rem;color:var(--fumo);max-inline-size:40ch}
+/* frase = alguém falando com o cliente → grotesk. Mono aqui era enfeite "tech",
+   exatamente o que a regra semântica do DESIGN.md proíbe. */
+.acao p{font-size:.95rem;line-height:1.5;color:var(--fumo);max-inline-size:44ch}
 .wa-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--wa);color:#0B1F13;
   font-weight:600;font-size:.9rem;padding:.7rem 1.15rem;border-radius:999px;
   text-decoration:none;transition:transform .18s var(--ease)}
@@ -172,8 +179,102 @@ button,input{font:inherit;color:inherit}
 .ficha.impressa .monta{clip-path:inset(0 0 0 0);opacity:1;
   transition:clip-path .42s var(--ease),opacity .42s var(--ease)}
 
-.wip{border-block-start:1px solid var(--risco);padding-block:var(--s7);
-  font-family:var(--mono);font-size:.82rem;color:var(--fumo)}
+/* ── seções ────────────────────────────────────────────────────── */
+.sec{border-block-start:1px solid var(--risco);padding-block:var(--s7)}
+.sec-cab{display:flex;justify-content:space-between;align-items:baseline;
+  gap:var(--s5);flex-wrap:wrap;margin-block-end:var(--s6)}
+.sec h2{font-size:clamp(1.6rem,3.4vw,2.4rem);font-stretch:112%;line-height:1;
+  text-transform:uppercase;letter-spacing:-.02em}
+.sec-cab p{font-family:var(--mono);font-size:.76rem;letter-spacing:.08em;color:var(--fumo)}
+
+/* ── LAUDO: cada achado é uma linha com decisão ─────────────────── */
+.laudo{border:1px solid var(--risco);background:var(--giz)}
+.item{display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;
+  gap:var(--s4);align-items:center;padding:var(--s4) var(--s5);
+  border-block-start:1px solid var(--risco)}
+.item:first-child{border-block-start:0}
+.item input{appearance:none;inline-size:20px;block-size:20px;flex:none;cursor:pointer;
+  border:1px solid var(--grafite);background:var(--giz);display:grid;place-content:center}
+.item input:checked{background:var(--grafite)}
+.item input:checked::after{content:"";inline-size:9px;block-size:5px;
+  border-inline-start:2px solid var(--giz);border-block-end:2px solid var(--giz);
+  transform:rotate(-45deg) translate(1px,-1px)}
+.item input:focus-visible{outline:2px solid var(--exec);outline-offset:2px}
+.item b{display:block;font-weight:600}
+.item small{color:var(--fumo);font-size:.85rem;line-height:1.45}
+.tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+  border:1px solid currentColor;padding:.2rem .5rem;white-space:nowrap}
+.preco{font-family:var(--mono);font-size:1rem;text-align:end;min-inline-size:7ch}
+.item[data-ok="1"]{color:var(--fumo)}
+.item[data-ok="1"] b{font-weight:500}
+.vazio{inline-size:20px}   /* o "ok" não tem o que aprovar: mantém a coluna */
+
+/* a barra de decisão gruda no rodapé DA SEÇÃO, não flutua na página inteira */
+.decisao{position:sticky;bottom:0;display:flex;align-items:center;gap:var(--s4);
+  flex-wrap:wrap;background:var(--grafite);color:var(--giz);padding:var(--s4) var(--s5)}
+.decisao .soma{font-family:var(--mono);font-size:1.35rem;letter-spacing:-.02em}
+.decisao .quantos{font-family:var(--mono);font-size:.74rem;letter-spacing:.08em;color:#A8AEB8}
+.decisao .wa-btn{margin-inline-start:auto}
+.decisao .wa-btn[aria-disabled="true"]{background:#39404A;color:#8E96A2;pointer-events:none}
+
+/* ── TABELA ABERTA ─────────────────────────────────────────────── */
+.tab-wrap{overflow-x:auto}          /* a tabela rola dentro dela, o body nunca */
+.tab{inline-size:100%;min-inline-size:600px;border-collapse:collapse;border:1px solid var(--risco)}
+.tab th,.tab td{padding:var(--s4) var(--s5);text-align:start;vertical-align:top;
+  border-block-start:1px solid var(--risco)}
+.tab thead th{background:var(--concreto2);border-block-start:0;color:var(--fumo);
+  font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase}
+.tab td.v{font-family:var(--mono);white-space:nowrap}
+.tab td.fora{color:var(--fumo);font-size:.88rem}
+.nota-tab{font-family:var(--mono);font-size:.76rem;color:var(--fumo);
+  margin-block-start:var(--s4);max-inline-size:70ch;line-height:1.6}
+
+/* ── EQUIPE ────────────────────────────────────────────────────── */
+.equipe{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;
+  background:var(--risco);border:1px solid var(--risco)}
+.pessoa{background:var(--concreto);padding:var(--s5)}
+.sigla{font-family:var(--mono);font-size:1.4rem;border:1px solid var(--grafite);
+  inline-size:3rem;block-size:3rem;display:grid;place-content:center;margin-block-end:var(--s4)}
+.pessoa h3{font-size:1.05rem}
+.pessoa dl{display:grid;grid-template-columns:auto minmax(0,1fr);
+  gap:.3rem var(--s4);margin-block-start:var(--s4)}
+.pessoa dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--fumo);padding-block-start:.15rem}
+.pessoa dd{font-size:.92rem}
+
+/* ── E SE… ─────────────────────────────────────────────────────── */
+.esse{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;
+  background:var(--risco);border:1px solid var(--risco)}
+.esse > div{background:var(--concreto);padding:var(--s5)}
+.esse h3{font-size:1.05rem;margin-block-end:var(--s3)}
+.esse p{color:var(--fumo);font-size:.94rem;line-height:1.55}
+
+/* ── GARANTIA ──────────────────────────────────────────────────── */
+.garantia{display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s6);
+  align-items:center;background:var(--grafite);color:var(--giz);padding:var(--s6)}
+.garantia .n{font-family:var(--mono);font-size:clamp(2.6rem,6vw,4.4rem);
+  letter-spacing:-.04em;line-height:.9}
+.garantia .n span{display:block;font-size:.74rem;letter-spacing:.16em;
+  text-transform:uppercase;color:#A8AEB8;margin-block-start:var(--s3)}
+.garantia ul{list-style:none;display:grid;gap:.55rem}
+.garantia li{font-size:.94rem;line-height:1.5;padding-inline-start:1.3rem;position:relative}
+.garantia li::before{content:"—";position:absolute;inset-inline-start:0;color:#8E96A2}
+
+/* ── RODAPÉ = CARIMBO DE OS ────────────────────────────────────── */
+.os-rodape{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:1px;
+  background:var(--risco);border:1px solid var(--grafite)}
+.os-rodape > div{background:var(--concreto);padding:var(--s5)}
+.os-rodape .campo-os{font-family:var(--mono);font-size:.68rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--fumo);margin-block-end:var(--s3)}
+.os-rodape .valor-os{font-size:.95rem;line-height:1.45}
+.assina{display:flex;justify-content:space-between;gap:var(--s5);flex-wrap:wrap;
+  font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;color:var(--fumo);
+  margin-block-start:var(--s4)}
+
+/* venda própria só aqui — regra de isolamento do braço Vitrine Certa */
+.vc{border-block-start:1px solid var(--risco);padding-block:var(--s6);
+  font-family:var(--mono);font-size:.78rem;color:var(--fumo);text-align:center}
+.vc a{color:var(--grafite)}
 
 @media (max-width:900px){
   .hero{padding-block:var(--s7) var(--s6)}
@@ -186,6 +287,15 @@ button,input{font:inherit;color:inherit}
   .trilho .fio{display:none}
   .campo input{font-size:1.25rem;letter-spacing:.16em}
   .barra-in{gap:var(--s4);font-size:.7rem}
+  .equipe,.esse,.os-rodape{grid-template-columns:1fr}
+  .garantia{grid-template-columns:1fr;gap:var(--s5)}
+}
+@media (max-width:640px){
+  /* tag e preço descem para baixo da descrição em vez de espremer 4 colunas */
+  .item{grid-template-columns:auto minmax(0,1fr);row-gap:var(--s3)}
+  .item .tag{grid-column:2;justify-self:start}
+  .item .preco{grid-column:2;text-align:start;min-inline-size:0}
+  .decisao .wa-btn{margin-inline-start:0;inline-size:100%;justify-content:center}
 }
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
@@ -324,11 +434,156 @@ button,input{font:inherit;color:inherit}
   </div>
 </section>
 
-<section class="wip"><div class="wrap">
-  <b>Checkpoint 1.</b> Faltam: o laudo com aprovação item a item, a tabela aberta de preços,
-  a equipe, o bloco "e se…", a garantia e o rodapé-OS.
-</div></section>
+<!-- ── LAUDO: o Simples calcula um preço; este mostra um diagnóstico e pede decisão ── -->
+<section class="sec" id="laudo-sec">
+  <div class="wrap">
+    <div class="sec-cab">
+      <h2>O laudo,<br>item a item</h2>
+      <p id="laudo-ref">—</p>
+    </div>
+    <p class="lede">Cada coisa que a gente encontrou vira uma linha, com o motivo e o preço.
+      Você marca o que autoriza — o resto não é feito. Sem pacote fechado.</p>
+    <div class="laudo" id="laudo"></div>
+    <div class="decisao">
+      <span class="soma" id="soma">R$ 0,00</span>
+      <span class="quantos" id="quantos">nenhum item marcado</span>
+      <a class="wa-btn" id="aprovar" href="#" target="_blank" rel="noopener" aria-disabled="true">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg>
+        <span id="aprovar-txt">Marque o que autoriza</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── TABELA ABERTA: o oposto do "consulte-nos" ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-cab">
+      <h2>Preço tabelado</h2>
+      <p>o que está incluso · e o que não está</p>
+    </div>
+    <div class="tab-wrap">
+      <table class="tab">
+        <thead><tr><th>Serviço</th><th>Mão de obra</th><th>Está incluso</th><th>Não está incluso</th></tr></thead>
+        <tbody>
+          <tr><td>Troca de óleo e filtro</td><td class="v">R$ 90,00</td>
+              <td>Descarte do óleo velho e conferência de níveis</td>
+              <td class="fora">Óleo e filtro (você pode trazer os seus)</td></tr>
+          <tr><td>Pastilhas de freio · eixo dianteiro</td><td class="v">R$ 120,00</td>
+              <td>Limpeza da pinça e sangria do fluido</td>
+              <td class="fora">Pastilhas, disco e fluido</td></tr>
+          <tr><td>Alinhamento e balanceamento</td><td class="v">R$ 140,00</td>
+              <td>4 rodas, com relatório antes e depois</td>
+              <td class="fora">Peça de suspensão trocada durante o serviço</td></tr>
+          <tr><td>Diagnóstico eletrônico</td><td class="v">R$ 150,00</td>
+              <td>Leitura de falhas e teste em rodagem</td>
+              <td class="fora">Nada — e abatemos os R$ 150 se o serviço for aprovado</td></tr>
+          <tr><td>Revisão de 20 itens</td><td class="v">R$ 180,00</td>
+              <td>Laudo escrito com foto de cada item reprovado</td>
+              <td class="fora">Qualquer peça ou fluido reposto</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="nota-tab">Peça sempre orçada à parte, com a nota do fornecedor junto.
+      Serviço fora da tabela sai por hora: R$ 130,00/h, medido no apontamento da OS.</p>
+  </div>
+</section>
+
+<!-- ── EQUIPE ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-cab">
+      <h2>Quem mexe<br>no seu carro</h2>
+      <p>3 mecânicos · 4 bancadas</p>
+    </div>
+    <div class="equipe">
+      <article class="pessoa">
+        <div class="sigla">ER</div>
+        <h3>Everton R.</h3>
+        <dl><dt>Casa</dt><dd>11 anos</dd>
+            <dt>Faz</dt><dd>Motor, injeção eletrônica e diagnóstico</dd>
+            <dt>Bancada</dt><dd class="v">02</dd></dl>
+      </article>
+      <article class="pessoa">
+        <div class="sigla">SM</div>
+        <h3>Silvana M.</h3>
+        <dl><dt>Casa</dt><dd>6 anos</dd>
+            <dt>Faz</dt><dd>Suspensão, freio e alinhamento</dd>
+            <dt>Bancada</dt><dd class="v">01</dd></dl>
+      </article>
+      <article class="pessoa">
+        <div class="sigla">JB</div>
+        <h3>Jonas B.</h3>
+        <dl><dt>Casa</dt><dd>3 anos</dd>
+            <dt>Faz</dt><dd>Elétrica, ar-condicionado e revisão</dd>
+            <dt>Bancada</dt><dd class="v">03</dd></dl>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ── E SE… ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-cab">
+      <h2>E se…</h2>
+      <p>as perguntas que todo mundo faz no balcão</p>
+    </div>
+    <div class="esse">
+      <div><h3>E se eu não aprovar nada?</h3>
+        <p>Você paga só o diagnóstico e leva o carro com o laudo na mão — inclusive
+           para consultar outra oficina. O laudo é seu.</p></div>
+      <div><h3>E se aparecer serviço novo no meio?</h3>
+        <p>O serviço para e entra uma linha nova no laudo, com preço, antes de continuar.
+           Nada é feito e cobrado depois.</p></div>
+      <div><h3>E se o preço passar do orçado?</h3>
+        <p>Não passa. O que está aprovado na OS é o que é cobrado; diferença de peça
+           vem com a nota do fornecedor anexada.</p></div>
+      <div><h3>E se eu não puder buscar hoje?</h3>
+        <p>O carro fica guardado dentro do galpão, sem diária, por até 7 dias
+           depois de ficar pronto.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GARANTIA: número explícito com as condições ── -->
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-cab">
+      <h2>Garantia</h2>
+      <p>com as condições escritas, não só a palavra</p>
+    </div>
+    <div class="garantia">
+      <p class="n">90<span>dias de garantia</span></p>
+      <ul>
+        <li>Vale para a mão de obra de todo serviço apontado na OS.</li>
+        <li>Peça vendida por nós segue a garantia do fabricante, que vem escrita na nota.</li>
+        <li>Peça trazida por você: a garantia é da mão de obra, não da peça.</li>
+        <li>Voltou com o mesmo defeito dentro do prazo? Refazemos sem cobrar a revisão.</li>
+        <li>Perde a garantia serviço mexido por terceiro depois da entrega.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ── RODAPÉ = CARIMBO DE OS ── -->
+<footer class="sec">
+  <div class="wrap">
+    <div class="os-rodape">
+      <div><p class="campo-os">Oficina</p><p class="valor-os">Auto Center Vila<br>CNPJ 00.000.000/0001-00</p></div>
+      <div><p class="campo-os">Endereço</p><p class="valor-os">Rua Frei Gaspar, 000<br>Centro · São Vicente / SP</p></div>
+      <div><p class="campo-os">Horário</p><p class="valor-os">Seg a sex 08:00–18:00<br>Sáb 08:00–12:00</p></div>
+      <div><p class="campo-os">Contato</p><p class="valor-os">(13) 0000-0000<br>WhatsApp (13) 90000-0000</p></div>
+    </div>
+    <p class="assina"><span>Auto Center Vila · São Vicente / SP</span>
+      <span>site demonstrativo · dados fictícios</span></p>
+  </div>
+</footer>
 </main>
+
+<section class="vc"><div class="wrap">
+  Site feito pela <a href="#">Vitrine Certa</a> — sites prontos para negócio de bairro.
+</div></section>
 
 <script>
 /* ⚠️ DEMO — dados fictícios de portfólio. Trocar pelos reais antes de entregar. */
@@ -432,6 +687,70 @@ function consultar(){
     $('#f-fio').style.inlineSize = (c.etapa / (OFICINA.etapas.length - 1) * 100) + '%';
   }));
 }
+
+/* ── LAUDO ────────────────────────────────────────────────────────
+   O premium do concorrente CALCULA um preço. Este mostra o diagnóstico
+   e pede uma decisão — é a diferença de espécie contra o R$49.        */
+const LAUDO = {
+  placa:'ABC1D23', os:2418, carro:'Gol 1.6 · 2019',
+  itens:[
+    {t:'Pastilha de freio dianteira', s:'urgente', v:320,
+     d:'2 mm de material. O limite de segurança é 3 mm — já está raspando o disco.'},
+    {t:'Correia do alternador', s:'atencao', v:240,
+     d:'Microfissuras no dorso. Ainda funciona, mas arrebenta sem aviso e para o carro.'},
+    {t:'Filtro de ar', s:'recomendado', v:90,
+     d:'Saturado. Não é risco, mas aumenta o consumo em estrada.'},
+    {t:'Óleo e filtro de óleo', s:'ok', v:0,
+     d:'Trocados há 4.100 km. Dentro do prazo — não mexemos.'},
+    {t:'Pneus e alinhamento', s:'ok', v:0,
+     d:'Desgaste uniforme, sulco de 5,2 mm. Nada a fazer agora.'}
+  ]
+};
+const SEV = { urgente:{r:'urgente',c:'--urgente'}, atencao:{r:'atenção',c:'--aguardando'},
+              recomendado:{r:'recomendado',c:'--exec'}, ok:{r:'ok',c:'--pronto'} };
+
+/* toFixed(2) sempre: "R$ 410" em vez de "R$ 410,00" foi bug real na pizzaria */
+const din = v => 'R$ ' + v.toFixed(2).replace('.', ',');
+
+$('#laudo-ref').textContent = `OS ${LAUDO.os} · ${LAUDO.carro} · placa ${LAUDO.placa}`;
+$('#laudo').insertAdjacentHTML('beforeend', LAUDO.itens.map((it,i) => {
+  const s = SEV[it.s], ok = it.s === 'ok';
+  return `<label class="item" data-ok="${ok?1:0}">
+    ${ok ? '<span class="vazio" aria-hidden="true"></span>'
+         : `<input type="checkbox" data-i="${i}" aria-label="Autorizar ${it.t}, ${din(it.v)}">`}
+    <span><b>${it.t}</b><small>${it.d}</small></span>
+    <span class="tag" style="color:var(${s.c})">${s.r}</span>
+    <span class="preco">${ok ? '—' : din(it.v)}</span>
+  </label>`;
+}).join(''));
+
+const btn = $('#aprovar');
+const APROVAVEIS = LAUDO.itens.filter(it => it.s !== 'ok').length;  /* nunca na mão */
+function somar(){
+  const marcados = [...$('#laudo').querySelectorAll('input:checked')]
+                     .map(i => LAUDO.itens[+i.dataset.i]);
+  const total = marcados.reduce((a,it) => a + it.v, 0);
+  $('#soma').textContent = din(total);
+  $('#quantos').textContent = marcados.length === 0 ? 'nenhum item marcado'
+    : `${marcados.length} ${marcados.length === 1 ? 'item' : 'itens'} de ${APROVAVEIS}`;
+
+  if (!marcados.length){
+    btn.setAttribute('aria-disabled','true');
+    btn.removeAttribute('href');
+    $('#aprovar-txt').textContent = 'Marque o que autoriza';
+    return;
+  }
+  btn.removeAttribute('aria-disabled');
+  $('#aprovar-txt').textContent = 'Autorizar pelo WhatsApp';
+  const recusados = LAUDO.itens.filter(it => it.s !== 'ok' && !marcados.includes(it));
+  const txt = `Oi! Sobre a OS ${LAUDO.os} (${LAUDO.carro} · placa ${LAUDO.placa}), autorizo:\n`
+    + marcados.map(it => `• ${it.t} — ${din(it.v)}`).join('\n')
+    + `\nTotal: ${din(total)}.`
+    + (recusados.length ? `\nPor enquanto NÃO autorizo: ${recusados.map(it => it.t).join(', ')}.` : '');
+  btn.href = 'https://wa.me/' + OFICINA.whats + '?text=' + encodeURIComponent(txt);
+}
+$('#laudo').addEventListener('change', somar);
+somar();
 </script>
 </body>
 </html>
