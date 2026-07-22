@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Receita-Zero — sites prontos pra PME local</title>
+<style>
+:root{
+  --bg:#F7F5F0;--bg2:#EFEBE2;--surface:#FFFFFF;--surface2:#F2EEE6;--line:#E2DCCF;--line2:#D6CFBE;
+  --fg:#23201A;--muted:#6B6457;--faint:#9A917F;
+  --a1:#1C6E6A;--a2:#E0922F;--a3:#2E4A6B;--off:#23201A;
+  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
+  --font-body:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
+  --font-display:'Fraunces','Georgia',serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:24px}
+section{padding-block:var(--s-3xl)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.1;color:var(--fg)}
+a{color:var(--a1);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.85rem 1.5rem;border-radius:999px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--a1);color:#fff;box-shadow:0 12px 30px -12px color-mix(in srgb,var(--a1) 70%,transparent)}
+.btn-outline{background:var(--surface);border-color:var(--line2);color:var(--fg)}
+.eyebrow{display:inline-block;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--a1);margin-bottom:var(--s-sm)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:14px}
+.brand{font-family:var(--font-display);font-weight:700;font-size:1.25rem}
+.brand b{color:var(--a1)}
+/* HERO */
+.hero{position:relative;overflow:hidden;background:radial-gradient(60% 50% at 80% 0%,color-mix(in srgb,var(--a2) 14%,transparent),transparent 70%),var(--bg)}
+.hero .wrap{text-align:center;max-width:820px;margin-inline:auto;padding-block:var(--s-3xl) var(--s-2xl)}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4rem);margin-bottom:var(--s-lg)}
+.hero p.lede{color:var(--muted);font-size:1.15rem;max-width:54ch;margin:0 auto var(--s-xl)}
+.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center}
+/* TRUST */
+.trust{background:var(--bg2);text-align:center;padding-block:var(--s-lg)}
+.trust span{color:var(--faint);font-size:.95rem;margin-inline:.5rem}
+/* PLANOS */
+.planos{background:var(--surface)}
+.planos .head{text-align:center;margin-bottom:var(--s-2xl)}
+.plan-grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-lg);max-width:880px;margin-inline:auto}
+.plan{background:var(--surface2);border:1px solid var(--line);border-radius:22px;padding:var(--s-xl);display:flex;flex-direction:column}
+.plan.destaque{border-color:var(--a1);box-shadow:0 24px 60px -30px color-mix(in srgb,var(--a1) 45%,transparent);position:relative}
+.plan .tag{position:absolute;top:-12px;left:50%;transform:translateX(-50%);background:var(--a1);color:#fff;font-size:.75rem;font-weight:700;padding:4px 14px;border-radius:999px}
+.plan h3{font-size:1.5rem}
+.plan .preco{font-family:var(--font-display);font-size:2.6rem;font-weight:700;color:var(--a1);margin:.4rem 0 .2rem}
+.plan .preco small{font-size:1rem;color:var(--muted);font-family:var(--font-body)}
+.plan ul{list-style:none;padding:0;margin:var(--s-lg) 0;display:flex;flex-direction:column;gap:.7rem;flex:1}
+.plan li{padding-left:1.6rem;position:relative;color:var(--muted);font-size:.96rem}
+.plan li::before{content:"✓";position:absolute;left:0;color:var(--a1);font-weight:700}
+.plan .btn{justify-content:center;margin-top:auto}
+/* PORTFOLIO LINK */
+.port{text-align:center}
+.port .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--s-md);margin-top:var(--s-xl)}
+.pcard{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:var(--s-lg);text-align:left;transition:transform .25s,box-shadow .25s}
+.pcard:hover{transform:translateY(-4px);box-shadow:0 20px 50px -25px color-mix(in srgb,var(--a1) 40%,transparent)}
+.pcard .ico{font-size:1.8rem}
+.pcard h4{font-family:var(--font-display);font-size:1.1rem;margin:.4rem 0 .2rem}
+.pcard p{color:var(--muted);font-size:.88rem}
+/* FAQ */
+.faq{background:var(--bg2)}
+.faq .head{text-align:center;margin-bottom:var(--s-xl)}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:var(--s-md) var(--s-lg);margin-bottom:var(--s-sm);max-width:760px;margin-inline:auto}
+.faq summary{font-weight:700;cursor:pointer}
+.faq p{color:var(--muted);margin-top:.6rem;font-size:.94rem}
+/* CTA FINAL */
+.cta-final{background:var(--a1);color:#fff;text-align:center}
+.cta-final h2{color:#fff}
+.cta-final p{color:color-mix(in srgb,#fff 85%,transparent);max-width:50ch;margin:0 auto var(--s-lg)}
+.cta-final .btn-solid{background:#fff;color:var(--a1)}
+.cta-final .btn-outline{background:transparent;border-color:#fff;color:#fff}
+footer{background:var(--fg);color:var(--surface2);padding-block:var(--s-lg);text-align:center;font-size:.9rem}
+@media(max-width:760px){.plan-grid{grid-template-columns:1fr}.hero .wrap{padding-block:var(--s-2xl)}}
+</style>
+</head>
+<body>
+<nav class="nav">
+  <div class="wrap">
+    <div class="brand">Receita<b>-Zero</b></div>
+    <a class="btn btn-solid" href="#planos" style="padding:.6rem 1.2rem;font-size:.92rem">Ver planos</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <span class="eyebrow reveal">Sites prontos pra PME local</span>
+    <h1 class="reveal d1">Seu negócio na vitrine digital em 48h</h1>
+    <p class="lede reveal d2">A gente monta o site do seu pet shop, padaria, oficina ou salão — com fotos do seu nicho, agendamento e Whats integrado. Sem mensalidade escondida, sem complicação.</p>
+    <div class="cta reveal d3">
+      <a class="btn btn-solid" href="#planos">Ver planos e preços</a>
+      <a class="btn btn-outline" href="dashboard.html">Ver exemplos prontos</a>
+    </div>
+  </div>
+</header>
+
+<div class="trust reveal">
+  <span>✓ Entrega em 48h</span>·<span>✓ Fotos do seu nicho</span>·<span>✓ Agendamento + Whats</span>·<span>✓ Custo zero de hospedagem</span>
+</div>
+
+<section id="planos" class="planos">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow reveal">Planos</span>
+      <h2 class="reveal">Escolha o que faz sentido pra você</h2>
+    </div>
+    <div class="plan-grid">
+      <div class="plan reveal">
+        <h3>Essencial</h3>
+        <div class="preco">R$49<small>/mês</small></div>
+        <p style="color:var(--muted)">Pra quem só precisa de presença e agendamento.</p>
+        <ul>
+          <li>1 página única responsiva</li>
+          <li>Fotos locais do seu nicho</li>
+          <li>Quiz de preço + agendamento no Whats</li>
+          <li>Formulário de contato</li>
+          <li>Entrega em até 48h</li>
+          <li>Sem fidelidade — cancela quando quiser</li>
+        </ul>
+        <a class="btn btn-outline" href="https://wa.me/5511977776666?text=Quero%20o%20plano%20Essencial%20R%2449/m%C3%AAs" target="_blank" rel="noopener">Quero o Essencial</a>
+      </div>
+      <div class="plan destaque reveal">
+        <span class="tag">Mais escolhido</span>
+        <h3>Premium</h3>
+        <div class="preco">R$149<small>/mês</small></div>
+        <p style="color:var(--muted)">Pra quem quer destoar da concorrência.</p>
+        <ul>
+          <li>Tudo do Essencial, mais:</li>
+          <li>Várias seções (sobre, serviços, depoimentos, FAQ)</li>
+          <li>SEO local (aparece no Google da sua cidade)</li>
+          <li>Copy caprichada e micro-interações</li>
+          <li>Mais fotos e prova social</li>
+          <li>Prioridade no suporte</li>
+        </ul>
+        <a class="btn btn-solid" href="https://wa.me/5511977776666?text=Quero%20o%20plano%20Premium%20R%24149/m%C3%AAs" target="_blank" rel="noopener">Quero o Premium</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="port">
+  <div class="wrap">
+    <span class="eyebrow reveal">Portfólio</span>
+    <h2 class="reveal">Exemplos prontos em vários nichos</h2>
+    <p class="reveal" style="color:var(--muted);margin-top:var(--s-sm)">Cada um é um site-exemplo real, com fotos do nicho e estrutura de conversão.</p>
+    <div class="cards">
+      <a class="pcard reveal" href="dashboard.html"><div class="ico">🐾</div><h4>Pet shop</h4><p>Banho, tosa, vet, agendamento.</p></a>
+      <a class="pcard reveal" href="dashboard.html"><div class="ico">🥖</div><h4>Padaria</h4><p>Cardápio, encomendas, retirada.</p></a>
+      <a class="pcard reveal" href="dashboard.html"><div class="ico">🍕</div><h4>Pizzaria</h4><p>Cardápio, pedido, delivery.</p></a>
+      <a class="pcard reveal" href="dashboard.html"><div class="ico">🔧</div><h4>Oficina</h4><p>Serviços, orçamento, agendamento.</p></a>
+      <a class="pcard reveal" href="dashboard.html"><div class="ico">💇</div><h4>Salão</h4><p>Agenda, cortes, pacotes.</p></a>
+      <a class="pcard reveal" href="dashboard.html"><div class="ico">🦷</div><h4>Clínica</h4><p>Especialidades, marcação.</p></a>
+      <a class="pcard reveal" href="dashboard.html"><div class="ico">🧺</div><h4>Lavanderia</h4><p>Serviços, tarifas, coleta.</p></a>
+      <a class="pcard reveal" href="dashboard.html"><div class="ico">🏠</div><h4>Imobiliária</h4><p>Imóveis, contato, captação.</p></a>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow reveal">Dúvidas</span>
+      <h2 class="reveal">Perguntas frequentes</h2>
+    </div>
+    <details class="reveal"><summary>Preciso pagar hospedagem?</summary><p>Não. Usamos hospedagem gratuita (GitHub Pages) — seu custo é só a mensalidade do plano.</p></details>
+    <details class="reveal"><summary>Vocês mechem no meu WhatsApp?</summary><p>Não. O botão e o agendamento só abrem seu Whats pra o cliente falar com você. A gente não acessa.</p></details>
+    <details class="reveal"><summary>Tem fidelidade?</summary><p>Não. Você para quando quiser, sem multa.</p></details>
+    <details class="reveal"><summary>Aparece no Google?</summary><p>No Premium, sim — otimizamos pra busca local da sua cidade.</p></details>
+  </div>
+</section>
+
+<section class="cta-final">
+  <div class="wrap">
+    <h2 class="reveal">Pronto pra ter seu site em 48h?</h2>
+    <p class="reveal">Escolha o plano e fale com a gente no Whats. A gente assume o resto.</p>
+    <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center">
+      <a class="btn btn-solid" href="https://wa.me/5511977776666?text=Quero%20come%C3%A7ar%20meu%20site" target="_blank" rel="noopener">Começar agora</a>
+      <a class="btn btn-outline" href="dashboard.html">Ver exemplos</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  Receita-Zero · sites prontos pra PME local · Custo zero de hospedagem
+</footer>
+
+<script>
+var _rv=document.querySelectorAll('.reveal');
+_rv.forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';});
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  _rv.forEach(el=>io.observe(el));
+  setTimeout(function(){_rv.forEach(el=>el.classList.add('in'));},1500);
+} else {
+  _rv.forEach(el=>el.classList.add('in'));
+}
+</script>
+</body>
+</html>
+

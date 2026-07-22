@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clínica Sorriso — dentista em São Vicente</title>
+<style>
+:root{
+  --bg:#EFF8F9;--bg2:#DDF1F2;--surface:#FFFFFF;--surface2:#E6F4F5;--line:#C9E8EA;--line2:#A6D6DA;
+  --fg:#11282B;--muted:#4F6E72;--faint:#7C9A9E;
+  --a1:#2BA8B0;--a2:#2C6FB5;--a3:#4CAF78;--off:#11282B;
+  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
+  --font-body:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
+  --font-display:'Fraunces','Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:24px}
+section{padding-block:var(--s-3xl)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.1;color:var(--fg)}
+a{color:var(--a1);text-decoration:none}
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.85rem 1.6rem;border-radius:999px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .2s,box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-solid{background:var(--a1);color:#fff;box-shadow:0 12px 30px -12px color-mix(in srgb,var(--a1) 70%,transparent)}
+.btn-outline{background:var(--surface);border-color:var(--line2);color:var(--fg)}
+.eyebrow{display:inline-block;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--a2);margin-bottom:var(--s-sm)}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+.reveal.in{opacity:1;transform:none}
+.hero{position:relative;overflow:hidden;background:radial-gradient(60% 60% at 85% 0%,color-mix(in srgb,var(--a3) 16%,transparent),transparent 70%),var(--bg)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-2xl);align-items:center;max-width:1100px;margin-inline:auto;padding-block:var(--s-3xl)}
+.hero h1{font-size:clamp(2.2rem,4.5vw,3.6rem);margin-bottom:var(--s-lg)}
+.hero h1 em{color:var(--a1);font-style:italic}
+.hero p.lede{color:var(--muted);font-size:1.1rem;max-width:46ch;margin:0 0 var(--s-xl)}
+.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.hero-fig{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px -30px color-mix(in srgb,var(--a1) 50%,transparent);aspect-ratio:4/3}
+.hero-fig img{width:100%;height:100%;object-fit:cover;object-position:center 40%;display:block}
+.marquee{background:var(--a1);color:#fff;padding:14px 0;overflow:hidden;white-space:nowrap}
+.marquee span{display:inline-block;padding-inline:2rem;font-family:var(--font-display);font-weight:700;font-size:1.05rem;animation:scrollx 18s linear infinite}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.quiz{max-width:560px;margin:var(--s-xl) auto 0;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:var(--s-xl);text-align:left;box-shadow:0 20px 60px -30px color-mix(in srgb,var(--a1) 35%,transparent)}
+.quiz h3{font-size:1.3rem;margin-bottom:var(--s-md)}
+.quiz label{font-size:.8rem;color:var(--faint);display:block;margin:.8rem 0 .3rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em}
+.quiz select{width:100%;background:var(--surface2);border:1px solid var(--line2);border-radius:10px;padding:11px 13px;color:var(--off);font-family:var(--font-body);font-size:14px}
+.quiz .sug{margin-top:1rem;font-size:1rem;color:var(--muted)}
+.quiz .sug b{color:var(--a1);font-family:var(--font-display);font-size:1.15rem}
+.wa-btn{display:inline-flex;align-items:center;gap:.45rem;margin-top:1rem;background:#25D366;color:#fff;font-weight:700;font-size:.95rem;padding:.7rem 1.2rem;border-radius:999px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(37,211,102,.6);transition:transform .2s,box-shadow .2s}
+.wa-btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(37,211,102,.7)}
+.wa-btn svg{width:18px;height:18px;fill:#fff}
+.serv .head{text-align:center;margin-bottom:var(--s-2xl)}
+.sgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--s-lg)}
+.scard{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.scard:hover{transform:translateY(-5px);box-shadow:0 22px 55px -28px color-mix(in srgb,var(--a1) 45%,transparent)}
+.scard img{width:100%;height:190px;object-fit:cover;object-position:center 50%;display:block}
+.scard .body{padding:var(--s-md) var(--s-lg) var(--s-lg)}
+.scard h4{font-family:var(--font-display);font-size:1.2rem;margin-bottom:.2rem}
+.scard .desc{color:var(--muted);font-size:.88rem;min-height:38px}
+.scard .row{display:flex;align-items:center;justify-content:space-between;margin-top:.8rem}
+.scard .price{font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--a1)}
+.perks{background:var(--bg2)}
+.perks .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--s-lg)}
+.perk{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:var(--s-lg)}
+.perk .ico{font-size:1.8rem;margin-bottom:.4rem}
+.perk h3{font-size:1.05rem;margin-bottom:.3rem}
+.perk p{color:var(--muted);font-size:.88rem}
+.faq .head{text-align:center;margin-bottom:var(--s-xl)}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:var(--s-md) var(--s-lg);margin-bottom:var(--s-sm);max-width:760px;margin-inline:auto}
+.faq summary{font-weight:700;cursor:pointer}
+.faq p{color:var(--muted);margin-top:.6rem;font-size:.94rem}
+.contato{text-align:center}
+.contato form{max-width:480px;margin:var(--s-xl) auto 0;display:flex;flex-direction:column;gap:.8rem}
+.contato input,.contato textarea{background:var(--surface);border:1px solid var(--line2);border-radius:10px;padding:12px 14px;font-family:var(--font-body);font-size:14px;color:var(--off)}
+.endcta{background:color-mix(in srgb,var(--a1) 10%,var(--bg));border-top:1px solid var(--line);padding-block:var(--s-3xl)}
+footer{background:var(--fg);color:var(--surface2);padding-block:var(--s-lg);text-align:center;font-size:.9rem}
+@media(max-width:760px){.hero .wrap{grid-template-columns:1fr;padding-block:var(--s-2xl)}.hero-fig{order:-1;max-width:360px;margin-inline:auto}.hero p.lede{margin-inline:auto}}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <div class="hero-text">
+      <span class="eyebrow reveal">Clínica odontológica em São Vicente</span>
+      <h1 class="reveal d1">Seu <em>sorriso</em> em boas mãos</h1>
+      <p class="lede reveal d2">Clareamento, limpeza, ortodontia e implantes com tecnologia de ponta. Você agenda online e recebe lembrete no WhatsApp.</p>
+      <div class="cta reveal d3">
+        <a class="btn btn-solid" href="#servicos">Ver tratamentos</a>
+        <a class="btn btn-outline" href="https://wa.me/5511970776856?text=Quero%20agendar%20uma%20consulta" target="_blank" rel="noopener">Agendar no Whats</a>
+      </div>
+    </div>
+    <div class="hero-fig reveal d2">
+      <img src="assets/banner.jpg" alt="Clínica odontológica" loading="lazy">
+    </div>
+  </div>
+</header>
+
+<div class="marquee">
+  <span>★ 4.9 no Google · +2.000 pacientes · clareamento a laser · implantes · dentista à sua escolha · </span>
+  <span>★ 4.9 no Google · +2.000 pacientes · clareamento a laser · implantes · dentista à sua escolha · </span>
+</div>
+
+<section id="simule">
+  <div class="wrap" style="text-align:center">
+    <span class="eyebrow reveal">Simule seu tratamento</span>
+    <h2 class="reveal">Quanto custa a consulta?</h2>
+    <div class="quiz reveal">
+      <h3>Escolha o tratamento e a forma</h3>
+      <label for="q-serv">Tratamento</label>
+      <select id="q-serv">
+        <option>Consulta + limpeza</option><option>Clareamento</option><option>Aparelho</option><option>Implante</option>
+      </select>
+      <label for="q-form">Forma</label>
+      <select id="q-form">
+        <option>À vista</option><option>3x sem juros</option><option>12x</option>
+      </select>
+      <div class="sug" id="q-sug">Veja o preço e agende em 1 clique →</div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos" class="serv">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow reveal">Tratamentos</span>
+      <h2 class="reveal">O que a gente faz</h2>
+    </div>
+    <div class="sgrid">
+      <div class="scard reveal"><img src="assets/c1.jpg" alt="Limpeza"><div class="body"><h4>Consulta + limpeza</h4><p class="desc">Avaliação completa e profilaxia.</p><div class="row"><span class="price">R$ 120</span><span class="sz">consulta</span></div></div></div>
+      <div class="scard reveal"><img src="assets/c2.jpg" alt="Clareamento"><div class="body"><h4>Clareamento</h4><p class="desc">A laser, em uma sessão.</p><div class="row"><span class="price">R$ 600</span><span class="sz">sessão</span></div></div></div>
+      <div class="scard reveal"><img src="assets/c3.jpg" alt="Aparelho"><div class="body"><h4>Aparelho</h4><p class="desc">Ortodontia fixa ou invisível.</p><div class="row"><span class="price">R$ 2.500</span><span class="sz">início</span></div></div></div>
+      <div class="scard reveal"><img src="assets/banner.jpg" alt="Implante"><div class="body"><h4>Implante</h4><p class="desc">Dente fixo sobre titânio.</p><div class="row"><span class="price">R$ 1.800</span><span class="sz">unid.</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="perks">
+  <div class="wrap">
+    <div class="head" style="text-align:center;margin-bottom:var(--s-2xl)">
+      <span class="eyebrow reveal">Por que a gente</span>
+      <h2 class="reveal">Odontologia de verdade</h2>
+    </div>
+    <div class="grid">
+      <div class="perk reveal"><div class="ico">🦷</div><h3>Sem dor</h3><p>Anestesia local e sedação leve pra você relaxar.</p></div>
+      <div class="perk reveal"><div class="ico">🔬</div><h3>Tecnologia</h3><p>Escaneamento digital, sem molde desconfortável.</p></div>
+      <div class="perk reveal"><div class="ico">📅</div><h3>Lembrete no Whats</h3><p>A gente avisa quando é sua revisão.</p></div>
+      <div class="perk reveal"><div class="ico">💳</div><h3>Parcelamento</h3><p>Até 12x no cartão, com ou sem convênio.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="faq">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow reveal">Dúvidas</span>
+      <h2 class="reveal">Perguntas frequentes</h2>
+    </div>
+    <details class="reveal"><summary>Atende convênio?</summary><p>Alguns planos sim; pergunte no WhatsApp o seu.</p></details>
+    <details class="reveal"><summary>Clareamento mancha?</summary><p>Não, usamos técnica a laser que protege o esmalte.</p></details>
+    <details class="reveal"><summary>Tem urgência?</summary><p>Para dor, a gente abre um horário no mesmo dia.</p></details>
+    <details class="reveal"><summary>Primeira consulta é paga?</summary><p>A avaliação custa R$ 120 e o plano de tratamento sai grátis.</p></details>
+  </div>
+</section>
+
+<section id="contato" class="contato">
+  <div class="wrap">
+    <span class="eyebrow reveal">Fala com a gente</span>
+    <h2 class="reveal">Agende sua consulta</h2>
+    <p class="reveal" style="color:var(--muted);margin:var(--s-md) 0 var(--s-xl)">Deixa seu contato, a gente confirma o horário no WhatsApp.</p>
+    <form class="reveal" action="https://formspree.io/f/xpzblmdk" method="POST">
+      <input name="nome" placeholder="Seu nome" required>
+      <input name="whatsapp" placeholder="Seu WhatsApp" required>
+      <input name="data" placeholder="Dia e horário preferido">
+      <textarea name="mensagem" rows="3" placeholder="Qual tratamento? (limpeza, clareamento, aparelho...)"></textarea>
+      <button class="btn btn-solid" type="submit" style="justify-content:center">Enviar agendamento</button>
+    </form>
+  </div>
+</section>
+
+<section id="queroassim" class="endcta">
+  <div class="wrap" style="text-align:center;max-width:680px;margin-inline:auto">
+    <span class="eyebrow reveal">Este é um site-exemplo</span>
+    <h2 class="reveal">Quer um site assim pro seu negócio?</h2>
+    <p class="reveal" style="color:var(--muted);margin-bottom:var(--s-xl)">A gente monta o seu em até 48h, com fotos do seu nicho e agenda integrada. Sem mensalidade escondida.</p>
+    <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center">
+      <a class="btn btn-solid" href="../receita-zero/#planos">Ver planos e preços</a>
+      <a class="btn btn-outline" href="../receita-zero/dashboard.html">Ver portfólio de exemplos</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">Clínica Sorriso · odontologia em São Vicente · © 2026</div>
+</footer>
+
+<script>
+var _rv=document.querySelectorAll('.reveal');
+_rv.forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';});
+if('IntersectionObserver' in window){
+  var io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+  _rv.forEach(el=>io.observe(el));
+  setTimeout(function(){_rv.forEach(el=>el.classList.add('in'));},1500);
+} else {
+  _rv.forEach(el=>el.classList.add('in'));
+}
+
+const qs=document.getElementById('q-serv'),qf=document.getElementById('q-form'),qg=document.getElementById('q-sug');
+const preco={'Consulta + limpeza':120,'Clareamento':600,'Aparelho':2500,'Implante':1800};
+const mult={'À vista':1,'3x sem juros':3,'12x':12};
+function calc(){const s=qs.value,f=qf.value;const base=preco[s];const v=f==='À vista'?base:Math.round(base/mult[f]);const txt=f==='À vista'?'R$'+base:'R$'+v+' em '+mult[f]+'x';qg.innerHTML='<b>'+s+' — '+txt+'</b><br><a class="wa-btn" href="https://wa.me/5511970776856?text='+encodeURIComponent('Quero agendar '+s+' ('+f+') — '+txt)+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.16c-.24.68-1.42 1.31-1.96 1.36-.5.05-1.05.27-3.55-.74-2.91-1.15-4.77-4.08-4.91-4.27-.14-.19-1.15-1.53-1.15-2.92 0-1.39.73-2.07 1-2.36.24-.29.53-.36.71-.36.18 0 .35 0 .51.01.16.01.39-.06.61.47.25.58.86 2 .94 2.14.08.14.13.31.03.5-.11.19-.16.31-.32.48-.16.17-.34.37-.48.5-.16.14-.33.29-.14.57.19.27.85 1.4 1.82 2.27 1.25 1.12 2.31 1.46 2.64 1.62.33.16.52.13.71-.08.2-.22.84-.98 1.06-1.31.22-.34.44-.28.74-.17.31.11 1.96.93 2.3 1.1.34.17.56.25.65.39.08.13.08.78-.16 1.46z"/></svg>Agendar no WhatsApp</a>';}
+qs.addEventListener('change',calc);qf.addEventListener('change',calc);calc();
+</script>
+</body>
+</html>

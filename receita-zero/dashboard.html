@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfólio Receita-Zero — exemplos de sites prontos</title>
+<style>
+:root{--bg:#F7F5F0;--bg2:#EFEBE2;--surface:#FFFFFF;--line:#E2DCCF;--fg:#23201A;--muted:#6B6457;--a1:#1C6E6A;--a2:#E0922F;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;--font-body:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;--font-display:'Fraunces','Georgia',serif}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.55;overflow-x:clip}
+.wrap{max-width:1100px;margin-inline:auto;padding-inline:24px}
+section{padding-block:var(--s-3xl)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.1}
+a{text-decoration:none}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:14px}
+.brand{font-family:var(--font-display);font-weight:700;font-size:1.25rem}.brand b{color:var(--a1)}
+.btn{display:inline-flex;align-items:center;padding:.7rem 1.3rem;border-radius:999px;font-weight:700;background:var(--a1);color:#fff}
+.eyebrow{display:inline-block;font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--a1);margin-bottom:var(--s-sm)}
+.hero .wrap{text-align:center;max-width:760px;margin-inline:auto;padding-block:var(--s-2xl)}
+.hero h1{font-size:clamp(2.2rem,5vw,3.4rem);margin-bottom:var(--s-md)}
+.hero p{color:var(--muted);font-size:1.1rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:var(--s-lg);margin-top:var(--s-xl)}
+.card{display:block;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s;color:var(--fg)}
+.card:hover{transform:translateY(-5px);box-shadow:0 24px 60px -28px color-mix(in srgb,var(--a1) 45%,transparent)}
+.card .thumb{height:150px;background:linear-gradient(135deg,var(--a1),var(--a2))}
+.card .body{padding:var(--s-lg)}
+.card .ico{font-size:1.8rem}
+.card h3{font-size:1.25rem;margin:.3rem 0 .2rem}
+.card p{color:var(--muted);font-size:.9rem}
+.card .go{margin-top:.8rem;color:var(--a1);font-weight:700;font-size:.9rem}
+footer{background:var(--fg);color:#fff;padding-block:var(--s-lg);text-align:center;font-size:.9rem}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><div class="brand">Receita<b>-Zero</b></div><a class="btn" href="index.html">Ver planos</a></div></nav>
+<section class="hero"><div class="wrap">
+  <span class="eyebrow">Portfólio</span>
+  <h1>Exemplos de sites prontos</h1>
+  <p>Cada card abre um site-exemplo real de um nicho. São vitrines — o seu sai com as fotos e o nome do seu negócio.</p>
+</div></section>
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="grid">
+      <a class="card" href="../site-dfy/pet/index.html"><div class="thumb"></div><div class="body"><div class="ico">🐾</div><h3>Pet shop</h3><p>Banho, tosa, vet, agendamento integrado.</p><div class="go">Abrir exemplo →</div></div></a>
+      <a class="card" href="../site-dfy/padaria/index.html"><div class="thumb"></div><div class="body"><div class="ico">🥖</div><h3>Padaria</h3><p>Cardápio, encomendas e retirada.</p><div class="go">Abrir exemplo →</div></div></a>
+      <a class="card" href="../site-dfy/pizzaria/index.html"><div class="thumb"></div><div class="body"><div class="ico">🍕</div><h3>Pizzaria</h3><p>Cardápio, pedido e delivery.</p><div class="go">Abrir exemplo →</div></div></a>
+      <a class="card" href="../site-dfy/oficina/index.html"><div class="thumb"></div><div class="body"><div class="ico">🔧</div><h3>Oficina</h3><p>Serviços, orçamento e agendamento.</p><div class="go">Abrir exemplo →</div></div></a>
+      <a class="card" href="../site-dfy/salão/index.html"><div class="thumb"></div><div class="body"><div class="ico">💇</div><h3>Salão</h3><p>Agenda, cortes e pacotes.</p><div class="go">Abrir exemplo →</div></div></a>
+      <a class="card" href="../site-dfy/clínica/index.html"><div class="thumb"></div><div class="body"><div class="ico">🦷</div><h3>Clínica</h3><p>Especialidades e marcação.</p><div class="go">Abrir exemplo →</div></div></a>
+      <a class="card" href="../site-dfy/lavanderia/index.html"><div class="thumb"></div><div class="body"><div class="ico">🧺</div><h3>Lavanderia</h3><p>Serviços, tarifas e coleta.</p><div class="go">Abrir exemplo →</div></div></a>
+      <a class="card" href="../site-dfy/imobiliária/index.html"><div class="thumb"></div><div class="body"><div class="ico">🏠</div><h3>Imobiliária</h3><p>Imóveis, contato e captação.</p><div class="go">Abrir exemplo →</div></div></a>
+    </div>
+  </div>
+</section>
+<footer>Receita-Zero · sites prontos pra PME local</footer>
+</body>
+</html>
