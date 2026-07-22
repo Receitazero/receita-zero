@@ -1,10 +1,11 @@
 {
   "name": "receita-zero",
   "version": "1.0.0",
-  "description": "",
+  "description": "Vitrine Certa — sites premium para PME",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node references/verify-syntax.js && node references/playwright-check.js",
+    "lint": "node references/verify-syntax.js"
   },
   "repository": {
     "type": "git",
