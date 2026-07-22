@@ -325,9 +325,18 @@ Regra: **nada de `translateY` como camada de parallax, nada de aurora/blob/glow 
 
 ## 9. Plano de execução
 
+> **STATUS 22/jul: passos 0–9 concluídos e verificados.** Falta só o passo 10 (commit).
+> **Rev. 3 — forno redesenhado (variante B).** SVG refeito a partir de referência fotográfica:
+> cúpula abaulada com fiadas curvas, anel de aduelas saliente, fogo ao fundo com toras em V,
+> leito de cinzas com brasa por baixo, bloom e tremor de ar quente, pizza na bancada.
+> `?demo` roda a noite em 40s. Página de escolha: `_checkpoint/comparar-forno.html`.
+> Referências em `_ref/` (2 Gemini ≈ R$5–6,60 + 2 Pollinations R$0 — **o Pollinations bastava**).
+> Entregue: `site-dfy/pizzaria/premium/index.html` (45KB, zero dependência).
+> Prints em `_checkpoint/`. Testes: Playwright em 5 horas + comanda + filtro + reduced-motion + 320px.
+
 | # | Passo | Saída | Checkpoint |
 |---|---|---|---|
-| 0 | Aprovar este plano | — | 🚦 **você aqui** |
+| 0 | Aprovar este plano | — | ✅ |
 | 1 | `git mv premium/index.html premium/_v1-forno-ao-cliente.html` | v1 preservada | — |
 | 2 | `DESIGN.md` da pizzaria (tokens dia+noite, tipografia, carimbo Hallmark) | fonte de verdade | — |
 | 3 | Shell: régua da noite, `--noite`/`--calor`/`--dia`, reduced-motion, rodapé-recibo | esqueleto renderizável | print em 3 pontos do scroll |
@@ -350,6 +359,21 @@ Regra: **nada de `translateY` como camada de parallax, nada de aurora/blob/glow 
 3. **Dois temas dobram a superfície de bug de contraste.** A `aapson-site-design-ops` documenta exatamente isso ("tema claro puxa cor escura, textos somem") — por isso o passo 9 mede contraste real no browser **após repaint**, nos dois temas.
 
 ---
+
+## 9.3 Bugs encontrados na construção (para não repetir nos outros 7 nichos)
+
+| # | Bug | Causa | Correção |
+|---|---|---|---|
+| 1 | Conteúdo com 793px em vez de 1180px | `margin-inline:auto` num item de **flex column** cancela o stretch do cross-axis; o wrap encolhe pro tamanho do conteúdo | `inline-size:100%` no `.wrap` |
+| 2 | Relógio odômetro saía `⌐.CC` | a fita de dígitos herdava `line-height:1.55` do body e não batia com o passo do `translateY` | `line-height` fixo na fita e em cada dígito |
+| 3 | **Contraste 1,02:1 no crepúsculo** — texto invisível | interpolar o tema continuamente cruza fundo e texto no mesmo cinza médio em `--dia≈.5` | tema em **degrau**; só o fundo faz crossfade, a cor do texto vira de uma vez (delay .25s) |
+| 4 | **Seção inteira invisível** — 5 reveals nunca apareciam | `clip-path:inset(100%)` zera a área visível e o IntersectionObserver mede `ratio 0` pra sempre: o alvo escondia a si mesmo do observer | observa a **seção** (nunca clipada); o clip mora nos filhos; estado escondido só sob `html.js` |
+| 5 | `--noite` parado em 0 no Chrome | o fallback rAF só roda quando `scroll()` **não** existe, e faltava a animação CSS pro caso em que existe | `@keyframes anoitecer` + `animation-timeline:scroll(root)` |
+| 6 | Hora do WhatsApp saía `01234567890...` | lia `textContent` do odômetro, e cada dígito contém a fita `0123456789` inteira | variável `horaTxt` própria, nunca ler hora do DOM |
+| 7 | Preço `R$ 142` em vez de `R$ 142,00` | `toString()` em vez de formatação BRL | `toFixed(2).replace('.',',')` |
+
+> Os bugs 3, 4 e 5 só apareceram porque a verificação foi **medida** (pixels do PNG + Playwright),
+> não olhada. Nenhum deles dava erro no console. O nº 4 foi apontado pelo agente paralelo (Hermes).
 
 ## 10. Nota de retratação
 

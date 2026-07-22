@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comparar fornos — A NOITE INTEIRA</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+<style>
+@property --dia{syntax:'<number>';inherits:true;initial-value:0}
+@property --calor{syntax:'<number>';inherits:true;initial-value:1}
+:root{
+  --n-tinta:#141A2A;--n-carvao:#0C1120;--n-tinta2:#1C2438;--n-linha:#2B3450;
+  --n-giz:#EDEFF5;--n-fumaca:#98A0B8;--n-brasa:#FF5A1F;--n-nucleo:#FFF1E6;
+  --d-tinta:#ECEDF1;--d-carvao:#DDDFE7;--d-tinta2:#F7F8FB;--d-linha:#D3D7E2;
+  --d-giz:#141A2A;--d-fumaca:#5C6478;--d-brasa:#D6410E;--d-nucleo:#8A2B06;
+  --tinta:color-mix(in oklab,var(--n-tinta),var(--d-tinta) calc(var(--dia)*100%));
+  --carvao:color-mix(in oklab,var(--n-carvao),var(--d-carvao) calc(var(--dia)*100%));
+  --tinta2:color-mix(in oklab,var(--n-tinta2),var(--d-tinta2) calc(var(--dia)*100%));
+  --linha:color-mix(in oklab,var(--n-linha),var(--d-linha) calc(var(--dia)*100%));
+  --giz:color-mix(in oklab,var(--n-giz),var(--d-giz) calc(var(--dia)*100%));
+  --fumaca:color-mix(in oklab,var(--n-fumaca),var(--d-fumaca) calc(var(--dia)*100%));
+  --fogo-nucleo:#FFE9C4;--fogo-alto:#FFA83D;--fogo-medio:#FF6A22;--fogo-borda:#C9330F;
+  --cinza:#C9BFAE;
+  --serif:'Instrument Serif',Georgia,serif;--sans:'Instrument Sans',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--tinta);color:var(--giz);font-family:var(--sans);padding:28px;
+  transition:background-color .5s linear,color 0s linear .25s}
+h1{font-family:var(--serif);font-weight:400;font-size:2rem;margin-bottom:6px}
+.sub{color:var(--fumaca);font-size:.92rem;margin-bottom:22px;max-width:70ch}
+.ctrl{display:flex;gap:20px;align-items:center;flex-wrap:wrap;margin-bottom:26px;
+  padding:14px 16px;border:1px solid var(--linha);border-radius:2px;background:var(--tinta2)}
+.ctrl label{font-size:.82rem;color:var(--fumaca);display:flex;align-items:center;gap:10px}
+input[type=range]{width:190px;accent-color:var(--n-brasa)}
+button{background:none;border:1px solid var(--linha);border-radius:999px;padding:6px 14px;
+  color:var(--giz);font:500 .82rem var(--sans);cursor:pointer}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:24px}
+figure{border:1px solid var(--linha);background:var(--tinta2);padding:16px;border-radius:2px}
+figcaption{margin-top:12px;font-size:.86rem}
+figcaption b{display:block;font-family:var(--serif);font-size:1.2rem;font-weight:400;margin-bottom:4px}
+figcaption span{color:var(--fumaca)}
+svg.forno{width:100%;height:auto;display:block}
+
+/* ── comum aos três ───────────────────────────────────────────── */
+.arco{stroke:var(--linha);stroke-width:1.4}
+.juntas{fill:url(#p-tijolo)}
+.bancada{fill:url(#g-bancada);stroke:var(--linha);stroke-width:1.4}
+.boca{fill:color-mix(in oklab,var(--n-carvao),var(--n-tinta2) calc(14% + var(--dia)*16%))}
+.lenha{fill:color-mix(in oklab,var(--n-carvao),var(--fogo-borda) 26%)}
+.lenha-topo{fill:color-mix(in oklab,var(--n-carvao),var(--fogo-alto) calc(20% + var(--calor)*35%))}
+.chama{opacity:var(--calor)}
+.massa{fill:color-mix(in oklab,var(--n-giz),var(--fogo-alto) 42%)}
+.molho{fill:var(--fogo-borda);opacity:.72}
+.queijo{fill:color-mix(in oklab,var(--n-giz),var(--fogo-nucleo) 55%);opacity:.92}
+.manjericao{fill:#4E7A45;opacity:.85}
+.char{fill:color-mix(in oklab,var(--n-carvao),var(--fogo-borda) 30%);opacity:calc(.45+var(--calor)*.35)}
+.forma{transform-box:fill-box;transform-origin:center;animation:gira 26s linear infinite;
+  opacity:var(--calor);transition:opacity .6s linear}
+@keyframes gira{to{rotate:360deg}}
+.labareda path{fill:url(#g-chama);transform-box:fill-box;transform-origin:bottom center}
+.labareda g:nth-child(1) path{animation:lamber 2.3s ease-in-out infinite}
+.labareda g:nth-child(2) path{animation:lamber 3.1s ease-in-out infinite -.7s}
+.labareda g:nth-child(3) path{animation:lamber 1.9s ease-in-out infinite -1.3s}
+.labareda g:nth-child(4) path{animation:lamber 2.7s ease-in-out infinite -.4s}
+.labareda g:nth-child(5) path{animation:lamber 3.7s ease-in-out infinite -2.1s}
+@keyframes lamber{0%,100%{transform:scaleY(1) translateY(0)}
+  30%{transform:scaleY(1.18) translateY(-2px)}55%{transform:scaleY(.9) translateY(1px)}
+  78%{transform:scaleY(1.1) translateY(-1px)}}
+.grao{fill:url(#p-grao);opacity:.5;mix-blend-mode:overlay}
+.rim{fill:none;stroke:var(--fogo-medio);stroke-width:2;opacity:calc(var(--calor)*.5);filter:blur(1.5px)}
+.oclusao{fill:var(--n-carvao);opacity:.55}
+.cinzas{fill:var(--cinza);opacity:calc(.25+var(--calor)*.5)}
+.brasinha{fill:var(--fogo-medio)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+</head>
+<body>
+
+<h1>Três fornos, mesma cena</h1>
+<p class="sub">Mexa no calor e no tema — os três reagem igual, o desenho é que muda.
+Escolha um e eu levo pro <code>index.html</code>.</p>
+
+<div class="ctrl">
+  <label>calor <input type="range" id="calor" min="0" max="1" step=".01" value="1"> <b id="vcalor">1.00</b></label>
+  <button id="tema">alternar dia / noite</button>
+  <button id="ciclo">rodar o acender ▶</button>
+</div>
+
+<!-- defs compartilhados -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <linearGradient id="g-alvenaria" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="color-mix(in oklab,var(--tinta2),var(--carvao) 55%)"/>
+    <stop offset="62%" stop-color="var(--tinta2)"/>
+    <stop offset="100%" stop-color="color-mix(in oklab,var(--tinta2),var(--fogo-medio) calc(var(--calor)*22%))"/>
+  </linearGradient>
+  <radialGradient id="g-domo" cx="42%" cy="72%" r="72%">
+    <stop offset="0%" stop-color="color-mix(in oklab,var(--tinta2),var(--fogo-alto) calc(var(--calor)*26%))"/>
+    <stop offset="48%" stop-color="var(--tinta2)"/>
+    <stop offset="100%" stop-color="color-mix(in oklab,var(--tinta2),var(--carvao) 62%)"/>
+  </radialGradient>
+  <linearGradient id="g-bancada" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="color-mix(in oklab,var(--tinta2),var(--fogo-alto) calc(var(--calor)*16%))"/>
+    <stop offset="100%" stop-color="color-mix(in oklab,var(--tinta2),var(--carvao) 45%)"/>
+  </linearGradient>
+  <pattern id="p-tijolo" width="44" height="20" patternUnits="userSpaceOnUse">
+    <path d="M0 19.5H44M0 9.5H44M22 0V9.5M0 9.5V19.5M44 9.5V19.5"
+          stroke="var(--linha)" stroke-width="1" fill="none" opacity=".5"/>
+  </pattern>
+  <radialGradient id="g-fuligem" cx="50%" cy="88%" r="52%">
+    <stop offset="0%" stop-color="var(--n-carvao)" stop-opacity=".72"/>
+    <stop offset="55%" stop-color="var(--n-carvao)" stop-opacity=".28"/>
+    <stop offset="100%" stop-color="var(--n-carvao)" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="g-fundo" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="var(--n-carvao)"/>
+    <stop offset="100%" stop-color="color-mix(in oklab,var(--n-carvao),var(--fogo-borda) calc(var(--calor)*34%))"/>
+  </linearGradient>
+  <linearGradient id="g-piso" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0%" stop-color="color-mix(in oklab,var(--n-tinta2),var(--fogo-alto) calc(var(--calor)*30%))"/>
+    <stop offset="100%" stop-color="color-mix(in oklab,var(--n-tinta2),var(--n-giz) 10%)"/>
+  </linearGradient>
+  <radialGradient id="g-brasa" cx="50%" cy="52%" r="50%">
+    <stop offset="0%" stop-color="var(--fogo-nucleo)" stop-opacity=".95"/>
+    <stop offset="22%" stop-color="var(--fogo-alto)" stop-opacity=".8"/>
+    <stop offset="52%" stop-color="var(--fogo-medio)" stop-opacity=".5"/>
+    <stop offset="100%" stop-color="var(--fogo-borda)" stop-opacity="0"/>
+  </radialGradient>
+  <linearGradient id="g-chama" x1="0" y1="1" x2="0" y2="0">
+    <stop offset="0%" stop-color="var(--fogo-nucleo)"/>
+    <stop offset="45%" stop-color="var(--fogo-alto)"/>
+    <stop offset="100%" stop-color="var(--fogo-medio)" stop-opacity=".25"/>
+  </linearGradient>
+  <filter id="f-grao"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="3"/>
+    <feColorMatrix values="0 0 0 0 .5 0 0 0 0 .5 0 0 0 0 .5 0 0 0 .09 0"/></filter>
+  <pattern id="p-grao" width="440" height="340" patternUnits="userSpaceOnUse">
+    <rect width="440" height="340" filter="url(#f-grao)"/></pattern>
+  <!-- VARIANTE A: bloom + tremor de calor -->
+  <filter id="f-bloom" x="-40%" y="-40%" width="180%" height="180%">
+    <feGaussianBlur stdDeviation="7" result="b"/>
+    <feMerge><feMergeNode in="b"/><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <filter id="f-tremor" x="-10%" y="-10%" width="120%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency=".012 .045" numOctaves="2" seed="7" result="n">
+      <animate attributeName="baseFrequency" dur="9s" values=".012 .045;.016 .06;.012 .045" repeatCount="indefinite"/>
+    </feTurbulence>
+    <feDisplacementMap in="SourceGraphic" in2="n" scale="7" xChannelSelector="R" yChannelSelector="G"/>
+  </filter>
+  <clipPath id="c-boca"><path d="M108 300 L108 214 A112 96 0 0 1 332 214 L332 300 Z"/></clipPath>
+  <clipPath id="c-arco"><path d="M44 302 L44 208 A176 148 0 0 1 396 208 L396 302 Z"/></clipPath>
+  <!-- VARIANTE B: cúpula abaulada -->
+  <clipPath id="cb-domo"><path d="M36 304 C36 150 118 74 220 74 C322 74 404 150 404 304 Z"/></clipPath>
+  <clipPath id="cb-boca"><path d="M126 300 L126 226 A94 84 0 0 1 314 226 L314 300 Z"/></clipPath>
+</defs></svg>
+
+<div class="grid">
+
+  <!-- ══ ATUAL ══ -->
+  <figure>
+    <svg class="forno" viewBox="0 0 440 340" aria-hidden="true">
+      <path class="arco" fill="url(#g-alvenaria)" d="M44 302 L44 208 A176 148 0 0 1 396 208 L396 302 Z"/>
+      <g clip-path="url(#c-arco)">
+        <rect class="juntas" x="44" y="60" width="352" height="242"/>
+        <g fill="none" stroke="var(--linha)" stroke-width="1.1" opacity=".75">
+          <path d="M108 262 H93 M332 262 H347"/>
+          <path d="M124.6 168.6 L117.4 159.4 M170.4 128.6 L165.8 117.6 M220 118 V106 M269.6 128.6 L274.2 117.6 M315.4 168.6 L322.6 159.4"/>
+          <path d="M120 300 L120 216 A100 86 0 0 1 320 216 L320 300"/>
+          <path d="M108 300 L108 214 A112 96 0 0 1 332 214 L332 300"/>
+        </g>
+        <rect class="fuligem" fill="url(#g-fuligem)" x="44" y="120" width="352" height="182"/>
+      </g>
+      <path class="boca" d="M108 300 L108 214 A112 96 0 0 1 332 214 L332 300 Z"/>
+      <g clip-path="url(#c-boca)">
+        <rect fill="url(#g-fundo)" x="108" y="180" width="224" height="120"/>
+        <ellipse fill="url(#g-piso)" cx="220" cy="298" rx="112" ry="27"/>
+        <g class="chama"><ellipse cx="238" cy="292" rx="104" ry="30" fill="url(#g-brasa)"/>
+          <ellipse cx="292" cy="290" rx="52" ry="17" fill="url(#g-brasa)"/></g>
+        <g class="chama brasinha"><circle cx="268" cy="291" r="3.4" opacity=".85"/><circle cx="283" cy="295" r="2.6" opacity=".7"/>
+          <circle cx="303" cy="289" r="3" opacity=".9"/><circle cx="316" cy="294" r="2.2" opacity=".6"/></g>
+        <g><rect class="lenha" x="278" y="279" width="40" height="11" rx="5.5" transform="rotate(-8 298 284)"/>
+          <rect class="lenha-topo" x="280" y="279" width="38" height="3.4" rx="1.7" transform="rotate(-8 299 281)"/>
+          <rect class="lenha" x="290" y="287" width="34" height="10" rx="5" transform="rotate(6 307 292)"/></g>
+        <g class="labareda chama">
+          <g transform="translate(294 283) scale(1.15)"><path d="M0 0 C-8 -10 -4 -22 2 -33 C4 -22 9 -19 8 -12 C11 -15 12 -20 12 -24 C17 -14 14 -5 9 0 Z"/></g>
+          <g transform="translate(276 288) scale(.8)"><path d="M0 0 C-8 -10 -4 -22 2 -33 C4 -22 9 -19 8 -12 C11 -15 12 -20 12 -24 C17 -14 14 -5 9 0 Z"/></g>
+          <g transform="translate(312 289) scale(.62)"><path d="M0 0 C-8 -10 -4 -22 2 -33 C4 -22 9 -19 8 -12 C11 -15 12 -20 12 -24 C17 -14 14 -5 9 0 Z"/></g>
+        </g>
+        <g transform="translate(190 279) scale(1 .36)"><g class="forma">
+          <circle class="massa" r="59"/><circle class="molho" r="45"/>
+          <g class="queijo"><ellipse cx="-19" cy="-15" rx="11" ry="9"/><ellipse cx="15" cy="-22" rx="9" ry="8"/>
+            <ellipse cx="22" cy="12" rx="10" ry="8"/><ellipse cx="-12" cy="20" rx="12" ry="9"/>
+            <ellipse cx="-33" cy="10" rx="8" ry="7"/><ellipse cx="3" cy="-2" rx="9" ry="8"/></g>
+          <g class="manjericao"><ellipse cx="-5" cy="-29" rx="6" ry="3.5" transform="rotate(-24 -5 -29)"/>
+            <ellipse cx="29" cy="-5" rx="5" ry="3" transform="rotate(40 29 -5)"/>
+            <ellipse cx="-26" cy="29" rx="5.5" ry="3" transform="rotate(12 -26 29)"/></g>
+          <g class="char"><ellipse cx="0" cy="-55" rx="7" ry="3.5"/><ellipse cx="40" cy="-38" rx="5" ry="3.5"/>
+            <ellipse cx="56" cy="8" rx="3.5" ry="6"/><ellipse cx="23" cy="51" rx="7" ry="3.5"/>
+            <ellipse cx="-33" cy="45" rx="6" ry="3.5"/><ellipse cx="-56" cy="-5" rx="3.5" ry="6"/>
+            <ellipse cx="-38" cy="-40" rx="5" ry="3.5"/></g>
+        </g></g>
+        <g class="chama"><ellipse cx="230" cy="303" rx="102" ry="17" fill="url(#g-brasa)"/></g>
+      </g>
+      <path class="rim" d="M110 300 L110 215 A110 94 0 0 1 330 215 L330 300"/>
+      <path class="bancada" d="M28 302 H412 a6 6 0 0 1 6 6 v14 a6 6 0 0 1-6 6 H28 a6 6 0 0 1-6-6 v-14 a6 6 0 0 1 6-6 z"/>
+      <rect class="grao" width="440" height="340"/>
+    </svg>
+    <figcaption><b>0 · Atual</b><span>O que está no site agora. Base de comparação.</span></figcaption>
+  </figure>
+
+  <!-- ══ VARIANTE A ══ -->
+  <figure>
+    <svg class="forno" viewBox="0 0 440 340" aria-hidden="true">
+      <path class="arco" fill="url(#g-alvenaria)" d="M44 302 L44 208 A176 148 0 0 1 396 208 L396 302 Z"/>
+      <g clip-path="url(#c-arco)">
+        <rect class="juntas" x="44" y="60" width="352" height="242"/>
+        <!-- variação de cor por tijolo: tira o aspecto de grade impressa -->
+        <g opacity=".5">
+          <rect x="66" y="150" width="42" height="18" fill="var(--carvao)" opacity=".35"/>
+          <rect x="154" y="110" width="42" height="18" fill="var(--giz)" opacity=".05"/>
+          <rect x="242" y="190" width="42" height="18" fill="var(--carvao)" opacity=".3"/>
+          <rect x="330" y="130" width="42" height="18" fill="var(--carvao)" opacity=".28"/>
+          <rect x="110" y="230" width="42" height="18" fill="var(--giz)" opacity=".05"/>
+          <rect x="286" y="250" width="42" height="18" fill="var(--carvao)" opacity=".32"/>
+        </g>
+        <g fill="none" stroke="var(--linha)" stroke-width="1.1" opacity=".75">
+          <path d="M108 262 H93 M332 262 H347"/>
+          <path d="M124.6 168.6 L117.4 159.4 M170.4 128.6 L165.8 117.6 M220 118 V106 M269.6 128.6 L274.2 117.6 M315.4 168.6 L322.6 159.4"/>
+          <path d="M120 300 L120 216 A100 86 0 0 1 320 216 L320 300"/>
+          <path d="M108 300 L108 214 A112 96 0 0 1 332 214 L332 300"/>
+        </g>
+        <rect class="fuligem" fill="url(#g-fuligem)" x="44" y="120" width="352" height="182"/>
+      </g>
+      <path class="boca" d="M108 300 L108 214 A112 96 0 0 1 332 214 L332 300 Z"/>
+      <g clip-path="url(#c-boca)">
+        <rect fill="url(#g-fundo)" x="108" y="180" width="224" height="120"/>
+        <ellipse fill="url(#g-piso)" cx="220" cy="298" rx="112" ry="27"/>
+        <!-- leito com BLOOM -->
+        <g class="chama" filter="url(#f-bloom)">
+          <ellipse cx="238" cy="292" rx="96" ry="26" fill="url(#g-brasa)"/>
+          <ellipse cx="292" cy="290" rx="48" ry="15" fill="url(#g-brasa)"/></g>
+        <!-- cinzas cobrindo o leito, com brasa aparecendo por baixo -->
+        <g class="cinzas"><ellipse cx="292" cy="293" rx="44" ry="11"/></g>
+        <g class="chama brasinha"><circle cx="268" cy="291" r="3.4" opacity=".85"/><circle cx="283" cy="296" r="2.6" opacity=".7"/>
+          <circle cx="303" cy="289" r="3" opacity=".9"/><circle cx="316" cy="294" r="2.2" opacity=".6"/>
+          <circle cx="276" cy="293" r="1.8" opacity=".8"/><circle cx="309" cy="296" r="2" opacity=".65"/></g>
+        <!-- oclusão de contato: nada flutua -->
+        <ellipse class="oclusao" cx="298" cy="295" rx="34" ry="6"/>
+        <g><rect class="lenha" x="278" y="279" width="40" height="11" rx="5.5" transform="rotate(-8 298 284)"/>
+          <rect class="lenha-topo" x="280" y="279" width="38" height="3.4" rx="1.7" transform="rotate(-8 299 281)"/>
+          <rect class="lenha" x="290" y="287" width="34" height="10" rx="5" transform="rotate(6 307 292)"/></g>
+        <!-- chamas com bloom e tremor de calor -->
+        <g class="labareda chama" filter="url(#f-bloom)">
+          <g transform="translate(294 283) scale(1.15)"><path d="M0 0 C-8 -10 -4 -22 2 -33 C4 -22 9 -19 8 -12 C11 -15 12 -20 12 -24 C17 -14 14 -5 9 0 Z"/></g>
+          <g transform="translate(276 288) scale(.8)"><path d="M0 0 C-8 -10 -4 -22 2 -33 C4 -22 9 -19 8 -12 C11 -15 12 -20 12 -24 C17 -14 14 -5 9 0 Z"/></g>
+          <g transform="translate(312 289) scale(.62)"><path d="M0 0 C-8 -10 -4 -22 2 -33 C4 -22 9 -19 8 -12 C11 -15 12 -20 12 -24 C17 -14 14 -5 9 0 Z"/></g>
+        </g>
+        <!-- ar quente subindo: distorce o que está atrás -->
+        <g class="chama" filter="url(#f-tremor)" opacity=".5">
+          <rect x="250" y="200" width="90" height="80" fill="url(#g-brasa)" opacity=".18"/></g>
+        <ellipse class="oclusao" cx="190" cy="288" rx="56" ry="7" opacity="calc(.45*var(--calor))"/>
+        <g transform="translate(190 279) scale(1 .36)"><g class="forma">
+          <circle class="massa" r="59"/><circle class="molho" r="45"/>
+          <g class="queijo"><ellipse cx="-19" cy="-15" rx="11" ry="9"/><ellipse cx="15" cy="-22" rx="9" ry="8"/>
+            <ellipse cx="22" cy="12" rx="10" ry="8"/><ellipse cx="-12" cy="20" rx="12" ry="9"/>
+            <ellipse cx="-33" cy="10" rx="8" ry="7"/><ellipse cx="3" cy="-2" rx="9" ry="8"/></g>
+          <g class="manjericao"><ellipse cx="-5" cy="-29" rx="6" ry="3.5" transform="rotate(-24 -5 -29)"/>
+            <ellipse cx="29" cy="-5" rx="5" ry="3" transform="rotate(40 29 -5)"/>
+            <ellipse cx="-26" cy="29" rx="5.5" ry="3" transform="rotate(12 -26 29)"/></g>
+          <g class="char"><ellipse cx="0" cy="-55" rx="7" ry="3.5"/><ellipse cx="40" cy="-38" rx="5" ry="3.5"/>
+            <ellipse cx="56" cy="8" rx="3.5" ry="6"/><ellipse cx="23" cy="51" rx="7" ry="3.5"/>
+            <ellipse cx="-33" cy="45" rx="6" ry="3.5"/><ellipse cx="-56" cy="-5" rx="3.5" ry="6"/>
+            <ellipse cx="-38" cy="-40" rx="5" ry="3.5"/></g>
+        </g></g>
+        <g class="chama"><ellipse cx="230" cy="303" rx="102" ry="17" fill="url(#g-brasa)"/></g>
+      </g>
+      <path class="rim" d="M110 300 L110 215 A110 94 0 0 1 330 215 L330 300"/>
+      <path class="bancada" d="M28 302 H412 a6 6 0 0 1 6 6 v14 a6 6 0 0 1-6 6 H28 a6 6 0 0 1-6-6 v-14 a6 6 0 0 1 6-6 z"/>
+      <rect class="grao" width="440" height="340"/>
+    </svg>
+    <figcaption><b>A · Vetor turbinado</b><span>Mesmo desenho + bloom da brasa, tremor de ar quente,
+      oclusão de contato, cinzas por cima do leito e variação de cor por tijolo.</span></figcaption>
+  </figure>
+
+  <!-- ══ VARIANTE B ══ -->
+  <figure>
+    <svg class="forno" viewBox="0 0 440 340" aria-hidden="true">
+      <!-- cúpula ABAULADA (a referência mostrou que não é arco chapado) -->
+      <path class="arco" fill="url(#g-domo)" d="M36 304 C36 150 118 74 220 74 C322 74 404 150 404 304 Z"/>
+      <g clip-path="url(#cb-domo)">
+        <!-- fiadas que acompanham a curvatura da cúpula -->
+        <g fill="none" stroke="var(--linha)" stroke-width="1" opacity=".45">
+          <path d="M44 110 C110 92 330 92 396 110"/><path d="M38 140 C110 120 330 120 402 140"/>
+          <path d="M36 172 C110 150 330 150 404 172"/><path d="M36 206 C110 183 330 183 404 206"/>
+          <path d="M36 242 C110 218 330 218 404 242"/><path d="M36 276 C110 252 330 252 404 276"/>
+          <path d="M92 96 V304 M148 82 V304 M220 76 V304 M292 82 V304 M348 96 V304"/>
+        </g>
+        <rect class="fuligem" fill="url(#g-fuligem)" x="36" y="130" width="368" height="174"/>
+      </g>
+      <!-- anel de aduelas saliente em volta da boca -->
+      <path d="M112 302 L112 224 A108 98 0 0 1 328 224 L328 302 L314 302 L314 226 A94 84 0 0 0 126 226 L126 302 Z"
+            fill="url(#g-alvenaria)" stroke="var(--linha)" stroke-width="1.2"/>
+      <g fill="none" stroke="var(--linha)" stroke-width="1" opacity=".8">
+        <path d="M112 262 H126 M328 262 H314 M129.4 180.6 L141.5 189.9 M172.6 145.4 L179.2 157.7
+                 M220 134 V148 M267.4 145.4 L260.8 157.7 M310.6 180.6 L298.5 189.9"/>
+      </g>
+      <!-- vão fundo -->
+      <path class="boca" d="M126 300 L126 226 A94 84 0 0 1 314 226 L314 300 Z"/>
+      <g clip-path="url(#cb-boca)">
+        <!-- abóbada interna + parede do fundo iluminada pelo fogo -->
+        <rect fill="url(#g-fundo)" x="126" y="190" width="188" height="112"/>
+        <!-- piso refratário claro, com juntas, em perspectiva -->
+        <ellipse fill="url(#g-piso)" cx="220" cy="300" rx="96" ry="30"/>
+        <g stroke="color-mix(in oklab,var(--n-tinta2),var(--n-carvao) 45%)" stroke-width=".9" opacity=".55" fill="none">
+          <path d="M132 288 H308 M140 296 H300"/><path d="M186 282 V304 M254 282 V304"/>
+        </g>
+        <!-- fogo LÁ NO FUNDO, com bloom -->
+        <g class="chama" filter="url(#f-bloom)">
+          <ellipse cx="248" cy="284" rx="72" ry="22" fill="url(#g-brasa)"/>
+          <ellipse cx="250" cy="278" rx="40" ry="16" fill="url(#g-brasa)"/></g>
+        <!-- leito de cinzas com brasa por baixo (a referência: cinza claro, não laranja) -->
+        <ellipse class="cinzas" cx="250" cy="286" rx="46" ry="10"/>
+        <g class="chama brasinha">
+          <circle cx="232" cy="286" r="2.4" opacity=".9"/><circle cx="243" cy="289" r="1.9" opacity=".75"/>
+          <circle cx="255" cy="285" r="2.6" opacity=".95"/><circle cx="266" cy="288" r="1.7" opacity=".7"/>
+          <circle cx="248" cy="283" r="1.6" opacity=".85"/><circle cx="274" cy="286" r="2.1" opacity=".8"/>
+        </g>
+        <ellipse class="oclusao" cx="250" cy="289" rx="44" ry="6"/>
+        <!-- toras cruzadas em V, encostadas uma na outra -->
+        <g>
+          <rect class="lenha" x="204" y="270" width="54" height="11" rx="5.5" transform="rotate(-30 231 275)"/>
+          <rect class="lenha-topo" x="206" y="270" width="52" height="3.2" rx="1.6" transform="rotate(-30 232 272)"/>
+          <rect class="lenha" x="250" y="270" width="54" height="11" rx="5.5" transform="rotate(28 277 275)"/>
+          <rect class="lenha-topo" x="252" y="270" width="52" height="3.2" rx="1.6" transform="rotate(28 278 272)"/>
+        </g>
+        <!-- 5 línguas finas subindo do meio das toras, como na foto -->
+        <g class="labareda chama" filter="url(#f-bloom)">
+          <g transform="translate(252 274) scale(1.25)"><path d="M0 0 C-7 -11 -3 -24 2 -36 C4 -24 8 -20 7 -13 C10 -16 11 -21 11 -25 C16 -15 13 -5 8 0 Z"/></g>
+          <g transform="translate(236 278) scale(.85)"><path d="M0 0 C-7 -11 -3 -24 2 -36 C4 -24 8 -20 7 -13 C10 -16 11 -21 11 -25 C16 -15 13 -5 8 0 Z"/></g>
+          <g transform="translate(268 279) scale(.72)"><path d="M0 0 C-7 -11 -3 -24 2 -36 C4 -24 8 -20 7 -13 C10 -16 11 -21 11 -25 C16 -15 13 -5 8 0 Z"/></g>
+          <g transform="translate(224 282) scale(.55)"><path d="M0 0 C-7 -11 -3 -24 2 -36 C4 -24 8 -20 7 -13 C10 -16 11 -21 11 -25 C16 -15 13 -5 8 0 Z"/></g>
+          <g transform="translate(282 283) scale(.48)"><path d="M0 0 C-7 -11 -3 -24 2 -36 C4 -24 8 -20 7 -13 C10 -16 11 -21 11 -25 C16 -15 13 -5 8 0 Z"/></g>
+        </g>
+        <!-- ar quente subindo pela abóbada -->
+        <g class="chama" filter="url(#f-tremor)" opacity=".45">
+          <rect x="200" y="196" width="110" height="80" fill="url(#g-brasa)" opacity=".2"/></g>
+      </g>
+      <path class="rim" d="M128 300 L128 227 A92 82 0 0 1 312 227 L312 300"/>
+
+      <!-- bancada larga e saliente; a pizza fica AQUI, como na referência -->
+      <path class="bancada" d="M14 300 H426 a8 8 0 0 1 8 8 v16 a8 8 0 0 1-8 8 H14 a8 8 0 0 1-8-8 v-16 a8 8 0 0 1 8-8 z"/>
+      <g class="chama"><ellipse cx="220" cy="304" rx="130" ry="14" fill="url(#g-brasa)" opacity=".55"/></g>
+      <ellipse class="oclusao" cx="150" cy="312" rx="52" ry="7" opacity="calc(.5*var(--calor))"/>
+      <g transform="translate(150 308) scale(1 .34)"><g class="forma">
+        <circle class="massa" r="54"/><circle class="molho" r="41"/>
+        <g class="queijo"><ellipse cx="-17" cy="-14" rx="10" ry="8"/><ellipse cx="14" cy="-20" rx="8" ry="7"/>
+          <ellipse cx="20" cy="11" rx="9" ry="7"/><ellipse cx="-11" cy="18" rx="11" ry="8"/>
+          <ellipse cx="-30" cy="9" rx="7" ry="6"/><ellipse cx="3" cy="-2" rx="8" ry="7"/></g>
+        <g class="manjericao"><ellipse cx="-5" cy="-26" rx="5.5" ry="3" transform="rotate(-24 -5 -26)"/>
+          <ellipse cx="26" cy="-4" rx="4.5" ry="2.6" transform="rotate(40 26 -4)"/>
+          <ellipse cx="-24" cy="26" rx="5" ry="2.6" transform="rotate(12 -24 26)"/></g>
+        <g class="char"><ellipse cx="0" cy="-50" rx="6.5" ry="3.2"/><ellipse cx="36" cy="-35" rx="4.6" ry="3.2"/>
+          <ellipse cx="51" cy="7" rx="3.2" ry="5.5"/><ellipse cx="21" cy="47" rx="6.5" ry="3.2"/>
+          <ellipse cx="-30" cy="41" rx="5.5" ry="3.2"/><ellipse cx="-51" cy="-5" rx="3.2" ry="5.5"/>
+          <ellipse cx="-35" cy="-37" rx="4.6" ry="3.2"/></g>
+      </g></g>
+      <rect class="grao" width="440" height="340"/>
+    </svg>
+    <figcaption><b>B · Redesenhado da referência</b><span>Cúpula abaulada com fiadas curvas, anel de aduelas
+      saliente, fogo no fundo com toras em V, leito de cinzas com brasa por baixo, e a pizza na bancada —
+      tudo corrigido pela foto de referência.</span></figcaption>
+  </figure>
+
+</div>
+
+<script>
+const raiz = document.documentElement;
+const cal = document.getElementById('calor'), vcal = document.getElementById('vcalor');
+let dia = 0, timer = null;
+function setCalor(v){ raiz.style.setProperty('--calor', v); vcal.textContent = (+v).toFixed(2); cal.value = v; }
+setCalor(1); raiz.style.setProperty('--dia', 0);
+cal.addEventListener('input', e => { clearInterval(timer); timer = null; setCalor(e.target.value); });
+document.getElementById('tema').addEventListener('click', () => {
+  dia = dia ? 0 : 1; raiz.style.setProperty('--dia', dia);
+});
+document.getElementById('ciclo').addEventListener('click', () => {
+  if (timer){ clearInterval(timer); timer = null; return; }
+  let v = 0, sobe = true;
+  timer = setInterval(() => {
+    v += sobe ? .02 : -.02;
+    if (v >= 1){ v = 1; sobe = false; } else if (v <= 0){ v = 0; sobe = true; }
+    setCalor(v.toFixed(2));
+  }, 60);
+});
+</script>
+</body>
+</html>

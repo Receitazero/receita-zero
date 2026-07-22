@@ -13,7 +13,7 @@ inspiração em repositório famoso de design do GitHub. Pasta por nicho: `site-
 ## Mecânica UAU por nicho (cada uma única, diferente entre si) — STATUS ✅ TODOS FEITOS E VALIDADOS
 | # | Nicho | Vibe / Inspiração | Diferencial UAU Premium | Arquivo | Status |
 |---|---|---|---|---|---|
-| 1 | 🍕 Pizzaria | immersive menu scroll (dark vermelho) | Cardápio imersivo c/ parallax por sabor + tabs + builder de pizza | site-dfy/pizzaria/premium/index.html | ✅ FEITO |
+| 1 | 🍕 Pizzaria | **"A NOITE INTEIRA"** — Narrative Workflow (noite azul + brasa) | **Forno ao Vivo** (5 estados pela hora real) + tema claro de dia / escuro de noite + painel de forno ordenado por tempo + comanda no WhatsApp | site-dfy/pizzaria/premium/index.html | ✅ REDESIGN 22/jul — ver `PLANO-REDESIGN-PIZZARIA.md` |
 | 2 | 🥖 Padaria | editorial/warm (cream) | Storytelling "do forno à mesa" + grid de pães c/ hover de receita + encomenda por data | site-dfy/padaria/premium/index.html | ✅ FEITO |
 | 3 | 🐾 Pet shop | playful/rounded (laranja/rosa) | Avatar do pet (cor+nome ao vivo) + calculadora de banho + carousel tutores | site-dfy/pet/premium/index.html | ✅ FEITO |
 | 4 | 🔧 Oficina | tech/dark/utilitário (verde neon) | Orçamento interativo em tempo real (carro+serviço→preço) + selo garantia SVG animado | site-dfy/oficina/premium/index.html | ✅ FEITO |

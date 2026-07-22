@@ -1,3 +1,7 @@
 node_modules/
 *.log
 .DS_Store
+
+# imagens de referência geradas por IA — pesadas, servem só como modelo de desenho
+**/_ref/gemini-*.png
+**/_ref/*.webp
