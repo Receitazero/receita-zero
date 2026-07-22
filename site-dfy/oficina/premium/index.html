@@ -349,17 +349,17 @@ const OFICINA = {
    mas disparado por PLACA, não por hora */
 const ETAPA = [
   {cor:'--exec',       selo:'recebido',              nota:'Carro recebido. O diagnóstico começa em seguida.',
-   cta:'Falar com a oficina',      msg:'Oi! Queria saber do meu carro placa '},
+   cta:'Falar com a oficina',      msg:p=>`Oi! Queria saber do meu carro, placa ${p}.`},
   {cor:'--exec',       selo:'em diagnóstico',        nota:'Estamos levantando o que o carro precisa. Você recebe o laudo antes de qualquer serviço.',
-   cta:'Falar com a oficina',      msg:'Oi! Como está o diagnóstico do carro placa '},
+   cta:'Falar com a oficina',      msg:p=>`Oi! Como está o diagnóstico do carro placa ${p}?`},
   {cor:'--aguardando', selo:'aguardando você',       nota:'O laudo está pronto e nada é feito sem a sua aprovação.',
-   cta:'Ver o laudo e aprovar',    msg:'Oi! Quero aprovar o orçamento do carro placa '},
+   cta:'Ver o laudo e aprovar',    msg:p=>`Oi! Quero aprovar o orçamento do carro placa ${p}.`},
   {cor:'--exec',       selo:'em execução',           nota:'Serviço aprovado, em execução na bancada.',
-   cta:'Falar com a oficina',      msg:'Oi! Como está o serviço do carro placa '},
+   cta:'Falar com a oficina',      msg:p=>`Oi! Como está o serviço do carro placa ${p}?`},
   {cor:'--exec',       selo:'em teste',              nota:'Serviço concluído. Rodando para conferir antes de liberar.',
-   cta:'Falar com a oficina',      msg:'Oi! O carro placa '},
+   cta:'Falar com a oficina',      msg:p=>`Oi! O carro placa ${p} já saiu do teste?`},
   {cor:'--pronto',     selo:'pronto p/ retirada',    nota:'Pode buscar. Guardamos o carro sem custo de diária.',
-   cta:'Avisar que vou buscar',    msg:'Oi! Vou buscar o carro placa '}
+   cta:'Avisar que vou buscar',    msg:p=>`Oi! Vou buscar o carro placa ${p}.`}
 ];
 
 const $ = s => document.querySelector(s);
@@ -412,7 +412,7 @@ function consultar(){
   $('#f-nota').textContent     = e.nota;
   $('#f-cta-txt').textContent  = e.cta;
   $('#f-cta').href = 'https://wa.me/' + OFICINA.whats + '?text=' +
-                     encodeURIComponent(e.msg + p + '?');
+                     encodeURIComponent(e.msg(p));
 
   [...$('#f-trilho').querySelectorAll('li')].forEach((li,i) => {
     li.dataset.feito = i <= c.etapa ? '1' : '0';

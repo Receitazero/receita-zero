@@ -66,6 +66,13 @@
 - **Quality**: % de gates Hallmark passando
 - **Bugs**: nº de pageerrors por site (meta: 0)
 - **Diff**: Claude vs Hermes (qualidade percebida)
+- **Leads**: nº de leads capturados via gerador (meta: 20/mês)
+
+## Backlog futuro (decisão de negócio)
+- [ ] **ATLAS para funcionários**: avaliar uso do sistema ATLAS (white-label AAPSON)
+      para operação interna da Vitrine Certa — funcionários IA 24/7 cuidando de:
+      prospecção, follow-up de leads, suporte pós-venda, atualização de cardápios.
+      Dono decide viabilidade/custo antes de implementar.
 
 ## Comandos essenciais
 ```bash
@@ -73,4 +80,5 @@ npm test                    # valida syntax + playwright
 node references/verify-syntax.js   # syntax only
 python -m http.server 8736  # servidor local
 ?h=14|17|21|23              # forçar estado da pizzaria (demo)
+node references/lead-report.js     # report de leads no Telegram (requer credenciais)
 ```
