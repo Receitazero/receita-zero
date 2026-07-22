@@ -329,7 +329,9 @@ Regra: **nada de `translateY` como camada de parallax, nada de aurora/blob/glow 
 > **Rev. 3 — forno redesenhado (variante B).** SVG refeito a partir de referência fotográfica:
 > cúpula abaulada com fiadas curvas, anel de aduelas saliente, fogo ao fundo com toras em V,
 > leito de cinzas com brasa por baixo, bloom e tremor de ar quente, pizza na bancada.
-> `?demo` roda a noite em 40s. Página de escolha: `_checkpoint/comparar-forno.html`.
+> `?demo` roda a noite em 40s. Página de escolha do forno: `_checkpoint/comparar-forno.html`.
+> **Painel de horas (QA + demonstração):** `_checkpoint/painel-de-horas.html` — o site real em
+> iframe, com cursor de hora, atalhos por estado, "rodar a noite" e alternância desktop/celular.
 > Referências em `_ref/` (2 Gemini ≈ R$5–6,60 + 2 Pollinations R$0 — **o Pollinations bastava**).
 > Entregue: `site-dfy/pizzaria/premium/index.html` (45KB, zero dependência).
 > Prints em `_checkpoint/`. Testes: Playwright em 5 horas + comanda + filtro + reduced-motion + 320px.
