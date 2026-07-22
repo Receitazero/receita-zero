@@ -5,3 +5,15 @@ node_modules/
 # imagens de referência geradas por IA — pesadas, servem só como modelo de desenho
 **/_ref/gemini-*.png
 **/_ref/*.webp
+
+# ferramentas locais — NÃO vão para o GitHub Pages (só site-dfy/ e receita-zero/ são o site)
+_refs/
+docs/
+references/
+lead-engine/
+PLANO-*.md
+PLANO-MENSAL-*.md
+roteiro-dm.md
+package.json
+package-lock.json
+_checkpoint/
