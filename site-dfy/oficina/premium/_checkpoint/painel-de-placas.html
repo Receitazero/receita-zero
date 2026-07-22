@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Painel de placas — Oficina São Vicente</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100,400;100,500;112,600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* Mesmos tokens do index.html. Se lá mudar, mudar aqui — o painel não
+   herda nada do site, ele só o carrega dentro de iframes. */
+:root{
+  --concreto:#E9E7E2;--concreto2:#DCD9D2;--risco:#C9C6BF;
+  --grafite:#191C21;--fumo:#5E646E;--giz:#F5F4F1;
+  --aguardando:#8F5A05;--exec:#2A6288;--pronto:#256B44;--urgente:#A3372A;
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:40px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+body{background:var(--concreto);color:var(--grafite);font-family:var(--sans);
+  font-size:.95rem;line-height:1.5;padding:var(--s5)}
+h1{font-size:2rem;font-stretch:112%;font-weight:600;text-transform:uppercase;
+  letter-spacing:-.02em;line-height:1}
+.sub{color:var(--fumo);font-size:.9rem;max-inline-size:78ch;margin:10px 0 var(--s5)}
+code{font-family:var(--mono);font-size:.88em;color:var(--grafite)}
+
+/* ── controles ─────────────────────────────────────────────── */
+.ctrl{display:flex;gap:var(--s5);align-items:center;flex-wrap:wrap;
+  border:1px solid var(--risco);background:var(--giz);
+  padding:var(--s4) var(--s5);margin-block-end:var(--s5)}
+.placa-atual{font-family:var(--mono);font-size:1.6rem;font-weight:500;
+  letter-spacing:.06em;min-inline-size:9ch}
+.estado-atual{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--fumo)}
+button{background:var(--giz);border:1px solid var(--risco);
+  padding:8px 14px;color:var(--grafite);font:500 .82rem var(--mono);
+  letter-spacing:.06em;cursor:pointer;transition:border-color .15s,background .15s}
+button:hover{border-color:var(--grafite)}
+button[aria-pressed="true"]{background:var(--grafite);color:var(--giz);border-color:var(--grafite)}
+.pulos{display:flex;gap:var(--s2);flex-wrap:wrap}
+.viewport{margin-inline-start:auto;display:flex;gap:var(--s2)}
+
+/* ── palco ─────────────────────────────────────────────────── */
+.palco{border:1px solid var(--risco);background:var(--concreto2);
+  overflow:hidden;margin-block-end:var(--s6);position:relative}
+.palco-in{inline-size:100%;aspect-ratio:16/10;position:relative}
+.palco iframe{position:absolute;inset-block-start:0;inset-inline-start:0;border:0;
+  transform-origin:0 0;background:var(--concreto)}
+/* embaixo, não em cima: no topo o carimbo tapava a barra de estado do
+   próprio site ("02 na oficina") e virava leitura errada na demonstração */
+.carimbo{position:absolute;inset-block-end:10px;inset-inline-start:12px;z-index:2;
+  background:var(--grafite);color:var(--giz);padding:5px 12px;
+  font:500 .68rem/1 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+
+/* ── grade de estados ──────────────────────────────────────── */
+h2{font-size:1.25rem;font-stretch:112%;font-weight:600;text-transform:uppercase;
+  letter-spacing:-.01em;margin-block-end:var(--s3)}
+.grade{display:grid;gap:var(--s5);
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.tile{border:1px solid var(--risco);background:var(--giz)}
+.tile .janela{position:relative;inline-size:100%;aspect-ratio:16/10;overflow:hidden;
+  background:var(--concreto)}
+.tile iframe{position:absolute;inset-block-start:0;inset-inline-start:0;border:0;
+  transform-origin:0 0}
+.tile figcaption{padding:var(--s3) var(--s4) var(--s4);
+  border-block-start:1px solid var(--risco);
+  display:grid;grid-template-columns:auto minmax(0,1fr);gap:var(--s3);align-items:baseline}
+.tile b{font-family:var(--mono);font-weight:500;font-size:1rem;letter-spacing:.06em}
+.tile .sel{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;
+  text-transform:uppercase;border:1px solid currentColor;padding:.15rem .45rem;
+  justify-self:start}
+.tile p{grid-column:1/-1;color:var(--fumo);font-size:.85rem}
+footer{margin-block-start:var(--s6);color:var(--fumo);font-size:.82rem;
+  border-block-start:1px solid var(--risco);padding-block-start:var(--s4);
+  max-inline-size:78ch}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<h1>Painel de placas</h1>
+<p class="sub">O site de verdade, aberto em cada estado. É o mesmo <code>index.html</code> —
+nada aqui é montagem. Serve para conferir os três estágios sem esperar o carro andar na
+oficina, e para mostrar a consulta funcionando numa reunião. Clique numa placa.</p>
+
+<div class="ctrl">
+  <div>
+    <p class="placa-atual" id="placa-atual">ABC1D23</p>
+    <p class="estado-atual" id="estado-atual">aguardando você</p>
+  </div>
+  <div class="pulos" id="pulos"></div>
+  <div class="viewport">
+    <button id="vw-desk" aria-pressed="true">desktop</button>
+    <button id="vw-mob" aria-pressed="false">celular</button>
+  </div>
+</div>
+
+<div class="palco">
+  <div class="palco-in" id="palco-in">
+    <span class="carimbo" id="carimbo">ABC1D23 · aguardando você</span>
+    <iframe id="palco-frame" title="Pré-visualização do site com a placa escolhida"></iframe>
+  </div>
+</div>
+
+<h2>Todos os estados, lado a lado</h2>
+<div class="grade" id="grade"></div>
+
+<footer>
+  Cada quadro é um <code>&lt;iframe&gt;</code> do site real com <code>?placa=</code>.
+  O mesmo parâmetro serve na vida real: a oficina manda
+  <code>…/index.html?placa=ABC1D23</code> no WhatsApp e o cliente cai na ficha
+  dele já aberta, sem digitar nada.
+</footer>
+
+<script>
+/* Espelha o bloco OFICINA.carros{} + ETAPA[] do index.html.
+   O estado "sem placa" entra aqui porque é o que 100% das visitas veem
+   primeiro — deixar fora do painel seria esconder a tela mais vista. */
+const ESTADOS = [
+  { p:'',        rot:'sem placa',    sel:'estado inicial', cor:'--fumo',
+    nota:'O que todo visitante vê ao abrir. O console pede a placa e nada mais.' },
+  { p:'ABC1D23', rot:'aguardando',   sel:'aguardando você', cor:'--aguardando',
+    nota:'Gol 1.6 · OS 2418 · bancada 02. Laudo pronto, nada é feito sem aprovação.' },
+  { p:'XYZ4B56', rot:'em execução',  sel:'em execução',     cor:'--exec',
+    nota:'Onix 1.0 · OS 2422 · bancada 01. Serviço aprovado, na bancada agora.' },
+  { p:'QRS7C89', rot:'pronto',       sel:'pronto p/ retirada', cor:'--pronto',
+    nota:'Strada 1.4 · OS 2409 · bancada 03. Pode buscar, sem diária.' },
+  { p:'ZZZ9Z99', rot:'placa errada', sel:'não encontrada',  cor:'--urgente',
+    nota:'Placa que não existe. A ficha some e o erro aparece — sem tela quebrada.' },
+];
+const SITE = '../index.html';
+const LARG = { desk:1280, mob:390 };
+const ALT  = { desk:820,  mob:800 };
+let vw = 'desk';
+
+const $ = s => document.querySelector(s);
+const url = p => p ? `${SITE}?placa=${p}` : SITE;
+
+/* Encaixa um iframe de LARG×ALT dentro da caixa. Nunca AMPLIAR (Math.min com 1):
+   no modo celular a caixa é mais larga que os 390px do aparelho, e sem o teto o
+   telefone vira pôster. Centraliza por `left` — mexer no transform brigaria
+   com a escala. (Mesma função do painel da pizzaria; funcionou, não reinventei.) */
+function encaixar(frame, caixa){
+  const k  = Math.min(1, caixa.clientWidth / LARG[vw]);
+  const dx = Math.max(0, (caixa.clientWidth - LARG[vw] * k) / 2);
+  frame.style.width  = LARG[vw] + 'px';
+  frame.style.height = ALT[vw] + 'px';
+  frame.style.left = dx + 'px';
+  frame.style.transform = `scale(${k})`;
+  caixa.style.aspectRatio = 'auto';
+  caixa.style.height = Math.round(ALT[vw] * k) + 'px';
+}
+
+/* ── palco ─────────────────────────────────────────────────── */
+const palco = $('#palco-frame'), caixaPalco = $('#palco-in');
+function irPara(i){
+  const e = ESTADOS[i];
+  $('#placa-atual').textContent = e.p || '—';
+  $('#estado-atual').textContent = e.sel;
+  $('#carimbo').textContent = `${e.p || 'sem placa'} · ${e.sel}`;
+  palco.src = url(e.p);
+  [...$('#pulos').children].forEach((b, j) =>
+    b.setAttribute('aria-pressed', String(j === i)));
+}
+$('#pulos').innerHTML = ESTADOS.map((e, i) =>
+  `<button type="button" data-i="${i}">${e.p || 'sem placa'}</button>`).join('');
+$('#pulos').addEventListener('click', ev => {
+  const b = ev.target.closest('button'); if (!b) return;
+  irPara(+b.dataset.i);
+});
+
+/* ── grade ─────────────────────────────────────────────────── */
+$('#grade').innerHTML = ESTADOS.map(e => `
+  <figure class="tile">
+    <div class="janela"><iframe loading="lazy" title="${e.rot}"
+      src="${url(e.p)}"></iframe></div>
+    <figcaption>
+      <b>${e.p || '—'}</b>
+      <span class="sel" style="color:var(${e.cor})">${e.sel}</span>
+      <p>${e.nota}</p>
+    </figcaption>
+  </figure>`).join('');
+
+function reencaixarTudo(){
+  encaixar(palco, caixaPalco);
+  document.querySelectorAll('.tile').forEach(t =>
+    encaixar(t.querySelector('iframe'), t.querySelector('.janela')));
+}
+for (const [id, modo] of [['#vw-desk','desk'], ['#vw-mob','mob']]) {
+  $(id).addEventListener('click', () => {
+    vw = modo;
+    $('#vw-desk').setAttribute('aria-pressed', String(modo === 'desk'));
+    $('#vw-mob').setAttribute('aria-pressed',  String(modo === 'mob'));
+    reencaixarTudo();
+  });
+}
+addEventListener('resize', reencaixarTudo);
+
+irPara(1);          /* abre no estado que vende: aguardando aprovação */
+reencaixarTudo();
+</script>
+</body>
+</html>

@@ -688,6 +688,11 @@ function consultar(){
   }));
 }
 
+/* ?placa=ABC1D23 já abre consultada. Serve ao painel de demonstração e,
+   na vida real, ao link que a oficina manda no WhatsApp do cliente. */
+const doURL = norm(new URLSearchParams(location.search).get('placa') || '');
+if (doURL){ campo.value = doURL; consultar(); }
+
 /* ── LAUDO ────────────────────────────────────────────────────────
    O premium do concorrente CALCULA um preço. Este mostra o diagnóstico
    e pede uma decisão — é a diferença de espécie contra o R$49.        */
