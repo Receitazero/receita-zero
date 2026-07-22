@@ -9,7 +9,8 @@ const { chromium } = require('playwright');
   p.on('pageerror', e => errs.push(String(e)));
 
   const pages = [
-    { url: 'http://127.0.0.1:8736/site-dfy/pizzaria/premium/index.html', name: 'pizzaria' },
+    { url: 'http://127.0.0.1:8736/site-dfy/pizzaria/premium/index.html', name: 'pizzaria (claude)' },
+    { url: 'http://127.0.0.1:8736/site-dfy/pizzaria/premium/_paralelo/index.html', name: 'pizzaria (paralelo)' },
   ];
 
   let allOk = true;
@@ -18,7 +19,7 @@ const { chromium } = require('playwright');
       await p.goto(page.url, { waitUntil: 'networkidle' });
       await p.waitForTimeout(1500);
 
-      const hidden = await p.$$eval('.reveal:not(.in)', el => el.length);
+      const hidden = await p.$$eval('.reveal:not(.on)', el => el.length);
       const pageerrors = errs.length;
 
       // scroll pro final pra ativar timelines
