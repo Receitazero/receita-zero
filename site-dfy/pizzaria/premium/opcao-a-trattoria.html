@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Forno &amp; Massa — pizzaria premium (Trattoria)</title>
+<meta name="description" content="Pizzaria premium: cardápio editorial, monte sua pizza e peça no WhatsApp.">
+<style>
+:root{
+  --bg:#FBF3E7;--bg2:#F3E7D3;--surface:#FFFDF8;--line:#E4D3B8;--line2:#D8C09A;
+  --fg:#2B2118;--muted:#6E5A45;--faint:#9A8467;
+  --a1:#C0392B;--a2:#B8742E;--a3:#C99A3B;--off:#2B2118;
+  --grad:linear-gradient(120deg,var(--a1),var(--a2));
+  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-display:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+.wrap{max-width:1140px;margin-inline:auto;padding-inline:24px}
+section{padding-block:var(--s-3xl)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.04;letter-spacing:-.02em}
+.eyebrow{font-size:.74rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--a1);margin-bottom:var(--s-sm)}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.7rem;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;text-decoration:none}
+.btn-solid{background:var(--grad);color:#fff;box-shadow:0 14px 34px -14px color-mix(in srgb,var(--a1) 60%,transparent)}
+.btn-solid:hover{transform:translateY(-3px)}
+.btn-outline{background:var(--surface);border-color:var(--line2);color:var(--fg)}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.nav{position:absolute;top:0;left:0;right:0;z-index:50}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:1.4rem}
+.brand{font-family:var(--font-display);font-weight:800;font-size:1.4rem}
+.brand b{color:var(--a1)}
+/* HERO assimétrico */
+.hero{display:grid;grid-template-columns:1.15fr .85fr;gap:var(--s-2xl);align-items:end;min-height:100vh;padding-bottom:var(--s-3xl)}
+.hero .lead-col{max-width:30ch}
+.hero h1{font-size:clamp(2.8rem,6vw,5rem);margin-bottom:var(--s-md)}
+.hero .lede{color:var(--muted);font-size:1.1rem;margin-bottom:var(--s-lg)}
+.hero .fig{aspect-ratio:1/1;border-radius:24px;background:radial-gradient(60% 60% at 50% 40%,color-mix(in srgb,var(--a1) 22%,#fff),var(--surface));border:1px solid var(--line);display:grid;place-items:center;font-size:8rem;box-shadow:0 50px 100px -50px color-mix(in srgb,var(--a2) 50%,transparent)}
+/* CAPÍTULOS */
+.chapter{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2xl);align-items:center;min-height:88vh;padding-block:var(--s-2xl)}
+.chapter.flip .pic{order:2}
+.chapter .idx{font-family:var(--font-display);font-size:clamp(4rem,9vw,8rem);font-weight:800;color:var(--line2);line-height:.8}
+.chapter h3{font-size:clamp(2rem,4vw,3rem);margin:.3rem 0 .6rem}
+.chapter p{color:var(--muted);max-width:42ch;margin-bottom:var(--s-md)}
+.chapter .price{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--a1)}
+.chapter .pic{aspect-ratio:4/3.4;border-radius:20px;background:linear-gradient(150deg,color-mix(in srgb,var(--a2) 24%,#fff),color-mix(in srgb,var(--a1) 14%,#fff));border:1px solid var(--line);display:grid;place-items:center;font-size:5rem}
+/* BUILDER lateral fixo */
+.builder{position:sticky;top:var(--s-xl);background:var(--surface);border:1px solid var(--line2);border-radius:18px;padding:var(--s-lg)}
+.builder h4{font-family:var(--font-display);font-size:1.3rem;margin-bottom:.8rem}
+.builder .grp{margin-bottom:1rem}
+.builder .grp span{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700;margin-bottom:.4rem}
+.builder .opts{display:flex;gap:.5rem;flex-wrap:wrap}
+.builder .opts button{padding:.5rem .9rem;border-radius:8px;border:1px solid var(--line2);background:var(--bg);color:var(--fg);cursor:pointer;font-family:var(--font-body);font-size:.9rem;transition:.2s}
+.builder .opts button.on{background:var(--a1);color:#fff;border-color:transparent;font-weight:700}
+.builder .tot{font-family:var(--font-display);font-size:2rem;font-weight:800;color:var(--a1);margin:.4rem 0}
+.builder .btn{width:100%;justify-content:center}
+.layout-builder{display:grid;grid-template-columns:1.6fr .9fr;gap:var(--s-2xl);align-items:start}
+footer{padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.85rem;border-top:1px solid var(--line)}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.chapter{grid-template-columns:1fr}.chapter.flip .pic{order:0}.layout-builder{grid-template-columns:1fr}.builder{position:relative}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><div class="brand">Forno<b>&amp;</b>Massa</div><a class="btn btn-solid" href="https://wa.me/5511970776856" target="_blank" rel="noopener" style="padding:.6rem 1.2rem;font-size:.9rem">Pedir</a></div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="lead-col reveal">
+    <span class="eyebrow">Pizzaria premium · São Vicente</span>
+    <h1>Pizza de verdade, feita à mão</h1>
+    <p class="lede">Massa de fermentação longa, forno a lenha e ingredientes do bairro. Veja o cardápio como quem folheia uma revista.</p>
+    <a class="btn btn-solid" href="#cardapio">Ver cardápio</a>
+  </div>
+  <div class="fig reveal" aria-hidden="true">🍕</div>
+</div></header>
+
+<section id="cardapio"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Cardápio</span><h2 class="reveal">Uma página, um sabor</h2></div>
+  <div class="chapter reveal">
+    <div><div class="idx">01</div><h3>Margherita</h3><p>Molho San Marzano, mussarela de búfala, manjericão fresco e azeite da casa.</p><div class="price">R$ 42</div></div>
+    <div class="pic" aria-hidden="true">🍅</div>
+  </div>
+  <div class="chapter flip reveal">
+    <div><div class="idx">02</div><h3>Calabresa</h3><p>Calabresa moída na hora, cebola roxa, orégano e mel da serra.</p><div class="price">R$ 48</div></div>
+    <div class="pic" aria-hidden="true">🌶️</div>
+  </div>
+  <div class="chapter reveal">
+    <div><div class="idx">03</div><h3>Quatro Queijos</h3><p>Gorgonzola, parmesão, provolone e catupiry. Cremosa e intensa.</p><div class="price">R$ 54</div></div>
+    <div class="pic" aria-hidden="true">🧀</div>
+  </div>
+</div></section>
+
+<section id="monte"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Monte a sua</span><h2 class="reveal">Do seu jeito</h2></div>
+  <div class="layout-builder">
+    <div class="reveal">
+      <p style="color:var(--muted);max-width:46ch">Escolha tamanho e massa, o preço atualiza na hora. Pronto? A gente manda pro WhatsApp.</p>
+    </div>
+    <div class="builder reveal">
+      <h4>Sua pizza</h4>
+      <div class="grp"><span>Tamanho</span><div class="opts" id="oS"><button data-v="0" class="on">M</button><button data-v="10">G +R$10</button><button data-v="20">GG +R$20</button></div></div>
+      <div class="grp"><span>Massa</span><div class="opts" id="oM"><button data-v="0" class="on">Tradicional</button><button data-v="6">Integral +R$6</button><button data-v="8">Sem glúten +R$8</button></div></div>
+      <div class="grp"><span>Borda</span><div class="opts" id="oB"><button data-v="0" class="on">Simples</button><button data-v="5">Recheada +R$5</button></div></div>
+      <div class="tot" id="bTot">R$ 42</div>
+      <a class="btn btn-solid" id="bWa" href="https://wa.me/5511970776856" target="_blank" rel="noopener">Pedir essa →</a>
+    </div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">Forno &amp; Massa · pizzaria premium em São Vicente · © 2026</div></footer>
+
+<script>
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.1,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%3*70)+'ms';io.observe(el);});
+setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
+const BASE=42;
+const sel={S:0,M:0,B:0};
+function grp(id){return document.querySelectorAll('#'+id+' button');}
+function calc(){const v=BASE+sel.S+sel.M+sel.B;document.getElementById('bTot').textContent='R$ '+v;const t='Quero montar pizza: M'+(sel.S?'+':'');const det='Tamanho '+(sel.S?'G/GG':'M')+', massa '+(sel.M?'integral/sem glúten':'tradicional')+', borda '+(sel.B?'recheada':'simples')+' — R$ '+v;document.getElementById('bWa').href='https://wa.me/5511970776856?text='+encodeURIComponent(det);}
+function wire(id,key){grp(id).forEach(b=>b.addEventListener('click',()=>{grp(id).forEach(x=>x.classList.remove('on'));b.classList.add('on');sel[key]=+b.dataset.v;calc();}));}
+wire('oS','S');wire('oM','M');wire('oB','B');calc();
+</script>
+</body>
+</html>
