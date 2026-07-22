@@ -97,6 +97,14 @@ a{color:var(--a2);text-decoration:none}
 .cta-final{text-align:center}
 .cta-final h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:var(--s-lg)}
 footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.88rem}
+/* scroll motion */
+.mock{will-change:transform}
+.floaty{animation:floaty 7s ease-in-out infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.hero-fig{transition:transform .1s linear}
+.scroll-reveal{opacity:0;transform:translateY(40px) scale(.98);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
+.scroll-reveal.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.floaty,.hero::before{animation:none!important}.reveal,.scroll-reveal{transition:none;opacity:1;transform:none}}
 @media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.mock{order:-1;max-width:420px;margin-inline:auto}}
 </style>
 </head>
@@ -120,7 +128,7 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(
       </div>
     </div>
     <div class="hero-fig reveal d2">
-      <div class="mock">
+      <div class="mock floaty">
         <div class="bar"><i></i><i></i><i></i></div>
         <div class="body">
           <h4>Pizza Forno a Lenha</h4>
@@ -218,10 +226,16 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(
       <span class="eyebrow reveal">Dúvidas</span>
       <h2 class="reveal">Perguntas frequentes</h2>
     </div>
-    <details class="reveal"><summary>Em 48h mesmo?</summary><p>Sim, o site básico fica pronto em até 48h úteis após você mandar o nicho e a cidade.</p></details>
-    <details class="reveal"><summary>Tem fidelidade?</summary><p>Não. Você paga mês a mês e cancela quando quiser, sem multa.</p></details>
-    <details class="reveal"><summary>Quem faz o site?</summary><p>Um sistema com IA + revisão humana. Você aprova o resultado antes de subir.</p></details>
-    <details class="reveal"><summary>O lead cai onde?</summary><p>Direto no seu WhatsApp e num painel de leads seu. Sem intermediário.</p></details>
+    <details class="reveal" open><summary>Em 48h mesmo?</summary><p>Sim. O site do plano Essencial fica pronto em até 48h úteis após você enviar o nicho (tipo de comércio) e a cidade. Você recebe um link de pré-visualização, aprova e a gente publica. Se precisar de ajustes (cores, textos, fotos), entramos em uma rodada de revisão rápida sem custo extra.</p></details>
+    <details class="reveal"><summary>Tem fidelidade ou contrato?</summary><p>Não. Você paga mês a mês e cancela quando quiser, sem multa e sem burocracia. O site fica no ar enquanto a assinatura estiver ativa; se cancelar, tiramos do ar e devolvemos seus dados. Sem letras miúdas.</p></details>
+    <details class="reveal"><summary>Quem faz o site, é IA ou pessoa?</summary><p>Um sistema com IA monta a estrutura, os textos e os serviços a partir do seu nicho, e uma revisão humana passa um polimento final (tom de voz, coerência, conferência de preços). Você aprova o resultado antes de subir. Não é "gerador solto" — tem cuidado humano no meio.</p></details>
+    <details class="reveal"><summary>Onde o lead (cliente) cai?</summary><p>Direto no seu WhatsApp, numa mensagem já trazendo nome e o que o cliente quer. Além disso, se você ativar o painel de leads (plano Premium ou add-on), tudo também é registrado numa planilha sua para acompanhamento e follow-up. Sem intermediário, sem comissão por venda.</p></details>
+    <details class="reveal"><summary>Preciso saber de site ou programação?</summary><p>Não. Você só manda o nicho, a cidade e (se tiver) o link do Google Maps ou Instagram. A gente estrutura tudo. Para editar um preço ou um texto depois, é só pedir no WhatsApp e a gente ajusta, ou você mesmo edita num editor simples que disponibilizamos.</p></details>
+    <details class="reveal"><summary>Aparece no Google?</summary><p>Sim. Cada site é feito com título, descrição e cabeçalhos otimizados para a sua cidade (ex.: "padaria em São Vicente"), o que ajuda a ranquear nas buscas locais. Quanto mais antigo e com mais avaliações, melhor o posicionamento — por isso vale publicar cedo.</p></details>
+    <details class="reveal"><summary>Posso usar minhas fotos ou vocês fornecem?</summary><p>Os dois. Se você mandar fotos reais do seu comércio, a gente usa (fica muito melhor e mais confiável). Se não tiver, usamos fotos de alta qualidade do seu nicho como base, e você troca quando quiser. Nunca usamos imagens de terceiros sem direito.</p></details>
+    <details class="reveal"><summary>E se eu já tiver um site?</summary><p>A gente pode refazer do zero no padrão Vitrine Certa (mais rápido, moderno e com WhatsApp integrado) ou apenas importar seu conteúdo. Muitos clientes trocam justamente porque o site antigo não traz lead. O plano Premium inclui essa migração.</p></details>
+    <details class="reveal"><summary>Qual a diferença entre Essencial e Premium?</summary><p>Essencial (R$49/mês): site da sua empresa, hospedagem, domínio, atualizações e aparece no Google. Premium (R$149/mês): tudo isso + agenda online de serviços, lembrete automático no WhatsApp, catálogo de produtos e suporte prioritário. Se você agenda horário ou vende pelo site, o Premium se paga sozinho.</p></details>
+    <details class="reveal"><summary>Como funciona o pagamento?</summary><p>Pix, cartão ou boleto, mês a mês. O primeiro mês pode ter promoção de lançamento. Não cobramos taxa de setup e não pedimos dados de cartão para o teste — você só paga quando aprovar o site no ar.</p></details>
   </div>
 </section>
 
@@ -246,6 +260,29 @@ setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add
 // preview interativo
 const pv=document.getElementById('pv'),pvf=document.getElementById('pvf');
 if(pv)pv.addEventListener('change',()=>{pvf.src=pv.value;});
-</script>
+// scroll motion: parallax sutil no hero e aurora (mobile-safe, respeita reduced-motion)
+const heroFig=document.querySelector('.hero-fig');
+const aurora=document.body;
+let ticking=false;
+function onScroll(){
+  const y=window.scrollY||0;
+  if(heroFig && window.innerWidth>820){
+    heroFig.style.transform='translateY('+(y*0.06)+'px)';
+  }
+  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    document.body.style.setProperty('--sy',(y*0.02)+'px');
+  }
+  ticking=false;
+}
+window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(onScroll);ticking=true;}},{passive:true});
+onScroll();
+// scroll-reveal para seções (além do .reveal padrão)
+const sr=document.querySelectorAll('.scroll-reveal');
+if(sr.length){
+  const io2=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target);}}),{threshold:.15});
+  sr.forEach(el=>io2.observe(el));
+  setTimeout(()=>sr.forEach(el=>el.classList.add('in')),1800);
+}
+
 </body>
 </html>
