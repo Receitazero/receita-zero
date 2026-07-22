@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lava Rápido — lavanderia premium em São Vicente</title>
+<meta name="description" content="Lavanderia premium em São Vicente: simulador de custo por peso, serviços e timeline do pedido em tempo real.">
+<style>
+:root{
+  --bg:#06100C;--bg2:#0B1812;--surface:#0F1F17;--surface2:#15291E;--line:#1F3A2B;--line2:#2E543B;
+  --fg:#EAFBF1;--muted:#A9D8BE;--faint:#7CA98D;
+  --a1:#34E89E;--a2:#3FD0C9;--a3:#9BEFB0;--off:#EAFBF1;
+  --grad:linear-gradient(120deg,var(--a1),var(--a2));
+  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
+  --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
+  --font-display:'Sora',system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(45% 42% at 85% 8%,color-mix(in srgb,var(--a1) 18%,transparent),transparent 70%),radial-gradient(40% 40% at 8% 92%,color-mix(in srgb,var(--a2) 14%,transparent),transparent 70%);filter:blur(12px);animation:glow 18s ease-in-out infinite alternate}
+@keyframes glow{0%{transform:translateY(0)}100%{transform:translateY(-2%)}}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
+section{padding-block:var(--s-3xl)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.05;letter-spacing:-.02em}
+.eyebrow{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--a1);margin-bottom:var(--s-sm)}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-weight:800;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;text-decoration:none}
+.btn-solid{background:var(--grad);color:#031710;box-shadow:0 16px 40px -14px color-mix(in srgb,var(--a1) 70%,transparent)}
+.btn-solid:hover{transform:translateY(-3px)}
+.btn-outline{background:color-mix(in srgb,var(--surface) 60%,transparent);border-color:var(--line2);color:var(--fg)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.9rem}
+.brand{font-family:var(--font-display);font-weight:800;font-size:1.3rem}
+.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* HERO */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-2xl);align-items:center;padding-block:var(--s-3xl)}
+.hero h1{font-size:clamp(2.6rem,5.5vw,4.4rem);margin-bottom:var(--s-md)}
+.hero .lede{color:var(--muted);font-size:1.15rem;max-width:42ch;margin-bottom:var(--s-xl)}
+.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.hero .fig{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/4;background:linear-gradient(160deg,var(--surface2),var(--surface));border:1px solid var(--line);box-shadow:0 40px 90px -40px color-mix(in srgb,var(--a1) 50%,transparent);display:grid;place-items:center;font-size:4rem}
+/* SIMULADOR */
+.sim{background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:var(--s-2xl);display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2xl);align-items:center}
+.sim label{display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700;margin-bottom:.4rem}
+.sim input[type=range]{width:100%;accent-color:var(--a1)}
+.sim .kg{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--a1)}
+.sim .servs{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.4rem}
+.sim .servs span{padding:.45rem .9rem;border-radius:999px;border:1px solid var(--line2);background:var(--surface);color:var(--muted);font-size:.85rem;cursor:pointer;transition:.2s}
+.sim .servs span.on{background:var(--a1);color:#031710;border-color:transparent;font-weight:700}
+.sim .out{background:var(--surface);border:1px solid var(--line2);border-radius:14px;padding:var(--s-lg);text-align:center}
+.sim .out .total{font-family:var(--font-display);font-size:3rem;font-weight:800;color:var(--a3)}
+.sim .out small{display:block;color:var(--muted);font-size:.9rem;margin-top:.2rem}
+/* TIMELINE */
+.timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg);position:relative}
+.timeline::before{content:'';position:absolute;top:34px;left:8%;right:8%;height:3px;background:linear-gradient(90deg,var(--a1),var(--a2));opacity:.3}
+.step{text-align:center;position:relative}
+.step .dot{width:48px;height:48px;border-radius:50%;margin:0 auto 1rem;background:var(--surface);border:3px solid var(--line2);display:grid;place-items:center;font-size:1.3rem;position:relative;z-index:2;transition:.4s}
+.step.on .dot{background:var(--grad);border-color:transparent;color:#031710;box-shadow:0 0 0 6px color-mix(in srgb,var(--a1) 18%,transparent)}
+.step h4{font-family:var(--font-display);font-size:1.1rem;margin-bottom:.3rem}
+.step p{color:var(--muted);font-size:.88rem;max-width:24ch;margin-inline:auto}
+.cta-final{text-align:center}
+footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.85rem}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.sim{grid-template-columns:1fr}.timeline{grid-template-columns:1fr}.timeline::before{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><div class="brand">Lava<b>Rápido</b></div><a class="btn btn-solid" href="#simular" style="padding:.6rem 1.2rem;font-size:.9rem">Simular</a></div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="reveal d1">
+    <span class="eyebrow">Lavanderia premium · São Vicente</span>
+    <h1>Roupa limpa, <span class="grad">sem você levar peso</span></h1>
+    <p class="lede">Simule o custo por quilo na hora, escolha os serviços e acompanhe seu pedido do drop à entrega. A gente lava, você relaxa.</p>
+    <div class="cta"><a class="btn btn-solid" href="#simular">Simular preço</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">WhatsApp</a></div>
+  </div>
+  <div class="fig reveal d2">🧺</div>
+</div></header>
+
+<section id="simular"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Simulador ao vivo</span><h2 class="reveal">Quanto custa sua roupa?</h2></div>
+  <div class="sim reveal">
+    <div>
+      <label>Peso da carga</label>
+      <input id="kg" type="range" min="1" max="20" value="5">
+      <div class="kg"><span id="kgVal">5</span> kg</div>
+      <label style="margin-top:1.2rem">Serviços</label>
+      <div class="servs" id="servs">
+        <span data-v="0" class="on">Lavar e secar</span>
+        <span data-v="8">Passar</span>
+        <span data-v="15">Especial (lã/seda)</span>
+        <span data-v="6">Retirada expressa</span>
+      </div>
+    </div>
+    <div class="out">
+      <div class="total" id="tot">R$ 25</div>
+      <small id="sub">5 kg · Lavar e secar</small>
+      <a class="btn btn-solid" id="wa" href="https://wa.me/5511970776856" target="_blank" rel="noopener" style="margin-top:1rem;width:100%;justify-content:center">Pedir no WhatsApp →</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="timeline"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Acompanhe</span><h2 class="reveal">Do drop à entrega</h2><p class="reveal" style="color:var(--muted)">Role e veja o pedido andar.</p></div>
+  <div class="timeline">
+    <div class="step" data-step><div class="dot">📥</div><h4>Deixou</h4><p>Você entrega a sacola ou a gente retira.</p></div>
+    <div class="step" data-step><div class="dot">🫧</div><h4>Lavado</h4><p>Separamos, lavamos e secamos com cuidado.</p></div>
+    <div class="step" data-step><div class="dot">📦</div><h4>Entrega</h4><p>Cheirosa e dobradinha na sua porta.</p></div>
+  </div>
+</div></section>
+
+<section class="cta-final"><div class="wrap">
+  <h2 class="reveal">Pronto pra deixar a roupa com a gente?</h2>
+  <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
+    <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20lavar%20minha%20roupa%20Lava%20R%C3%A1pido" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <a class="btn btn-outline" href="#simular">Simular preço</a>
+  </div>
+  <p style="color:var(--faint);margin-top:var(--s-xl);font-size:.9rem">Site premium Vitrine Certa · braço independente</p>
+</div></section>
+
+<footer><div class="wrap">Lava Rápido · lavanderia premium em São Vicente · © 2026</div></footer>
+
+<script>
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
+setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
+// SIMULADOR
+const RATE=5; // R$ por kg
+const kg=document.getElementById('kg'),kgVal=document.getElementById('kgVal'),tot=document.getElementById('tot'),sub=document.getElementById('sub'),wa=document.getElementById('wa');
+const servs=new Set(['Lavar e secar']);
+function calc(){const k=+kg.value;let extra=0;const names=[];servs.forEach(s=>{const el=[...document.querySelectorAll('#servs span')].find(x=>x.textContent===s);extra+=+el.dataset.v;names.push(s);});const v=k*RATE+extra;tot.textContent='R$ '+v;kgVal.textContent=k;sub.textContent=k+' kg · '+names.join(', ');wa.href='https://wa.me/5511970776856?text='+encodeURIComponent('Quero lavar '+k+'kg ('+names.join(', ')+') — R$ '+v);}
+kg.addEventListener('input',calc);
+document.querySelectorAll('#servs span').forEach(s=>s.addEventListener('click',()=>{const n=s.textContent;if(servs.has(n)){if(servs.size>1){servs.delete(n);s.classList.remove('on');}}else{servs.add(n);s.classList.add('on');}calc();}));
+calc();
+// TIMELINE ao rolar
+const steps=document.querySelectorAll('.step[data-step]');
+const io2=new IntersectionObserver((es)=>es.forEach((e,i)=>{if(e.isIntersecting){let idx=[...steps].indexOf(e.target);steps.forEach((s,j)=>s.classList.toggle('on',j<=idx));io2.unobserve(e.target);}}),{threshold:.4});
+steps.forEach(s=>io2.observe(s));
+</script>
+</body>
+</html>

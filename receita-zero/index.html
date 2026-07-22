@@ -81,6 +81,12 @@ a{color:var(--a2);text-decoration:none}
 .preview .frame{border-radius:16px;overflow:hidden;border:1px solid var(--line2);background:var(--surface);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
 .preview .frame iframe{width:100%;height:100%;border:0;background:#fff}
 .preview .hint{color:var(--faint);font-size:.85rem;margin-top:.8rem}
+.premium-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-lg);margin-top:var(--s-xl)}
+.pg{display:flex;flex-direction:column;gap:.2rem;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:var(--s-lg);text-decoration:none;color:var(--fg);transition:transform .25s,border-color .25s,box-shadow .25s}
+.pg:hover{transform:translateY(-6px);border-color:var(--a1);box-shadow:0 24px 60px -30px color-mix(in srgb,var(--a1) 50%,transparent)}
+.pg b{font-family:var(--font-display);font-size:1.15rem}
+.pg span{color:var(--faint);font-size:.85rem}
+@media(max-width:860px){.premium-grid{grid-template-columns:1fr 1fr}}
 /* plans */
 .plans{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-lg);max-width:760px;margin:var(--s-xl) auto 0}
 .plan{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:var(--s-xl);position:relative}
@@ -183,6 +189,24 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(
     <p class="hint reveal">Cada exemplo é um site real que a gente entrega — só troca nome, fotos e preços.</p>
   </div>
 </section>
+
+<section id="premium-link"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-2xl)">
+    <span class="eyebrow reveal">Quer a versão completa?</span>
+    <h2 class="reveal">Sites Premium — cada nicho com seu diferencial</h2>
+    <p class="reveal" style="color:var(--muted);max-width:60ch;margin:0 auto">O plano Premium (R$149/mês) entrega um site com mecânica única por nicho: cardápio imersivo, avatar do pet, orçamento ao vivo, agenda, tour virtual e muito mais. Veja um exemplo de cada:</p>
+  </div>
+  <div class="premium-grid reveal">
+    <a class="pg" href="../site-dfy/pet/premium/index.html" target="_blank" rel="noopener">🐾 <b>Pet shop</b><span>Avatar + calculadora</span></a>
+    <a class="pg" href="../site-dfy/pizzaria/premium/index.html" target="_blank" rel="noopener">🍕 <b>Pizzaria</b><span>Cardápio imersivo</span></a>
+    <a class="pg" href="../site-dfy/padaria/premium/index.html" target="_blank" rel="noopener">🥖 <b>Padaria</b><span>Story + encomenda</span></a>
+    <a class="pg" href="../site-dfy/oficina/premium/index.html" target="_blank" rel="noopener">🔧 <b>Oficina</b><span>Orçamento ao vivo</span></a>
+    <a class="pg" href="../site-dfy/salão/premium/index.html" target="_blank" rel="noopener">💇 <b>Salão</b><span>Agenda + antes/depois</span></a>
+    <a class="pg" href="../site-dfy/clínica/premium/index.html" target="_blank" rel="noopener">🦷 <b>Clínica</b><span>Booking + tour</span></a>
+    <a class="pg" href="../site-dfy/lavanderia/premium/index.html" target="_blank" rel="noopener">🧺 <b>Lavanderia</b><span>Simulador + timeline</span></a>
+    <a class="pg" href="../site-dfy/imobiliária/premium/index.html" target="_blank" rel="noopener">🏠 <b>Imobiliária</b><span>Filtro + mini-mapa</span></a>
+  </div>
+</div></section>
 
 <section id="planos">
   <div class="wrap">

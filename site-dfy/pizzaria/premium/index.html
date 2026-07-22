@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pizzaria Forno & Lenha — cardápio imersivo</title>
+<meta name="description" content="Pizzaria premium em São Vicente: forno a lenha, cardápio imersivo, monte sua pizza e peça no WhatsApp.">
+<style>
+:root{
+  --bg:#140A07;--bg2:#1F0E0A;--surface:#26110C;--surface2:#321610;--line:#43201a;
+  --fg:#FBEFE6;--muted:#C9A792;--faint:#8A6453;
+  --a1:#E2401F;--a2:#F2A60C;--a3:#FFD27A;--off:#FBEFE6;
+  --grad:linear-gradient(120deg,var(--a1),var(--a2));
+  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
+  --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
+  --font-display:'Fraunces','Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(50% 40% at 80% 0%,color-mix(in srgb,var(--a1) 22%,transparent),transparent 70%),radial-gradient(40% 40% at 10% 90%,color-mix(in srgb,var(--a2) 16%,transparent),transparent 70%);filter:blur(10px);animation:glow 14s ease-in-out infinite alternate}
+@keyframes glow{0%{transform:translateY(0)}100%{transform:translateY(-2%)}}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
+section{padding-block:var(--s-3xl)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.04;letter-spacing:-.02em}
+.eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--a2);margin-bottom:var(--s-sm)}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-weight:800;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;position:relative;text-decoration:none}
+.btn-solid{background:var(--grad);color:#1a0a06;box-shadow:0 16px 40px -14px color-mix(in srgb,var(--a1) 70%,transparent)}
+.btn-solid:hover{transform:translateY(-3px)}
+.btn-outline{background:color-mix(in srgb,var(--surface) 60%,transparent);border-color:var(--line);color:var(--fg);backdrop-filter:blur(6px);text-decoration:none}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.9rem}
+.brand{font-family:var(--font-display);font-weight:700;font-size:1.25rem}
+.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* HERO imersivo */
+.hero{position:relative;min-height:92vh;display:grid;place-items:center;text-align:center;overflow:hidden}
+.hero .wrap{position:relative;z-index:2}
+.hero img.hero-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.35;filter:saturate(1.2) contrast(1.05);z-index:0}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,color-mix(in srgb,var(--bg) 30%,transparent),var(--bg));z-index:1}
+.hero h1{font-size:clamp(2.8rem,7vw,5.5rem);margin-bottom:var(--s-md)}
+.hero p.lede{color:var(--muted);font-size:1.2rem;max-width:48ch;margin:0 auto var(--s-xl)}
+.hero .cta{display:flex;gap:.8rem;justify-content:center;flex-wrap:wrap}
+/* marquee sabor */
+.marquee{overflow:hidden;white-space:nowrap;padding:14px 0;border-block:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.marquee span{display:inline-block;padding-inline:2rem;font-family:var(--font-display);font-weight:700;font-size:1.2rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;animation:scrollx 20s linear infinite}
+@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+/* cardapio imersivo com parallax por sabor */
+.menu{display:grid;gap:var(--s-2xl)}
+.flavor{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2xl);align-items:center;padding:var(--s-xl);border:1px solid var(--line);border-radius:24px;background:color-mix(in srgb,var(--surface) 70%,transparent);overflow:hidden;position:relative}
+.flavor:nth-child(even){direction:rtl}
+.flavor:nth-child(even)>*{direction:ltr}
+.flavor .pic{position:relative;aspect-ratio:4/3;border-radius:18px;overflow:hidden}
+.flavor .pic img{width:100%;height:120%;object-fit:cover;transition:transform .6s;will-change:transform}
+.flavor .pic::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 50%,color-mix(in srgb,var(--a2) 18%,transparent))}
+.flavor .info h3{font-size:clamp(1.8rem,3.5vw,2.6rem);margin-bottom:.4rem}
+.flavor .info .tag{display:inline-block;font-size:.72rem;font-family:monospace;color:var(--a2);border:1px solid var(--line);border-radius:999px;padding:.2rem .7rem;margin-bottom:.6rem}
+.flavor .info p{color:var(--muted);margin-bottom:var(--s-md)}
+.flavor .info .price{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--a3)}
+.flavor .info .row{display:flex;align-items:center;gap:1rem;margin-top:.8rem;flex-wrap:wrap}
+/* tabs */
+.tabs{display:flex;gap:.6rem;justify-content:center;margin-bottom:var(--s-xl);flex-wrap:wrap}
+.tab{padding:.6rem 1.3rem;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;font-weight:700;transition:.2s}
+.tab.active{background:var(--grad);color:#1a0a06;border-color:transparent}
+/* montar pizza */
+.builder .grid{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-lg)}
+.builder label{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700;margin-bottom:.3rem}
+.builder select{width:100%;background:var(--surface);color:var(--fg);border:1px solid var(--line);border-radius:12px;padding:.8rem 1rem;font-size:1rem}
+.builder .out{margin-top:var(--s-lg);padding:var(--s-lg);border-radius:16px;background:var(--surface);text-align:center}
+.builder .out .total{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--a3)}
+/* perks */
+.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
+.perk{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:var(--s-xl);text-align:center}
+.perk h4{font-family:var(--font-display);font-size:1.2rem;margin-bottom:.3rem}.perk p{color:var(--muted);font-size:.92rem}
+.faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:var(--s-md) var(--s-lg);margin-bottom:var(--s-sm);max-width:760px;margin-inline:auto}
+.faq summary{font-weight:700;cursor:pointer}
+.faq p{color:var(--muted);margin-top:.5rem;font-size:.94rem}
+.cta-final{text-align:center}
+footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.85rem}
+@media(max-width:820px){.flavor{grid-template-columns:1fr}.flavor:nth-child(even){direction:ltr}.builder .grid{grid-template-columns:1fr}.perks{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><div class="brand">Forno<b>&amp; Lenha</b></div><a class="btn btn-solid" href="#cardapio" style="padding:.6rem 1.2rem;font-size:.9rem">Ver cardápio</a></div></nav>
+
+<header class="hero">
+  <img class="hero-bg" src="assets/banner.jpg" alt="Pizza no forno">
+  <div class="wrap">
+    <span class="eyebrow reveal">Pizzaria premium · São Vicente</span>
+    <h1 class="reveal d1">A pizza que <span class="grad">conta história</span></h1>
+    <p class="lede reveal d2">Forno a lenha de verdade, massa de fermentação natural e um cardápio imersivo pra você montar a sua. Pede no WhatsApp e a gente leva quentinha.</p>
+    <div class="cta reveal d3"><a class="btn btn-solid" href="#cardapio">Montar minha pizza</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">Pedir no Whats</a></div>
+  </div>
+</header>
+
+<div class="marquee"><span>★ Forno a lenha · massa natural · 40min ·★★★★★ 4.9 · </span><span>★ Forno a lenha · massa natural · 40min ·★★★★★ 4.9 · </span></div>
+
+<section id="cardapio">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:var(--s-2xl)">
+      <span class="eyebrow reveal">Cardápio imersivo</span>
+      <h2 class="reveal">Cada sabor, uma experiência</h2>
+      <div class="tabs reveal">
+        <span class="tab active" data-g="trad">Tradicionais</span>
+        <span class="tab" data-g="esp">Especiais</span>
+        <span class="tab" data-g="doc">Doces</span>
+      </div>
+    </div>
+    <div class="menu">
+      <article class="flavor reveal" data-g="trad"><div class="pic"><img src="assets/p1.jpg" alt="Margherita"></div><div class="info"><span class="tag">TRADICIONAL</span><h3>Margherita</h3><p>Tomate San Marzano, mussarela de búfala, manjericão e azeite. O clássico que nunca erra.</p><div class="row"><span class="price">R$ 49</span><a class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" href="https://wa.me/5511970776856?text=Quero%20uma%20Margherita" target="_blank" rel="noopener">Pedir</a></div></div></article>
+      <article class="flavor reveal" data-g="trad"><div class="pic"><img src="assets/p2.jpg" alt="Pepperoni"></div><div class="info"><span class="tag">TRADICIONAL</span><h3>Pepperoni</h3><p>Linguiça artesanal curada, mussarela e orégano. Crocante na borda, suculenta no meio.</p><div class="row"><span class="price">R$ 55</span><a class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" href="https://wa.me/5511970776856?text=Quero%20uma%20Pepperoni" target="_blank" rel="noopener">Pedir</a></div></div></article>
+      <article class="flavor reveal" data-g="esp"><div class="pic"><img src="assets/p3.jpg" alt="Quatro Queijos"></div><div class="info"><span class="tag">ESPECIAL</span><h3>Quatro Queijos</h3><p>Brie, gorgonzola, parmesão e catupiry. Cremosa, intensa, viciante.</p><div class="row"><span class="price">R$ 62</span><a class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" href="https://wa.me/5511970776856?text=Quero%20uma%20Quatro%20Queijos" target="_blank" rel="noopener">Pedir</a></div></div></article>
+      <article class="flavor reveal" data-g="esp"><div class="pic"><img src="assets/banner.jpg" alt="Calabresa"></div><div class="info"><span class="tag">ESPECIAL</span><h3>Calabresa com cebola</h3><p>Calabresa defumada, cebola roxa caramelizada e azeitonas. Sabor de boteco premium.</p><div class="row"><span class="price">R$ 58</span><a class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" href="https://wa.me/5511970776856?text=Quero%20uma%20Calabresa" target="_blank" rel="noopener">Pedir</a></div></div></article>
+      <article class="flavor reveal" data-g="doc" hidden><div class="pic"><img src="assets/p1.jpg" alt="Brigadeiro"></div><div class="info"><span class="tag">DOCE</span><h3>Brigadeiro</h3><p>Chocolate meio amargo, granulado e doce de leite. Pizza doce de verdade.</p><div class="row"><span class="price">R$ 45</span><a class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" href="https://wa.me/5511970776856?text=Quero%20uma%20Brigadeiro" target="_blank" rel="noopener">Pedir</a></div></div></article>
+      <article class="flavor reveal" data-g="doc" hidden><div class="pic"><img src="assets/p2.jpg" alt="Romeu e Julieta"></div><div class="info"><span class="tag">DOCE</span><h3>Romeu e Julieta</h3><p>Goiabada artesanal e mussarela. Doce e salgado no ponto certo.</p><div class="row"><span class="price">R$ 47</span><a class="btn btn-solid" style="padding:.6rem 1.1rem;font-size:.9rem" href="https://wa.me/5511970776856?text=Quero%20uma%20Romeu%20e%20Julieta" target="_blank" rel="noopener">Pedir</a></div></div></article>
+    </div>
+  </div>
+</section>
+
+<section id="monte">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Monte a sua</span><h2 class="reveal">Escolha tamanho e sabor</h2></div>
+    <div class="builder reveal">
+      <div class="grid">
+        <div><label>Tamanho</label><select id="m-size"><option>Pequena (25cm)</option><option>Média (30cm)</option><option>Grande (35cm)</option></select></div>
+        <div><label>Sabor</label><select id="m-flav"><option>Margherita</option><option>Pepperoni</option><option>Quatro Queijos</option><option>Calabresa</option><option>Brigadeiro</option></select></div>
+      </div>
+      <div class="out"><div class="total" id="m-total">R$ 49</div><p style="color:var(--muted);font-size:.9rem">Estimativa · confirme no WhatsApp</p><a class="btn btn-solid" id="m-wa" href="https://wa.me/5511970776856" target="_blank" rel="noopener" style="margin-top:1rem">Pedir essa pizza →</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="perks">
+  <div class="wrap" style="display:grid;gap:var(--s-lg);grid-template-columns:repeat(3,1fr)">
+    <div class="perk reveal"><h4>Forno a lenha</h4><p>Massa assada no ponto, com aquela borda char. Sabor que não tem em forno elétrico.</p></div>
+    <div class="perk reveal"><h4>Massa natural</h4><p>Fermentação longa, leve e digestiva. Feita todo dia, sem atalho.</p></div>
+    <div class="perk reveal"><h4>Entrega quente</h4><p>40 min ou menos em São Vicente. Sai do forno direto pra sua mesa.</p></div>
+  </div>
+</section>
+
+<section class="faq"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-xl)"><span class="eyebrow reveal">Dúvidas</span><h2 class="reveal">Perguntas da pizzaria</h2></div>
+  <details class="reveal" open><summary>Tem opção sem glúten?</summary><p>Sim, fazemos massa sem glúten sob encomenda. Avise no WhatsApp ao pedir.</p></details>
+  <details class="reveal"><summary>Bebida entra na entrega?</summary><p>Sim, você monta o combo (pizza + refri) e a gente leva junto.</p></details>
+  <details class="reveal"><summary>Faz festa/evento?</summary><p>Fazemos pizzas em formato família e kits pra eventos. Orçamos por WhatsApp.</p></details>
+</div></section>
+
+<section class="cta-final"><div class="wrap">
+  <h2 class="reveal">Quer a sua agora?</h2>
+  <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
+    <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20minha%20pizza%20Forno%20e%20Lenha" target="_blank" rel="noopener">Pedir no WhatsApp</a>
+    <a class="btn btn-outline" href="#cardapio">Ver cardápio</a>
+  </div>
+  <p style="color:var(--faint);margin-top:var(--s-xl);font-size:.9rem">Site premium Vitrine Certa · braço independente</p>
+</div></section>
+
+<footer><div class="wrap">Forno &amp; Lenha · pizzaria premium em São Vicente · © 2026</div></footer>
+
+<script>
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
+setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
+// tabs
+const tabs=document.querySelectorAll('.tab'),flavors=document.querySelectorAll('.flavor');
+function filterTab(g){ flavors.forEach(f=>{ f.hidden=(f.dataset.g!==g); }); }
+tabs.forEach(t=>t.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.remove('active'));t.classList.add('active');
+  filterTab(t.dataset.g);
+}));
+filterTab('trad'); // estado inicial = Tradicionais
+// builder
+const sz={ 'Pequena (25cm)':0,'Média (30cm)':15,'Grande (35cm)':30 };
+const base={'Margherita':49,'Pepperoni':55,'Quatro Queijos':62,'Calabresa':58,'Brigadeiro':45};
+const ms=document.getElementById('m-size'),mf=document.getElementById('m-flav'),mt=document.getElementById('m-total'),mwa=document.getElementById('m-wa');
+function calc(){const tot=base[mf.value]+sz[ms.value];mt.textContent='R$ '+tot;mwa.href='https://wa.me/5511970776856?text='+encodeURIComponent('Quero uma '+mf.value+' ('+ms.value+') — R$ '+tot);}
+ms.addEventListener('change',calc);mf.addEventListener('change',calc);calc();
+// parallax das fotos do cardapio
+const pics=document.querySelectorAll('.flavor .pic img');
+window.addEventListener('scroll',()=>{const y=window.scrollY;pics.forEach(p=>{const r=p.getBoundingClientRect();if(r.top<window.innerHeight&&r.bottom>0){p.style.transform='translateY('+((r.top-window.innerHeight/2)*0.04)+'px)';}});},{passive:true});
+</script>
+</body>
+</html>

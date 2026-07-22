@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bella Hair — salão premium em São Vicente</title>
+<meta name="description" content="Salão premium em São Vicente: agenda online ao vivo, antes/depois real e pacotes de cabelo, barba e unha.">
+<style>
+:root{
+  --bg:#0B0710;--bg2:#140C1A;--surface:#1A1020;--surface2:#241530;--line:#36223F;--line2:#50335E;
+  --fg:#FBF0FF;--muted:#E2B8F0;--faint:#A87AC0;
+  --a1:#FF5FB0;--a2:#B15BFF;--a3:#FF9BD6;--off:#FBF0FF;
+  --grad:linear-gradient(120deg,var(--a1),var(--a2));
+  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
+  --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
+  --font-display:'Playfair Display',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(45% 42% at 85% 6%,color-mix(in srgb,var(--a1) 20%,transparent),transparent 70%),radial-gradient(40% 40% at 10% 95%,color-mix(in srgb,var(--a2) 18%,transparent),transparent 70%);filter:blur(12px);animation:glow 17s ease-in-out infinite alternate}
+@keyframes glow{0%{transform:translateY(0)}100%{transform:translateY(-2%)}}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
+section{padding-block:var(--s-3xl)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.05;letter-spacing:-.01em}
+.eyebrow{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--a1);margin-bottom:var(--s-sm)}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-weight:800;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;text-decoration:none}
+.btn-solid{background:var(--grad);color:#1a0414;box-shadow:0 16px 40px -14px color-mix(in srgb,var(--a1) 70%,transparent)}
+.btn-solid:hover{transform:translateY(-3px)}
+.btn-outline{background:color-mix(in srgb,var(--surface) 60%,transparent);border-color:var(--line2);color:var(--fg);backdrop-filter:blur(6px)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.9rem}
+.brand{font-family:var(--font-display);font-weight:800;font-size:1.3rem}
+.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* HERO */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-2xl);align-items:center;padding-block:var(--s-3xl)}
+.hero h1{font-size:clamp(2.6rem,5.5vw,4.4rem);margin-bottom:var(--s-md)}
+.hero .lede{color:var(--muted);font-size:1.15rem;max-width:42ch;margin-bottom:var(--s-xl)}
+.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.hero .fig{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/4;background:linear-gradient(160deg,var(--surface2),var(--surface));border:1px solid var(--line);box-shadow:0 40px 90px -40px color-mix(in srgb,var(--a1) 50%,transparent)}
+.hero .fig img{width:100%;height:100%;object-fit:cover}
+/* AGENDA */
+.agenda{background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:var(--s-2xl)}
+.agenda .head{display:flex;align-items:center;justify-content:space-between;margin-bottom:var(--s-lg);flex-wrap:wrap;gap:.6rem}
+.agenda .days{display:flex;gap:.5rem;flex-wrap:wrap}
+.agenda .day{padding:.5rem .9rem;border-radius:999px;border:1px solid var(--line2);background:var(--surface);color:var(--muted);cursor:pointer;font-weight:700;transition:.2s}
+.agenda .day.on{background:var(--grad);color:#1a0414;border-color:transparent}
+.slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:.6rem;margin-top:var(--s-lg)}
+.slot{padding:.7rem .4rem;text-align:center;border-radius:12px;border:1px solid var(--line2);background:var(--surface);color:var(--fg);cursor:pointer;font-weight:700;transition:.2s;position:relative}
+.slot:hover{transform:translateY(-3px);border-color:var(--a1)}
+.slot.taken{opacity:.4;cursor:not-allowed;text-decoration:line-through;background:var(--bg);color:var(--faint)}
+.slot.sel{background:var(--grad);color:#1a0414;border-color:transparent}
+.agenda .conf{margin-top:var(--s-lg);padding:var(--s-md) var(--s-lg);border-radius:14px;background:var(--surface);text-align:center;font-family:var(--font-display);font-size:1.2rem;color:var(--a3);min-height:1.2em}
+.agenda .conf a{margin-top:.6rem}
+/* BEFORE/AFTER */
+.ba{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
+.ba .item{border-radius:18px;overflow:hidden;border:1px solid var(--line);background:var(--surface);position:relative}
+.ba .item .pair{display:grid;grid-template-columns:1fr 1fr}
+.ba .item .pair div{aspect-ratio:1;position:relative}
+.ba .item .pair .before{background:linear-gradient(135deg,#3a2a40,#2a1c30)}
+.ba .item .pair .after{background:linear-gradient(135deg,var(--a1),var(--a2))}
+.ba .item .pair span{position:absolute;bottom:8px;left:8px;font-size:.7rem;font-weight:800;background:rgba(0,0,0,.5);color:#fff;padding:.15rem .5rem;border-radius:999px}
+.ba .item h4{font-family:var(--font-display);font-size:1.05rem;padding:.8rem 1rem 0}
+.ba .item p{color:var(--muted);font-size:.85rem;padding:0 1rem 1rem}
+/* PACOTES */
+.packs{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
+.pack{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:var(--s-xl);text-align:center}
+.pack.feat{border-color:var(--a1);box-shadow:0 0 0 1px color-mix(in srgb,var(--a1) 40%,transparent),0 30px 70px -30px color-mix(in srgb,var(--a1) 50%,transparent)}
+.pack .price{font-family:var(--font-display);font-size:2.4rem;font-weight:800;color:var(--a3);margin:.4rem 0}
+.pack ul{list-style:none;padding:0;margin:var(--s-md) 0 var(--s-lg);color:var(--muted);font-size:.92rem}
+.pack li{padding:.35rem 0}
+.cta-final{text-align:center}
+footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.85rem}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.ba{grid-template-columns:1fr}.packs{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><div class="brand">Bella<b>Hair</b></div><a class="btn btn-solid" href="#agenda" style="padding:.6rem 1.2rem;font-size:.9rem">Agendar</a></div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="reveal d1">
+    <span class="eyebrow">Salão premium · São Vicente</span>
+    <h1>Seu cabelo, <span class="grad">no ponto certo</span></h1>
+    <p class="lede">Agende online vendo os horários reais, veja transformações antes/depois e monte seu pacote. Sai se sentindo outro(a).</p>
+    <div class="cta"><a class="btn btn-solid" href="#agenda">Ver horários</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">WhatsApp</a></div>
+  </div>
+  <div class="fig reveal d2"><img src="assets/cabelo.jpg" alt="Cabelo tratado no salão"></div>
+</div></header>
+
+<section id="agenda"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Agenda ao vivo</span><h2 class="reveal">Escolha seu horário</h2><p class="reveal" style="color:var(--muted)">Os horários marcados já estão ocupados — o que sobra, é seu.</p></div>
+  <div class="agenda reveal">
+    <div class="head">
+      <div class="days" id="days"></div>
+      <div style="color:var(--faint);font-size:.85rem">⚪ livre &nbsp; ⚫ ocupado</div>
+    </div>
+    <div class="slots" id="slots"></div>
+    <div class="conf" id="conf">Selecione um horário livre ↓</div>
+  </div>
+</div></section>
+
+<section id="antesdepois"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Transformações</span><h2 class="reveal">Antes &amp; depois reais</h2></div>
+  <div class="ba">
+    <div class="item reveal"><div class="pair"><div class="before"><span>antes</span></div><div class="after"><span>depois</span></div></div><h4>Luzes loiro</h4><p>Transição natural do castanho ao loiro iluminado.</p></div>
+    <div class="item reveal"><div class="pair"><div class="before"><span>antes</span></div><div class="after"><span>depois</span></div></div><h4>Corte repicado</h4><p>Volume e movimento pra quem tem cabelo fino.</p></div>
+    <div class="item reveal"><div class="pair"><div class="before"><span>antes</span></div><div class="after"><span>depois</span></div></div><h4>Escova progressiva</h4><p>Adeus frizz — liso que dura sem chapinha.</p></div>
+  </div>
+</div></section>
+
+<section id="pacotes"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Pacotes</span><h2 class="reveal">Escolha o seu</h2></div>
+  <div class="packs">
+    <div class="pack reveal"><h4>Básico</h4><div class="price">R$ 59</div><ul><li>Corte + lavagem</li><li>Finalização</li><li>1h</li></ul><a class="btn btn-outline" style="width:100%;justify-content:center" href="https://wa.me/5511970776856?text=Quero%20pacote%20B%C3%A1sico%20Bella%20Hair" target="_blank" rel="noopener">Quero</a></div>
+    <div class="pack feat reveal"><h4>Completo</h4><div class="price">R$ 129</div><ul><li>Corte + coloração</li><li>Hidratação profunda</li><li>Sobrancelha</li></ul><a class="btn btn-solid" style="width:100%;justify-content:center" href="https://wa.me/5511970776856?text=Quero%20pacote%20Completo%20Bella%20Hair" target="_blank" rel="noopener">Quero</a></div>
+    <div class="pack reveal"><h4>Noiva/Evento</h4><div class="price">R$ 239</div><ul><li>Penteado + maquiagem</li><li>Teste prévio</li><li>3h</li></ul><a class="btn btn-outline" style="width:100%;justify-content:center" href="https://wa.me/5511970776856?text=Quero%20pacote%20Noiva%20Bella%20Hair" target="_blank" rel="noopener">Quero</a></div>
+  </div>
+</div></section>
+
+<section class="cta-final"><div class="wrap">
+  <h2 class="reveal">Pronta pra sua transformação?</h2>
+  <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
+    <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20agendar%20Bella%20Hair" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <a class="btn btn-outline" href="#agenda">Ver horários</a>
+  </div>
+  <p style="color:var(--faint);margin-top:var(--s-xl);font-size:.9rem">Site premium Vitrine Certa · braço independente</p>
+</div></section>
+
+<footer><div class="wrap">Bella Hair · salão premium em São Vicente · © 2026</div></footer>
+
+<script>
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
+setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
+// AGENDA
+const days=['Seg 22','Ter 23','Qua 24','Qui 25','Sex 26'];
+const hours=['09:00','10:00','11:00','14:00','15:00','16:00','17:00'];
+// ocupados pseudo-aleatorios mas deterministicos por dia
+const takenSeed={0:[2,4],1:[0,6],2:[3,5],3:[1,2,4],4:[0,3,6]};
+const st={day:0,slot:null};
+const daysEl=document.getElementById('days'),slotsEl=document.getElementById('slots'),conf=document.getElementById('conf');
+days.forEach((d,i)=>{const b=document.createElement('span');b.className='day'+(i===0?' on':'');b.textContent=d;b.addEventListener('click',()=>{st.day=i;st.slot=null;render();});daysEl.appendChild(b);});
+function render(){
+  document.querySelectorAll('.day').forEach((x,i)=>x.classList.toggle('on',i===st.day));
+  const taken=takenSeed[st.day]||[];
+  slotsEl.innerHTML='';
+  hours.forEach((h,i)=>{const s=document.createElement('div');const isT=taken.includes(i);s.className='slot'+(isT?' taken':'')+(st.slot===i?' sel':'');s.textContent=h;if(!isT)s.addEventListener('click',()=>{st.slot=i;render();});slotsEl.appendChild(s);});
+  if(st.slot!==null){const h=hours[st.slot];conf.innerHTML='Horário: <b>'+days[st.day]+' às '+h+'</b><br><a class="btn btn-solid" style="margin-top:.6rem" href="https://wa.me/5511970776856?text='+encodeURIComponent('Quero agendar Bella Hair: '+days[st.day]+' às '+h)+'" target="_blank" rel="noopener">Confirmar no WhatsApp →</a>';}
+  else{conf.textContent='Selecione um horário livre ↓';}
+}
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Imóveis Vértice — imobiliária premium em São Vicente</title>
+<meta name="description" content="Imobiliária premium em São Vicente: filtre imóveis por tipo, preço e bairro, veja no mini-mapa e abra a ficha completa.">
+<style>
+:root{
+  --bg:#0C0A07;--bg2:#141009;--surface:#1B150D;--surface2:#261D11;--line:#3A2C1A;--line2:#54401F;
+  --fg:#FBF3E6;--muted:#D8BE9A;--faint:#A8895E;
+  --a1:#E0A63C;--a2:#F2C879;--a3:#C98A2B;--off:#FBF3E6;
+  --grad:linear-gradient(120deg,var(--a1),var(--a2));
+  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
+  --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
+  --font-display:'Fraunces',Georgia,serif;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(45% 42% at 85% 6%,color-mix(in srgb,var(--a1) 18%,transparent),transparent 70%),radial-gradient(40% 40% at 8% 95%,color-mix(in srgb,var(--a3) 14%,transparent),transparent 70%);filter:blur(12px);animation:glow 18s ease-in-out infinite alternate}
+@keyframes glow{0%{transform:translateY(0)}100%{transform:translateY(-2%)}}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
+section{padding-block:var(--s-3xl)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.05;letter-spacing:-.01em}
+.eyebrow{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--a1);margin-bottom:var(--s-sm)}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-weight:800;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;text-decoration:none}
+.btn-solid{background:var(--grad);color:#1a1003;box-shadow:0 16px 40px -14px color-mix(in srgb,var(--a1) 70%,transparent)}
+.btn-solid:hover{transform:translateY(-3px)}
+.btn-outline{background:color-mix(in srgb,var(--surface) 60%,transparent);border-color:var(--line2);color:var(--fg)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.9rem}
+.brand{font-family:var(--font-display);font-weight:800;font-size:1.3rem}
+.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* HERO */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-2xl);align-items:center;padding-block:var(--s-3xl)}
+.hero h1{font-size:clamp(2.6rem,5.5vw,4.4rem);margin-bottom:var(--s-md)}
+.hero .lede{color:var(--muted);font-size:1.15rem;max-width:42ch;margin-bottom:var(--s-xl)}
+.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.hero .fig{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/4;background:linear-gradient(160deg,var(--surface2),var(--surface));border:1px solid var(--line);box-shadow:0 40px 90px -40px color-mix(in srgb,var(--a1) 50%,transparent);display:grid;place-items:center;font-size:4rem}
+/* FILTROS + GRID */
+.filters{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-bottom:var(--s-xl);align-items:end}
+.filters .f{display:flex;flex-direction:column;gap:.3rem}
+.filters label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700}
+.filters select{background:var(--surface);border:1px solid var(--line2);border-radius:10px;padding:.6rem 1rem;color:var(--fg);font-size:.95rem;font-family:var(--font-body)}
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s,border-color .25s}
+.card:hover{transform:translateY(-6px);border-color:var(--a1)}
+.card .pic{aspect-ratio:16/10;background:linear-gradient(135deg,color-mix(in srgb,var(--a1) 35%,#2a1d0d),color-mix(in srgb,var(--a3) 30%,#2a1d0d));display:grid;place-items:center;font-size:2.4rem;position:relative}
+.card .tag{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.45);color:var(--a2);font-size:.7rem;font-weight:800;padding:.2rem .6rem;border-radius:999px}
+.card .body{padding:var(--s-md) var(--s-lg) var(--s-lg)}
+.card h4{font-family:var(--font-display);font-size:1.15rem}
+.card .bairro{color:var(--faint);font-size:.85rem}
+.card .price{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--a2);margin:.3rem 0}
+.card .meta{display:flex;gap:1rem;color:var(--muted);font-size:.85rem;margin-bottom:.8rem}
+.card .open{width:100%;justify-content:center}
+/* MINI-MAPA */
+.map{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:var(--s-lg);display:grid;grid-template-columns:1fr 1.1fr;gap:var(--s-xl);align-items:center}
+.map .canvas{aspect-ratio:4/3;border-radius:14px;background:linear-gradient(135deg,#11201a,#0c1611);position:relative;overflow:hidden;border:1px solid var(--line2)}
+.map .pin{position:absolute;width:18px;height:18px;border-radius:50% 50% 50% 0;background:var(--a1);transform:rotate(-45deg);box-shadow:0 0 0 4px color-mix(in srgb,var(--a1) 25%,transparent);cursor:pointer;transition:.2s}
+.map .pin:hover{transform:rotate(-45deg) scale(1.3)}
+.map .info h4{font-family:var(--font-display);font-size:1.2rem}
+.map .info .price{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--a2);margin:.3rem 0}
+.map .info p{color:var(--muted);font-size:.92rem}
+/* FICHA modal */
+.ficha{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;place-items:center;z-index:100;padding:24px}
+.ficha.show{display:grid}
+.ficha .box{background:var(--surface);border:1px solid var(--line2);border-radius:18px;max-width:440px;width:100%;padding:var(--s-xl);position:relative}
+.ficha .box .x{position:absolute;top:14px;right:16px;cursor:pointer;color:var(--faint);font-size:1.4rem;background:none;border:0}
+.ficha .box .pic{aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg,color-mix(in srgb,var(--a1) 35%,#2a1d0d),color-mix(in srgb,var(--a3) 30%,#2a1d0d));display:grid;place-items:center;font-size:2.4rem;margin-bottom:1rem}
+.ficha .box h3{font-family:var(--font-display);font-size:1.4rem}
+.ficha .box .price{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--a2);margin:.2rem 0 .6rem}
+.ficha .box ul{list-style:none;padding:0;color:var(--muted);font-size:.92rem}
+.ficha .box li{padding:.3rem 0;border-bottom:1px dashed var(--line)}
+.cta-final{text-align:center}
+footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.85rem}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.map{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><div class="brand">Imóveis<b>Vértice</b></div><a class="btn btn-solid" href="#imoveis" style="padding:.6rem 1.2rem;font-size:.9rem">Ver imóveis</a></div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="reveal d1">
+    <span class="eyebrow">Imobiliária premium · São Vicente</span>
+    <h1>O imóvel certo, <span class="grad">sem perder tempo</span></h1>
+    <p class="lede">Filtre por tipo, preço e bairro, veja no mini-mapa e abra a ficha completa. Cada anúncio é real e atualizado.</p>
+    <div class="cta"><a class="btn btn-solid" href="#imoveis">Buscar imóveis</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">WhatsApp</a></div>
+  </div>
+  <div class="fig reveal d2">🏠</div>
+</div></header>
+
+<section id="imoveis"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-xl)"><span class="eyebrow reveal">Catálogo</span><h2 class="reveal">Imóveis em destaque</h2></div>
+  <div class="filters reveal">
+    <div class="f"><label>Tipo</label><select id="fTipo"><option value="">Todos</option><option value="Casa">Casa</option><option value="Apto">Apartamento</option><option value="Kitnet">Kitnet</option></select></div>
+    <div class="f"><label>Bairro</label><select id="fBairro"><option value="">Todos</option><option value="Centro">Centro</option><option value="Praia">Praia</option><option value="Jardim">Jardim</option></select></div>
+    <div class="f"><label>Até (R$)</label><select id="fPreco"><option value="9999999">Sem limite</option><option value="250000">250 mil</option><option value="400000">400 mil</option><option value="700000">700 mil</option></select></div>
+  </div>
+  <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="mapa"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-xl)"><span class="eyebrow reveal">No mapa</span><h2 class="reveal">Onde ficam</h2></div>
+  <div class="map reveal">
+    <div class="canvas" id="canvas"></div>
+    <div class="info" id="mapInfo">
+      <h4>Passe o mouse nos pontos</h4>
+      <div class="price">—</div>
+      <p>Cada pino é um imóvel do catálogo. Clique para ver o bairro.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="cta-final"><div class="wrap">
+  <h2 class="reveal">Não achou o que queria?</h2>
+  <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
+    <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20um%20im%C3%B3vel%20Im%C3%B3veis%20V%C3%A9rtice" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <a class="btn btn-outline" href="#imoveis">Ver imóveis</a>
+  </div>
+  <p style="color:var(--faint);margin-top:var(--s-xl);font-size:.9rem">Site premium Vitrine Certa · braço independente</p>
+</div></section>
+
+<footer><div class="wrap">Imóveis Vértice · imobiliária premium em São Vicente · © 2026</div></footer>
+
+<div class="ficha" id="ficha"><div class="box">
+  <button class="x" id="fichaX">×</button>
+  <div class="pic" id="fPic">🏠</div>
+  <h3 id="fTit">Imóvel</h3>
+  <div class="price" id="fPreco">R$ 0</div>
+  <ul id="fList"></ul>
+  <a class="btn btn-solid" id="fWa" href="https://wa.me/5511970776856" target="_blank" rel="noopener" style="margin-top:1rem;width:100%;justify-content:center">Tenho interesse →</a>
+</div></div>
+
+<script>
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
+setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
+// DADOS
+const IMOVEIS=[
+  {id:1,tipo:'Casa',bairro:'Centro',preco:380000,dorm:3,suite:1,vagas:2,m2:120,emoji:'🏠'},
+  {id:2,tipo:'Apto',bairro:'Praia',preco:520000,dorm:2,suite:1,vagas:1,m2:75,emoji:'🏢'},
+  {id:3,tipo:'Kitnet',bairro:'Centro',preco:180000,dorm:1,suite:0,vagas:0,m2:32,emoji:'🛏️'},
+  {id:4,tipo:'Casa',bairro:'Jardim',preco:640000,dorm:4,suite:2,vagas:3,m2:180,emoji:'🏡'},
+  {id:5,tipo:'Apto',bairro:'Centro',preco:290000,dorm:2,suite:0,vagas:1,m2:60,emoji:'🏢'},
+  {id:6,tipo:'Casa',bairro:'Praia',preco:780000,dorm:3,suite:2,vagas:2,m2:150,emoji:'🌊'},
+];
+const fmt=v=>'R$ '+v.toLocaleString('pt-BR');
+const grid=document.getElementById('grid'),canvas=document.getElementById('canvas'),mapInfo=document.getElementById('mapInfo');
+const fTipo=document.getElementById('fTipo'),fBairro=document.getElementById('fBairro'),fPreco=document.getElementById('fPreco');
+function filtered(){const t=fTipo.value,b=fBairro.value,p=+fPreco.value;return IMOVEIS.filter(x=>(!t||x.tipo===t)&&(!b||x.bairro===b)&&x.preco<=p);}
+function render(){
+  const list=filtered();
+  grid.innerHTML=list.length? '' : '<p style="color:var(--faint);grid-column:1/-1;text-align:center">Nenhum imóvel com esses filtros.</p>';
+  list.forEach(x=>{
+    const c=document.createElement('div');c.className='card';
+    c.innerHTML='<div class="pic">'+x.emoji+'<span class="tag">'+x.tipo+'</span></div><div class="body"><h4>'+x.tipo+' '+x.bairro+'</h4><div class="bairro">'+x.bairro+' · São Vicente</div><div class="price">'+fmt(x.preco)+'</div><div class="meta"><span>🛏️ '+x.dorm+' dorm</span><span>🚿 '+x.suite+' suíte</span><span>🚗 '+x.vagas+' vaga(s)</span></div><button class="btn btn-outline open">Ver ficha</button></div>';
+    c.querySelector('.open').addEventListener('click',()=>openFicha(x));
+    grid.appendChild(c);
+  });
+  // mapa: pino por imovel (pos pseudo por id)
+  canvas.innerHTML='';
+  list.forEach((x,i)=>{const pin=document.createElement('div');pin.className='pin';pin.style.left=(12+i*14)%80+10+'%';pin.style.top=(20+(i*17)%60)+'%';pin.addEventListener('mouseenter',()=>{mapInfo.innerHTML='<h4>'+x.tipo+' '+x.bairro+'</h4><div class="price">'+fmt(x.preco)+'</div><p>'+x.dorm+' dorm · '+x.suite+' suíte · '+x.m2+'m² · '+x.vagas+' vaga(s)</p>';});pin.addEventListener('click',()=>openFicha(x));canvas.appendChild(pin);});
+  if(!list.length)canvas.innerHTML='<div style="position:absolute;inset:0;display:grid;place-items:center;color:var(--faint)">—</div>';
+}
+fTipo.addEventListener('change',render);fBairro.addEventListener('change',render);fPreco.addEventListener('change',render);
+// FICHA
+const ficha=document.getElementById('ficha'),fTit=document.getElementById('fTit'),fPrecoEl=document.getElementById('fPreco'),fList=document.getElementById('fList'),fPic=document.getElementById('fPic'),fWa=document.getElementById('fWa');
+function openFicha(x){fTit.textContent=x.tipo+' '+x.bairro;fPrecoEl.textContent=fmt(x.preco);fPic.textContent=x.emoji;fList.innerHTML=['<li>'+x.dorm+' dormitório(s)</li>','<li>'+x.suite+' suíte(s)</li>','<li>'+x.vagas+' vaga(s)</li>','<li>'+x.m2+' m²</li>','<li>Bairro: '+x.bairro+', São Vicente</li>'].join('');fWa.href='https://wa.me/5511970776856?text='+encodeURIComponent('Tenho interesse: '+x.tipo+' '+x.bairro+' '+fmt(x.preco));ficha.classList.add('show');}
+document.getElementById('fichaX').addEventListener('click',()=>ficha.classList.remove('show'));
+ficha.addEventListener('click',e=>{if(e.target===ficha)ficha.classList.remove('show');});
+render();
+</script>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="pt-BR" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mecânica Veloz — oficina premium em São Vicente</title>
+<meta name="description" content="Oficina premium em São Vicente: orçamento online em tempo real, serviços de motor, freios e revisão com garantia de 90 dias.">
+<style>
+:root{
+  --bg:#08090B;--bg2:#0E1014;--surface:#13161C;--surface2:#1A1E26;--line:#262B36;--line2:#39414F;
+  --fg:#EEF3F8;--muted:#9FB0C3;--faint:#6C7A8C;
+  --a1:#27E0A0;--a2:#1FA8FF;--a3:#9CFE00;--off:#EEF3F8;
+  --grad:linear-gradient(120deg,var(--a2),var(--a1));
+  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
+  --font-body:'Inter',system-ui,sans-serif;
+  --font-display:'Space Grotesk',system-ui,sans-serif;
+  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box;margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(45% 40% at 88% 8%,color-mix(in srgb,var(--a2) 18%,transparent),transparent 70%),radial-gradient(40% 40% at 8% 92%,color-mix(in srgb,var(--a1) 14%,transparent),transparent 70%);filter:blur(12px);animation:glow 18s ease-in-out infinite alternate}
+@keyframes glow{0%{transform:translateY(0)}100%{transform:translateY(-2%)}}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
+section{padding-block:var(--s-3xl)}
+h1,h2,h3{font-family:var(--font-display);line-height:1.04;letter-spacing:-.02em}
+.eyebrow{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--a1);margin-bottom:var(--s-sm);font-family:var(--font-mono)}
+.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;text-decoration:none}
+.btn-solid{background:var(--grad);color:#03110c;font-weight:800;box-shadow:0 16px 40px -14px color-mix(in srgb,var(--a1) 60%,transparent)}
+.btn-solid:hover{transform:translateY(-3px)}
+.btn-outline{background:color-mix(in srgb,var(--surface) 60%,transparent);border-color:var(--line2);color:var(--fg)}
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.reveal.in{opacity:1;transform:none}
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.9rem}
+.brand{font-family:var(--font-display);font-weight:800;font-size:1.25rem;letter-spacing:-.02em}
+.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* HERO */
+.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-2xl);align-items:center;padding-block:var(--s-3xl)}
+.hero h1{font-size:clamp(2.5rem,5.2vw,4.2rem);margin-bottom:var(--s-md)}
+.hero .lede{color:var(--muted);font-size:1.12rem;max-width:44ch;margin-bottom:var(--s-xl)}
+.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
+.hero .fig{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3.6;background:linear-gradient(160deg,var(--surface2),var(--surface));border:1px solid var(--line);box-shadow:0 40px 90px -40px color-mix(in srgb,var(--a2) 40%,transparent);display:grid;place-items:center}
+.hero .fig .gauge{font-family:var(--font-display);font-size:3rem;font-weight:800;color:var(--a1)}
+/* ORÇAMENTO */
+.orc{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:var(--s-2xl);display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2xl)}
+.orc .grp{margin-bottom:1rem}
+.orc label{display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700;margin-bottom:.4rem}
+.orc select{width:100%;background:var(--surface);color:var(--fg);border:1px solid var(--line2);border-radius:10px;padding:.8rem 1rem;font-size:1rem;font-family:var(--font-body)}
+.orc .add{display:flex;gap:.5rem;flex-wrap:wrap;margin:.4rem 0}
+.orc .add span{padding:.4rem .9rem;border-radius:999px;border:1px solid var(--line2);background:var(--surface);color:var(--muted);font-size:.85rem;cursor:pointer;transition:.2s}
+.orc .add span.on{background:var(--a1);color:#03110c;border-color:transparent;font-weight:700}
+.orc .ticket{background:var(--surface);border:1px solid var(--line2);border-radius:14px;padding:var(--s-lg);font-family:var(--font-mono)}
+.orc .ticket .line{display:flex;justify-content:space-between;padding:.35rem 0;border-bottom:1px dashed var(--line);font-size:.9rem}
+.orc .ticket .line span:last-child{color:var(--a1);font-weight:700}
+.orc .ticket .total{display:flex;justify-content:space-between;padding-top:.8rem;font-size:1.4rem;font-weight:800;font-family:var(--font-display)}
+.orc .ticket .total span:last-child{color:var(--a1)}
+.orc .wa{margin-top:1rem;width:100%;justify-content:center}
+/* SELO GARANTIA */
+.seal{display:flex;align-items:center;gap:var(--s-xl);justify-content:center;flex-wrap:wrap;padding:var(--s-2xl) 0}
+.seal-badge{position:relative;width:160px;height:160px}
+.seal-badge svg{transform:rotate(-90deg)}
+.seal-badge .ring{fill:none;stroke:var(--a1);stroke-width:6;stroke-linecap:round;stroke-dasharray:440;stroke-dashoffset:440;animation:draw 2.5s ease forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.seal-badge .txt{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-family:var(--font-display);font-weight:800;color:var(--a1);font-size:1.1rem}
+.seal-badge .txt small{display:block;font-size:.7rem;color:var(--muted);font-weight:500}
+/* SERVIÇOS grid */
+.servs{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
+.serv{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:var(--s-xl);transition:transform .25s,border-color .25s}
+.serv:hover{transform:translateY(-6px);border-color:var(--a1)}
+.serv .ico{font-size:1.8rem}
+.serv h4{font-family:var(--font-display);font-size:1.15rem;margin:.4rem 0}
+.serv p{color:var(--muted);font-size:.9rem}
+.cta-final{text-align:center}
+footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.85rem}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.orc{grid-template-columns:1fr}.servs{grid-template-columns:1fr}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.seal-badge .ring{stroke-dashoffset:0}}
+</style>
+</head>
+<body>
+<nav class="nav"><div class="wrap"><div class="brand">Mecânica<b>Veloz</b></div><a class="btn btn-solid" href="#orcamento" style="padding:.6rem 1.2rem;font-size:.9rem">Orçar</a></div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="reveal d1">
+    <span class="eyebrow">Oficina premium · São Vicente</span>
+    <h1>Seu carro, <span class="grad">diagnosticado na hora</span></h1>
+    <p class="lede">Monte seu orçamento online em tempo real e saia dirigindo com garantia de 90 dias. Sem surpresa, sem letra miúda.</p>
+    <div class="cta"><a class="btn btn-solid" href="#orcamento">Fazer orçamento</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">WhatsApp</a></div>
+  </div>
+  <div class="fig reveal d2"><div class="gauge">⚙️ OBD-II</div></div>
+</div></header>
+
+<section id="orcamento"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Orçamento ao vivo</span><h2 class="reveal">Monte seu serviço</h2><p class="reveal" style="color:var(--muted)">Escolha o carro e os serviços — o total atualiza na hora.</p></div>
+  <div class="orc reveal">
+    <div>
+      <div class="grp"><label>Tipo de carro</label><select id="car">
+        <option value="leve">Leve (hatch/sedan)</option>
+        <option value="suv">SUV / Pickup</option>
+        <option value="util">Utilitário / Van</option>
+      </select></div>
+      <div class="grp"><label>Serviços</label>
+        <div class="add" id="servs">
+          <span data-k="oil" data-base="0">Troca de óleo</span>
+          <span data-k="brake" data-base="0">Freios</span>
+          <span data-k="belt" data-base="0">Correia</span>
+          <span data-k="scan" data-base="0">Scanner</span>
+          <span data-k="align" data-base="0">Alinhamento</span>
+        </div>
+      </div>
+      <div class="grp"><label>Garantia extra</label>
+        <div class="add" id="warr">
+          <span data-m="0">Padrão 90d</span>
+          <span data-m="120">+6 meses</span>
+          <span data-m="240">+1 ano</span>
+        </div>
+      </div>
+    </div>
+    <div class="ticket">
+      <div id="lines"></div>
+      <div class="total"><span>Total</span><span id="oTot">R$ 0</span></div>
+      <a class="btn btn-solid wa" id="oWa" href="https://wa.me/5511970776856" target="_blank" rel="noopener">Enviar orçamento no WhatsApp →</a>
+    </div>
+  </div>
+</div></section>
+
+<section id="garantia"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-xl)"><span class="eyebrow reveal">Confiança</span><h2 class="reveal">Garantia que você vê</h2></div>
+  <div class="seal reveal">
+    <div class="seal-badge">
+      <svg viewBox="0 0 160 160" width="160" height="160"><circle class="ring" cx="80" cy="80" r="70"></circle></svg>
+      <div class="txt">90 dias<small>de garantia</small></div>
+    </div>
+    <div style="max-width:42ch;color:var(--muted)">
+      <p>Cada serviço sai com <b style="color:var(--a1)">90 dias de garantia real</b>. O anel acima se preenche quando você confirma o serviço — é nosso compromisso visível, não frase de marketing.</p>
+    </div>
+  </div>
+</div></section>
+
+<section id="servs"><div class="wrap">
+  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">O que fazemos</span><h2 class="reveal">Serviços de motor a chassi</h2></div>
+  <div class="servs">
+    <div class="serv reveal"><div class="ico">🔧</div><h4>Motor</h4><p>Troca de óleo, correia, velas e revisão preventiva.</p></div>
+    <div class="serv reveal"><div class="ico">🛑</div><h4>Freios</h4><p>Pastilhas, disco e fluido. Freio é sagrado.</p></div>
+    <div class="serv reveal"><div class="ico">📟</div><h4>Scanner</h4><p>Diagnóstico eletrônico OBD-II, falha mapeada na hora.</p></div>
+    <div class="serv reveal"><div class="ico">🚗</div><h4>Alinhamento</h4><p>Geometria e balanceamento pra rodar reto.</p></div>
+    <div class="serv reveal"><div class="ico">🔋</div><h4>Bateria</h4><p>Teste e troca no mesmo dia.</p></div>
+    <div class="serv reveal"><div class="ico">❄️</div><h4>Ar-condicionado</h4><p>Recarga de gás e higienização.</p></div>
+  </div>
+</div></section>
+
+<section class="cta-final"><div class="wrap">
+  <h2 class="reveal">Deixe o carro conosco</h2>
+  <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
+    <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20or%C3%A7amento%20Mec%C3%A2nica%20Veloz" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <a class="btn btn-outline" href="#orcamento">Fazer orçamento</a>
+  </div>
+  <p style="color:var(--faint);margin-top:var(--s-xl);font-size:.9rem">Site premium Vitrine Certa · braço independente</p>
+</div></section>
+
+<footer><div class="wrap">Mecânica Veloz · oficina premium em São Vicente · © 2026</div></footer>
+
+<script>
+const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
+setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
+// ORÇAMENTO
+const preco={leve:{oil:149,brake:280,belt:210,scan:120,align:160},suv:{oil:189,brake:340,belt:260,scan:140,align:200},util:{oil:240,brake:420,belt:320,scan:160,align:260}};
+const nome={oil:'Troca de óleo',brake:'Freios',belt:'Correia',scan:'Scanner OBD-II',align:'Alinhamento'};
+const st={car:'leve',servs:new Set(),warr:0};
+const lines=document.getElementById('lines'),oTot=document.getElementById('oTot'),oWa=document.getElementById('oWa');
+function fmt(v){return 'R$ '+v.toLocaleString('pt-BR');}
+function calc(){
+  const p=preco[st.car];let tot=0;let parts=[];
+  st.servs.forEach(k=>{tot+=p[k];parts.push(nome[k]+'|'+p[k]);});
+  tot+=st.warr; if(st.warr)parts.push('Garantia extra|'+st.warr);
+  lines.innerHTML=(st.servs.size||st.warr? '' : '<div class="line"><span>Selecione um serviço</span><span>—</span></div>')+
+    [...st.servs].map(k=>'<div class="line"><span>'+nome[k]+'</span><span>'+fmt(p[k])+'</span></div>').join('')+
+    (st.warr?'<div class="line"><span>Garantia extra</span><span>'+fmt(st.warr)+'</span></div>':'');
+  oTot.textContent=fmt(tot);
+  const msg='Quero orçamento Mecânica Veloz ('+({leve:'carro leve',suv:'SUV/Pickup',util:'utilitário'}[st.car])+(st.servs.size?': '+[...st.servs].map(k=>nome[k]).join(', '):'')+') — total estimado '+fmt(tot);
+  oWa.href='https://wa.me/5511970776856?text='+encodeURIComponent(msg);
+}
+document.getElementById('car').addEventListener('change',e=>{st.car=e.target.value;calc();});
+document.querySelectorAll('#servs span').forEach(s=>s.addEventListener('click',()=>{const k=s.dataset.k;s.classList.toggle('on');if(s.classList.contains('on'))st.servs.add(k);else st.servs.delete(k);calc();}));
+document.querySelectorAll('#warr span').forEach(s=>s.addEventListener('click',()=>{document.querySelectorAll('#warr span').forEach(x=>x.classList.remove('on'));s.classList.add('on');st.warr=+s.dataset.m;calc();}));
+calc();
+</script>
+</body>
+</html>
