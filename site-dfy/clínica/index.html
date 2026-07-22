@@ -240,5 +240,31 @@ qs.addEventListener('change',calc);qf.addEventListener('change',calc);calc();
 
 function vcLead(f){var d={};new FormData(f).forEach(function(v,k){d[k]=v});var m='Lead Vitrine Certa - '+location.pathname.split("/")[1]+'\n';for(var k in d){if(d[k])m+=k+': '+d[k]+'\n';}window.open('https://wa.me/5511970776856?text='+encodeURIComponent(m),'_blank');return false;}
 </script>
+<!-- PARAMS VC -->
+<script>
+(function(){
+  const p=new URLSearchParams(location.search);
+  const nome=p.get('nome'), cid=p.get('cidade');
+  if(!nome && !cid) return;
+  const nn=nome||'Clínica', cc=cid||'São Vicente';
+  const full=nn+' em '+cc;
+  // troca ocorrências conhecidas
+  const map={
+    'Clínica em São Vicente': full,
+    'Clínica em São Vicente': full,
+    'em São Vicente': 'em '+cc,
+    'Em São Vicente': 'Em '+cc,
+    'São Vicente': cc
+  };
+  document.querySelectorAll('.eyebrow,title,meta[name=description],.hero p.lede,.perk p,.faq p,footer').forEach(el=>{
+    if(el.tagName==='META'){ el.setAttribute('content', el.getAttribute('content').replace(/São Vicente/g, cc)); }
+    else { let t=el.textContent; for(const k in map){ if(t.includes(k)) t=t.replace(new RegExp(k,'g'),map[k]); } el.textContent=t; }
+  });
+  // h1 do hero vira o nome do lugar (preview personalizado)
+  const h1=document.querySelector('.hero h1');
+  if(h1){ h1.innerHTML=full.replace(/(\w+)\s+(\w+)/, '$1 <em>$2</em>'); }
+  document.title=full;
+})();
+</script>
 </body>
 </html>

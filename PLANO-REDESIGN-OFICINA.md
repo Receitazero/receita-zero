@@ -24,7 +24,25 @@ tinha atmosfera própria; este é um template escuro com neon.
 
 ---
 
-## 1. Referências (verificadas nesta sessão)
+## 1. Referências
+
+> **Correção (apontada pela dona):** a primeira leva que eu trouxe era de **sites do setor**,
+> não de premiação. Eles dão a **dor do negócio**, não direção visual. As referências de design
+> abaixo saíram da galeria **SiteInspire**, e depois abri cada site.
+
+### 1.A · Design — via galeria SiteInspire (verificadas nesta sessão)
+
+| Site | Verificado? | O que faz | O que eu roubo |
+|---|---|---|---|
+| **zerocarbonshipping.com** (Mærsk Mc-Kinney Møller Center) | ✅ fetch 22/07 | Neutro — brancos, cinzas, pretos. Dados técnicos viram **números isolados e enormes** (`100.000` navios, `300M ton`, `3%`) em vez de gráficos. Grade modular pensada para leitura rápida por público técnico | **Número grande e isolado no lugar de gráfico.** Vai direto na faixa de estatística da oficina e no cabeçalho da ficha (OS, previsão, dias de garantia) |
+| **vestrehabitats.no** (Vestre, fabricante) | ✅ fetch 22/07 | O caráter industrial **não vem de estética de fábrica** — vem de honestidade de material e de estrutura. Zero decoração "galpão" | A regra mais útil das três: **não fantasiar de oficina.** Nada de chapa xadrez, textura de graxa ou fita zebrada. O industrial nasce da grade e do dado exposto |
+| **polybion.bio** (biomanufatura) | ✅ fetch 22/07 | Fundo claro, respiro generoso, sans de peso alto na hierarquia. Processo explicado por **evidência (foto do processo)**, não por diagrama. Sem monoespaçada | Respiro alto num tema técnico — técnico não precisa ser apertado. ⚠️ Contraponto útil: ela **não** usa mono. Mantenho a minha, mas só onde é dado de OS de verdade — mono como informação, nunca como enfeite "tech" |
+
+**O que as três têm em comum e derruba o premium atual:** todas são **claras, neutras e generosas**.
+Nenhuma usa dark-neon. O arquivo que está no ar hoje (`#08090B` + verde `#27E0A0`) está no
+extremo oposto do que ganha prêmio nesse registro.
+
+### 1.B · Domínio — sites do setor (verificadas, mas valem pela dor, não pelo design)
 
 | Site | Verificado? | O que faz | O que isso me diz |
 |---|---|---|---|

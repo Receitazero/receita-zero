@@ -103,6 +103,17 @@ a{color:var(--a2);text-decoration:none}
 .cta-final{text-align:center}
 .cta-final h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:var(--s-lg)}
 footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.88rem}
+/* gerador */
+.gen-box{max-width:620px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:var(--s-xl)}
+.gen-row{margin-bottom:var(--s-md)}
+.gen-2col{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-md)}
+.gen-box input,.gen-box select{width:100%;background:var(--bg2);border:1px solid var(--line2);border-radius:10px;padding:12px 14px;font-family:var(--font-body);font-size:14px;color:var(--fg)}
+.gen-box input::placeholder{color:var(--faint)}
+.gen-err{color:#ff6b6b;font-size:.85rem;margin-top:var(--s-sm);text-align:center}
+.gen-result{max-width:760px;margin:var(--s-2xl) auto 0;text-align:center}
+.gen-result-txt{color:var(--muted);margin-bottom:var(--s-md)}
+.gen-result-txt b{color:var(--fg)}
+@media(max-width:560px){.gen-2col{grid-template-columns:1fr}}
 /* scroll motion */
 .mock{will-change:transform}
 .floaty{animation:floaty 7s ease-in-out infinite}
@@ -163,6 +174,44 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(
       <div class="step reveal"><div class="n">01</div><h3>Você manda o nicho</h3><p>Conta o tipo de comércio e a cidade. A IA monta a estrutura, os textos e os serviços.</p></div>
       <div class="step reveal"><div class="n">02</div><h3>A gente estrutura em 48h</h3><p>Cardápio, agendamento ou catálogo + botão de WhatsApp. Você só aprova.</p></div>
       <div class="step reveal"><div class="n">03</div><h3>Seu cliente te acha</h3><p>Site no ar, ranqueando no Google local, com lead caindo direto no seu WhatsApp.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="gerador">
+  <div class="wrap">
+    <div style="text-align:center;margin-bottom:var(--s-2xl)">
+      <span class="eyebrow reveal">Monte seu site em 1 minuto</span>
+      <h2 class="reveal">Cola seu Maps ou Instagram e veja o site pronto</h2>
+      <p class="reveal" style="color:var(--muted);max-width:56ch;margin:0 auto">A gente puxa o nome do seu negócio do link e monta um site-genérico personalizado na hora. Sem cadastro, sem cartão.</p>
+    </div>
+    <div class="gen-box reveal">
+      <div class="gen-row">
+        <input id="gen-link" type="text" placeholder="Cole o link do Google Maps ou Instagram do seu negócio" />
+      </div>
+      <div class="gen-row gen-2col">
+        <select id="gen-nicho">
+          <option value="pizzaria">🍕 Pizzaria</option>
+          <option value="pet">🐾 Pet shop</option>
+          <option value="padaria">🥖 Padaria</option>
+          <option value="oficina">🔧 Oficina</option>
+          <option value="salão">💇 Salão</option>
+          <option value="clínica">🦷 Clínica</option>
+          <option value="lavanderia">🧺 Lavanderia</option>
+          <option value="imobiliária">🏠 Imobiliária</option>
+        </select>
+        <input id="gen-cidade" type="text" placeholder="Cidade (ex: São Vicente)" />
+      </div>
+      <button id="gen-btn" class="btn btn-solid" style="width:100%;justify-content:center;margin-top:var(--s-md)">Gerar meu site grátis →</button>
+      <p id="gen-err" class="gen-err" style="display:none"></p>
+    </div>
+    <div id="gen-result" class="gen-result" style="display:none">
+      <p class="gen-result-txt">Preview de <b id="gen-nome"></b> em <b id="gen-cidade-out"></b>:</p>
+      <div class="frame reveal"><iframe id="gen-frame" src="" title="Preview do seu site"></iframe></div>
+      <div class="gen-cta" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
+        <a id="gen-wa" class="btn btn-solid" href="#" target="_blank" rel="noopener">Quero esse site (R$49/mês)</a>
+        <a class="btn btn-outline" href="#planos">Ver todos os planos</a>
+      </div>
     </div>
   </div>
 </section>
@@ -355,6 +404,62 @@ if(sr.length){
   sr.forEach(el=>io2.observe(el));
   setTimeout(()=>sr.forEach(el=>el.classList.add('in')),1800);
 }
+
+// === GERADOR: Maps/Insta → preview do site genérico ===
+(function(){
+  const link=document.getElementById('gen-link');
+  const nicho=document.getElementById('gen-nicho');
+  const cidade=document.getElementById('gen-cidade');
+  const btn=document.getElementById('gen-btn');
+  const err=document.getElementById('gen-err');
+  const result=document.getElementById('gen-result');
+  const frame=document.getElementById('gen-frame');
+  const nomeOut=document.getElementById('gen-nome');
+  const cidadeOut=document.getElementById('gen-cidade-out');
+  const wa=document.getElementById('gen-wa');
+  if(!btn) return;
+
+  function extraiNome(u){
+    u=u.trim();
+    try{
+      // Google Maps: ?q=Nome ou /place/Nome/
+      if(u.includes('maps.google')||u.includes('goo.gl')){
+        let m=u.match(/[?&]q=([^&]+)/); if(m) return decodeURIComponent(m[1]).replace(/\+/g,' ');
+        m=u.match(/\/place\/([^/]+)\//); if(m) return decodeURIComponent(m[1]).replace(/\+/g,' ');
+      }
+      // Instagram: instagram.com/pizzariadojoao ou @pizzariadojoao
+      if(u.includes('instagram')||u.startsWith('@')){
+        let m=u.match(/(?:instagram\.com\/)?@?([a-z0-9._]+)/i);
+        if(m) return m[1].replace(/[._]/g,' ');
+      }
+    }catch(e){}
+    return '';
+  }
+
+  btn.addEventListener('click',()=>{
+    err.style.display='none';
+    const nome=extraiNome(link.value);
+    const cid=cidade.value.trim();
+    const nch=nicho.value;
+    if(!nome && !link.value.trim()){
+      err.textContent='Cole o link do Maps ou Instagram do seu negócio.';
+      err.style.display='block'; return;
+    }
+    if(!cid){
+      err.textContent='Informe a cidade do seu negócio.';
+      err.style.display='block'; return;
+    }
+    const displayNome = nome || (link.value.trim().split('/').pop().slice(0,40)) || 'Seu Negócio';
+    const base='../site-dfy/'+nch+'/index.html';
+    const src=base+'?nome='+encodeURIComponent(displayNome)+'&cidade='+encodeURIComponent(cid);
+    frame.src=src;
+    nomeOut.textContent=displayNome;
+    cidadeOut.textContent=cid;
+    wa.href='https://wa.me/5511970776856?text='+encodeURIComponent('Quero o site da '+displayNome+' ('+cid+') — plano Essencial R$49/mês');
+    result.style.display='block';
+    result.scrollIntoView({behavior:'smooth',block:'center'});
+  });
+})();
 
 </script>
 </body>

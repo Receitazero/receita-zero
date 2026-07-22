@@ -1,220 +1,437 @@
-<!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- SEO Vitrine Certa -->
-<meta property="og:title" content="Oficina em São Vicente — site Premium | Vitrine Certa">
-<meta property="og:description" content="Oficina mecânica com orçamento ao vivo e agendamento no WhatsApp. Site Premium da Vitrine Certa, pronto em 48h. A partir de R<meta name="viewport" content="width=device-width, initial-scale=1.0">49/mês.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://receitazero.github.io/receita-zero/site-dfy/oficina/premium/index.html">
-<meta property="og:image" content="https://receitazero.github.io/receita-zero/site-dfy/oficina/premium/preview.png">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Oficina em São Vicente",
-  "description": "Oficina mecânica com orçamento ao vivo e agendamento no WhatsApp. Site Premium da Vitrine Certa, pronto em 48h. A partir de R<meta name="viewport" content="width=device-width, initial-scale=1.0">49/mês.",
-  "url": "https://receitazero.github.io/receita-zero/site-dfy/oficina/premium/index.html",
-  "image": "https://receitazero.github.io/receita-zero/site-dfy/oficina/premium/preview.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "São Vicente",
-    "addressRegion": "SP",
-    "addressCountry": "BR"
-  },
-  "telephone": "+555511970776856",
-  "priceRange": "R<meta name="viewport" content="width=device-width, initial-scale=1.0">49-R<meta name="viewport" content="width=device-width, initial-scale=1.0">99",
-  "provider": {
-    "@type": "Organization",
-    "name": "Vitrine Certa",
-    "url": "https://receitazero.github.io/receita-zero/receita-zero/"
-  }
-}
-</script>
-<title>Mecânica Veloz — oficina premium em São Vicente</title>
-<meta name="description" content="Oficina premium em São Vicente: orçamento online em tempo real, serviços de motor, freios e revisão com garantia de 90 dias.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Auto Center Vila — consulte seu carro pela placa</title>
+<meta name="description" content="Oficina em São Vicente. Consulte a placa e veja em que etapa está o seu carro, quem está trabalhando nele e a previsão de entrega.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@100..125,400..700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
 <style>
+/* Hallmark · macrostructure: 05 Workbench · Vitrine Certa / Oficina Premium
+   governado por=input(placa) · cor=codigo de status, sem cor de marca
+   display=Archivo Expanded · dados=IBM Plex Mono
+   pre-emit critique: P5 H4 E4 S5 R4 V5
+   Tokens: ./DESIGN.md — nenhum hex solto fora do :root (gate 48) */
+
 :root{
-  --bg:#08090B;--bg2:#0E1014;--surface:#13161C;--surface2:#1A1E26;--line:#262B36;--line2:#39414F;
-  --fg:#EEF3F8;--muted:#9FB0C3;--faint:#6C7A8C;
-  --a1:#27E0A0;--a2:#1FA8FF;--a3:#9CFE00;--off:#EEF3F8;
-  --grad:linear-gradient(120deg,var(--a2),var(--a1));
-  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
-  --font-body:'Inter',system-ui,sans-serif;
-  --font-display:'Space Grotesk',system-ui,sans-serif;
-  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --concreto:#E9E7E2; --concreto2:#DCD9D2; --risco:#C9C6BF;
+  --grafite:#191C21;  --fumo:#5E646E;      --giz:#F5F4F1;
+  /* código de status — a ÚNICA cor da página */
+  --aguardando:#B06E05; --exec:#2A6288; --pronto:#256B44; --urgente:#A3372A;
+  --wa:#25D366;
+  --sans:'Archivo',system-ui,sans-serif;
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:40px;--s7:64px;--s8:104px;
+  --ease:cubic-bezier(.22,1,.36,1);
 }
-*{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
-body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(45% 40% at 88% 8%,color-mix(in srgb,var(--a2) 18%,transparent),transparent 70%),radial-gradient(40% 40% at 8% 92%,color-mix(in srgb,var(--a1) 14%,transparent),transparent 70%);filter:blur(12px);animation:glow 18s ease-in-out infinite alternate}
-@keyframes glow{0%{transform:translateY(0)}100%{transform:translateY(-2%)}}
-.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
-section{padding-block:var(--s-3xl)}
-h1,h2,h3{font-family:var(--font-display);line-height:1.04;letter-spacing:-.02em}
-.eyebrow{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--a1);margin-bottom:var(--s-sm);font-family:var(--font-mono)}
-.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:10px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;text-decoration:none}
-.btn-solid{background:var(--grad);color:#03110c;font-weight:800;box-shadow:0 16px 40px -14px color-mix(in srgb,var(--a1) 60%,transparent)}
-.btn-solid:hover{transform:translateY(-3px)}
-.btn-outline{background:color-mix(in srgb,var(--surface) 60%,transparent);border-color:var(--line2);color:var(--fg)}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1;transform:none}
-.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.9rem}
-.brand{font-family:var(--font-display);font-weight:800;font-size:1.25rem;letter-spacing:-.02em}
-.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-/* HERO */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-2xl);align-items:center;padding-block:var(--s-3xl)}
-.hero h1{font-size:clamp(2.5rem,5.2vw,4.2rem);margin-bottom:var(--s-md)}
-.hero .lede{color:var(--muted);font-size:1.12rem;max-width:44ch;margin-bottom:var(--s-xl)}
-.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
-.hero .fig{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:4/3.6;background:linear-gradient(160deg,var(--surface2),var(--surface));border:1px solid var(--line);box-shadow:0 40px 90px -40px color-mix(in srgb,var(--a2) 40%,transparent);display:grid;place-items:center}
-.hero .fig .gauge{font-family:var(--font-display);font-size:3rem;font-weight:800;color:var(--a1)}
-/* ORÇAMENTO */
-.orc{background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:var(--s-2xl);display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2xl)}
-.orc .grp{margin-bottom:1rem}
-.orc label{display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700;margin-bottom:.4rem}
-.orc select{width:100%;background:var(--surface);color:var(--fg);border:1px solid var(--line2);border-radius:10px;padding:.8rem 1rem;font-size:1rem;font-family:var(--font-body)}
-.orc .add{display:flex;gap:.5rem;flex-wrap:wrap;margin:.4rem 0}
-.orc .add span{padding:.4rem .9rem;border-radius:999px;border:1px solid var(--line2);background:var(--surface);color:var(--muted);font-size:.85rem;cursor:pointer;transition:.2s}
-.orc .add span.on{background:var(--a1);color:#03110c;border-color:transparent;font-weight:700}
-.orc .ticket{background:var(--surface);border:1px solid var(--line2);border-radius:14px;padding:var(--s-lg);font-family:var(--font-mono)}
-.orc .ticket .line{display:flex;justify-content:space-between;padding:.35rem 0;border-bottom:1px dashed var(--line);font-size:.9rem}
-.orc .ticket .line span:last-child{color:var(--a1);font-weight:700}
-.orc .ticket .total{display:flex;justify-content:space-between;padding-top:.8rem;font-size:1.4rem;font-weight:800;font-family:var(--font-display)}
-.orc .ticket .total span:last-child{color:var(--a1)}
-.orc .wa{margin-top:1rem;width:100%;justify-content:center}
-/* SELO GARANTIA */
-.seal{display:flex;align-items:center;gap:var(--s-xl);justify-content:center;flex-wrap:wrap;padding:var(--s-2xl) 0}
-.seal-badge{position:relative;width:160px;height:160px}
-.seal-badge svg{transform:rotate(-90deg)}
-.seal-badge .ring{fill:none;stroke:var(--a1);stroke-width:6;stroke-linecap:round;stroke-dasharray:440;stroke-dashoffset:440;animation:draw 2.5s ease forwards}
-@keyframes draw{to{stroke-dashoffset:0}}
-.seal-badge .txt{position:absolute;inset:0;display:grid;place-items:center;text-align:center;font-family:var(--font-display);font-weight:800;color:var(--a1);font-size:1.1rem}
-.seal-badge .txt small{display:block;font-size:.7rem;color:var(--muted);font-weight:500}
-/* SERVIÇOS grid */
-.servs{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
-.serv{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:var(--s-xl);transition:transform .25s,border-color .25s}
-.serv:hover{transform:translateY(-6px);border-color:var(--a1)}
-.serv .ico{font-size:1.8rem}
-.serv h4{font-family:var(--font-display);font-size:1.15rem;margin:.4rem 0}
-.serv p{color:var(--muted);font-size:.9rem}
-.cta-final{text-align:center}
-footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.85rem}
-@media(max-width:860px){.hero{grid-template-columns:1fr}.orc{grid-template-columns:1fr}.servs{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}.seal-badge .ring{stroke-dashoffset:0}}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+body{
+  background:var(--concreto);color:var(--grafite);
+  font-family:var(--sans);font-size:1rem;line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+  /* grade de blueprint — ambiente, nunca protagonista */
+  background-image:linear-gradient(var(--risco) 1px,transparent 1px),
+                   linear-gradient(90deg,var(--risco) 1px,transparent 1px);
+  background-size:32px 32px;
+  background-position:-1px -1px;
+}
+body::before{content:'';position:fixed;inset:0;z-index:-1;
+  background:var(--concreto);opacity:.65;pointer-events:none}
+h1,h2,h3{font-family:var(--sans);font-variation-settings:'wdth' 112;
+  line-height:.98;letter-spacing:-.03em;text-transform:uppercase;font-weight:700}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.wrap{inline-size:100%;max-inline-size:1200px;margin-inline:auto;padding-inline:var(--s5)}
+:focus-visible{outline:2px solid var(--grafite);outline-offset:2px}
+button,input{font:inherit;color:inherit}
+
+/* ── BARRA DE ESTADO (gate 42: nem nav de links, nem a régua da pizzaria) ── */
+.barra{position:sticky;inset-block-start:0;z-index:40;
+  background:var(--grafite);color:var(--giz);border-block-end:1px solid var(--grafite)}
+.barra-in{display:flex;align-items:center;gap:var(--s5);
+  max-inline-size:1200px;margin-inline:auto;padding:9px var(--s5);
+  font-family:var(--mono);font-size:.76rem;letter-spacing:.02em}
+.barra .marca{margin-inline-start:auto;font-family:var(--sans);font-weight:600;
+  text-transform:uppercase;letter-spacing:.08em;font-size:.74rem;
+  font-variation-settings:'wdth' 108}
+.contagem{display:inline-flex;align-items:center;gap:7px}
+.led{inline-size:7px;block-size:7px;background:currentColor;flex:none}
+.c-exec{color:#7FB2D6} .c-pronto{color:#7BC49A}
+
+/* ── HERO = CONSOLE ────────────────────────────────────────────── */
+.hero{padding-block:var(--s8) var(--s7)}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.05fr);
+  gap:var(--s7);align-items:start}
+.rotulo{font-family:var(--mono);font-size:.74rem;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--fumo);margin-block-end:var(--s4)}
+.hero h1{font-size:clamp(2.4rem,5.5vw,4.4rem);margin-block-end:var(--s5)}
+.lede{color:var(--fumo);max-inline-size:46ch;margin-block-end:var(--s6)}
+
+.console{border:1px solid var(--grafite);background:var(--giz);padding:var(--s5)}
+.console legend, .console .titulo{font-family:var(--mono);font-size:.74rem;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--fumo);
+  margin-block-end:var(--s3);display:block}
+.campo{display:flex;gap:0;border:2px solid var(--grafite)}
+.campo input{flex:1;min-inline-size:0;border:0;background:transparent;
+  font-family:var(--mono);font-size:1.6rem;font-weight:500;letter-spacing:.22em;
+  padding:12px 14px;text-transform:uppercase}
+.campo input::placeholder{color:var(--risco);letter-spacing:.22em}
+.campo button{border:0;border-inline-start:2px solid var(--grafite);
+  background:var(--grafite);color:var(--giz);padding-inline:var(--s5);cursor:pointer;
+  font-weight:600;text-transform:uppercase;letter-spacing:.08em;font-size:.82rem;
+  transition:background-color .18s}
+.campo button:hover{background:#2B313A}
+.dica{font-family:var(--mono);font-size:.76rem;color:var(--fumo);margin-block-start:var(--s3)}
+.dica b{font-weight:400;color:var(--grafite);cursor:pointer;
+  border-block-end:1px dotted var(--fumo)}
+.erro{font-family:var(--mono);font-size:.8rem;color:var(--urgente);
+  margin-block-start:var(--s3);display:none}
+.erro[data-on="1"]{display:block}
+
+/* ── PLANTA DA OFICINA (SVG autoral, vista de cima) ─────────────── */
+.planta{inline-size:100%;block-size:auto;display:block}
+.planta .parede{fill:none;stroke:var(--grafite);stroke-width:2}
+.planta .piso{fill:var(--concreto2);opacity:.5}
+.planta .divisa{stroke:var(--risco);stroke-width:1;stroke-dasharray:5 5}
+.planta .cota{stroke:var(--fumo);stroke-width:.8}
+.planta .cota-txt{font-family:var(--mono);font-size:9px;fill:var(--fumo)}
+.planta .bancada-n{font-family:var(--mono);font-size:11px;fill:var(--fumo);
+  letter-spacing:.08em}
+.planta .carro{fill:var(--concreto2);stroke:var(--fumo);stroke-width:1.2}
+.planta .vidro{fill:var(--risco);opacity:.7}
+.planta .vazio{font-family:var(--mono);font-size:9px;fill:var(--risco)}
+.planta .destaque{fill:var(--cor-status,var(--exec));opacity:0;transition:opacity .5s var(--ease)}
+.planta .bancada[data-aqui="1"] .destaque{opacity:.14}
+.planta .bancada[data-aqui="1"] .carro{stroke:var(--cor-status,var(--exec));stroke-width:2}
+.planta .bancada[data-aqui="1"] .bancada-n{fill:var(--cor-status,var(--exec))}
+
+/* ── FICHA DA OS ───────────────────────────────────────────────── */
+.ficha{border:1px solid var(--grafite);background:var(--giz);margin-block-start:var(--s5)}
+.ficha[hidden]{display:none}
+.ficha-topo{display:flex;flex-wrap:wrap;gap:var(--s5);align-items:baseline;
+  padding:var(--s5);border-block-end:1px solid var(--risco);background:var(--concreto2)}
+.placa-sel{font-family:var(--mono);font-size:1.35rem;font-weight:500;letter-spacing:.16em;
+  border:2px solid var(--grafite);padding:2px 10px}
+.ficha-topo .modelo{font-weight:600;text-transform:uppercase;letter-spacing:.04em;
+  font-variation-settings:'wdth' 108}
+.ficha-topo .os{margin-inline-start:auto;font-family:var(--mono);font-size:.8rem;color:var(--fumo)}
+.selo{display:inline-flex;align-items:center;gap:7px;border-radius:999px;
+  border:1px solid currentColor;padding:3px 11px;font-family:var(--mono);
+  font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.selo .led{border-radius:999px}
+
+/* números grandes e isolados — lição da Mærsk, no lugar de gráfico */
+.numeros{display:grid;grid-template-columns:repeat(3,1fr);border-block-end:1px solid var(--risco)}
+.numeros div{padding:var(--s5);border-inline-start:1px solid var(--risco)}
+.numeros div:first-child{border-inline-start:0}
+.numeros b{display:block;font-family:var(--mono);font-weight:500;
+  font-size:clamp(1.5rem,3.2vw,2.3rem);letter-spacing:-.03em;line-height:1}
+.numeros span{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--fumo)}
+
+/* trilho de estágios */
+.trilho{padding:var(--s6) var(--s5) var(--s5)}
+.trilho ol{list-style:none;display:grid;grid-template-columns:repeat(6,1fr);
+  position:relative}
+.trilho .fio{position:absolute;inset-block-start:7px;inset-inline:8%;
+  block-size:2px;background:var(--risco)}
+.trilho .fio i{display:block;block-size:100%;inline-size:0;
+  background:var(--cor-status,var(--exec));transition:inline-size .7s var(--ease)}
+.trilho li{position:relative;padding-block-start:22px;text-align:center;
+  font-family:var(--mono);font-size:.68rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--risco)}
+.trilho li::before{content:'';position:absolute;inset-block-start:2px;inset-inline-start:50%;
+  translate:-50% 0;inline-size:12px;block-size:12px;background:var(--concreto);
+  border:2px solid var(--risco)}
+.trilho li[data-feito="1"]{color:var(--fumo)}
+.trilho li[data-feito="1"]::before{border-color:var(--cor-status,var(--exec));
+  background:var(--cor-status,var(--exec))}
+.trilho li[data-aqui="1"]{color:var(--grafite);font-weight:500}
+.trilho li[data-aqui="1"]::before{inline-size:16px;block-size:16px;inset-block-start:0;
+  background:var(--concreto);border-width:4px}
+
+.linha-ficha{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s5);align-items:baseline;
+  padding:var(--s4) var(--s5);border-block-start:1px solid var(--risco);
+  font-family:var(--mono);font-size:.86rem}
+.linha-ficha dt{color:var(--fumo);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase}
+.linha-ficha dd{font-weight:500}
+.acao{padding:var(--s5);border-block-start:1px solid var(--risco);
+  display:flex;gap:var(--s4);align-items:center;flex-wrap:wrap}
+.acao p{font-family:var(--mono);font-size:.82rem;color:var(--fumo);max-inline-size:40ch}
+.wa-btn{display:inline-flex;align-items:center;gap:.5rem;background:var(--wa);color:#0B1F13;
+  font-weight:600;font-size:.9rem;padding:.7rem 1.15rem;border-radius:999px;
+  text-decoration:none;transition:transform .18s var(--ease)}
+.wa-btn:hover{transform:translateY(-2px)}
+.wa-btn svg{inline-size:17px;block-size:17px;fill:currentColor}
+
+/* monta linha a linha: é a OS sendo impressa */
+.js .ficha .monta{clip-path:inset(0 100% 0 0);opacity:.001}
+.ficha.impressa .monta{clip-path:inset(0 0 0 0);opacity:1;
+  transition:clip-path .42s var(--ease),opacity .42s var(--ease)}
+
+.wip{border-block-start:1px solid var(--risco);padding-block:var(--s7);
+  font-family:var(--mono);font-size:.82rem;color:var(--fumo)}
+
+@media (max-width:900px){
+  .hero{padding-block:var(--s7) var(--s6)}
+  .hero-grid{grid-template-columns:1fr;gap:var(--s6)}
+  .hero-arte{order:-1}
+  .numeros{grid-template-columns:1fr}
+  .numeros div{border-inline-start:0;border-block-start:1px solid var(--risco)}
+  .numeros div:first-child{border-block-start:0}
+  .trilho ol{grid-template-columns:repeat(3,1fr);row-gap:var(--s5)}
+  .trilho .fio{display:none}
+  .campo input{font-size:1.25rem;letter-spacing:.16em}
+  .barra-in{gap:var(--s4);font-size:.7rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+  .js .ficha .monta{clip-path:none;opacity:1}
+}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="wrap"><div class="brand">Mecânica<b>Veloz</b></div><a class="btn btn-solid" href="#orcamento" style="padding:.6rem 1.2rem;font-size:.9rem">Orçar</a></div></nav>
 
-<header class="hero"><div class="wrap">
-  <div class="reveal d1">
-    <span class="eyebrow">Oficina premium · São Vicente</span>
-    <h1>Seu carro, <span class="grad">diagnosticado na hora</span></h1>
-    <p class="lede">Monte seu orçamento online em tempo real e saia dirigindo com garantia de 90 dias. Sem surpresa, sem letra miúda.</p>
-    <div class="cta"><a class="btn btn-solid" href="#orcamento">Fazer orçamento</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">WhatsApp</a></div>
+<!-- ⚠️ DEMO — oficina, placas, mecânicos e horários são fictícios (site de portfólio).
+     Trocar TUDO pelo dado real do cliente antes de entregar. -->
+
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="ico-wa" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2m0 18.15c-1.53 0-3.03-.41-4.34-1.19l-.31-.18-3.12.82.83-3.04-.2-.32a8.2 8.2 0 0 1-1.26-4.38c0-4.54 3.7-8.23 8.24-8.23 4.54 0 8.23 3.69 8.23 8.23 0 4.54-3.69 8.23-8.23 8.23m4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.25-.64.81-.79.98-.14.16-.29.19-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.65-1.23-1.46-1.38-1.71-.14-.25-.01-.38.11-.51.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.4-.42-.56-.43h-.47c-.17 0-.43.06-.66.31-.23.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.23 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.22-.16-.47-.29"/></symbol></svg>
+
+<header class="barra">
+  <div class="barra-in">
+    <span class="contagem c-exec"><i class="led"></i><b id="n-oficina">—</b>&nbsp;na oficina</span>
+    <span class="contagem c-pronto"><i class="led"></i><b id="n-pronto">—</b>&nbsp;prontos p/ retirada</span>
+    <span class="marca">Auto Center Vila</span>
   </div>
-  <div class="fig reveal d2"><div class="gauge">⚙️ OBD-II</div></div>
-</div></header>
+</header>
 
-<section id="orcamento"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Orçamento ao vivo</span><h2 class="reveal">Monte seu serviço</h2><p class="reveal" style="color:var(--muted)">Escolha o carro e os serviços — o total atualiza na hora.</p></div>
-  <div class="orc reveal">
+<main>
+<section class="hero">
+  <div class="wrap hero-grid">
     <div>
-      <div class="grp"><label>Tipo de carro</label><select id="car">
-        <option value="leve">Leve (hatch/sedan)</option>
-        <option value="suv">SUV / Pickup</option>
-        <option value="util">Utilitário / Van</option>
-      </select></div>
-      <div class="grp"><label>Serviços</label>
-        <div class="add" id="servs">
-          <span data-k="oil" data-base="0">Troca de óleo</span>
-          <span data-k="brake" data-base="0">Freios</span>
-          <span data-k="belt" data-base="0">Correia</span>
-          <span data-k="scan" data-base="0">Scanner</span>
-          <span data-k="align" data-base="0">Alinhamento</span>
+      <p class="rotulo">Oficina mecânica · São Vicente</p>
+      <h1>Você vê<br>o que a<br>gente vê</h1>
+      <p class="lede">Digite a placa e veja em que etapa está o seu carro, quem está
+        trabalhando nele e a previsão de entrega. Sem ligar, sem esperar retorno.</p>
+
+      <div class="console">
+        <span class="titulo">Consulta de ordem de serviço</span>
+        <div class="campo">
+          <input id="placa" type="text" inputmode="latin" maxlength="8" spellcheck="false"
+                 placeholder="ABC1D23" aria-label="Placa do veículo" autocomplete="off">
+          <button id="consultar" type="button">Consultar</button>
         </div>
-      </div>
-      <div class="grp"><label>Garantia extra</label>
-        <div class="add" id="warr">
-          <span data-m="0">Padrão 90d</span>
-          <span data-m="120">+6 meses</span>
-          <span data-m="240">+1 ano</span>
-        </div>
+        <p class="dica">experimente:
+          <b data-p="ABC1D23">ABC1D23</b> ·
+          <b data-p="XYZ4B56">XYZ4B56</b> ·
+          <b data-p="QRS7C89">QRS7C89</b></p>
+        <p class="erro" id="erro">Placa não encontrada nesta oficina.</p>
       </div>
     </div>
-    <div class="ticket">
-      <div id="lines"></div>
-      <div class="total"><span>Total</span><span id="oTot">R$ 0</span></div>
-      <a class="btn btn-solid wa" id="oWa" href="https://wa.me/5511970776856" target="_blank" rel="noopener">Enviar orçamento no WhatsApp →</a>
+
+    <div class="hero-arte">
+      <!-- Planta da oficina em vista de cima. Decorativa (gate 33).
+           Sem fantasia de galpão (lição da Vestre): é desenho técnico, não textura. -->
+      <svg class="planta" id="planta" viewBox="0 0 460 330" aria-hidden="true" focusable="false">
+        <rect class="piso" x="22" y="26" width="416" height="256"/>
+        <rect class="parede" x="22" y="26" width="416" height="256"/>
+
+        <g class="divisa">
+          <path d="M126 26 V282 M230 26 V282 M334 26 V282"/>
+        </g>
+
+        <!-- 4 bancadas; a do carro consultado acende -->
+        <g class="bancada" data-bancada="1">
+          <rect class="destaque" x="23" y="27" width="102" height="254"/>
+          <text class="bancada-n" x="34" y="48">01</text>
+          <g transform="translate(74 165)">
+            <rect class="carro" x="-27" y="-56" width="54" height="112" rx="7"/>
+            <rect class="vidro" x="-19" y="-40" width="38" height="22" rx="3"/>
+            <rect class="vidro" x="-19" y="20" width="38" height="20" rx="3"/>
+          </g>
+        </g>
+        <g class="bancada" data-bancada="2">
+          <rect class="destaque" x="127" y="27" width="102" height="254"/>
+          <text class="bancada-n" x="138" y="48">02</text>
+          <g transform="translate(178 165)">
+            <rect class="carro" x="-27" y="-56" width="54" height="112" rx="7"/>
+            <rect class="vidro" x="-19" y="-40" width="38" height="22" rx="3"/>
+            <rect class="vidro" x="-19" y="20" width="38" height="20" rx="3"/>
+          </g>
+        </g>
+        <g class="bancada" data-bancada="3">
+          <rect class="destaque" x="231" y="27" width="102" height="254"/>
+          <text class="bancada-n" x="242" y="48">03</text>
+          <g transform="translate(282 165)">
+            <rect class="carro" x="-27" y="-56" width="54" height="112" rx="7"/>
+            <rect class="vidro" x="-19" y="-40" width="38" height="22" rx="3"/>
+            <rect class="vidro" x="-19" y="20" width="38" height="20" rx="3"/>
+          </g>
+        </g>
+        <g class="bancada" data-bancada="4">
+          <rect class="destaque" x="335" y="27" width="102" height="254"/>
+          <text class="bancada-n" x="346" y="48">04</text>
+          <text class="vazio" x="360" y="170">livre</text>
+        </g>
+
+        <!-- cota, como em desenho técnico -->
+        <g class="cota">
+          <path d="M22 302 H438 M22 297 V307 M438 297 V307"/>
+        </g>
+        <text class="cota-txt" x="215" y="318">12,40 m</text>
+        <g class="cota">
+          <path d="M14 26 V282 M9 26 H19 M9 282 H19"/>
+        </g>
+        <text class="cota-txt" x="0" y="160" transform="rotate(-90 8 160)">7,60 m</text>
+      </svg>
+
+      <!-- FICHA: aparece na consulta, no lugar de abrir modal -->
+      <article class="ficha" id="ficha" hidden>
+        <div class="ficha-topo monta">
+          <span class="placa-sel" id="f-placa">—</span>
+          <span class="modelo" id="f-modelo">—</span>
+          <span class="selo" id="f-selo"><i class="led"></i><span id="f-selo-txt">—</span></span>
+          <span class="os mono" id="f-os">—</span>
+        </div>
+
+        <div class="numeros monta">
+          <div><b class="mono" id="f-etapa">—</b><span>etapa atual</span></div>
+          <div><b class="mono" id="f-previsao">—</b><span>previsão de entrega</span></div>
+          <div><b class="mono" id="f-bancada">—</b><span>bancada</span></div>
+        </div>
+
+        <div class="trilho monta">
+          <ol id="f-trilho"><span class="fio"><i id="f-fio"></i></span></ol>
+        </div>
+
+        <dl class="linha-ficha monta">
+          <dt>Quem está no carro</dt><dd id="f-mecanico">—</dd>
+          <dt>Entrada</dt><dd id="f-entrada">—</dd>
+        </dl>
+
+        <div class="acao monta">
+          <p id="f-nota">—</p>
+          <a class="wa-btn" id="f-cta" href="#" target="_blank" rel="noopener" style="margin-inline-start:auto">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#ico-wa"/></svg>
+            <span id="f-cta-txt">Falar com a oficina</span>
+          </a>
+        </div>
+      </article>
     </div>
   </div>
-</div></section>
+</section>
 
-<section id="garantia"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-xl)"><span class="eyebrow reveal">Confiança</span><h2 class="reveal">Garantia que você vê</h2></div>
-  <div class="seal reveal">
-    <div class="seal-badge">
-      <svg viewBox="0 0 160 160" width="160" height="160"><circle class="ring" cx="80" cy="80" r="70"></circle></svg>
-      <div class="txt">90 dias<small>de garantia</small></div>
-    </div>
-    <div style="max-width:42ch;color:var(--muted)">
-      <p>Cada serviço sai com <b style="color:var(--a1)">90 dias de garantia real</b>. O anel acima se preenche quando você confirma o serviço — é nosso compromisso visível, não frase de marketing.</p>
-    </div>
-  </div>
+<section class="wip"><div class="wrap">
+  <b>Checkpoint 1.</b> Faltam: o laudo com aprovação item a item, a tabela aberta de preços,
+  a equipe, o bloco "e se…", a garantia e o rodapé-OS.
 </div></section>
-
-<section id="servs"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">O que fazemos</span><h2 class="reveal">Serviços de motor a chassi</h2></div>
-  <div class="servs">
-    <div class="serv reveal"><div class="ico">🔧</div><h4>Motor</h4><p>Troca de óleo, correia, velas e revisão preventiva.</p></div>
-    <div class="serv reveal"><div class="ico">🛑</div><h4>Freios</h4><p>Pastilhas, disco e fluido. Freio é sagrado.</p></div>
-    <div class="serv reveal"><div class="ico">📟</div><h4>Scanner</h4><p>Diagnóstico eletrônico OBD-II, falha mapeada na hora.</p></div>
-    <div class="serv reveal"><div class="ico">🚗</div><h4>Alinhamento</h4><p>Geometria e balanceamento pra rodar reto.</p></div>
-    <div class="serv reveal"><div class="ico">🔋</div><h4>Bateria</h4><p>Teste e troca no mesmo dia.</p></div>
-    <div class="serv reveal"><div class="ico">❄️</div><h4>Ar-condicionado</h4><p>Recarga de gás e higienização.</p></div>
-  </div>
-</div></section>
-
-<section class="cta-final"><div class="wrap">
-  <h2 class="reveal">Deixe o carro conosco</h2>
-  <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
-    <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20or%C3%A7amento%20Mec%C3%A2nica%20Veloz" target="_blank" rel="noopener">Falar no WhatsApp</a>
-    <a class="btn btn-outline" href="#orcamento">Fazer orçamento</a>
-  </div>
-  <p style="color:var(--faint);margin-top:var(--s-xl);font-size:.9rem">Site premium Vitrine Certa · braço independente</p>
-</div></section>
-
-<footer><div class="wrap">Mecânica Veloz · oficina premium em São Vicente · © 2026</div></footer>
+</main>
 
 <script>
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
-setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
-// ORÇAMENTO
-const preco={leve:{oil:149,brake:280,belt:210,scan:120,align:160},suv:{oil:189,brake:340,belt:260,scan:140,align:200},util:{oil:240,brake:420,belt:320,scan:160,align:260}};
-const nome={oil:'Troca de óleo',brake:'Freios',belt:'Correia',scan:'Scanner OBD-II',align:'Alinhamento'};
-const st={car:'leve',servs:new Set(),warr:0};
-const lines=document.getElementById('lines'),oTot=document.getElementById('oTot'),oWa=document.getElementById('oWa');
-function fmt(v){return 'R$ '+v.toLocaleString('pt-BR');}
-function calc(){
-  const p=preco[st.car];let tot=0;let parts=[];
-  st.servs.forEach(k=>{tot+=p[k];parts.push(nome[k]+'|'+p[k]);});
-  tot+=st.warr; if(st.warr)parts.push('Garantia extra|'+st.warr);
-  lines.innerHTML=(st.servs.size||st.warr? '' : '<div class="line"><span>Selecione um serviço</span><span>—</span></div>')+
-    [...st.servs].map(k=>'<div class="line"><span>'+nome[k]+'</span><span>'+fmt(p[k])+'</span></div>').join('')+
-    (st.warr?'<div class="line"><span>Garantia extra</span><span>'+fmt(st.warr)+'</span></div>':'');
-  oTot.textContent=fmt(tot);
-  const msg='Quero orçamento Mecânica Veloz ('+({leve:'carro leve',suv:'SUV/Pickup',util:'utilitário'}[st.car])+(st.servs.size?': '+[...st.servs].map(k=>nome[k]).join(', '):'')+') — total estimado '+fmt(tot);
-  oWa.href='https://wa.me/5511970776856?text='+encodeURIComponent(msg);
+/* ⚠️ DEMO — dados fictícios de portfólio. Trocar pelos reais antes de entregar. */
+const OFICINA = {
+  whats:'5511970776856',
+  etapas:['recebido','diagnóstico','orçamento','execução','teste','pronto'],
+  carros:{
+    ABC1D23:{modelo:'Gol 1.6 · 2019 · prata', os:2418, bancada:2, etapa:2,
+             mecanico:'Everton R.', entrada:'seg 14:20', previsao:'qua 17:00'},
+    XYZ4B56:{modelo:'Onix 1.0 · 2021 · branco', os:2422, bancada:1, etapa:3,
+             mecanico:'Silvana M.', entrada:'ter 08:05', previsao:'qua 12:00'},
+    QRS7C89:{modelo:'Strada 1.4 · 2017 · vermelha', os:2409, bancada:3, etapa:5,
+             mecanico:'Everton R.', entrada:'sex 16:40', previsao:'pronto'}
+  }
+};
+
+/* cada etapa tem cor, texto e CTA próprios — o motor é o mesmo da pizzaria,
+   mas disparado por PLACA, não por hora */
+const ETAPA = [
+  {cor:'--exec',       selo:'recebido',              nota:'Carro recebido. O diagnóstico começa em seguida.',
+   cta:'Falar com a oficina',      msg:'Oi! Queria saber do meu carro placa '},
+  {cor:'--exec',       selo:'em diagnóstico',        nota:'Estamos levantando o que o carro precisa. Você recebe o laudo antes de qualquer serviço.',
+   cta:'Falar com a oficina',      msg:'Oi! Como está o diagnóstico do carro placa '},
+  {cor:'--aguardando', selo:'aguardando você',       nota:'O laudo está pronto e nada é feito sem a sua aprovação.',
+   cta:'Ver o laudo e aprovar',    msg:'Oi! Quero aprovar o orçamento do carro placa '},
+  {cor:'--exec',       selo:'em execução',           nota:'Serviço aprovado, em execução na bancada.',
+   cta:'Falar com a oficina',      msg:'Oi! Como está o serviço do carro placa '},
+  {cor:'--exec',       selo:'em teste',              nota:'Serviço concluído. Rodando para conferir antes de liberar.',
+   cta:'Falar com a oficina',      msg:'Oi! O carro placa '},
+  {cor:'--pronto',     selo:'pronto p/ retirada',    nota:'Pode buscar. Guardamos o carro sem custo de diária.',
+   cta:'Avisar que vou buscar',    msg:'Oi! Vou buscar o carro placa '}
+];
+
+const $ = s => document.querySelector(s);
+const norm = v => v.toUpperCase().replace(/[^A-Z0-9]/g,'').slice(0,7);
+
+/* contagem da barra: sai dos dados, não é número inventado solto */
+const todos = Object.values(OFICINA.carros);
+$('#n-oficina').textContent = String(todos.filter(c => c.etapa < 5).length).padStart(2,'0');
+$('#n-pronto').textContent  = String(todos.filter(c => c.etapa === 5).length).padStart(2,'0');
+
+/* trilho: 6 etapas montadas do config, não escritas na mão */
+$('#f-trilho').insertAdjacentHTML('beforeend',
+  OFICINA.etapas.map(e => `<li>${e}</li>`).join(''));
+
+const campo = $('#placa'), ficha = $('#ficha'), planta = $('#planta');
+
+/* máscara AAA0A00 enquanto digita */
+campo.addEventListener('input', () => {
+  campo.value = norm(campo.value);
+  $('#erro').dataset.on = '0';
+});
+campo.addEventListener('keydown', e => { if (e.key === 'Enter') consultar(); });
+$('#consultar').addEventListener('click', consultar);
+document.querySelectorAll('.dica b').forEach(b =>
+  b.addEventListener('click', () => { campo.value = b.dataset.p; consultar(); }));
+
+function consultar(){
+  const p = norm(campo.value);
+  const c = OFICINA.carros[p];
+  if (!c){ $('#erro').dataset.on = '1'; ficha.hidden = true;
+           planta.querySelectorAll('.bancada').forEach(b => b.dataset.aqui = '0'); return; }
+  $('#erro').dataset.on = '0';
+  const e = ETAPA[c.etapa];
+
+  /* a cor de status governa ficha e planta ao mesmo tempo */
+  const cor = `var(${e.cor})`;
+  ficha.style.setProperty('--cor-status', cor);
+  planta.style.setProperty('--cor-status', cor);
+  $('#f-selo').style.color = cor;
+
+  $('#f-placa').textContent    = p;
+  $('#f-modelo').textContent   = c.modelo;
+  $('#f-selo-txt').textContent = e.selo;
+  $('#f-os').textContent       = 'OS ' + c.os;
+  $('#f-etapa').textContent    = (c.etapa + 1) + '/6';
+  $('#f-previsao').textContent = c.previsao;
+  $('#f-bancada').textContent  = String(c.bancada).padStart(2,'0');
+  $('#f-mecanico').textContent = c.mecanico;
+  $('#f-entrada').textContent  = c.entrada;
+  $('#f-nota').textContent     = e.nota;
+  $('#f-cta-txt').textContent  = e.cta;
+  $('#f-cta').href = 'https://wa.me/' + OFICINA.whats + '?text=' +
+                     encodeURIComponent(e.msg + p + '?');
+
+  [...$('#f-trilho').querySelectorAll('li')].forEach((li,i) => {
+    li.dataset.feito = i <= c.etapa ? '1' : '0';
+    li.dataset.aqui  = i === c.etapa ? '1' : '0';
+  });
+
+  planta.querySelectorAll('.bancada').forEach(b =>
+    b.dataset.aqui = (+b.dataset.bancada === c.bancada) ? '1' : '0');
+
+  ficha.hidden = false;
+  ficha.classList.remove('impressa');
+  /* a OS "imprime" linha a linha */
+  [...ficha.querySelectorAll('.monta')].forEach((el,i) =>
+    el.style.transitionDelay = (i * 45) + 'ms');
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    ficha.classList.add('impressa');
+    $('#f-fio').style.inlineSize = (c.etapa / (OFICINA.etapas.length - 1) * 100) + '%';
+  }));
 }
-document.getElementById('car').addEventListener('change',e=>{st.car=e.target.value;calc();});
-document.querySelectorAll('#servs span').forEach(s=>s.addEventListener('click',()=>{const k=s.dataset.k;s.classList.toggle('on');if(s.classList.contains('on'))st.servs.add(k);else st.servs.delete(k);calc();}));
-document.querySelectorAll('#warr span').forEach(s=>s.addEventListener('click',()=>{document.querySelectorAll('#warr span').forEach(x=>x.classList.remove('on'));s.classList.add('on');st.warr=+s.dataset.m;calc();}));
-calc();
 </script>
 </body>
 </html>
