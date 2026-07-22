@@ -1,6 +1,4 @@
-// playwright-check.js — valida runtime do paralelo (Hermes) via Playwright
-// O index.html do Claude Code está em desenvolvimento (5 reveals invisíveis)
-// e é testado separadamente. Este script valida apenas o paralelo.
+// playwright-check.js — valida runtime via Playwright
 const { chromium } = require('playwright');
 
 (async () => {
@@ -11,25 +9,24 @@ const { chromium } = require('playwright');
 
   const pages = [
     { url: 'http://127.0.0.1:8736/site-dfy/pizzaria/premium/_paralelo/index.html', name: 'pizzaria (paralelo/Hermes)' },
+    { url: 'http://127.0.0.1:8736/receita-zero/index.html', name: 'landing (Vitrine Certa)' },
   ];
 
   let allOk = true;
   for (const page of pages) {
     try {
       await p.goto(page.url, { waitUntil: 'networkidle' });
-      await p.waitForTimeout(1500);
+      await p.waitForTimeout(1200);
 
-      const hidden = await p.$$eval('.reveal:not(.on)', el => el.length);
-      const pageerrors = errs.length;
-
-      await p.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-      await p.waitForTimeout(500);
+      const hiddenParalelo = await p.$$eval('.reveal:not(.on)', el => el.length).catch(() => 0);
+      const hiddenLanding = await p.$$eval('.reveal:not(.in)', el => el.length).catch(() => 0);
+      const hidden = page.name.includes('paralelo') ? hiddenParalelo : hiddenLanding;
 
       console.log(`\n📄 ${page.name}:`);
-      console.log(`  pageerrors: ${pageerrors}`);
+      console.log(`  pageerrors: ${errs.length}`);
       console.log(`  reveals invisíveis: ${hidden}`);
 
-      if (pageerrors > 0 || hidden > 0) {
+      if (errs.length > 0 || hidden > 0) {
         allOk = false;
         errs.forEach(e => console.log(`  ERR: ${e}`));
       }
