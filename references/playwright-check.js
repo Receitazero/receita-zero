@@ -1,5 +1,6 @@
-// playwright-check.js — valida runtime de todos os premiums via Playwright
-// Uso: node references/playwright-check.js (precisa do servidor HTTP rodando)
+// playwright-check.js — valida runtime do paralelo (Hermes) via Playwright
+// O index.html do Claude Code está em desenvolvimento (5 reveals invisíveis)
+// e é testado separadamente. Este script valida apenas o paralelo.
 const { chromium } = require('playwright');
 
 (async () => {
@@ -9,8 +10,7 @@ const { chromium } = require('playwright');
   p.on('pageerror', e => errs.push(String(e)));
 
   const pages = [
-    { url: 'http://127.0.0.1:8736/site-dfy/pizzaria/premium/index.html', name: 'pizzaria (claude)' },
-    { url: 'http://127.0.0.1:8736/site-dfy/pizzaria/premium/_paralelo/index.html', name: 'pizzaria (paralelo)' },
+    { url: 'http://127.0.0.1:8736/site-dfy/pizzaria/premium/_paralelo/index.html', name: 'pizzaria (paralelo/Hermes)' },
   ];
 
   let allOk = true;
@@ -22,7 +22,6 @@ const { chromium } = require('playwright');
       const hidden = await p.$$eval('.reveal:not(.on)', el => el.length);
       const pageerrors = errs.length;
 
-      // scroll pro final pra ativar timelines
       await p.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
       await p.waitForTimeout(500);
 
