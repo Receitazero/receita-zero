@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Painel do orçamento — Imóveis Vértice</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Mesmos tokens do index.html. Se lá mudar, mudar aqui — o painel não herda nada
+   do site, ele só o carrega dentro de iframes. */
+:root{
+  --papel:#EDEFF2;--via:#FFFFFF;--papel2:#E2E7ED;--linha:#C6CDD6;--linha2:#7F8B9B;
+  --tinta:#141C27;--fumo:#5B6675;--cofre:#0F5A4A;
+  --serif:'Newsreader',Georgia,serif;--grot:'Space Grotesk',system-ui,sans-serif;
+  --s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:40px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{overflow-x:clip}
+body{background:var(--papel);color:var(--tinta);font-family:var(--grot);
+  font-size:.95rem;line-height:1.5;padding:var(--s5);font-variant-numeric:tabular-nums}
+h1{font-family:var(--serif);font-weight:500;font-size:2.2rem;letter-spacing:-.015em}
+.sub{color:var(--fumo);font-size:.9rem;max-inline-size:78ch;margin:10px 0 var(--s5)}
+code{font-family:ui-monospace,monospace;font-size:.88em;color:var(--tinta)}
+
+/* ── controles ─────────────────────────────────────────────── */
+.ctrl{display:flex;gap:var(--s5);align-items:center;flex-wrap:wrap;
+  border:1px solid var(--linha);background:var(--via);
+  padding:var(--s4) var(--s5);margin-block-end:var(--s5)}
+.orc{font-size:2.1rem;font-weight:700;letter-spacing:-.03em;min-inline-size:6.5ch;color:var(--cofre)}
+.rot{font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fumo)}
+input[type=range]{inline-size:280px;accent-color:var(--cofre)}
+button{background:transparent;border:1px solid var(--linha);border-radius:999px;
+  padding:7px 14px;color:var(--tinta);font:500 .85rem var(--grot);cursor:pointer;
+  transition:border-color .2s,background .2s,color .2s}
+button:hover{border-color:var(--linha2)}
+button[aria-pressed="true"]{background:var(--tinta);color:var(--via);border-color:var(--tinta)}
+.linha-btn{display:flex;gap:6px;flex-wrap:wrap}
+.viewport{margin-inline-start:auto;display:flex;gap:6px}
+:focus-visible{outline:2px solid var(--cofre);outline-offset:3px}
+
+/* ── palco ─────────────────────────────────────────────────── */
+.palco{border:1px solid var(--linha);background:var(--papel2);overflow:hidden;
+  margin-block-end:var(--s6);position:relative}
+.palco-in{inline-size:100%;aspect-ratio:16/10;position:relative}
+.palco iframe{position:absolute;inset-block-start:0;inset-inline-start:0;border:0;
+  transform-origin:0 0;background:var(--papel)}
+/* embaixo, não em cima: no topo o carimbo tapava a barra de estado do próprio site. */
+.carimbo{position:absolute;inset-block-end:10px;inset-inline-start:12px;z-index:2;
+  background:var(--tinta);color:var(--via);padding:5px 12px;
+  font:500 .68rem/1 var(--grot);letter-spacing:.12em;text-transform:uppercase}
+
+/* ── grade ─────────────────────────────────────────────────── */
+h2{font-family:var(--serif);font-weight:500;font-size:1.5rem;margin-block-end:var(--s3)}
+.grade{display:grid;gap:var(--s5);grid-template-columns:repeat(auto-fit,minmax(320px,1fr))}
+.tile{border:1px solid var(--linha);background:var(--via)}
+.tile .janela{position:relative;inline-size:100%;aspect-ratio:16/10;overflow:hidden;
+  background:var(--papel)}
+.tile iframe{position:absolute;inset-block-start:0;inset-inline-start:0;border:0;
+  transform-origin:0 0}
+.tile figcaption{padding:var(--s3) var(--s4) var(--s4);
+  border-block-start:1px solid var(--linha);display:grid;gap:var(--s2)}
+.tile b{font-family:var(--serif);font-weight:500;font-size:1.15rem}
+.tile .fio{inline-size:100%;block-size:4px;margin-block-end:var(--s2);background:var(--fumo)}
+.tile[data-cabe="1"] .fio{background:var(--cofre)}
+.tile p{color:var(--fumo);font-size:.86rem}
+footer{margin-block-start:var(--s6);color:var(--fumo);font-size:.82rem;
+  border-block-start:1px solid var(--linha);padding-block-start:var(--s4);
+  max-inline-size:78ch}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<h1>Painel do orçamento</h1>
+<p class="sub">O site de verdade, com o orçamento fixado e a conta de um imóvel aberta.
+É o mesmo <code>index.html</code> — nada aqui é montagem. Serve para conferir todos os
+estados sem digitar valor a valor, e para mostrar o mecanismo funcionando numa reunião.
+Puxe o cursor do orçamento ou toque num imóvel.</p>
+
+<div class="ctrl">
+  <div>
+    <p class="orc" id="orc-rot">R$ 1.800</p>
+    <p class="rot" id="rot-im">nenhuma conta aberta</p>
+  </div>
+  <input type="range" id="cursor" min="700" max="4500" step="50" value="1800" aria-label="Orçamento mensal">
+  <div class="linha-btn" id="imoveis"></div>
+  <div class="viewport">
+    <button id="vw-desk" aria-pressed="true">desktop</button>
+    <button id="vw-mob" aria-pressed="false">celular</button>
+  </div>
+</div>
+
+<div class="palco">
+  <div class="palco-in" id="palco-in">
+    <span class="carimbo" id="carimbo">R$ 1.800 · sem conta aberta</span>
+    <iframe id="palco-frame" title="Pré-visualização do site no orçamento e imóvel escolhidos"></iframe>
+  </div>
+</div>
+
+<h2>Os estados que importam, lado a lado</h2>
+<div class="grade" id="grade"></div>
+
+<footer>
+  Cada quadro é um <code>&lt;iframe&gt;</code> do site real com <code>?ate=</code> e
+  <code>?im=</code>. Os dois parâmetros servem na vida real: o corretor manda
+  <code>…/index.html?ate=1800&amp;im=itarare-2q</code> no WhatsApp e a pessoa cai na
+  página já com a conta inteira daquele imóvel aberta, sem precisar perguntar
+  “e o condomínio?”.
+</footer>
+
+<script>
+/* Espelha IMOB.imoveis do index.html. Se lá mudar, mudar aqui. */
+const IMS = [
+  { id:'',              nome:'nenhum' },
+  { id:'centro-kit',    nome:'Kitnet · R$ 1.126' },
+  { id:'gonzaguinha-1q',nome:'1 quarto · R$ 1.518' },
+  { id:'catiapoa-casa', nome:'Casa 2q · R$ 1.577' },
+  { id:'itarare-2q',    nome:'2 quartos · R$ 1.821' },
+  { id:'bitaru-3q',     nome:'3 quartos · R$ 2.500' },
+  { id:'japui-casa',    nome:'Casa 3q · R$ 2.900' },
+];
+/* Os quadros foram escolhidos por serem os que decidem a venda, não por cobrir a
+   matriz inteira: a lista partida, a conta aberta, o caso em que o condomínio é o
+   vilão, o orçamento em que nada cabe e o em que tudo cabe. */
+const ESTADOS = [
+  { ate:1800, im:'',             cabe:1, rot:'A lista partida em duas',
+    nota:'Orçamento médio da cidade. Três cabem, três estouram — e cada um que estoura diz por quê, ali na linha.' },
+  { ate:1800, im:'itarare-2q',   cabe:0, rot:'“Cabe no aluguel, não cabe no condomínio”',
+    nota:'O anúncio de R$ 1.200 vira R$ 1.821. É o quadro que explica o site inteiro em uma frase.' },
+  { ate:3000, im:'japui-casa',   cabe:1, rot:'A conta inteira, com a entrada',
+    nota:'Casa boa, IPTU pesado e R$ 10.700 para entrar. O número que ninguém publica é o que mais evita visita perdida.' },
+  { ate:900,  im:'',             cabe:0, rot:'Nada cabe',
+    nota:'O site diz que não tem, diz quanto falta para o mais barato, e mesmo assim deixa as contas abertas.' },
+  { ate:4000, im:'',             cabe:1, rot:'Tudo cabe',
+    nota:'Sem nada para recusar, a página vira só a lista honesta — os seis com o preço inteiro na frente.' },
+];
+const SITE = '../index.html';
+const LARG = { desk:1280, mob:390 };
+const ALT  = { desk:900,  mob:900 };
+let vw = 'desk', ate = 1800, im = '';
+
+const $ = s => document.querySelector(s);
+const BRL = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+/* #lista: sem âncora os cinco quadros ficam IDÊNTICOS — o hero ocupa a miniatura
+   inteira e o painel vira prova de que tudo é igual. Quando há ?im=, o próprio
+   site desce até a conta e a âncora só serve de piso. */
+const url = (a, i) => `${SITE}?ate=${a}` + (i ? `&im=${i}` : '') + '#lista';
+const nomeIm = id => (IMS.find(x => x.id === id) || IMS[0]).nome;
+
+/* Encaixa um iframe de LARG×ALT dentro da caixa. Nunca AMPLIAR (Math.min com 1):
+   no modo celular a caixa é mais larga que os 390px do aparelho, e sem o teto o
+   telefone vira pôster. Centraliza por `left` — mexer no transform brigaria com
+   a escala. (Mesma função dos painéis da pizzaria, da oficina e do salão.) */
+function encaixar(frame, caixa){
+  const k  = Math.min(1, caixa.clientWidth / LARG[vw]);
+  const dx = Math.max(0, (caixa.clientWidth - LARG[vw] * k) / 2);
+  frame.style.width  = LARG[vw] + 'px';
+  frame.style.height = ALT[vw] + 'px';
+  frame.style.left = dx + 'px';
+  frame.style.transform = `scale(${k})`;
+  caixa.style.aspectRatio = 'auto';
+  caixa.style.height = Math.round(ALT[vw] * k) + 'px';
+}
+
+/* ── palco ─────────────────────────────────────────────────── */
+const palco = $('#palco-frame'), caixaPalco = $('#palco-in');
+let ultimo = null;
+function pintarPalco(recarregar){
+  $('#orc-rot').textContent = BRL.format(ate);
+  $('#rot-im').textContent  = im ? nomeIm(im) : 'nenhuma conta aberta';
+  $('#carimbo').textContent = `${BRL.format(ate)} · ${im ? nomeIm(im) : 'sem conta aberta'}`;
+  const alvo = url(ate, im);
+  if (recarregar && alvo !== ultimo){ ultimo = alvo; palco.src = alvo; }
+}
+$('#cursor').addEventListener('input',  e => { ate = +e.target.value; pintarPalco(false); });
+$('#cursor').addEventListener('change', e => { ate = +e.target.value; pintarPalco(true); });
+
+$('#imoveis').innerHTML = IMS.map(x =>
+  `<button type="button" data-id="${x.id}" aria-pressed="${x.id === '' ? 'true' : 'false'}">${x.nome}</button>`).join('');
+$('#imoveis').addEventListener('click', ev => {
+  const b = ev.target.closest('button'); if (!b) return;
+  im = b.dataset.id;
+  [...$('#imoveis').children].forEach(x =>
+    x.setAttribute('aria-pressed', String(x.dataset.id === im)));
+  pintarPalco(true);
+});
+
+/* ── grade ─────────────────────────────────────────────────── */
+$('#grade').innerHTML = ESTADOS.map(e => `
+  <figure class="tile" data-cabe="${e.cabe}">
+    <div class="janela"><iframe loading="lazy" title="${e.rot}" src="${url(e.ate, e.im)}"></iframe></div>
+    <figcaption>
+      <span class="fio"></span>
+      <b>${e.rot}</b>
+      <span style="color:var(--fumo);font-size:.82rem">${BRL.format(e.ate)} · ${e.im || 'lista fechada'}</span>
+      <p>${e.nota}</p>
+    </figcaption>
+  </figure>`).join('');
+
+function reencaixarTudo(){
+  encaixar(palco, caixaPalco);
+  document.querySelectorAll('.tile').forEach(t =>
+    encaixar(t.querySelector('iframe'), t.querySelector('.janela')));
+}
+for (const [id, modo] of [['#vw-desk','desk'], ['#vw-mob','mob']]) {
+  $(id).addEventListener('click', () => {
+    vw = modo;
+    $('#vw-desk').setAttribute('aria-pressed', String(modo === 'desk'));
+    $('#vw-mob').setAttribute('aria-pressed',  String(modo === 'mob'));
+    reencaixarTudo();
+  });
+}
+addEventListener('resize', reencaixarTudo);
+
+ate = 1800; im = 'itarare-2q';          /* abre no estado que vende */
+[...$('#imoveis').children].forEach(x => x.setAttribute('aria-pressed', String(x.dataset.id === im)));
+$('#cursor').value = ate;
+pintarPalco(true);
+reencaixarTudo();
+</script>
+</body>
+</html>

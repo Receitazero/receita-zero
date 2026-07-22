@@ -1,208 +1,581 @@
-<!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<!doctype html>
+<html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- SEO Vitrine Certa -->
-<meta property="og:title" content="Imobiliária em São Vicente — site Premium | Vitrine Certa">
-<meta property="og:description" content="Imobiliária com filtro de imóveis e contato no WhatsApp. Site Premium da Vitrine Certa, pronto em 48h. A partir de R<meta name="viewport" content="width=device-width, initial-scale=1.0">49/mês.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://receitazero.github.io/receita-zero/site-dfy/imobiliária/premium/index.html">
-<meta property="og:image" content="https://receitazero.github.io/receita-zero/site-dfy/imobiliária/premium/preview.png">
-<meta name="twitter:card" content="summary_large_image">
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Imobiliária em São Vicente",
-  "description": "Imobiliária com filtro de imóveis e contato no WhatsApp. Site Premium da Vitrine Certa, pronto em 48h. A partir de R<meta name="viewport" content="width=device-width, initial-scale=1.0">49/mês.",
-  "url": "https://receitazero.github.io/receita-zero/site-dfy/imobiliária/premium/index.html",
-  "image": "https://receitazero.github.io/receita-zero/site-dfy/imobiliária/premium/preview.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "São Vicente",
-    "addressRegion": "SP",
-    "addressCountry": "BR"
-  },
-  "telephone": "+555511970776856",
-  "priceRange": "R<meta name="viewport" content="width=device-width, initial-scale=1.0">49-R<meta name="viewport" content="width=device-width, initial-scale=1.0">99",
-  "provider": {
-    "@type": "Organization",
-    "name": "Vitrine Certa",
-    "url": "https://receitazero.github.io/receita-zero/receita-zero/"
-  }
-}
-</script>
-<title>Imóveis Vértice — imobiliária premium em São Vicente</title>
-<meta name="description" content="Imobiliária premium em São Vicente: filtre imóveis por tipo, preço e bairro, veja no mini-mapa e abra a ficha completa.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Imóveis Vértice — o preço inteiro, antes da visita</title>
+<meta name="description" content="O anúncio diz um valor, o boleto diz outro. Aqui a conta do mês vem somada e aberta: aluguel, condomínio, IPTU, seguro — e quanto você precisa ter para entrar. Imobiliária em São Vicente.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
+/* Hallmark · macrostructure: 04 Stat-Led · Vitrine Certa / Imobiliária Premium
+   governado por=orçamento mensal (dinheiro) · objeto=uma conta de mês
+   display=Newsreader · dados=Space Grotesk tabular
+   pre-emit critique: P5 H5 E4 S4 R5 V5
+   Braço isolado da AAPSON: nenhum token, cor, fonte ou link da marca-mãe. */
+
 :root{
-  --bg:#0C0A07;--bg2:#141009;--surface:#1B150D;--surface2:#261D11;--line:#3A2C1A;--line2:#54401F;
-  --fg:#FBF3E6;--muted:#D8BE9A;--faint:#A8895E;
-  --a1:#E0A63C;--a2:#F2C879;--a3:#C98A2B;--off:#FBF3E6;
-  --grad:linear-gradient(120deg,var(--a1),var(--a2));
-  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
-  --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
-  --font-display:'Fraunces',Georgia,serif;
+  /* segunda via de um contrato — cinza frio, não creme, não bege */
+  --papel:#EDEFF2;
+  --via:#FFFFFF;          /* a conta é uma folha; contraste se mede AQUI */
+  --papel2:#E2E7ED;
+  --linha:#C6CDD6;
+  --linha2:#7F8B9B;      /* borda de campo é componente: precisa de 3:1 sobre --via */
+  --tinta:#141C27;
+  --fumo:#5B6675;
+  --cofre:#0F5A4A;        /* único acento. só o número que importa. */
+  --wa:#25D366;
+
+  --serif:'Newsreader',Georgia,serif;
+  --grot:'Space Grotesk',system-ui,sans-serif;
+
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:40px;--s7:64px;--s8:104px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --r:2px;
 }
-*{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
-body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(45% 42% at 85% 6%,color-mix(in srgb,var(--a1) 18%,transparent),transparent 70%),radial-gradient(40% 40% at 8% 95%,color-mix(in srgb,var(--a3) 14%,transparent),transparent 70%);filter:blur(12px);animation:glow 18s ease-in-out infinite alternate}
-@keyframes glow{0%{transform:translateY(0)}100%{transform:translateY(-2%)}}
-.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
-section{padding-block:var(--s-3xl)}
-h1,h2,h3{font-family:var(--font-display);line-height:1.05;letter-spacing:-.01em}
-.eyebrow{font-size:.76rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--a1);margin-bottom:var(--s-sm)}
-.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-weight:800;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;text-decoration:none}
-.btn-solid{background:var(--grad);color:#1a1003;box-shadow:0 16px 40px -14px color-mix(in srgb,var(--a1) 70%,transparent)}
-.btn-solid:hover{transform:translateY(-3px)}
-.btn-outline{background:color-mix(in srgb,var(--surface) 60%,transparent);border-color:var(--line2);color:var(--fg)}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1;transform:none}
-.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.9rem}
-.brand{font-family:var(--font-display);font-weight:800;font-size:1.3rem}
-.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-/* HERO */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-2xl);align-items:center;padding-block:var(--s-3xl)}
-.hero h1{font-size:clamp(2.6rem,5.5vw,4.4rem);margin-bottom:var(--s-md)}
-.hero .lede{color:var(--muted);font-size:1.15rem;max-width:42ch;margin-bottom:var(--s-xl)}
-.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
-.hero .fig{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/4;background:linear-gradient(160deg,var(--surface2),var(--surface));border:1px solid var(--line);box-shadow:0 40px 90px -40px color-mix(in srgb,var(--a1) 50%,transparent);display:grid;place-items:center;font-size:4rem}
-/* FILTROS + GRID */
-.filters{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-bottom:var(--s-xl);align-items:end}
-.filters .f{display:flex;flex-direction:column;gap:.3rem}
-.filters label{font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700}
-.filters select{background:var(--surface);border:1px solid var(--line2);border-radius:10px;padding:.6rem 1rem;color:var(--fg);font-size:.95rem;font-family:var(--font-body)}
-.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s,border-color .25s}
-.card:hover{transform:translateY(-6px);border-color:var(--a1)}
-.card .pic{aspect-ratio:16/10;background:linear-gradient(135deg,color-mix(in srgb,var(--a1) 35%,#2a1d0d),color-mix(in srgb,var(--a3) 30%,#2a1d0d));display:grid;place-items:center;font-size:2.4rem;position:relative}
-.card .tag{position:absolute;top:10px;left:10px;background:rgba(0,0,0,.45);color:var(--a2);font-size:.7rem;font-weight:800;padding:.2rem .6rem;border-radius:999px}
-.card .body{padding:var(--s-md) var(--s-lg) var(--s-lg)}
-.card h4{font-family:var(--font-display);font-size:1.15rem}
-.card .bairro{color:var(--faint);font-size:.85rem}
-.card .price{font-family:var(--font-display);font-size:1.5rem;font-weight:800;color:var(--a2);margin:.3rem 0}
-.card .meta{display:flex;gap:1rem;color:var(--muted);font-size:.85rem;margin-bottom:.8rem}
-.card .open{width:100%;justify-content:center}
-/* MINI-MAPA */
-.map{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:var(--s-lg);display:grid;grid-template-columns:1fr 1.1fr;gap:var(--s-xl);align-items:center}
-.map .canvas{aspect-ratio:4/3;border-radius:14px;background:linear-gradient(135deg,#11201a,#0c1611);position:relative;overflow:hidden;border:1px solid var(--line2)}
-.map .pin{position:absolute;width:18px;height:18px;border-radius:50% 50% 50% 0;background:var(--a1);transform:rotate(-45deg);box-shadow:0 0 0 4px color-mix(in srgb,var(--a1) 25%,transparent);cursor:pointer;transition:.2s}
-.map .pin:hover{transform:rotate(-45deg) scale(1.3)}
-.map .info h4{font-family:var(--font-display);font-size:1.2rem}
-.map .info .price{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--a2);margin:.3rem 0}
-.map .info p{color:var(--muted);font-size:.92rem}
-/* FICHA modal */
-.ficha{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;place-items:center;z-index:100;padding:24px}
-.ficha.show{display:grid}
-.ficha .box{background:var(--surface);border:1px solid var(--line2);border-radius:18px;max-width:440px;width:100%;padding:var(--s-xl);position:relative}
-.ficha .box .x{position:absolute;top:14px;right:16px;cursor:pointer;color:var(--faint);font-size:1.4rem;background:none;border:0}
-.ficha .box .pic{aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg,color-mix(in srgb,var(--a1) 35%,#2a1d0d),color-mix(in srgb,var(--a3) 30%,#2a1d0d));display:grid;place-items:center;font-size:2.4rem;margin-bottom:1rem}
-.ficha .box h3{font-family:var(--font-display);font-size:1.4rem}
-.ficha .box .price{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--a2);margin:.2rem 0 .6rem}
-.ficha .box ul{list-style:none;padding:0;color:var(--muted);font-size:.92rem}
-.ficha .box li{padding:.3rem 0;border-bottom:1px dashed var(--line)}
-.cta-final{text-align:center}
-footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.85rem}
-@media(max-width:860px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.map{grid-template-columns:1fr}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+
+*,*::before,*::after{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--papel);color:var(--tinta);
+  font-family:var(--grot);font-size:16px;line-height:1.55;
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--serif);font-weight:500;line-height:1.12;margin:0;letter-spacing:-.01em}
+p{margin:0}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+img{max-width:100%;display:block}
+:focus-visible{outline:2px solid var(--cofre);outline-offset:3px}
+.wrap{width:min(1080px,100% - var(--s5));margin-inline:auto}
+.dinheiro{font-family:var(--grot);font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* ─────────────────────────── barra de estado ─────────────────────────── */
+.barra{
+  background:var(--tinta);color:var(--via);
+  font-size:.72rem;letter-spacing:.13em;text-transform:uppercase;
+}
+.barra .wrap{
+  display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);
+  align-items:center;padding-block:10px;
+}
+.barra b{font-weight:500}
+.barra .marca{margin-inline-start:auto;font-family:var(--serif);
+  text-transform:none;letter-spacing:0;font-size:.9rem}
+
+/* ─────────────────────────── hero: um número ─────────────────────────── */
+.hero{padding-block:var(--s7) var(--s6);border-block-end:1px solid var(--linha)}
+.olho{
+  font-size:.72rem;letter-spacing:.16em;text-transform:uppercase;color:var(--fumo);
+  display:flex;align-items:center;gap:var(--s3);margin-block-end:var(--s5);
+}
+.olho::after{content:'';flex:1;height:1px;background:var(--linha)}
+.numerao{
+  font-family:var(--grot);font-weight:700;
+  font-size:clamp(3.6rem,15vw,9rem);line-height:.86;letter-spacing:-.045em;
+  color:var(--cofre);
+}
+.numerao small{font-size:.32em;font-weight:500;letter-spacing:-.01em;vertical-align:.55em;margin-inline-end:.12em}
+.hero .diz{
+  font-family:var(--serif);font-size:clamp(1.25rem,3.1vw,1.9rem);
+  max-width:30ch;margin-block-start:var(--s4);
+}
+.hero .sub{color:var(--fumo);max-width:52ch;margin-block-start:var(--s4);font-size:.95rem}
+.risco{text-decoration:line-through;text-decoration-thickness:1.5px;color:var(--fumo)}
+.hero-in{display:grid;gap:var(--s6);align-items:end}
+@media(min-width:960px){.hero-in{grid-template-columns:1.15fr .85fr}}
+/* de que os R$ 390 são feitos — o sistema de fios já aparece aqui, no hero. */
+.donde{background:var(--via);border:1px solid var(--linha);border-radius:var(--r);
+  padding:var(--s5) var(--s5) var(--s4)}
+.donde h2{font-size:1.05rem;margin-block-end:var(--s3)}
+.donde .faixa{font-size:.82rem;color:var(--fumo);margin-block-start:var(--s3);
+  border-block-start:1px dotted var(--linha);padding-block-start:var(--s3)}
+
+/* ─────────────────────────── controle: o orçamento ───────────────────── */
+.controle{
+  background:var(--via);border-block-end:1px solid var(--linha);
+  padding-block:var(--s5);position:sticky;top:0;z-index:5;
+}
+.ctrl-in{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s3) var(--s5)}
+.ctrl-in label{font-family:var(--serif);font-size:1.15rem}
+.campo{display:flex;align-items:baseline;gap:2px;
+  border:1px solid var(--linha2);border-radius:var(--r);padding:6px 12px;background:var(--via)}
+.campo span{color:var(--fumo);font-size:.85rem}
+.campo input{
+  font:inherit;font-weight:700;font-size:1.15rem;font-variant-numeric:tabular-nums;
+  border:0;background:none;width:6ch;padding:0;color:var(--tinta);
+}
+.campo input:focus{outline:none}
+.campo:focus-within{border-color:var(--cofre);box-shadow:0 0 0 2px rgba(15,90,74,.14)}
+.atalhos{display:flex;gap:var(--s2);flex-wrap:wrap}
+.atalho{
+  border:1px solid var(--linha);border-radius:999px;padding:5px 13px;
+  font-size:.85rem;color:var(--fumo);transition:.18s var(--ease);
+}
+.atalho:hover{border-color:var(--linha2);color:var(--tinta)}
+.atalho[aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:var(--via)}
+.dica{
+  flex-basis:100%;font-size:.9rem;color:var(--fumo);
+  border-block-start:1px dotted var(--linha);padding-block-start:var(--s3);margin-block-start:var(--s1);
+}
+.dica b{color:var(--tinta);font-weight:700}
+
+/* ─────────────────────────── a lista ─────────────────────────── */
+/* a barra de controle é sticky: sem esta margem a âncora #lista para embaixo dela
+   e o primeiro imóvel da lista nasce escondido. */
+.lista{padding-block:var(--s6) var(--s7);scroll-margin-block-start:132px}
+.placar{
+  font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fumo);
+  margin-block-end:var(--s4);
+}
+.item{border-block-start:1px solid var(--linha)}
+.item:last-of-type{border-block-end:1px solid var(--linha)}
+.cab{
+  display:grid;grid-template-columns:1fr auto auto;gap:var(--s3) var(--s5);
+  align-items:center;width:100%;text-align:start;padding-block:var(--s5);
+  transition:opacity .22s var(--ease);
+}
+.cab:hover .tit{text-decoration:underline;text-underline-offset:3px}
+.tit{font-family:var(--serif);font-size:clamp(1.15rem,2.4vw,1.5rem)}
+.onde{display:block;color:var(--fumo);font-size:.85rem;margin-block-start:2px}
+.precos{text-align:end;line-height:1.2}
+.anunciado{font-size:.85rem}
+.real{font-weight:700;font-size:clamp(1.3rem,3vw,1.75rem);letter-spacing:-.02em}
+.real small{font-size:.5em;font-weight:500;color:var(--fumo);letter-spacing:0}
+.selo{
+  font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;
+  border:1px solid currentColor;border-radius:999px;padding:3px 10px;white-space:nowrap;
+}
+.item[data-cabe="1"] .real{color:var(--cofre)}
+.item[data-cabe="1"] .selo{color:var(--cofre)}
+/* Não cabe não ganha vermelho — perde a cor. Perde com TOKEN, nunca com opacity:
+   a .55 o texto caía para 3,70:1, e é justamente a linha que explica por que
+   não vale a visita. */
+.item[data-cabe="0"] .tit,
+.item[data-cabe="0"] .onde,
+.item[data-cabe="0"] .anunciado{color:var(--fumo)}
+.item[data-cabe="0"] .cab:hover .tit,
+.item[data-cabe="0"] .cab:focus-visible .tit{color:var(--tinta)}
+.item[data-cabe="0"] .real{color:var(--fumo);text-decoration:line-through;text-decoration-thickness:1.5px}
+.item[data-cabe="0"] .selo{color:var(--fumo)}
+.motivo{grid-column:1/-1;font-size:.88rem;color:var(--fumo);margin-block-start:-6px}
+.motivo b{color:var(--tinta);font-weight:700}
+
+/* ─────────────────────────── a conta ─────────────────────────── */
+.gaveta{padding-block-end:var(--s6)}
+.conta{
+  background:var(--via);border:1px solid var(--linha);border-radius:var(--r);
+  padding:var(--s5) clamp(var(--s4),4vw,var(--s6)) var(--s5);
+}
+.conta h3{font-size:1.05rem;margin-block-end:var(--s4)}
+.linhas{list-style:none;margin:0;padding:0}
+.linhas li{
+  display:flex;align-items:baseline;gap:var(--s2);
+  padding-block:9px;
+  animation:imprime .26s var(--ease) both;
+}
+.linhas li:nth-child(1){animation-delay:.00s}
+.linhas li:nth-child(2){animation-delay:.05s}
+.linhas li:nth-child(3){animation-delay:.10s}
+.linhas li:nth-child(4){animation-delay:.15s}
+.linhas li:nth-child(5){animation-delay:.20s}
+.linhas li:nth-child(6){animation-delay:.25s}
+@keyframes imprime{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.rot{font-size:.95rem}
+.rot em{
+  display:block;font-style:normal;font-size:.76rem;color:var(--fumo);
+  letter-spacing:.02em;margin-block-start:1px;
+}
+.pontos{flex:1;min-width:var(--s5);border-block-end:1px dotted var(--linha2);transform:translateY(-5px)}
+.val{font-weight:500;white-space:nowrap}
+.linhas .total{
+  border-block-start:3px double var(--tinta);margin-block-start:var(--s3);
+  padding-block-start:var(--s4);animation-delay:.31s;
+}
+.linhas .total .rot{font-family:var(--serif);font-size:1.15rem}
+.linhas .total .val{font-weight:700;font-size:1.5rem;letter-spacing:-.02em;color:var(--cofre)}
+.item[data-cabe="0"] .linhas .total .val{color:var(--tinta)}
+
+.dupla{display:grid;grid-template-columns:1fr;gap:var(--s5);margin-block-start:var(--s5)}
+@media(min-width:820px){.dupla{grid-template-columns:1.1fr .9fr;align-items:start}}
+/* a foto vem DEPOIS do preço. é o que todo concorrente mostra primeiro. */
+.foto{border:1px solid var(--linha);border-radius:var(--r);overflow:hidden;background:var(--papel2)}
+/* height:auto é obrigatório: os atributos width/height do <img> viram altura
+   definida na folha do navegador e o aspect-ratio é ignorado — a foto saía retrato. */
+.foto img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover}
+.foto figcaption{font-size:.78rem;color:var(--fumo);padding:8px 10px;border-block-start:1px solid var(--linha)}
+
+.entrada{border:1px solid var(--linha2);border-radius:var(--r);padding:var(--s4);background:var(--papel)}
+.entrada h4{margin:0 0 var(--s3);font-family:var(--serif);font-weight:500;font-size:1.05rem}
+.entrada .linhas li{padding-block:6px;animation:none}
+.entrada .linhas .total{border-block-start:1px solid var(--tinta);padding-block-start:var(--s3);margin-block-start:var(--s2)}
+.entrada .linhas .total .val{font-size:1.2rem;color:var(--tinta)}
+.entrada .linhas .total .rot{font-size:1rem}
+.nota{font-size:.8rem;color:var(--fumo);margin-block-start:var(--s3);line-height:1.5}
+
+.wa-btn{
+  display:inline-flex;align-items:center;gap:var(--s2);margin-block-start:var(--s5);
+  background:var(--tinta);color:var(--via);border-radius:999px;
+  padding:12px 22px;font-size:.95rem;font-weight:500;text-decoration:none;
+  transition:.2s var(--ease);
+}
+.wa-btn:hover{background:var(--cofre)}
+.wa-btn .pt{width:9px;height:9px;border-radius:50%;background:var(--wa);flex:none}
+
+/* ─────────────────────────── nada cabe ─────────────────────────── */
+.nada{
+  background:var(--via);border:1px solid var(--linha);border-radius:var(--r);
+  padding:var(--s6) clamp(var(--s4),4vw,var(--s6));
+}
+.nada h2{font-size:clamp(1.3rem,3.4vw,1.85rem);max-width:26ch}
+.nada p{color:var(--fumo);margin-block-start:var(--s4);max-width:54ch}
+
+/* ─────────────────────────── letra miúda ─────────────────────────── */
+.miuda{background:var(--via);border-block:1px solid var(--linha);padding-block:var(--s6)}
+.miuda h2{font-size:1.35rem;margin-block-end:var(--s5)}
+.miuda dl{margin:0;display:grid;gap:var(--s4)}
+@media(min-width:760px){.miuda dl{grid-template-columns:repeat(3,1fr);gap:var(--s5)}}
+.miuda dt{font-weight:700;font-size:.95rem;margin-block-end:var(--s1)}
+.miuda dd{margin:0;color:var(--fumo);font-size:.88rem;line-height:1.55}
+
+/* ─────────────────────────── rodapé + venda ─────────────────────────── */
+.pe{padding-block:var(--s6);color:var(--fumo);font-size:.85rem}
+.pe strong{font-family:var(--serif);font-size:1.15rem;color:var(--tinta);font-weight:500;display:block;margin-block-end:var(--s2)}
+.venda{background:var(--tinta);color:var(--via);padding-block:var(--s6)}
+.venda p{max-width:56ch;font-size:.95rem;opacity:.82}
+.venda h2{font-size:clamp(1.2rem,3vw,1.6rem);margin-block-end:var(--s3)}
+.venda a{color:var(--via);text-underline-offset:4px}
+
+@media(max-width:620px){
+  .cab{grid-template-columns:1fr;gap:var(--s2)}
+  .precos{text-align:start}
+  .selo{justify-self:start}
+  .controle{position:static}
+  .lista{scroll-margin-block-start:0}   /* barra deixou de ser sticky: nada a descontar */
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;transition-duration:.001ms!important}
+}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="wrap"><div class="brand">Imóveis<b>Vértice</b></div><a class="btn btn-solid" href="#imoveis" style="padding:.6rem 1.2rem;font-size:.9rem">Ver imóveis</a></div></nav>
 
-<header class="hero"><div class="wrap">
-  <div class="reveal d1">
-    <span class="eyebrow">Imobiliária premium · São Vicente</span>
-    <h1>O imóvel certo, <span class="grad">sem perder tempo</span></h1>
-    <p class="lede">Filtre por tipo, preço e bairro, veja no mini-mapa e abra a ficha completa. Cada anúncio é real e atualizado.</p>
-    <div class="cta"><a class="btn btn-solid" href="#imoveis">Buscar imóveis</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">WhatsApp</a></div>
+<div class="barra">
+  <div class="wrap">
+    <b id="b-qtd">6 imóveis com a conta aberta</b>
+    <span>São Vicente · SP</span>
+    <span class="marca">Imóveis Vértice</span>
   </div>
-  <div class="fig reveal d2">🏠</div>
-</div></header>
+</div>
 
-<section id="imoveis"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-xl)"><span class="eyebrow reveal">Catálogo</span><h2 class="reveal">Imóveis em destaque</h2></div>
-  <div class="filters reveal">
-    <div class="f"><label>Tipo</label><select id="fTipo"><option value="">Todos</option><option value="Casa">Casa</option><option value="Apto">Apartamento</option><option value="Kitnet">Kitnet</option></select></div>
-    <div class="f"><label>Bairro</label><select id="fBairro"><option value="">Todos</option><option value="Centro">Centro</option><option value="Praia">Praia</option><option value="Jardim">Jardim</option></select></div>
-    <div class="f"><label>Até (R$)</label><select id="fPreco"><option value="9999999">Sem limite</option><option value="250000">250 mil</option><option value="400000">400 mil</option><option value="700000">700 mil</option></select></div>
-  </div>
-  <div class="grid" id="grid"></div>
-</div></section>
-
-<section id="mapa"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-xl)"><span class="eyebrow reveal">No mapa</span><h2 class="reveal">Onde ficam</h2></div>
-  <div class="map reveal">
-    <div class="canvas" id="canvas"></div>
-    <div class="info" id="mapInfo">
-      <h4>Passe o mouse nos pontos</h4>
-      <div class="price">—</div>
-      <p>Cada pino é um imóvel do catálogo. Clique para ver o bairro.</p>
+<header class="hero">
+  <div class="wrap hero-in">
+    <div>
+      <p class="olho">O preço inteiro</p>
+      <p class="numerao dinheiro"><small>R$</small><span id="b-media">0</span></p>
+      <h1 class="diz">é quanto o anúncio esconde, por mês, em média.</h1>
+      <p class="sub">O anúncio mostra o aluguel. O boleto traz condomínio, IPTU e seguro
+        incêndio junto. Aqui a conta vem somada antes da visita — e a gente diz quais
+        imóveis você <em>não</em> deve perder tempo visitando.</p>
     </div>
+    <aside class="donde">
+      <h2>De que esse valor é feito</h2>
+      <ul class="linhas" id="donde"></ul>
+      <p class="faixa">Faixa dos seis imóveis do acervo, por mês. Zero de condomínio
+        é casa de rua — não é promoção, é que não existe condomínio.</p>
+    </aside>
   </div>
-</div></section>
+</header>
 
-<section class="cta-final"><div class="wrap">
-  <h2 class="reveal">Não achou o que queria?</h2>
-  <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
-    <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20um%20im%C3%B3vel%20Im%C3%B3veis%20V%C3%A9rtice" target="_blank" rel="noopener">Falar no WhatsApp</a>
-    <a class="btn btn-outline" href="#imoveis">Ver imóveis</a>
+<section class="controle" aria-label="Seu orçamento">
+  <div class="wrap ctrl-in">
+    <label for="orc">Quanto cabe no seu mês?</label>
+    <span class="campo">
+      <span>R$</span><input id="orc" type="text" inputmode="numeric" value="1800" aria-describedby="dica">
+    </span>
+    <span class="atalhos" id="atalhos"></span>
+    <p class="dica" id="dica"></p>
   </div>
-  <p style="color:var(--faint);margin-top:var(--s-xl);font-size:.9rem">Site premium Vitrine Certa · braço independente</p>
-</div></section>
+</section>
 
-<footer><div class="wrap">Imóveis Vértice · imobiliária premium em São Vicente · © 2026</div></footer>
+<main class="lista" id="lista">
+  <div class="wrap">
+    <p class="placar" id="placar"></p>
+    <div id="itens"></div>
+  </div>
+</main>
 
-<div class="ficha" id="ficha"><div class="box">
-  <button class="x" id="fichaX">×</button>
-  <div class="pic" id="fPic">🏠</div>
-  <h3 id="fTit">Imóvel</h3>
-  <div class="price" id="fPreco">R$ 0</div>
-  <ul id="fList"></ul>
-  <a class="btn btn-solid" id="fWa" href="https://wa.me/5511970776856" target="_blank" rel="noopener" style="margin-top:1rem;width:100%;justify-content:center">Tenho interesse →</a>
-</div></div>
+<section class="miuda">
+  <div class="wrap">
+    <h2>O que a gente acha que você tem o direito de saber</h2>
+    <dl>
+      <div>
+        <dt>IPTU e seguro incêndio são do proprietário.</dt>
+        <dd>A Lei do Inquilinato (art. 22, VIII) põe os dois na conta de quem é dono.
+          Eles chegam até você porque quase todo contrato tem cláusula de repasse —
+          é legal, é o padrão do mercado, e ainda assim é bom você saber antes de assinar.</dd>
+      </div>
+      <div>
+        <dt>A caução vai até três aluguéis.</dt>
+        <dd>É o teto da lei. E ela volta para você no fim do contrato, corrigida —
+          não é taxa, é depósito. Nas contas abaixo usamos o teto, para você
+          não ser surpreendida para cima.</dd>
+      </div>
+      <div>
+        <dt>Só podem pedir uma garantia.</dt>
+        <dd>Caução <em>ou</em> fiador <em>ou</em> seguro-fiança (art. 37, parágrafo único).
+          Se alguém pedir caução <em>e</em> fiador no mesmo contrato, é irregular —
+          aqui ou em qualquer imobiliária.</dd>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<footer class="pe">
+  <div class="wrap">
+    <strong>Imóveis Vértice</strong>
+    São Vicente · SP · atendimento de segunda a sábado.<br>
+    Valores de condomínio e IPTU conferidos no mês corrente; reajuste anual segue o
+    índice do contrato. Vistoria e taxa de contrato: R$ 0 — a vistoria é nossa.
+  </div>
+</footer>
+
+<section class="venda">
+  <div class="wrap">
+    <h2>Este site é um exemplo.</h2>
+    <p>Fizemos ele para mostrar o que um site de imobiliária pode fazer quando para de
+      ser catálogo e vira conta aberta. Se você tem um negócio em São Vicente e quer um
+      assim, fale com a gente: <a href="https://wa.me/5511970776856">WhatsApp</a>.</p>
+  </div>
+</section>
 
 <script>
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
-setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
-// DADOS
-const IMOVEIS=[
-  {id:1,tipo:'Casa',bairro:'Centro',preco:380000,dorm:3,suite:1,vagas:2,m2:120,emoji:'🏠'},
-  {id:2,tipo:'Apto',bairro:'Praia',preco:520000,dorm:2,suite:1,vagas:1,m2:75,emoji:'🏢'},
-  {id:3,tipo:'Kitnet',bairro:'Centro',preco:180000,dorm:1,suite:0,vagas:0,m2:32,emoji:'🛏️'},
-  {id:4,tipo:'Casa',bairro:'Jardim',preco:640000,dorm:4,suite:2,vagas:3,m2:180,emoji:'🏡'},
-  {id:5,tipo:'Apto',bairro:'Centro',preco:290000,dorm:2,suite:0,vagas:1,m2:60,emoji:'🏢'},
-  {id:6,tipo:'Casa',bairro:'Praia',preco:780000,dorm:3,suite:2,vagas:2,m2:150,emoji:'🌊'},
-];
-const fmt=v=>'R$ '+v.toLocaleString('pt-BR');
-const grid=document.getElementById('grid'),canvas=document.getElementById('canvas'),mapInfo=document.getElementById('mapInfo');
-const fTipo=document.getElementById('fTipo'),fBairro=document.getElementById('fBairro'),fPreco=document.getElementById('fPreco');
-function filtered(){const t=fTipo.value,b=fBairro.value,p=+fPreco.value;return IMOVEIS.filter(x=>(!t||x.tipo===t)&&(!b||x.bairro===b)&&x.preco<=p);}
-function render(){
-  const list=filtered();
-  grid.innerHTML=list.length? '' : '<p style="color:var(--faint);grid-column:1/-1;text-align:center">Nenhum imóvel com esses filtros.</p>';
-  list.forEach(x=>{
-    const c=document.createElement('div');c.className='card';
-    c.innerHTML='<div class="pic">'+x.emoji+'<span class="tag">'+x.tipo+'</span></div><div class="body"><h4>'+x.tipo+' '+x.bairro+'</h4><div class="bairro">'+x.bairro+' · São Vicente</div><div class="price">'+fmt(x.preco)+'</div><div class="meta"><span>🛏️ '+x.dorm+' dorm</span><span>🚿 '+x.suite+' suíte</span><span>🚗 '+x.vagas+' vaga(s)</span></div><button class="btn btn-outline open">Ver ficha</button></div>';
-    c.querySelector('.open').addEventListener('click',()=>openFicha(x));
-    grid.appendChild(c);
-  });
-  // mapa: pino por imovel (pos pseudo por id)
-  canvas.innerHTML='';
-  list.forEach((x,i)=>{const pin=document.createElement('div');pin.className='pin';pin.style.left=(12+i*14)%80+10+'%';pin.style.top=(20+(i*17)%60)+'%';pin.addEventListener('mouseenter',()=>{mapInfo.innerHTML='<h4>'+x.tipo+' '+x.bairro+'</h4><div class="price">'+fmt(x.preco)+'</div><p>'+x.dorm+' dorm · '+x.suite+' suíte · '+x.m2+'m² · '+x.vagas+' vaga(s)</p>';});pin.addEventListener('click',()=>openFicha(x));canvas.appendChild(pin);});
-  if(!list.length)canvas.innerHTML='<div style="position:absolute;inset:0;display:grid;place-items:center;color:var(--faint)">—</div>';
+/* ══════════════ dados ══════════════
+   ⚠️ DEMO — acervo fictício de portfólio. Valores de mercado plausíveis para
+   São Vicente/SP, não são imóveis reais. */
+const IMOB = {
+  whats:'5511970776856',
+  imoveis:[
+    { id:'itarare-2q',   tipo:'Apartamento de 2 quartos', bairro:'Itararé', m2:58, vaga:1,
+      aluguel:1200, cond:480, iptu:112, seguro:29, foto:'assets/i1.jpg',
+      obs:'Condomínio alto porque o prédio tem portaria 24h e dois elevadores.' },
+    { id:'catiapoa-casa', tipo:'Casa de 2 quartos', bairro:'Catiapoã', m2:72, vaga:1,
+      aluguel:1450, cond:0, iptu:96, seguro:31, foto:'assets/i2.jpg',
+      obs:'Casa de rua, sem condomínio — é o acervo com menos encargo escondido.' },
+    { id:'centro-kit',   tipo:'Kitnet mobiliada', bairro:'Centro', m2:28, vaga:0,
+      aluguel:850, cond:210, iptu:48, seguro:18, foto:'assets/i3.jpg',
+      obs:'Condomínio inclui água. Sem vaga de garagem.' },
+    { id:'bitaru-3q',    tipo:'Apartamento de 3 quartos', bairro:'Parque Bitaru', m2:96, vaga:2,
+      aluguel:1900, cond:390, iptu:168, seguro:42, foto:'assets/i1.jpg',
+      obs:'Duas vagas cobertas. Condomínio com piscina e salão.' },
+    { id:'japui-casa',   tipo:'Casa de 3 quartos com quintal', bairro:'Japuí', m2:130, vaga:2,
+      aluguel:2600, cond:0, iptu:245, seguro:55, foto:'assets/banner.jpg',
+      obs:'IPTU pesado: o terreno é grande e o bairro tem a maior planta da cidade.' },
+    { id:'gonzaguinha-1q', tipo:'Apartamento de 1 quarto', bairro:'Gonzaguinha', m2:41, vaga:1,
+      aluguel:1100, cond:320, iptu:74, seguro:24, foto:'assets/i2.jpg',
+      obs:'Duas quadras da praia. Condomínio inclui água e gás.' }
+  ]
+};
+
+/* ══════════════ dinheiro ══════════════ */
+const BRL = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
+const rs  = n => BRL.format(Math.round(n));
+const num = n => new Intl.NumberFormat('pt-BR',{maximumFractionDigits:0}).format(Math.round(n));
+const $   = s => document.querySelector(s);
+
+const im2 = im => `${im.tipo.toLowerCase()} no ${im.bairro}`;
+const encargos = im => im.cond + im.iptu + im.seguro;
+const total    = im => im.aluguel + encargos(im);
+/* caução no TETO legal de 3 aluguéis — para o número nunca surpreender para cima. */
+const entrada  = im => total(im) + im.aluguel * 3;
+
+const ATALHOS = [1200, 1800, 2500, 3500];
+let ORC = 1800;
+let ABERTO = null;
+
+/* ══════════════ o número do hero ══════════════
+   calculado do acervo, não digitado à mão: se um imóvel mudar, o hero muda junto. */
+const mediaEscondida = IMOB.imoveis.reduce((a,im) => a + encargos(im), 0) / IMOB.imoveis.length;
+$('#b-media').textContent = num(mediaEscondida);
+$('#b-qtd').textContent = IMOB.imoveis.length + ' imóveis com a conta aberta';
+
+/* de que os R$ X são feitos — faixa real do acervo, não número redondo inventado */
+$('#donde').innerHTML = [
+  ['Condomínio',      'do inquilino',                     im => im.cond],
+  ['IPTU',            'por lei, do proprietário',         im => im.iptu],
+  ['Seguro incêndio', 'por lei, do proprietário',         im => im.seguro]
+].map(([rot, lei, f]) => {
+  const v = IMOB.imoveis.map(f);
+  return `<li><span class="rot">${rot}<em>${lei}</em></span><i class="pontos"></i>`
+       + `<b class="val dinheiro">${rs(Math.min(...v))} – ${rs(Math.max(...v))}</b></li>`;
+}).join('');
+
+/* mediana dos encargos: é o desconto honesto para traduzir orçamento → aluguel de busca */
+const medianaEncargos = (() => {
+  const v = IMOB.imoveis.map(encargos).sort((a,b) => a - b), m = v.length >> 1;
+  return v.length % 2 ? v[m] : (v[m-1] + v[m]) / 2;
+})();
+
+/* ══════════════ atalhos de orçamento ══════════════ */
+$('#atalhos').innerHTML = ATALHOS.map(v =>
+  `<button class="atalho" type="button" data-v="${v}" aria-pressed="false">${rs(v)}</button>`).join('');
+$('#atalhos').addEventListener('click', e => {
+  const b = e.target.closest('.atalho'); if (!b) return;
+  ORC = +b.dataset.v; $('#orc').value = num(ORC); pintar();
+});
+$('#orc').addEventListener('input', e => {
+  const n = parseInt(e.target.value.replace(/\D/g,''), 10);
+  ORC = Number.isFinite(n) ? n : 0;
+  pintar();
+});
+
+/* ══════════════ montar uma conta ══════════════ */
+function linha(rot, lei, val){
+  return `<li><span class="rot">${rot}${lei ? `<em>${lei}</em>` : ''}</span>`
+       + `<i class="pontos"></i><b class="val dinheiro">${rs(val)}</b></li>`;
 }
-fTipo.addEventListener('change',render);fBairro.addEventListener('change',render);fPreco.addEventListener('change',render);
-// FICHA
-const ficha=document.getElementById('ficha'),fTit=document.getElementById('fTit'),fPrecoEl=document.getElementById('fPreco'),fList=document.getElementById('fList'),fPic=document.getElementById('fPic'),fWa=document.getElementById('fWa');
-function openFicha(x){fTit.textContent=x.tipo+' '+x.bairro;fPrecoEl.textContent=fmt(x.preco);fPic.textContent=x.emoji;fList.innerHTML=['<li>'+x.dorm+' dormitório(s)</li>','<li>'+x.suite+' suíte(s)</li>','<li>'+x.vagas+' vaga(s)</li>','<li>'+x.m2+' m²</li>','<li>Bairro: '+x.bairro+', São Vicente</li>'].join('');fWa.href='https://wa.me/5511970776856?text='+encodeURIComponent('Tenho interesse: '+x.tipo+' '+x.bairro+' '+fmt(x.preco));ficha.classList.add('show');}
-document.getElementById('fichaX').addEventListener('click',()=>ficha.classList.remove('show'));
-ficha.addEventListener('click',e=>{if(e.target===ficha)ficha.classList.remove('show');});
-render();
+
+function conta(im){
+  const l = [ linha('Aluguel', 'do inquilino', im.aluguel) ];
+  if (im.cond) l.push(linha('Condomínio', 'do inquilino (a parte ordinária)', im.cond));
+  l.push(linha('IPTU', 'por lei é do proprietário — repassado por cláusula', im.iptu));
+  l.push(linha('Seguro incêndio', 'por lei é do proprietário — repassado por cláusula', im.seguro));
+  if (!im.cond) l.push(linha('Condomínio', 'não tem — é casa de rua', 0));
+
+  const ent = [
+    linha('1º mês, tudo incluído', '', total(im)),
+    linha('Caução', 'teto legal: 3 aluguéis · devolvida corrigida no fim', im.aluguel * 3),
+    linha('Vistoria e taxa de contrato', 'por nossa conta', 0)
+  ];
+
+  const msg = `Oi! Vi no site a conta inteira do ${im.tipo.toLowerCase()} no ${im.bairro}: `
+    + `${rs(total(im))} por mês (aluguel ${rs(im.aluguel)}`
+    + (im.cond ? ` + condomínio ${rs(im.cond)}` : '')
+    + ` + IPTU ${rs(im.iptu)} + seguro ${rs(im.seguro)}) e ${rs(entrada(im))} para entrar. `
+    + `Quero agendar uma visita.`;
+
+  return `<div class="gaveta"><div class="conta">
+    <h3>A conta do mês, linha por linha</h3>
+    <ul class="linhas">
+      ${l.join('')}
+      <li class="total"><span class="rot">Sai por mês</span><i class="pontos"></i>
+        <b class="val dinheiro">${rs(total(im))}</b></li>
+    </ul>
+    <div class="dupla">
+      <div class="entrada">
+        <h4>Para entrar, você precisa ter</h4>
+        <ul class="linhas">
+          ${ent.join('')}
+          <li class="total"><span class="rot">No bolso, no dia</span><i class="pontos"></i>
+            <b class="val dinheiro">${rs(entrada(im))}</b></li>
+        </ul>
+        <p class="nota">${im.obs}</p>
+      </div>
+      <figure class="foto">
+        <img src="${im.foto}" alt="${im.tipo} no ${im.bairro}" loading="lazy" width="800" height="600">
+        <figcaption>${im.m2} m² · ${im.vaga ? im.vaga + (im.vaga > 1 ? ' vagas' : ' vaga') : 'sem vaga'} · ${im.bairro}</figcaption>
+      </figure>
+    </div>
+    <a class="wa-btn" href="https://wa.me/${IMOB.whats}?text=${encodeURIComponent(msg)}"
+       target="_blank" rel="noopener"><i class="pt"></i>Agendar visita com a conta na mão</a>
+  </div></div>`;
+}
+
+/* ══════════════ por que estourou ══════════════
+   a frase mais útil não é "estoura R$ 21" — é dizer QUAL linha estourou. */
+function porque(im){
+  const e = total(im) - ORC;
+  if (im.cond && (total(im) - im.cond) <= ORC)
+    return `Cabe no aluguel, <b>não cabe no condomínio</b>: ${rs(im.cond)} por mês, todo mês.`;
+  return `Passa <b>${rs(e)}</b> do que você disse que cabe.`;
+}
+
+/* ══════════════ pintar ══════════════ */
+function pintar(){
+  const cabem = IMOB.imoveis.filter(im => total(im) <= ORC);
+
+  /* as pessoas orçam o ALUGUEL, não o total. traduzir é o serviço. */
+  const alvo = Math.max(0, Math.floor((ORC - medianaEncargos) / 50) * 50);
+  $('#dica').innerHTML = ORC > 0
+    ? `Nos nossos imóveis os encargos vão de <b>${rs(Math.min(...IMOB.imoveis.map(encargos)))}</b> a `
+      + `<b>${rs(Math.max(...IMOB.imoveis.map(encargos)))}</b> por mês. Com ${rs(ORC)} no total, `
+      + `procure aluguel anunciado até <b>${rs(alvo)}</b>.`
+    : `Escreva um valor para a gente separar o que cabe do que não cabe.`;
+
+  [...document.querySelectorAll('.atalho')].forEach(b =>
+    b.setAttribute('aria-pressed', String(+b.dataset.v === ORC)));
+
+  $('#placar').textContent = ORC > 0
+    ? `${cabem.length} de ${IMOB.imoveis.length} cabem em ${rs(ORC)} por mês`
+    : `${IMOB.imoveis.length} imóveis`;
+
+  const ordem = [...IMOB.imoveis].sort((a,b) =>
+    (total(a) <= ORC ? 0 : 1) - (total(b) <= ORC ? 0 : 1) || total(a) - total(b));
+
+  $('#itens').innerHTML = ordem.map(im => {
+    const cabe = total(im) <= ORC;
+    const sobra = ORC - total(im);
+    return `<article class="item" data-cabe="${cabe ? 1 : 0}" data-id="${im.id}">
+      <button class="cab" type="button" aria-expanded="${ABERTO === im.id}" aria-controls="c-${im.id}">
+        <span>
+          <span class="tit">${im.tipo}</span>
+          <span class="onde">${im.bairro} · ${im.m2} m²</span>
+        </span>
+        <span class="precos">
+          <span class="anunciado">anunciado <span class="risco dinheiro">${rs(im.aluguel)}</span></span><br>
+          <span class="real dinheiro">${rs(total(im))}<small> /mês</small></span>
+        </span>
+        <span class="selo">${cabe ? (sobra >= 1 ? 'sobram ' + rs(sobra) : 'cabe justo') : 'estoura'}</span>
+        ${cabe ? '' : `<span class="motivo">${porque(im)}</span>`}
+      </button>
+      <div id="c-${im.id}" ${ABERTO === im.id ? '' : 'hidden'}>${ABERTO === im.id ? conta(im) : ''}</div>
+    </article>`;
+  }).join('');
+
+  if (!cabem.length && ORC > 0){
+    const maisBarato = ordem[0];
+    $('#itens').insertAdjacentHTML('afterbegin', `<div class="gaveta"><div class="nada">
+      <h2>Com ${rs(ORC)} por mês, hoje não temos nada que caiba.</h2>
+      <p>O mais barato do acervo sai por <b>${rs(total(maisBarato))}</b> — a ${im2(maisBarato)}.
+        Faltam ${rs(total(maisBarato) - ORC)}. Deixamos a lista aberta abaixo mesmo assim,
+        com a conta de cada um, para você ver de onde vem a diferença.</p>
+    </div></div>`);
+  }
+}
+
+/* ══════════════ abrir/fechar uma conta ══════════════ */
+$('#itens').addEventListener('click', e => {
+  const b = e.target.closest('.cab'); if (!b) return;
+  const id = b.closest('.item').dataset.id;
+  ABERTO = (ABERTO === id) ? null : id;
+  pintar();
+  if (ABERTO) document.querySelector(`.item[data-id="${ABERTO}"] .cab`).focus();
+});
+
+/* ══════════════ estado por URL ══════════════
+   ?ate=1800 e ?im=itarare-2q. Serve ao painel de demonstração e ao link que o
+   corretor manda no WhatsApp já com a conta daquele imóvel aberta. */
+const qs = new URLSearchParams(location.search);
+const qAte = parseInt((qs.get('ate') || '').replace(/\D/g,''), 10);
+if (Number.isFinite(qAte) && qAte > 0){ ORC = qAte; $('#orc').value = num(ORC); }
+const qIm = qs.get('im');
+if (qIm && IMOB.imoveis.some(im => im.id === qIm)) ABERTO = qIm;
+
+pintar();
+
+/* Quem chega por ?im= pediu AQUELE imóvel — cair no topo da página obriga a
+   procurar de novo. Desce até a conta, descontando a barra de controle grudada. */
+if (ABERTO){
+  const alvo = document.querySelector(`.item[data-id="${ABERTO}"]`);
+  if (alvo){
+    alvo.scrollIntoView({ block:'start' });
+    const barra = document.querySelector('.controle');
+    if (getComputedStyle(barra).position === 'sticky') scrollBy(0, -(barra.offsetHeight + 12));
+  }
+}
 </script>
 </body>
 </html>
