@@ -40,11 +40,15 @@ A espinha da página é a própria **ficha que se emite**.
 
 ## 3. Costume — "carteira de banho" (`data-costume` implícito)
 
-Caderneta de vacinação + **plaquinha de coleira em aço**. Artefato que todo dono reconhece.
-- **Capa berry** (`--capa`) com kicker carimbado e a tag de aço pendurada no hero.
+Caderneta de vacinação com a **foto do cão** + carimbo de documento. Artefato que todo dono reconhece.
+- **Capa berry** (`--capa`) com kicker carimbado.
+- **Hero = a foto do cão na carteirinha**: ilustração autoral (golden, tons quentes, `url(#gold)`)
+  num porta-retrato Polaroid inclinado, com cantoneiras de foto e **carimbo-selo de pata** no
+  canto (referência robertaspizza: desenho autoral vence foto/blob). A **legenda viva** grava
+  nome + porte embaixo; uma **plaquinha de aço na coleira** com ponto que muda de cor com o
+  estado (verde=vaga · rosa=cuidado · aço=avaliar). *(A v1 do hero era só uma tag de aço gravada —
+  lia como um borrão cinza; trocada pela foto do bicho, que é o que a carteirinha realmente tem.)*
 - **Páginas porcelana pautadas** — `repeating-linear-gradient` no `body` (as linhas da caderneta).
-- **Tag de aço gravada AO VIVO**: nome + porte + pelo entalhados; um **ponto de esmalte** muda
-  de cor com o estado (verde=vaga · rosa=cuidado · aço=avaliar). O objeto do nicho reage a estado.
 - **Carimbo "AVALIAR ANTES"** (dupla borda de aço rotacionada) = forma, nunca cor sozinha.
 
 ### Fontes (proibida a Fraunces da AAPSON, que estava no premium antigo)
