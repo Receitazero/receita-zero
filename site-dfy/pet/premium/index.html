@@ -1,225 +1,489 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- SEO Vitrine Certa -->
-<meta property="og:title" content="Pet Shop em São Vicente — site Premium | Vitrine Certa">
-<meta property="og:description" content="Pet shop com agendamento de banho e tosa e calculadora de preços no WhatsApp. Site Premium da Vitrine Certa, pronto em 48h. A partir de R<meta name="viewport" content="width=device-width, initial-scale=1.0">49/mês.">
+<title>AuAu &amp; Cia — carteira de banho &amp; tosa · São Vicente</title>
+<meta name="description" content="Banho e tosa em São Vicente do jeito do seu cão: porte, pelo e temperamento definem serviço, tempo, preço e quem cuida. Carteira de banho emitida na hora.">
+<meta property="og:title" content="AuAu & Cia — a carteira de banho do seu cão">
+<meta property="og:description" content="Preencha o bicho e o site emite a carteira: serviço, tempo real, preço, quem cuida e o protocolo. Banho e tosa em São Vicente.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://receitazero.github.io/receita-zero/site-dfy/pet/premium/index.html">
-<meta property="og:image" content="https://receitazero.github.io/receita-zero/site-dfy/pet/premium/preview.png">
-<meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Pet Shop em São Vicente",
-  "description": "Pet shop com agendamento de banho e tosa e calculadora de preços no WhatsApp. Site Premium da Vitrine Certa, pronto em 48h. A partir de R<meta name="viewport" content="width=device-width, initial-scale=1.0">49/mês.",
-  "url": "https://receitazero.github.io/receita-zero/site-dfy/pet/premium/index.html",
-  "image": "https://receitazero.github.io/receita-zero/site-dfy/pet/premium/preview.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "São Vicente",
-    "addressRegion": "SP",
-    "addressCountry": "BR"
-  },
-  "telephone": "+555511970776856",
-  "priceRange": "R<meta name="viewport" content="width=device-width, initial-scale=1.0">49-R<meta name="viewport" content="width=device-width, initial-scale=1.0">99",
-  "provider": {
-    "@type": "Organization",
-    "name": "Vitrine Certa",
-    "url": "https://receitazero.github.io/receita-zero/receita-zero/"
-  }
-}
+{"@context":"https://schema.org","@type":"PetStore","name":"AuAu & Cia","description":"Banho e tosa personalizado por porte, pelo e temperamento em São Vicente.","address":{"@type":"PostalAddress","addressLocality":"São Vicente","addressRegion":"SP","addressCountry":"BR"},"telephone":"+5511970776856","priceRange":"R$35-R$130"}
 </script>
-<title>PetMania — pet shop premium em São Vicente</title>
-<meta name="description" content="Pet shop premium em São Vicente: banho, tosa, vet e daycare com agendamento online, avatar do pet e lembrete no WhatsApp.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0E0A08;--bg2:#171010;--surface:#1E1411;--surface2:#271A15;--line:#3A261E;--line2:#523526;
-  --fg:#FFF6EF;--muted:#E0BBA8;--faint:#A77E6A;
-  --a1:#FF7A3D;--a2:#FF4D8D;--a3:#FFC24B;--off:#FFF6EF;
-  --grad:linear-gradient(120deg,var(--a1),var(--a2));
-  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
-  --font-body:'Plus Jakarta Sans',system-ui,sans-serif;
-  --font-display:'Baloo 2','Fraunces',Georgia,serif;
+  --capa:#5A2440;      /* berry — capa da carteirinha (fundo escuro, texto claro) */
+  --capa2:#77345A;     /* berry claro (decorativo) */
+  --porcelana:#EEEAE1; /* página (superfície de texto) */
+  --ficha:#F7F4ED;     /* card da ficha (superfície de texto, mais clara) */
+  --linha:#DBD2C3;     /* pauta / borda leve sobre porcelana */
+  --linha2:#8A7F6D;    /* borda de campo (piso 3:1 não-texto) */
+  --tinta:#22171D;     /* texto quase-preto (leve tom berry) */
+  --fumo:#574A52;      /* texto secundário */
+  --vaga:#1C7A44;      /* verde coleira — estado "tem vaga / pode hoje" */
+  --cuidado:#A8324F;   /* rosa coleira — flag de protocolo especial */
+  --metal:#3C4550;     /* aço da tag / carimbo AVALIAR */
+  --metal2:#8994A2;    /* brilho do aço (decorativo) */
+  --r:4px;
+  --disp:'Bricolage Grotesque',Georgia,serif;
+  --sans:'Instrument Sans',system-ui,sans-serif;
 }
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
-body::before{content:'';position:fixed;inset:0;z-index:-2;background:radial-gradient(45% 40% at 85% 5%,color-mix(in srgb,var(--a1) 20%,transparent),transparent 70%),radial-gradient(40% 40% at 5% 95%,color-mix(in srgb,var(--a2) 16%,transparent),transparent 70%);filter:blur(12px);animation:glow 16s ease-in-out infinite alternate}
-@keyframes glow{0%{transform:translateY(0)}100%{transform:translateY(-2%)}}
-.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
-section{padding-block:var(--s-3xl)}
-h1,h2,h3{font-family:var(--font-display);line-height:1.04;letter-spacing:-.01em}
-.eyebrow{font-size:.78rem;letter-spacing:.2em;text-transform:uppercase;font-weight:800;color:var(--a1);margin-bottom:var(--s-sm)}
-.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-weight:800;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;text-decoration:none}
-.btn-solid{background:var(--grad);color:#1a0a06;box-shadow:0 16px 40px -14px color-mix(in srgb,var(--a1) 70%,transparent)}
-.btn-solid:hover{transform:translateY(-3px)}
-.btn-outline{background:color-mix(in srgb,var(--surface) 60%,transparent);border-color:var(--line2);color:var(--fg);backdrop-filter:blur(6px)}
-.reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1;transform:none}
-.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.9rem}
-.brand{font-family:var(--font-display);font-weight:800;font-size:1.3rem}
-.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-/* HERO */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-2xl);align-items:center;padding-block:var(--s-3xl)}
-.hero h1{font-size:clamp(2.6rem,5.5vw,4.4rem);margin-bottom:var(--s-md)}
-.hero .lede{color:var(--muted);font-size:1.15rem;max-width:42ch;margin-bottom:var(--s-xl)}
-.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
-.hero .fig{position:relative;border-radius:26px;overflow:hidden;aspect-ratio:4/4;background:linear-gradient(170deg,var(--surface2),var(--surface));border:1px solid var(--line);box-shadow:0 40px 90px -40px color-mix(in srgb,var(--a1) 50%,transparent)}
-.hero .fig img{width:100%;height:100%;object-fit:cover}
-/* AVATAR builder */
-.avatar{background:var(--bg2);border:1px solid var(--line);border-radius:24px;padding:var(--s-xl);display:grid;grid-template-columns:300px 1fr;gap:var(--s-2xl);align-items:center}
-.avatar .pet-face{position:relative;width:260px;height:260px;border-radius:50%;margin-inline:auto;background:radial-gradient(circle at 35% 30%,color-mix(in srgb,var(--a3) 40%,#fff),color-mix(in srgb,var(--a1) 70%,#000));display:grid;place-items:center;transition:background .5s;box-shadow:0 30px 60px -25px color-mix(in srgb,var(--a1) 60%,transparent)}
-.avatar .pet-face .ears{position:absolute;top:-6%;width:100%;display:flex;justify-content:space-between;padding-inline:18%}
-.avatar .pet-face .ear{width:64px;height:74px;background:inherit;border-radius:50% 50% 50% 50%/60% 60% 40% 40%;transform:rotate(-18deg)}
-.avatar .pet-face .ear.r{transform:rotate(18deg)}
-.avatar .pet-face .eyes{position:absolute;top:42%;width:100%;display:flex;justify-content:center;gap:34px}
-.avatar .pet-face .eye{width:20px;height:24px;background:#1a0a06;border-radius:50%}
-.avatar .pet-face .nose{position:absolute;top:54%;width:20px;height:15px;background:#3a1a10;border-radius:50% 50% 60% 60%}
-.avatar .pet-face .tag{position:absolute;bottom:14%;font-family:var(--font-display);font-weight:800;font-size:1.2rem;color:#1a0a06;background:rgba(255,255,255,.85);padding:.15rem .8rem;border-radius:999px}
-.avatar .controls label{display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:800;margin:.9rem 0 .3rem}
-.avatar .controls input[type=text]{width:100%;background:var(--surface);border:1px solid var(--line2);border-radius:12px;padding:.8rem 1rem;font-size:1rem;color:var(--fg)}
-.avatar .swatches{display:flex;gap:.6rem;flex-wrap:wrap}
-.avatar .sw{width:38px;height:38px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:transform .2s}
-.avatar .sw:hover{transform:scale(1.12)}
-.avatar .sw.active{border-color:#fff}
-/* CALCULADORA banho */
-.calc{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:var(--s-2xl);display:grid;grid-template-columns:1fr 1fr;gap:var(--s-xl);align-items:center}
-.calc .opts{display:flex;flex-wrap:wrap;gap:.6rem}
-.calc .chip{padding:.6rem 1.1rem;border-radius:999px;border:1px solid var(--line2);background:var(--surface2);color:var(--muted);cursor:pointer;font-weight:700;transition:.2s;user-select:none}
-.calc .chip.on{background:var(--grad);color:#1a0a06;border-color:transparent}
-.calc .out{text-align:center}
-.calc .total{font-family:var(--font-display);font-size:3rem;font-weight:800;color:var(--a3)}
-.calc .out small{display:block;color:var(--muted);font-size:.9rem;margin-top:.2rem}
-/* CAROUSEL tutores */
-.tutors{position:relative;overflow:hidden}
-.track{display:flex;gap:var(--s-lg);transition:transform .6s cubic-bezier(.2,.8,.2,1);will-change:transform}
-.tcard{flex:0 0 320px;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:var(--s-xl)}
-.tcard .ava{width:54px;height:54px;border-radius:50%;background:var(--grad);display:grid;place-items:center;font-family:var(--font-display);font-weight:800;color:#1a0a06}
-.tcard p{color:var(--muted);font-size:.95rem;margin:.8rem 0}
-.tcard .name{font-weight:800;color:var(--fg)}
-.carousel-nav{display:flex;gap:.6rem;justify-content:center;margin-top:var(--s-lg)}
-.carousel-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line2);background:var(--surface);color:var(--fg);cursor:pointer;font-size:1.1rem;transition:.2s}
-.carousel-nav button:hover{background:var(--grad);color:#1a0a06}
-/* perks */
-.perks{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg)}
-.perk{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:var(--s-xl);text-align:center}
-.perk h4{font-family:var(--font-display);font-size:1.2rem;margin-bottom:.3rem}.perk p{color:var(--muted);font-size:.92rem}
-.cta-final{text-align:center}
-footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.85rem}
-@media(max-width:860px){.hero{grid-template-columns:1fr}.avatar{grid-template-columns:1fr}.calc{grid-template-columns:1fr}.perks{grid-template-columns:1fr}.tcard{flex-basis:80%}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+html{scroll-behavior:smooth}
+body{
+  background:var(--porcelana);color:var(--tinta);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
+  background-image:repeating-linear-gradient(0deg,transparent,transparent 30px,color-mix(in srgb,var(--linha) 55%,transparent) 30px,color-mix(in srgb,var(--linha) 55%,transparent) 31px);
+}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:22px}
+section{padding-block:clamp(3rem,7vw,5rem)}
+h1,h2,h3{font-family:var(--disp);line-height:1.02;letter-spacing:-.015em;font-weight:800}
+.mono{font-family:var(--disp);font-weight:700;letter-spacing:.16em;text-transform:uppercase}
+.eyebrow{font-family:var(--disp);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--cuidado)}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:999px;font-weight:600;font-size:1rem;cursor:pointer;border:1.5px solid transparent;text-decoration:none;font-family:var(--sans)}
+.btn-solid{background:var(--vaga);color:#fff}
+.btn-solid:hover{background:#166337}
+.btn-line{background:transparent;border-color:var(--linha2);color:var(--tinta)}
+.btn-line:hover{border-color:var(--tinta)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--porcelana) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1.5px solid var(--linha2)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.7rem}
+.brand{font-family:var(--disp);font-weight:800;font-size:1.2rem;display:flex;align-items:center;gap:.5rem}
+.brand .paw{width:22px;height:22px}
+
+/* HERO — capa da carteirinha */
+.cover{background:var(--capa);color:var(--porcelana);border-radius:14px;overflow:hidden;
+  box-shadow:0 30px 60px -30px color-mix(in srgb,var(--capa) 80%,#000);position:relative}
+.cover::after{content:'';position:absolute;inset:0;pointer-events:none;
+  background:repeating-linear-gradient(90deg,transparent,transparent 5px,rgba(255,255,255,.02) 5px,rgba(255,255,255,.02) 6px)}
+.cover .inner{display:grid;grid-template-columns:1.05fr .95fr;gap:2rem;align-items:center;padding:clamp(1.6rem,4vw,2.8rem)}
+.cover .kicker{font-family:var(--disp);font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;font-weight:700;color:color-mix(in srgb,var(--porcelana) 72%,transparent);border:1px solid color-mix(in srgb,var(--porcelana) 30%,transparent);display:inline-block;padding:.25rem .7rem;border-radius:2px;margin-bottom:1.1rem}
+.cover h1{font-size:clamp(2.1rem,5vw,3.4rem);margin-bottom:.8rem}
+.cover .lede{color:color-mix(in srgb,var(--porcelana) 88%,transparent);font-size:1.08rem;max-width:40ch;margin-bottom:1.6rem}
+.cover .cta{display:flex;gap:.7rem;flex-wrap:wrap}
+.cover .cta .btn-line{border-color:color-mix(in srgb,var(--porcelana) 45%,transparent);color:var(--porcelana)}
+.cover .cta .btn-line:hover{border-color:var(--porcelana)}
+.tagfig{display:grid;place-items:center}
+.tagfig svg{width:100%;max-width:330px;height:auto;filter:drop-shadow(0 18px 24px rgba(0,0,0,.35))}
+
+/* CONFIGURADOR */
+.lead-copy{max-width:52ch}
+.grid-cfg{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:1.8rem}
+@media(max-width:820px){.grid-cfg{grid-template-columns:1fr}}
+fieldset{border:none;padding:0;margin:0 0 1.1rem}
+fieldset legend{font-family:var(--disp);font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fumo);font-weight:700;margin-bottom:.5rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{padding:.5rem 1rem;border-radius:999px;border:1.5px solid var(--linha2);background:var(--ficha);color:var(--tinta);cursor:pointer;font-weight:500;font-size:.95rem;user-select:none;font-family:var(--sans)}
+.chip[aria-pressed=true]{background:var(--capa);color:var(--porcelana);border-color:var(--capa)}
+.chip:focus-visible{outline:2px solid var(--vaga);outline-offset:2px}
+
+/* FICHA emitida */
+.ficha{background:var(--ficha);border:1.5px solid var(--linha2);border-radius:10px;overflow:hidden;position:relative}
+.ficha .head{background:var(--capa);color:var(--porcelana);padding:1rem 1.3rem;display:flex;justify-content:space-between;align-items:baseline;gap:1rem}
+.ficha .head .t{font-family:var(--disp);font-weight:800;letter-spacing:.02em;font-size:1.05rem}
+.ficha .head .n{font-family:var(--disp);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.7rem;color:color-mix(in srgb,var(--porcelana) 75%,transparent)}
+.ficha .body{padding:1.3rem;display:grid;grid-template-columns:1fr 1fr;gap:.1rem 1.4rem}
+@media(max-width:560px){.ficha .body{grid-template-columns:1fr}}
+.row{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-bottom:1px dashed var(--linha)}
+.row .k{color:var(--fumo);font-size:.9rem}
+.row .v{font-family:var(--disp);font-weight:700;text-align:right}
+.row .v.big{font-size:1.25rem}
+.estado{grid-column:1/-1;margin-top:.9rem;padding:.9rem 1.1rem;border-radius:8px;display:flex;gap:.8rem;align-items:flex-start;font-size:.95rem}
+.estado.ok{background:color-mix(in srgb,var(--vaga) 12%,var(--ficha));border:1.5px solid var(--vaga);color:var(--tinta)}
+.estado.cuidado{background:color-mix(in srgb,var(--cuidado) 10%,var(--ficha));border:1.5px solid var(--cuidado);color:var(--tinta)}
+.estado.avaliar{background:color-mix(in srgb,var(--metal) 9%,var(--ficha));border:1.5px solid var(--metal);color:var(--tinta)}
+.estado .dot{width:14px;height:14px;border-radius:50%;flex:none;margin-top:.35rem}
+.estado.ok .dot{background:var(--vaga)}
+.estado.cuidado .dot{background:var(--cuidado)}
+.estado.avaliar .dot{background:var(--metal);border-radius:2px}
+.estado b{font-family:var(--disp)}
+.proto{grid-column:1/-1;margin-top:.4rem}
+.proto li{margin:.35rem 0 0 1.1rem;font-size:.92rem;color:var(--fumo)}
+.proto li b{color:var(--tinta);font-weight:600}
+.ficha .foot{padding:0 1.3rem 1.3rem;grid-column:1/-1}
+.ficha .foot .btn-solid{width:100%;justify-content:center}
+/* carimbo AVALIAR (forma, não só cor) — ancorado ABAIXO da barra, sobre área vazia */
+.carimbo{position:absolute;bottom:88px;right:18px;transform:rotate(-9deg);border:2.5px solid var(--metal);color:var(--metal);
+  font-family:var(--disp);font-weight:800;letter-spacing:.1em;font-size:.8rem;padding:.2rem .55rem;border-radius:3px;opacity:.92;
+  text-transform:uppercase;pointer-events:none;display:none}
+@media(max-width:560px){.carimbo{bottom:auto;top:60px}}
+.ficha[data-estado=avaliar] .carimbo{display:block}
+
+/* VAGAS por porte */
+.vagas{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;margin-top:1.4rem}
+@media(max-width:640px){.vagas{grid-template-columns:1fr 1fr}}
+.vg{background:var(--ficha);border:1.5px solid var(--linha2);border-radius:8px;padding:1rem;text-align:center}
+.vg .p{font-family:var(--disp);font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--fumo)}
+.vg .num{font-family:var(--disp);font-weight:800;font-size:2rem;line-height:1.1;margin:.2rem 0}
+.vg.zero .num{color:var(--cuidado)}
+.vg.tem .num{color:var(--vaga)}
+.vg small{color:var(--fumo);font-size:.78rem}
+.vg[data-sel=true]{border-color:var(--capa);border-width:2.5px}
+
+/* PROTOCOLO detalhe */
+.proto-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin-top:1.6rem}
+@media(max-width:820px){.proto-grid{grid-template-columns:1fr}}
+.pcard{background:var(--ficha);border:1.5px solid var(--linha);border-radius:10px;padding:1.3rem}
+.pcard h3{font-size:1.05rem;margin-bottom:.4rem}
+.pcard p{color:var(--fumo);font-size:.92rem}
+.pcard .no{color:var(--cuidado);font-weight:600}
+
+/* PROVA */
+.prova{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem;margin-top:1.6rem}
+@media(max-width:640px){.prova{grid-template-columns:1fr}}
+.dep{background:var(--ficha);border-left:3px solid var(--capa);border-radius:0 8px 8px 0;padding:1.1rem 1.3rem}
+.dep p{font-size:.98rem}
+.dep .who{color:var(--fumo);font-size:.85rem;margin-top:.5rem;font-weight:600}
+
+/* CTA final (fundo berry escuro) */
+.final{background:var(--capa);color:var(--porcelana);border-radius:14px;text-align:center;padding:clamp(2rem,5vw,3.2rem)}
+.final h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:.7rem}
+.final p{color:color-mix(in srgb,var(--porcelana) 85%,transparent);max-width:44ch;margin:0 auto 1.4rem}
+.final .cta{display:flex;gap:.7rem;flex-wrap:wrap;justify-content:center}
+.final .btn-line{border-color:color-mix(in srgb,var(--porcelana) 45%,transparent);color:var(--porcelana)}
+
+/* venda nossa — só no fim, sem marca AAPSON */
+.selfsell{text-align:center;padding-block:2.4rem;color:var(--fumo);font-size:.9rem}
+.selfsell a{color:var(--cuidado);font-weight:600}
+footer{border-top:1.5px solid var(--linha2);padding-block:1.4rem;text-align:center;color:var(--fumo);font-size:.82rem}
+.demo-badge{display:none;position:fixed;bottom:14px;left:14px;z-index:99;background:var(--metal);color:#fff;font-family:var(--disp);font-weight:700;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:.4rem .8rem;border-radius:999px}
+body.demo .demo-badge{display:block}
+.sec-h{max-width:56ch;margin-bottom:.4rem}
+.sec-h h2{font-size:clamp(1.7rem,3.6vw,2.4rem);margin:.3rem 0 .4rem}
+.sec-h p{color:var(--fumo)}
+.tab-wrap{overflow-x:auto}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="wrap"><div class="brand">Pet<b>Mania</b></div><a class="btn btn-solid" href="#agendar" style="padding:.6rem 1.2rem;font-size:.9rem">Agendar</a></div></nav>
+<div class="demo-badge">● modo demonstração</div>
+<nav class="nav"><div class="wrap">
+  <div class="brand"><svg class="paw" viewBox="0 0 24 24" fill="var(--capa)"><ellipse cx="7" cy="9" rx="2.1" ry="2.7"/><ellipse cx="12" cy="7.4" rx="2.1" ry="2.9"/><ellipse cx="17" cy="9" rx="2.1" ry="2.7"/><path d="M12 11c-3 0-5.4 2.2-5.4 4.6 0 1.7 1.5 2.6 3 2.3 1-.2 1.6-.5 2.4-.5s1.4.3 2.4.5c1.5.3 3-.6 3-2.3C17.4 13.2 15 11 12 11z"/></svg>AuAu&nbsp;&amp;&nbsp;Cia</div>
+  <a class="btn btn-solid" href="#carteira" style="padding:.55rem 1.1rem;font-size:.9rem">Emitir carteira</a>
+</div></nav>
 
-<header class="hero"><div class="wrap">
-  <div class="reveal d1">
-    <span class="eyebrow">Pet shop premium · São Vicente</span>
-    <h1>Seu pet merece <span class="grad">tratamento VIP</span></h1>
-    <p class="lede">Banho, tosa, vet e daycare com agendamento online, lembrete no WhatsApp e aquele carinho que só quem ama bicho dá. Monte o avatar do seu pet e simule o preço na hora.</p>
-    <div class="cta"><a class="btn btn-solid" href="#avatar">Montar avatar</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">WhatsApp</a></div>
-  </div>
-  <div class="fig reveal d2"><img src="assets/banho.jpg" alt="Cachorro feliz no pet shop"></div>
-</div></header>
-
-<section id="avatar"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Experiência</span><h2 class="reveal">Monte o avatar do seu pet</h2><p class="reveal" style="color:var(--muted)">Escolha a cor e dê o nome dele — é só diversão (e mostra como a gente se importa).</p></div>
-  <div class="avatar reveal">
-    <div class="pet-face" id="petFace">
-      <div class="ears"><div class="ear"></div><div class="ear r"></div></div>
-      <div class="eyes"><div class="eye"></div><div class="eye"></div></div>
-      <div class="nose"></div>
-      <div class="tag" id="petName">Rex</div>
+<!-- HERO: capa da carteirinha -->
+<header class="wrap" style="padding-top:2rem">
+  <div class="cover">
+    <div class="inner">
+      <div>
+        <span class="kicker">Carteira de banho &amp; tosa · São Vicente</span>
+        <h1>Cada cão tem o<br>banho <em style="font-style:normal;color:#F0B8CB">do jeito dele</em>.</h1>
+        <p class="lede">Porte, pelo e temperamento não são detalhe — mudam o serviço, o tempo, o preço e quem põe a mão. Preencha o bicho e a gente <b>emite a carteira dele</b> na hora.</p>
+        <div class="cta">
+          <a class="btn btn-solid" href="#carteira">Preencher o meu cão →</a>
+          <a class="btn btn-line" href="#vagas">Ver vagas de hoje</a>
+        </div>
+      </div>
+      <div class="tagfig">
+        <!-- TAG de coleira em aço, gravada ao vivo -->
+        <svg id="tagsvg" viewBox="0 0 300 300" role="img" aria-label="Plaquinha de identificação do cão">
+          <defs>
+            <linearGradient id="steel" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#B9C2CC"/><stop offset=".18" stop-color="#98A3AF"/>
+              <stop offset=".5" stop-color="#727E8B"/><stop offset=".82" stop-color="#565F6B"/>
+              <stop offset="1" stop-color="#454D58"/>
+            </linearGradient>
+            <linearGradient id="steelEdge" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#D7DEE5"/><stop offset="1" stop-color="#3B424B"/>
+            </linearGradient>
+            <radialGradient id="enamel" cx=".38" cy=".32" r=".8">
+              <stop offset="0" stop-color="#3AD07E"/><stop offset="1" stop-color="#127a3f"/>
+            </radialGradient>
+            <filter id="engrave"><feDropShadow dx="0" dy="1.2" stdDeviation=".3" flood-color="#2b3038" flood-opacity=".9"/></filter>
+          </defs>
+          <!-- argola -->
+          <circle cx="150" cy="34" r="20" fill="none" stroke="url(#steelEdge)" stroke-width="9"/>
+          <circle cx="150" cy="34" r="20" fill="none" stroke="#2c333c" stroke-width="2" opacity=".5"/>
+          <!-- osso -->
+          <g transform="translate(0,6)">
+            <path id="bone" d="M70 150c0-16-13-27-28-27S16 133 20 149c-11 3-18 12-16 24 2 13 15 21 27 17 6-2 10-6 14-6h170c4 0 8 4 14 6 12 4 25-4 27-17 2-12-5-21-16-24 4-16-7-27-22-27s-28 11-28 27c0 6 2 10 2 16s-2 10-2 16H70c0-6 2-10 2-16s-2-10-2-16z"
+              fill="url(#steel)" stroke="url(#steelEdge)" stroke-width="2.5"/>
+            <path d="M70 150c0-16-13-27-28-27S16 133 20 149c-11 3-18 12-16 24 2 13 15 21 27 17 6-2 10-6 14-6h170c4 0 8 4 14 6 12 4 25-4 27-17 2-12-5-21-16-24 4-16-7-27-22-27s-28 11-28 27c0 6 2 10 2 16s-2 10-2 16H70c0-6 2-10 2-16s-2-10-2-16z"
+              fill="none" stroke="#EAF0F5" stroke-width="1" opacity=".35" transform="translate(0,-1.5)"/>
+            <!-- gravação -->
+            <text id="tagName" x="150" y="150" text-anchor="middle" font-family="Bricolage Grotesque,serif" font-weight="800" font-size="34" fill="#2b323b" filter="url(#engrave)">REX</text>
+            <text id="tagSub" x="150" y="176" text-anchor="middle" font-family="Bricolage Grotesque,serif" font-weight="700" font-size="13" letter-spacing="3" fill="#39414b">PORTE M · PELO CURTO</text>
+            <!-- ponto de esmalte = estado -->
+            <circle id="tagDot" cx="150" cy="118" r="8" fill="url(#enamel)" stroke="#eef 0" />
+          </g>
+        </svg>
+      </div>
     </div>
-    <div class="controls">
-      <label for="pname">Nome do pet</label>
-      <input id="pname" type="text" value="Rex" maxlength="14" placeholder="Nome do pet">
-      <label>Cor do pelo</label>
-      <div class="swatches" id="swatches"></div>
-      <p style="color:var(--faint);font-size:.85rem;margin-top:1rem">Cores são só pra brincar — o atendimento real é com o seu bicho de verdade. 🐾</p>
-    </div>
   </div>
-</div></section>
+</header>
 
-<section id="calc"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Simulador ao vivo</span><h2 class="reveal">Quanto custa o banho do seu pet?</h2></div>
-  <div class="calc reveal">
+<!-- CONFIGURADOR + FICHA -->
+<section id="carteira"><div class="wrap">
+  <div class="sec-h">
+    <span class="eyebrow">Passo 1 — preencha o bicho</span>
+    <h2>Quem é o seu cão?</h2>
+    <p>Nenhum campo é enfeite. Cada um muda a carteira que sai ali do lado.</p>
+  </div>
+  <div class="grid-cfg">
     <div>
-      <label style="font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:800;display:block;margin-bottom:.5rem">Porte</label>
-      <div class="opts" id="porteOpts">
-        <span class="chip on" data-k="porte" data-v="Pequeno">Pequeno</span>
-        <span class="chip" data-k="porte" data-v="Médio">Médio</span>
-        <span class="chip" data-k="porte" data-v="Grande">Grande</span>
-      </div>
-      <label style="font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:800;display:block;margin:1.2rem 0 .5rem">Serviço</label>
-      <div class="opts" id="servOpts">
-        <span class="chip on" data-k="serv" data-v="Banho">Banho</span>
-        <span class="chip" data-k="serv" data-v="Tosa">Tosa</span>
-        <span class="chip" data-k="serv" data-v="Banho + Tosa">Banho + Tosa</span>
-        <span class="chip" data-k="serv" data-v="Vet">Vet</span>
-      </div>
+      <fieldset><legend>Porte</legend><div class="chips" id="c-porte">
+        <button class="chip" data-k="porte" data-v="P" aria-pressed="false">Pequeno</button>
+        <button class="chip" data-k="porte" data-v="M" aria-pressed="true">Médio</button>
+        <button class="chip" data-k="porte" data-v="G" aria-pressed="false">Grande</button>
+        <button class="chip" data-k="porte" data-v="GG" aria-pressed="false">Gigante</button>
+      </div></fieldset>
+      <fieldset><legend>Pelo</legend><div class="chips" id="c-pelo">
+        <button class="chip" data-k="pelo" data-v="curto" aria-pressed="true">Curto</button>
+        <button class="chip" data-k="pelo" data-v="medio" aria-pressed="false">Médio</button>
+        <button class="chip" data-k="pelo" data-v="longo" aria-pressed="false">Longo</button>
+        <button class="chip" data-k="pelo" data-v="duplo" aria-pressed="false">Pelo duplo</button>
+      </div></fieldset>
+      <fieldset><legend>Temperamento no banho</legend><div class="chips" id="c-temp">
+        <button class="chip" data-k="temp" data-v="tranquilo" aria-pressed="true">Tranquilo</button>
+        <button class="chip" data-k="temp" data-v="agitado" aria-pressed="false">Agitado</button>
+        <button class="chip" data-k="temp" data-v="medroso" aria-pressed="false">Medroso</button>
+        <button class="chip" data-k="temp" data-v="reativo" aria-pressed="false">Reativo / morde</button>
+      </div></fieldset>
+      <fieldset><legend>Idade</legend><div class="chips" id="c-idade">
+        <button class="chip" data-k="idade" data-v="filhote" aria-pressed="false">Filhote</button>
+        <button class="chip" data-k="idade" data-v="adulto" aria-pressed="true">Adulto</button>
+        <button class="chip" data-k="idade" data-v="idoso" aria-pressed="false">Idoso (8+)</button>
+      </div></fieldset>
     </div>
-    <div class="out">
-      <div class="total" id="calcTotal">R$ 35</div>
-      <small id="calcSub">Banho · Pequeno</small>
-      <a class="btn btn-solid" id="calcWa" href="https://wa.me/5511970776856" target="_blank" rel="noopener" style="margin-top:1rem;width:100%;justify-content:center">Agendar no WhatsApp →</a>
+    <!-- FICHA -->
+    <div class="ficha" id="ficha" data-estado="ok">
+      <div class="carimbo">Avaliar antes</div>
+      <div class="head"><span class="t">Carteira de banho</span><span class="n">AuAu &amp; Cia</span></div>
+      <div class="body">
+        <div class="row"><span class="k">Serviço indicado</span><span class="v" id="f-serv">Banho higiênico</span></div>
+        <div class="row"><span class="k">Tempo real na casa</span><span class="v" id="f-tempo">1h10</span></div>
+        <div class="row"><span class="k">Investimento</span><span class="v big" id="f-preco">R$ 50</span></div>
+        <div class="row"><span class="k">Quem cuida</span><span class="v" id="f-tosador">Rafa</span></div>
+        <div class="estado ok" id="f-estado"><span class="dot"></span><span id="f-estado-txt"><b>Pode ser hoje.</b> Porte médio ainda tem vaga na agenda.</span></div>
+        <ul class="proto" id="f-proto"></ul>
+      </div>
+      <div class="foot"><a class="btn btn-solid" id="f-wa" href="#" target="_blank" rel="noopener">Agendar no WhatsApp →</a></div>
     </div>
   </div>
 </div></section>
 
-<section id="tutores" class="tutors"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Tutores felizes</span><h2 class="reveal">Quem já passou por aqui</h2></div>
-  <div class="track reveal" id="track"></div>
-  <div class="carousel-nav"><button id="prev" aria-label="anterior">‹</button><button id="next" aria-label="próximo">›</button></div>
-</div></section>
-
-<section class="perks"><div class="wrap" style="display:grid;gap:var(--s-lg);grid-template-columns:repeat(3,1fr)">
-  <div class="perk reveal"><h4>Banho & tosa</h4><p>Profissionais que conhecem cada pelo. Seu pet sai cheiroso e tranquilo.</p></div>
-  <div class="perk reveal"><h4>Vet no local</h4><p>Consulta, vacina e exames no mesmo lugar. Sem fila, sem stress.</p></div>
-  <div class="perk reveal"><h4>Daycare</h4><p>Deixe o bicho conosco no dia a dia. Brinca, come e volta feliz.</p></div>
-</div></section>
-
-<section id="agendar" class="cta-final"><div class="wrap">
-  <h2 class="reveal">Pronto pra agendar?</h2>
-  <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
-    <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20agendar%20PetMania" target="_blank" rel="noopener">Falar no WhatsApp</a>
-    <a class="btn btn-outline" href="#calc">Simular preço</a>
+<!-- VAGAS por porte -->
+<section id="vagas"><div class="wrap">
+  <div class="sec-h">
+    <span class="eyebrow">Passo 2 — a agenda real de hoje</span>
+    <h2>Cão grande ocupa a banheira grande.</h2>
+    <p>Por isso a vaga depende do porte — e a gente mostra o que <b>não</b> tem, não só o que tem. <span id="vagas-hora" style="color:var(--fumo)"></span></p>
   </div>
-  <p style="color:var(--faint);margin-top:var(--s-xl);font-size:.9rem">Site premium Vitrine Certa · braço independente</p>
+  <div class="vagas" id="vagasGrid"></div>
 </div></section>
 
-<footer><div class="wrap">PetMania · pet shop premium em São Vicente · © 2026</div></footer>
+<!-- PROTOCOLO -->
+<section><div class="wrap">
+  <div class="sec-h">
+    <span class="eyebrow">Por que uma carteira, e não uma tabela</span>
+    <h2>O preço barato às vezes é o "não".</h2>
+    <p>O concorrente de R$49 aceita qualquer cão por qualquer preço. A gente diz quando algo pede cuidado — porque é o seu bicho.</p>
+  </div>
+  <div class="proto-grid">
+    <div class="pcard"><h3>Idoso 8+</h3><p>Banho morno, secagem na toalha, <span class="no">sem secador quente</span>. Cão com coração cansado não aguenta o sopro fervendo — e ninguém te conta isso na tabela.</p></div>
+    <div class="pcard"><h3>Reativo / morde</h3><p><span class="no">Não agendamos online.</span> Avaliação presencial gratuita primeiro: a Dona Cida sente o cão, define focinheira e ritmo. Segurança do bicho e da equipe antes do preço.</p></div>
+    <div class="pcard"><h3>Pelo longo / duplo</h3><p>Entra desembolo antes da água — pular isso vira nó puxando a pele. Mais tempo, e a carteira já conta esse tempo pra você.</p></div>
+  </div>
+</div></section>
+
+<!-- PROVA -->
+<section><div class="wrap">
+  <div class="sec-h"><span class="eyebrow">Tutores de São Vicente</span><h2>Quem já trouxe o cão.</h2></div>
+  <div class="prova">
+    <div class="dep"><p>"A Meg é idosa e eu tinha medo do banho. Aqui secaram na toalha e me explicaram tudo. Voltou calma."</p><div class="who">Marina · tutora da Meg (12 anos)</div></div>
+    <div class="dep"><p>"O Thor é grandão e bravo. Fizeram avaliação antes de marcar. Primeira vez que não voltou estressado."</p><div class="who">Carlos · tutor do Thor (Rottweiler)</div></div>
+  </div>
+</div></section>
+
+<!-- CTA final -->
+<section><div class="wrap"><div class="final">
+  <h2>Traga a carteira do seu cão.</h2>
+  <p>Preencheu ali em cima? Manda o resumo pra gente no WhatsApp — já chega com porte, pelo e tudo definido.</p>
+  <div class="cta">
+    <a class="btn btn-solid" id="final-wa" href="https://wa.me/5511970776856?text=Quero%20agendar%20banho%20na%20AuAu%20%26%20Cia" target="_blank" rel="noopener">Falar no WhatsApp</a>
+    <a class="btn btn-line" href="#carteira">Preencher de novo</a>
+  </div>
+</div></div></section>
+
+<!-- venda nossa: só aqui, sem marca AAPSON -->
+<div class="selfsell wrap">
+  Site feito pela <a href="../../../receita-zero/index.html">Vitrine Certa</a> — a carteira que se preenche sozinha é o que separa um site premium de um cartão de visita. Quer um assim pro seu negócio?
+</div>
+
+<footer><div class="wrap">AuAu &amp; Cia · banho &amp; tosa · São Vicente/SP · dados de demonstração ⚠️</div></footer>
 
 <script>
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
-setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
-// AVATAR
-const cores=['#FF7A3D','#FF4D8D','#FFC24B','#7C5CFC','#22D3EE','#73E07A','#E8E1D6','#2B2B2B'];
-const sw=document.getElementById('swatches'),face=document.getElementById('petFace'),nameEl=document.getElementById('petName'),pname=document.getElementById('pname');
-cores.forEach((c,i)=>{const s=document.createElement('div');s.className='sw'+(i===0?' active':'');s.style.background=c;if(i===0)face.style.background='radial-gradient(circle at 35% 30%,color-mix(in srgb,'+c+' 40%,#fff),color-mix(in srgb,'+c+' 70%,#000))';s.addEventListener('click',()=>{document.querySelectorAll('.sw').forEach(x=>x.classList.remove('active'));s.classList.add('active');face.style.background='radial-gradient(circle at 35% 30%,color-mix(in srgb,'+c+' 40%,#fff),color-mix(in srgb,'+c+' 70%,#000))';});sw.appendChild(s);});
-pname.addEventListener('input',()=>{nameEl.textContent=pname.value.trim()||'Pet';});
-// CALC
-const tabela={Pequeno:{Banho:35,Tosa:40,'Banho + Tosa':55,Vet:80},Médio:{Banho:45,Tosa:50,'Banho + Tosa':70,Vet:90},Grande:{Banho:55,Tosa:60,'Banho + Tosa':85,Vet:110}};
-const sel={porte:'Pequeno',serv:'Banho'};
-const ct=document.getElementById('calcTotal'),cs=document.getElementById('calcSub'),cw=document.getElementById('calcWa');
-function calc(){const v=tabela[sel.porte][sel.serv];ct.textContent='R$ '+v;cs.textContent=sel.serv+' · '+sel.porte;cw.href='https://wa.me/5511970776856?text='+encodeURIComponent('Quero agendar '+sel.serv+' para pet '+sel.porte+' — a partir de R$'+v);}
-document.querySelectorAll('.chip').forEach(ch=>ch.addEventListener('click',()=>{const k=ch.dataset.k;document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(x=>x.classList.remove('on'));ch.classList.add('on');sel[k]=ch.dataset.v;calc();}));
-calc();
-// CAROUSEL
-const dep=[{n:'Marina',t:'A Luna adora ir! Volta brilhando e calminha. ❤️'},{n:'Carlos',t:'Levo o Thor pra tosa mensal. Nunca erram o horário.'},{n:'Júlia',t:'Vet no mesmo lugar salva minha vida. Atendimento nota 10.'},{n:'Pedro',t:'Daycare nos dias de trabalho = paz de espírito total.'},{n:'Bianca',t:'Lembrete no WhatsApp é tudo. Nunca mais esqueço a vacina.'}];
-const track=document.getElementById('track');
-dep.forEach(d=>{const c=document.createElement('div');c.className='tcard';c.innerHTML='<div class="ava">'+(d.n[0]||'P')+'</div><p>"'+d.t+'"</p><div class="name">'+d.n+'</div>';track.appendChild(c);});
-let idx=0;const cards=track.children,per=Math.max(1,Math.floor(track.parentElement.clientWidth/340));
-function slide(){track.style.transform='translateX('+(-idx*340)+'px)';}
-document.getElementById('next').addEventListener('click',()=>{idx=(idx+1)%(cards.length-per+1);slide();});
-document.getElementById('prev').addEventListener('click',()=>{idx=(idx-1+ (cards.length-per+1))%(cards.length-per+1);slide();});
+/* ===== BLOCO REVENDÁVEL — trocar de cliente = editar só isto ===== */
+const CASA = {
+  nome:'AuAu & Cia', bairro:'São Vicente', wa:'5511970776856',
+  abre:8, fecha:18,
+  tosadores:{ banho:'Rafa', tosa:'Bel', senior:'Dona Cida' },
+  // vagas totais por porte no dia (banheira grande é uma só)
+  vagasDia:{ P:6, M:5, G:3, GG:2 }
+};
+const PRECO_PORTE={P:35,M:50,G:70,GG:95};
+const MIN_PORTE   ={P:40,M:60,G:85,GG:110};
+const PELO={
+  curto:{lbl:'curto',  add:0,  min:0,  proto:null},
+  medio:{lbl:'médio',  add:8,  min:10, proto:null},
+  longo:{lbl:'longo',  add:22, min:30, proto:'Desembolo antes da água (pelo longo vira nó).'},
+  duplo:{lbl:'pelo duplo', add:32, min:40, proto:'Subpelo removido com rastelo — cão de pelo duplo perde muito subpelo no banho.'}
+};
+const TEMP={
+  tranquilo:{lbl:'tranquilo', add:0, min:0, proto:null},
+  agitado:{lbl:'agitado', add:10, min:15, proto:'Banho em dupla e pausas — cão agitado precisa de mais mão, não de pressa.'},
+  medroso:{lbl:'medroso', add:6, min:10, cuidado:true, proto:'Sala calma, secador no modo silencioso.'},
+  reativo:{lbl:'reativo', presencial:true}
+};
+const IDADE={
+  filhote:{lbl:'filhote', proto:'Shampoo neutro, água morna — pele de filhote é sensível.'},
+  adulto:{lbl:'adulto', proto:null},
+  idoso:{lbl:'idoso', cuidado:true, proto:'Banho morno, secagem na toalha — sem secador quente (cão idoso não regula bem a temperatura).'}
+};
+const SERV={
+  banho:'Banho higiênico', tosa:'Banho + tosa'
+};
+
+/* ===== ESTADO ===== */
+const sel = { porte:'M', pelo:'curto', temp:'tranquilo', idade:'adulto' };
+const params = new URLSearchParams(location.search);
+const DEMO = params.has('demo');
+if(DEMO){ document.body.classList.add('demo'); Object.assign(sel,{porte:'G',pelo:'duplo',temp:'medroso',idade:'idoso'}); }
+['porte','pelo','temp','idade'].forEach(k=>{ if(params.has(k)) sel[k]=params.get(k); });
+
+/* hora (para vagas de hoje) — ?agora=HH:MM congela */
+function horaAgora(){
+  if(params.has('agora')){ const [h,m]=params.get('agora').split(':').map(Number); return h + (m||0)/60; }
+  const d=new Date(); return d.getHours()+d.getMinutes()/60;
+}
+
+const $=s=>document.querySelector(s);
+const money=n=>'R$ '+n;
+const dur=m=>{ const h=Math.floor(m/60), mm=m%60; return h? (h+'h'+(mm?String(mm).padStart(2,'0'):'')) : mm+'min'; };
+
+/* ===== MOTOR: emite a carteira do indivíduo ===== */
+function emitir(b){
+  const P=PELO[b.pelo], T=TEMP[b.temp], I=IDADE[b.idade];
+  const presencial = !!T.presencial;
+  const preco = presencial ? null : PRECO_PORTE[b.porte] + P.add + (T.add||0);
+  const min   = presencial ? null : MIN_PORTE[b.porte] + P.min + (T.min||0);
+  const serv  = (b.pelo==='longo'||b.pelo==='duplo') ? SERV.tosa : SERV.banho;
+  const tosador = presencial ? CASA.tosadores.senior
+                 : (serv===SERV.tosa ? CASA.tosadores.tosa : CASA.tosadores.banho);
+  const proto = [P.proto, T.proto, I.proto].filter(Boolean);
+  let estado = 'ok';
+  if(presencial) estado='avaliar';
+  else if(T.cuidado || I.cuidado) estado='cuidado';
+  return {presencial,preco,min,serv,tosador,proto,estado,
+    porteLbl:{P:'pequeno',M:'médio',G:'grande',GG:'gigante'}[b.porte],
+    peloLbl:P.lbl};
+}
+
+/* vagas de hoje por porte: total do dia menos "já usadas" pela hora corrida */
+function vagasPorte(porte){
+  const total=CASA.vagasDia[porte];
+  const frac=Math.max(0,Math.min(1,(horaAgora()-CASA.abre)/(CASA.fecha-CASA.abre)));
+  // cães maiores enchem mais devagar mas sobram menos no fim
+  const usadas=Math.round(total*frac*(porte==='GG'?1:porte==='G'?.95:.85));
+  return Math.max(0,total-usadas);
+}
+
+/* ===== RENDER ===== */
+function pintar(){
+  const f=emitir(sel);
+  const fEl=$('#ficha'); fEl.dataset.estado=f.estado;
+
+  // tag gravada ao vivo
+  const nomeCao = DEMO?'MEG':'REX';
+  $('#tagName').textContent = nomeCao;
+  $('#tagSub').textContent = ('PORTE '+sel.porte+' · PELO '+f.peloLbl).toUpperCase();
+  const dot=$('#tagDot');
+  const enamel = f.estado==='ok'?'url(#enamel)': f.estado==='cuidado'?'#A8324F':'#3C4550';
+  dot.setAttribute('fill', enamel);
+
+  // ficha
+  $('#f-serv').textContent = f.serv;
+  if(f.presencial){
+    $('#f-tempo').textContent='avaliar';
+    $('#f-preco').textContent='sob avaliação';
+    $('#f-preco').classList.remove('big');
+  }else{
+    $('#f-tempo').textContent=dur(f.min);
+    $('#f-preco').textContent=money(f.preco);
+    $('#f-preco').classList.add('big');
+  }
+  $('#f-tosador').textContent=f.tosador;
+
+  // estado
+  const est=$('#f-estado'), txt=$('#f-estado-txt');
+  est.className='estado '+f.estado;
+  if(f.estado==='avaliar'){
+    txt.innerHTML='<b>Esse a gente vê pessoalmente antes.</b> Cão reativo não entra na agenda online — avaliação presencial gratuita com a '+CASA.tosadores.senior+' primeiro.';
+  }else if(f.estado==='cuidado'){
+    txt.innerHTML='<b>Pode ser hoje, com protocolo especial.</b> Veja embaixo o que muda no banho dele.';
+  }else{
+    const v=vagasPorte(sel.porte);
+    txt.innerHTML = v>0
+      ? '<b>Pode ser hoje.</b> Porte '+f.porteLbl+': '+v+' vaga'+(v>1?'s':'')+' ainda na agenda.'
+      : '<b>Hoje o porte '+f.porteLbl+' lotou.</b> Dá pra reservar amanhã cedo — sem enfiar o cão numa fila.';
+  }
+
+  // protocolo (no estado 'avaliar' a definição é presencial — nada aqui)
+  const ul=$('#f-proto');
+  ul.innerHTML = f.presencial ? ''
+    : f.proto.length ? f.proto.map(p=>'<li>'+p+'</li>').join('')
+    : '<li>Sem cuidado extra — banho padrão, rapidinho.</li>';
+
+  // whatsapp
+  const resumo = f.presencial
+    ? 'Meu cão é reativo (porte '+sel.porte+'). Quero marcar a avaliação presencial na '+CASA.nome+'.'
+    : 'Quero '+f.serv+' na '+CASA.nome+'. Cão porte '+f.porteLbl+', pelo '+f.peloLbl+', '+IDADE[sel.idade].lbl+', '+TEMP[sel.temp].lbl+'. ~'+dur(f.min)+', a partir de '+money(f.preco)+'.';
+  const url='https://wa.me/'+CASA.wa+'?text='+encodeURIComponent(resumo);
+  $('#f-wa').href=url; $('#final-wa').href=url;
+  $('#f-wa').textContent = f.presencial ? 'Marcar avaliação no WhatsApp →' : 'Agendar no WhatsApp →';
+}
+
+/* vagas grid */
+function pintarVagas(){
+  const g=$('#vagasGrid'); g.innerHTML='';
+  const nomes={P:'Pequeno',M:'Médio',G:'Grande',GG:'Gigante'};
+  Object.keys(CASA.vagasDia).forEach(p=>{
+    const v=vagasPorte(p);
+    const d=document.createElement('div');
+    d.className='vg '+(v>0?'tem':'zero'); d.dataset.sel=(p===sel.porte);
+    d.innerHTML='<div class="p">'+nomes[p]+'</div><div class="num">'+v+'</div><small>'+(v>0?'vaga'+(v>1?'s':'')+' hoje':'lotado — amanhã')+'</small>';
+    g.appendChild(d);
+  });
+  const h=horaAgora();
+  $('#vagas-hora').textContent='Agora são '+String(Math.floor(h)).padStart(2,'0')+':'+String(Math.round((h%1)*60)).padStart(2,'0')+'.';
+}
+
+/* chips */
+document.querySelectorAll('.chip').forEach(ch=>{
+  const k=ch.dataset.k;
+  ch.setAttribute('aria-pressed', String(ch.dataset.v===sel[k]));
+  ch.addEventListener('click',()=>{
+    document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(x=>x.setAttribute('aria-pressed','false'));
+    ch.setAttribute('aria-pressed','true');
+    sel[k]=ch.dataset.v;
+    pintar(); pintarVagas();
+  });
+});
+/* aplica seleção vinda de URL/demo aos chips */
+['porte','pelo','temp','idade'].forEach(k=>{
+  document.querySelectorAll('.chip[data-k="'+k+'"]').forEach(x=>x.setAttribute('aria-pressed', String(x.dataset.v===sel[k])));
+});
+
+pintar(); pintarVagas();
+if(DEMO || params.has('porte')||params.has('pelo')||params.has('temp')||params.has('idade')){
+  document.getElementById('carteira').scrollIntoView({behavior:'instant',block:'start'});
+}
 </script>
 </body>
 </html>
