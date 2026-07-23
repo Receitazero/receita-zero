@@ -184,6 +184,18 @@ footer{background:var(--ink-2);border-top:1px solid var(--line);padding-block:va
 }
 @media(prefers-reduced-motion:reduce){.nav-header,.nav-menu{transition:none}}
 
+
+/* SERVICOS GRID (Plus UX) */
+.servicos{padding-block:var(--s-3xl)}
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:var(--s-lg)}
+.svc-card{background:var(--surface);border:1px solid var(--line);border-radius:16px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.svc-card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px color-mix(in srgb,var(--accent) 40%,transparent)}
+.svc-card img{width:100%;height:160px;object-fit:cover;object-position:center 30%}
+.svc-info{padding:var(--s-lg)}
+.svc-info h3{font-family:var(--font-display);font-size:1.1rem;margin-bottom:.3rem}
+.svc-info p{color:var(--muted);font-size:.88rem}
+@media(max-width:860px){.svc-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -297,6 +309,38 @@ footer{background:var(--ink-2);border-top:1px solid var(--line);padding-block:va
       <div class="perk reveal"><div class="ico">🌾</div><h3>Massa natural</h3><p>Fermentação lenta de 48h — leve e digestível.</p></div>
       <div class="perk reveal"><div class="ico">🛵</div><h3>Entrega em 40 min</h3><p>Da esteira pra sua mesa quentinha.</p></div>
       <div class="perk reveal"><div class="ico">🥬</div><h3>Ingredientes frescos</h3><p>San Marzano, mussarela de búfala, manjericão do dia.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="servicos" class="servicos">
+  <div class="wrap">
+    <div class="head" style="text-align:center;margin-bottom:var(--s-2xl)">
+      <span class="eyebrow reveal">Nossos serviços</span>
+      <h2 class="reveal">Qualidade em cada detalhe</h2>
+    </div>
+    <div class="svc-grid">
+    <div class="svc-card reveal">
+      <img src="assets/p1.jpg" alt="Massa do nicho" loading="lazy">
+      <div class="svc-info">
+        <h3>Massa</h3>
+        <p>massa artesanal 24h</p>
+      </div>
+    </div>
+    <div class="svc-card reveal">
+      <img src="assets/p2.jpg" alt="Sabores do nicho" loading="lazy">
+      <div class="svc-info">
+        <h3>Sabores</h3>
+        <p>Sabores</p>
+      </div>
+    </div>
+    <div class="svc-card reveal">
+      <img src="assets/p3.jpg" alt="Entrega do nicho" loading="lazy">
+      <div class="svc-info">
+        <h3>Entrega</h3>
+        <p>Entrega</p>
+      </div>
+    </div>
     </div>
   </div>
 </section>
