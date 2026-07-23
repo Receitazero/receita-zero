@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-tema="concreto">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -16,6 +16,12 @@
   --serif:'Newsreader',Georgia,serif;--grot:'Space Grotesk',system-ui,sans-serif;
   --s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:40px;
 }
+/* perfis de arquiteto — espelham os blocos [data-tema] do index.html.
+   Retematiza o chrome do painel junto dos iframes. */
+[data-tema="niemeyer"]{--papel:#F1EEE8;--via:#FDFCF9;--papel2:#E7E2D8;--linha:#D6CFC1;--linha2:#8A8172;--tinta:#181410;--fumo:#5E574B;--cofre:#17439B}
+[data-tema="artacho"]{--papel:#F3E9DC;--via:#FBF6EF;--papel2:#EADCC9;--linha:#DBC8B2;--linha2:#8F7A5E;--tinta:#241A12;--fumo:#6B5540;--cofre:#0C665C}
+[data-tema="lina"]{--papel:#E8E6E2;--via:#F6F5F3;--papel2:#DCDAD5;--linha:#C9C6C0;--linha2:#7C7A74;--tinta:#1A1917;--fumo:#59574F;--cofre:#B4122B}
+[data-tema="burle"]{--papel:#EFF1EC;--via:#FFFFFF;--papel2:#E2E5DC;--linha:#C7CABF;--linha2:#7B8174;--tinta:#12140F;--fumo:#565A4E;--cofre:#1E6B34}
 *{box-sizing:border-box;margin:0;padding:0}
 html,body{overflow-x:clip}
 body{background:var(--papel);color:var(--tinta);font-family:var(--grot);
@@ -86,6 +92,14 @@ Puxe o cursor do orçamento ou toque num imóvel.</p>
   </div>
   <input type="range" id="cursor" min="700" max="4500" step="50" value="1800" aria-label="Orçamento mensal">
   <div class="linha-btn" id="imoveis"></div>
+  <div class="linha-btn" id="temas" role="group" aria-label="Perfil de cor">
+    <span class="rot" style="align-self:center;margin-inline-end:2px">perfil</span>
+    <button type="button" data-tema="concreto" aria-pressed="true">Concreto</button>
+    <button type="button" data-tema="niemeyer" aria-pressed="false">Niemeyer</button>
+    <button type="button" data-tema="artacho" aria-pressed="false">Artacho</button>
+    <button type="button" data-tema="lina" aria-pressed="false">Lina</button>
+    <button type="button" data-tema="burle" aria-pressed="false">Burle</button>
+  </div>
   <div class="viewport">
     <button id="vw-desk" aria-pressed="true">desktop</button>
     <button id="vw-mob" aria-pressed="false">celular</button>
@@ -139,14 +153,15 @@ const ESTADOS = [
 const SITE = '../index.html';
 const LARG = { desk:1280, mob:390 };
 const ALT  = { desk:900,  mob:900 };
-let vw = 'desk', ate = 1800, im = '';
+let vw = 'desk', ate = 1800, im = '', TEMA = 'concreto';
 
 const $ = s => document.querySelector(s);
 const BRL = new Intl.NumberFormat('pt-BR',{style:'currency',currency:'BRL',maximumFractionDigits:0});
 /* #lista: sem âncora os cinco quadros ficam IDÊNTICOS — o hero ocupa a miniatura
    inteira e o painel vira prova de que tudo é igual. Quando há ?im=, o próprio
    site desce até a conta e a âncora só serve de piso. */
-const url = (a, i) => `${SITE}?ate=${a}` + (i ? `&im=${i}` : '') + '#lista';
+const url = (a, i) => `${SITE}?ate=${a}` + (i ? `&im=${i}` : '')
+  + (TEMA !== 'concreto' ? `&tema=${TEMA}` : '') + '#lista';
 const nomeIm = id => (IMS.find(x => x.id === id) || IMS[0]).nome;
 
 /* Encaixa um iframe de LARG×ALT dentro da caixa. Nunca AMPLIAR (Math.min com 1):
@@ -188,16 +203,32 @@ $('#imoveis').addEventListener('click', ev => {
 });
 
 /* ── grade ─────────────────────────────────────────────────── */
-$('#grade').innerHTML = ESTADOS.map(e => `
-  <figure class="tile" data-cabe="${e.cabe}">
-    <div class="janela"><iframe loading="lazy" title="${e.rot}" src="${url(e.ate, e.im)}"></iframe></div>
-    <figcaption>
-      <span class="fio"></span>
-      <b>${e.rot}</b>
-      <span style="color:var(--fumo);font-size:.82rem">${BRL.format(e.ate)} · ${e.im || 'lista fechada'}</span>
-      <p>${e.nota}</p>
-    </figcaption>
-  </figure>`).join('');
+function montarGrade(){
+  $('#grade').innerHTML = ESTADOS.map(e => `
+    <figure class="tile" data-cabe="${e.cabe}">
+      <div class="janela"><iframe loading="lazy" title="${e.rot}" src="${url(e.ate, e.im)}"></iframe></div>
+      <figcaption>
+        <span class="fio"></span>
+        <b>${e.rot}</b>
+        <span style="color:var(--fumo);font-size:.82rem">${BRL.format(e.ate)} · ${e.im || 'lista fechada'}</span>
+        <p>${e.nota}</p>
+      </figcaption>
+    </figure>`).join('');
+}
+montarGrade();
+
+/* ── perfil de cor: retematiza os iframes E o chrome do painel ──
+   Trocar o perfil reconstrói as URLs (&tema=) e recarrega palco + grade. */
+$('#temas').addEventListener('click', ev => {
+  const b = ev.target.closest('button[data-tema]'); if (!b) return;
+  TEMA = b.dataset.tema;
+  document.documentElement.dataset.tema = TEMA;
+  $('#temas').querySelectorAll('button').forEach(x =>
+    x.setAttribute('aria-pressed', String(x.dataset.tema === TEMA)));
+  montarGrade();
+  ultimo = null; pintarPalco(true);
+  reencaixarTudo();
+});
 
 function reencaixarTudo(){
   encaixar(palco, caixaPalco);
