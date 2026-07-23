@@ -102,6 +102,31 @@ total R$ 1.821, opacidade 1).
 4. Sem `#lista` + `scroll-margin`, os cinco quadros do painel ficavam **idênticos** — o
    hero ocupava a miniatura inteira e a barra sticky comia o primeiro imóvel.
 
+## Perfis de cor — arquitetos brasileiros (seletor no topo)
+
+Cinco perfis, trocáveis ao vivo pelo seletor no topo da página e por `?tema=`. **Só a
+cor muda** — fontes (Newsreader + Space Grotesk), escala e forma são fixas: é a mesma
+conta em papéis diferentes. Cada perfil é um bloco `[data-tema]` que sobrescreve os oito
+tokens de cor e **passa pelos mesmos pisos medidos** (`--fumo` e `--cofre` ≥ 4,5:1 sobre
+`--via` e sobre `--papel`; `--linha2` ≥ 3:1). Um acento só por perfil.
+
+Não é toggle para o inquilino — é **perfil de configuração**: o corretor escolhe um e o
+`?tema=` viaja no link (mesma lógica de `?ate=`/`?im=`). O switcher ao vivo existe para o
+showcase da Vitrine Certa.
+
+| Perfil | Arquiteto | Acento (`--cofre`) | `--cofre/via` | `--cofre/papel` | menor razão |
+|---|---|---|---|---|---|
+| Concreto *(default)* | Paulo Mendes da Rocha | `#0F5A4A` cofre-verde | 8,13 | 7,06 | 3,46 (linha2) |
+| Curvas | Oscar Niemeyer | `#17439B` cobalto | 8,85 | 7,84 | 3,75 |
+| Granilite | Artacho Jurado | `#0C665C` teal | 6,36 | 5,70 | 3,82 |
+| MASP | Lina Bo Bardi | `#B4122B` vermelho | 6,29 | 5,50 | 3,94 |
+| Calçada | Burle Marx | `#1E6B34` verde tropical | 6,55 | 5,76 | 4,01 |
+
+Medido nos 5 perfis (Playwright): nenhuma razão reprova. **Artacho** tem tie local — ele
+construiu boa parte da orla de Santos nos anos 50, do lado de São Vicente. **Lina**: o
+vermelho lidera os números que cabem; o "estoura" segue cinza/riscado, então não há par
+vermelho/verde. Confirmado no print, não só no número (lição 11).
+
 ## Fora do sistema (exceções conscientes)
 
-- `#25D366` — verde do WhatsApp no `.wa-btn`.
+- `#25D366` — verde do WhatsApp no `.wa-btn` (todos os perfis).

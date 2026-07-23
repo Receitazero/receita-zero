@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="pt-BR">
+<html lang="pt-BR" data-tema="concreto">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -35,6 +35,29 @@
   --r:2px;
 }
 
+/* ═══ PERFIS DE COR — arquitetos brasileiros ═══
+   Só a COR muda entre perfis. Fontes (Newsreader + Space Grotesk), escala e forma
+   são fixas: é a MESMA conta em papéis diferentes. Cada perfil passa pelos mesmos
+   pisos de contraste medidos — --fumo e --cofre ≥ 4,5:1 sobre --via e sobre --papel,
+   --linha2 ≥ 3:1 sobre --via. Um acento só por perfil, nunca dois. O default Concreto
+   (Paulo Mendes da Rocha, brutalista) vive no :root acima. */
+[data-tema="niemeyer"]{
+  --papel:#F1EEE8; --via:#FDFCF9; --papel2:#E7E2D8; --linha:#D6CFC1; --linha2:#8A8172;
+  --tinta:#181410; --fumo:#5E574B; --cofre:#17439B;   /* cobalto de Niemeyer */
+}
+[data-tema="artacho"]{
+  --papel:#F3E9DC; --via:#FBF6EF; --papel2:#EADCC9; --linha:#DBC8B2; --linha2:#8F7A5E;
+  --tinta:#241A12; --fumo:#6B5540; --cofre:#0C665C;   /* teal de granilite */
+}
+[data-tema="lina"]{
+  --papel:#E8E6E2; --via:#F6F5F3; --papel2:#DCDAD5; --linha:#C9C6C0; --linha2:#7C7A74;
+  --tinta:#1A1917; --fumo:#59574F; --cofre:#B4122B;   /* vermelho do MASP */
+}
+[data-tema="burle"]{
+  --papel:#EFF1EC; --via:#FFFFFF; --papel2:#E2E5DC; --linha:#C7CABF; --linha2:#7B8174;
+  --tinta:#12140F; --fumo:#565A4E; --cofre:#1E6B34;   /* verde tropical */
+}
+
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{
@@ -51,6 +74,19 @@ img{max-width:100%;display:block}
 .wrap{width:min(1080px,100% - var(--s5));margin-inline:auto}
 .dinheiro{font-family:var(--grot);font-variant-numeric:tabular-nums;font-feature-settings:'tnum' 1}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap}
+
+/* ─────────────────── seletor de perfil de cor (arquitetos) ─────────────────── */
+.perfis{background:var(--papel2);border-block-end:1px solid var(--linha)}
+.perfis .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s2);padding-block:var(--s2)}
+.perfis .rot{font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--fumo)}
+.perfis button{font-family:var(--grot);font-size:.78rem;line-height:1.12;text-align:start;
+  padding:6px 11px;border:1px solid var(--linha2);border-radius:var(--r);color:var(--fumo);
+  transition:color .12s,border-color .12s,background-color .12s}
+.perfis button b{display:block;font-weight:600;color:var(--tinta)}
+.perfis button:hover{border-color:var(--tinta)}
+.perfis [aria-pressed="true"]{background:var(--tinta);border-color:var(--tinta);color:var(--via)}
+.perfis [aria-pressed="true"] b{color:var(--via)}
+@media(max-width:620px){.perfis .rot{width:100%}}
 
 /* ─────────────────────────── barra de estado ─────────────────────────── */
 .barra{
@@ -270,6 +306,17 @@ img{max-width:100%;display:block}
     <span class="marca">Imóveis Vértice</span>
   </div>
 </div>
+
+<nav class="perfis" aria-label="Perfil de cor do site">
+  <div class="wrap">
+    <span class="rot">Perfil de cor</span>
+    <button type="button" data-tema="concreto" aria-pressed="true"><b>Concreto</b>Paulo Mendes</button>
+    <button type="button" data-tema="niemeyer" aria-pressed="false"><b>Curvas</b>Niemeyer</button>
+    <button type="button" data-tema="artacho" aria-pressed="false"><b>Granilite</b>Artacho Jurado</button>
+    <button type="button" data-tema="lina" aria-pressed="false"><b>MASP</b>Lina Bo Bardi</button>
+    <button type="button" data-tema="burle" aria-pressed="false"><b>Calçada</b>Burle Marx</button>
+  </div>
+</nav>
 
 <header class="hero">
   <div class="wrap hero-in">
@@ -563,6 +610,26 @@ const qAte = parseInt((qs.get('ate') || '').replace(/\D/g,''), 10);
 if (Number.isFinite(qAte) && qAte > 0){ ORC = qAte; $('#orc').value = num(ORC); }
 const qIm = qs.get('im');
 if (qIm && IMOB.imoveis.some(im => im.id === qIm)) ABERTO = qIm;
+
+/* ══════════════ perfil de cor (arquitetos brasileiros) ══════════════
+   Só troca tokens de cor via data-tema. Fontes, escala e forma ficam fixas: é a
+   MESMA conta em papéis diferentes. ?tema= deixa o corretor mandar o site já no
+   perfil que ele escolheu — mesma lógica de ?ate=/?im=. */
+const TEMAS = ['concreto','niemeyer','artacho','lina','burle'];
+function setTema(t){
+  if (!TEMAS.includes(t)) t = 'concreto';
+  document.documentElement.dataset.tema = t;
+  document.querySelectorAll('.perfis button').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.tema === t)));
+  const u = new URL(location.href);
+  if (t === 'concreto') u.searchParams.delete('tema'); else u.searchParams.set('tema', t);
+  history.replaceState(null, '', u);
+}
+document.querySelector('.perfis').addEventListener('click', e => {
+  const b = e.target.closest('button[data-tema]');
+  if (b) setTema(b.dataset.tema);
+});
+setTema(qs.get('tema') || 'concreto');
 
 pintar();
 
