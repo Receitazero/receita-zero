@@ -1,0 +1,669 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lava Rápido — sai ou não sai | lavanderia em São Vicente</title>
+<meta name="description" content="Diga o que aconteceu com a peça e o site responde antes de você sair de casa: sai, sai em parte ou não sai — com o porquê, o preço e o prazo.">
+<meta property="og:title" content="Sai ou não sai — Lava Rápido, São Vicente">
+<meta property="og:description" content="O manual de manchas da lavanderia. Escolha o acidente e a peça: a etiqueta responde.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,400;0,500;0,600;1,400&family=Barlow+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"DryCleaningOrLaundry",
+ "name":"Lava Rápido","areaServed":"São Vicente, SP",
+ "telephone":"+5511970776856",
+ "address":{"@type":"PostalAddress","addressLocality":"São Vicente","addressRegion":"SP","addressCountry":"BR"}}
+</script>
+<style>
+/* Hallmark · macrostructure: 13 Index-First · Vitrine Certa / Lavanderia Premium
+   costume=ETIQUETA TÊXTIL — a página inteira é uma etiqueta de conservação costurada.
+   governado por=matéria (mancha × fibra) · objeto=a etiqueta ISO 3758
+   voz=Barlow Condensed (caixa alta, tecida) · prosa=Barlow · acento=anil (overlock)
+   pre-emit critique: P5 H5 E4 S4 R5 V5 */
+
+:root{
+  --fita:#E7DECB;        /* fita crua de algodão — o fundo */
+  --etiqueta:#F4EFE2;    /* superfície da etiqueta. o contraste se mede AQUI */
+  --etiqueta2:#DED3BC;
+  --linha:#CDC1A6;
+  --linha2:#877A5B;      /* costura/borda de campo — componente, piso 3:1 */
+  --tinta:#221C11;       /* fio escuro tecido */
+  --fumo:#6A5E46;
+  --anil:#243E82;        /* linha de overlock — o único acento (o azulante) */
+  --wa:#25D366;
+
+  --cond:'Barlow Condensed',Impact,system-ui,sans-serif;
+  --sans:'Barlow',system-ui,sans-serif;
+  --s1:4px;--s2:8px;--s3:12px;--s4:16px;--s5:24px;--s6:40px;--s7:64px;--s8:104px;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --r:2px;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--fita);color:var(--tinta);font-family:var(--sans);
+  font-size:17px;line-height:1.6;overflow-x:clip;
+  /* trama da fita: fios horizontais quase imperceptíveis */
+  background-image:repeating-linear-gradient(0deg,transparent 0 2px,rgba(34,28,17,.022) 2px 3px);
+}
+/* voz de etiqueta: condensada, caixa alta, tecida apertada */
+h1,h2,h3,.chapeu,.rot,.grau,.marca,.processo,.tab-lab,th,.wa-btn,.cap,.simbolos h3{
+  font-family:var(--cond);text-transform:uppercase;letter-spacing:.04em;font-weight:600}
+.dado,.num,.v{font-family:var(--cond);font-variant-numeric:tabular-nums;letter-spacing:0}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+em{font-style:italic}
+a{color:var(--anil)}
+:focus-visible{outline:2px solid var(--anil);outline-offset:2px}
+.wrap{max-width:1140px;margin-inline:auto;padding-inline:var(--s5)}
+.pular{position:absolute;left:-9999px}
+.pular:focus{left:var(--s4);top:var(--s4);z-index:9;background:var(--etiqueta);
+  padding:var(--s2) var(--s4);border:1px solid var(--tinta)}
+
+/* costura de overlock reaproveitável: borda tracejada anil por dentro de uma sólida */
+.sew{position:relative;border:1.5px solid var(--linha2);background:var(--etiqueta)}
+.sew::before{content:"";position:absolute;inset:5px;border:1.4px dashed var(--anil);
+  border-radius:var(--r);pointer-events:none}
+
+/* ── cabeçalho: a etiqueta de gola ── */
+.topo{border-block-end:1.5px dashed var(--linha2);background:var(--etiqueta)}
+.topo .wrap{display:flex;flex-wrap:wrap;gap:var(--s2) var(--s5);align-items:baseline;
+  padding-block:var(--s3)}
+.marca{font-size:1.15rem;letter-spacing:.08em}
+.marca span{color:var(--fumo);font-weight:500}
+.topo p{font-family:var(--cond);font-size:.82rem;letter-spacing:.06em;color:var(--fumo);
+  margin-inline-start:auto;text-transform:uppercase}
+
+/* ── hero ── */
+.abre{padding-block:var(--s6) var(--s6)}
+.chapeu{font-size:.82rem;letter-spacing:.22em;color:var(--anil)}
+h1{font-size:clamp(2.6rem,8vw,5rem);line-height:.92;letter-spacing:.01em;font-weight:700;
+  margin-block:var(--s2) var(--s3)}
+.sub{font-family:var(--sans);font-size:1.05rem;color:var(--fumo);max-width:54ch;
+  text-transform:none;letter-spacing:0}
+/* a TIRA de símbolos ISO ampliados — a assinatura visual do site */
+.tira{display:flex;flex-wrap:wrap;gap:var(--s2);margin-block-start:var(--s5);
+  padding:var(--s3) var(--s4);border-block:1.5px solid var(--linha2)}
+.tira svg.iso{width:46px;height:46px}
+.tira{align-items:center}
+.tira .rot-tira{font-family:var(--cond);text-transform:uppercase;letter-spacing:.14em;
+  font-size:.72rem;color:var(--fumo);margin-inline-end:var(--s3);max-width:12ch;line-height:1.15}
+
+.dois{display:grid;grid-template-columns:290px 1fr;gap:var(--s6);padding-block-end:var(--s7)}
+
+/* ── índice de acidentes ── */
+.idx{align-self:start;position:sticky;top:var(--s3)}
+.idx h2,.pecas h2{font-size:.86rem;letter-spacing:.14em;color:var(--fumo);
+  margin-block-end:var(--s3)}
+.idx ol{list-style:none;border:1.5px solid var(--linha2)}
+.idx li{border-block-end:1px dashed var(--linha)}
+.idx li:last-child{border-block-end:0}
+.idx button{display:flex;width:100%;gap:var(--s3);align-items:baseline;
+  padding:10px var(--s3);text-align:start;transition:background .12s}
+.idx button:hover{background:var(--etiqueta)}
+.idx .n{font-family:var(--cond);font-size:.82rem;color:var(--anil);min-width:1.8em}
+.idx .nm{font-family:var(--cond);text-transform:uppercase;letter-spacing:.03em;
+  font-weight:600;font-size:1.02rem}
+.idx .fm{display:block;font-family:var(--sans);text-transform:none;letter-spacing:0;
+  font-size:.82rem;color:var(--fumo);font-weight:400}
+.idx [aria-pressed="true"]{background:var(--tinta)}
+.idx [aria-pressed="true"] .nm{color:var(--etiqueta)}
+.idx [aria-pressed="true"] .n{color:var(--fita)}
+.idx [aria-pressed="true"] .fm{color:var(--linha)}
+
+/* ── peças: abas tecidas ── */
+.pecas{margin-block-end:var(--s5)}
+.chips{display:flex;flex-wrap:wrap;gap:var(--s2)}
+.chips button{border:1.5px solid var(--linha2);border-radius:var(--r);
+  padding:6px var(--s3);font-family:var(--cond);text-transform:uppercase;letter-spacing:.03em;
+  font-size:.92rem;font-weight:600;background:var(--etiqueta);
+  transition:border-color .12s,background .12s}
+.chips button em{display:block;font-family:var(--sans);text-transform:none;letter-spacing:0;
+  font-style:normal;font-weight:400;font-size:.76rem;color:var(--fumo)}
+.chips button:hover{border-color:var(--anil)}
+.chips [aria-pressed="true"]{background:var(--tinta);color:var(--etiqueta);border-color:var(--tinta)}
+.chips [aria-pressed="true"] em{color:var(--linha)}
+
+.calor{display:flex;gap:var(--s3);align-items:flex-start;margin-block:var(--s4) var(--s5);
+  padding:var(--s3) var(--s4);border:1.5px dashed var(--linha2);border-radius:var(--r);
+  max-width:60ch;background:var(--etiqueta)}
+.calor input{margin-block-start:4px;width:18px;height:18px;accent-color:var(--anil);flex:none}
+.calor label{font-family:var(--sans);font-size:.92rem;line-height:1.45}
+.calor b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.03em;
+  font-weight:600;display:block;font-size:.98rem}
+.calor span{color:var(--fumo)}
+
+/* ── a etiqueta principal ── */
+.tag{position:relative;background:var(--etiqueta);border:2px solid var(--linha2);
+  border-radius:var(--r);padding:var(--s6) var(--s5) var(--s5)}
+/* a assinatura: a costura de overlock, feita quando a combinação muda */
+.costura{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.costura rect{x:6px;y:6px;width:calc(100% - 12px);height:calc(100% - 12px);
+  fill:none;stroke:var(--anil);stroke-width:2;stroke-dasharray:7 5;
+  animation:agulha .5s var(--ease) both}
+@keyframes agulha{from{stroke-dashoffset:48;opacity:0}to{stroke-dashoffset:0;opacity:1}}
+
+.veredito{display:flex;flex-wrap:wrap;gap:var(--s3) var(--s5);align-items:center;
+  padding-block-end:var(--s4);border-block-end:1px dashed var(--linha2)}
+.grau{font-size:clamp(2.6rem,7vw,4rem);line-height:.9;letter-spacing:.02em;font-weight:700}
+.grau[data-g="2"]{color:var(--anil)}
+.grau[data-g="1"]{color:var(--tinta)}
+/* "não sai" não ganha vermelho: perde a cor. Perde com TOKEN, nunca com opacity. */
+.grau[data-g="0"]{color:var(--fumo)}
+.caso{font-family:var(--sans);font-size:.98rem;color:var(--fumo);flex:1 1 18ch;min-width:16ch;
+  text-transform:none;letter-spacing:0}
+.caso b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.02em;
+  font-weight:600;color:var(--tinta)}
+
+.corpo{display:grid;grid-template-columns:1fr 220px;gap:var(--s5);padding-block:var(--s5)}
+.processo{font-size:.86rem;letter-spacing:.1em;color:var(--anil);margin-block-end:var(--s2)}
+.porque{font-family:var(--sans);font-size:1.05rem;max-width:56ch}
+.cuidado{font-family:var(--sans);margin-block-start:var(--s4);padding-inline-start:var(--s4);
+  border-inline-start:2px dashed var(--linha2);font-size:.94rem;color:var(--fumo)}
+.cuidado b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.02em;
+  color:var(--tinta);font-weight:600}
+
+/* símbolos ISO 3758 da peça */
+.simbolos{border-inline-start:1px dashed var(--linha2);padding-inline-start:var(--s4)}
+.simbolos h3{font-size:.78rem;letter-spacing:.12em;color:var(--fumo);margin-block-end:var(--s3)}
+.simbolos ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fill,minmax(56px,1fr));
+  gap:var(--s3) var(--s2)}
+.simbolos li{text-align:center}
+.cap{display:block;font-size:.6rem;letter-spacing:.04em;color:var(--fumo);line-height:1.25;
+  margin-block-start:3px}
+svg.iso{width:34px;height:34px;display:block;margin-inline:auto;color:var(--tinta)}
+svg.iso path,svg.iso circle,svg.iso line{fill:none;stroke:currentColor;stroke-width:1.5;
+  stroke-linejoin:round}
+svg.iso .cheio{fill:currentColor;stroke:none}
+svg.iso .x{stroke-width:1.9;stroke:var(--anil)}
+svg.iso text{font-family:var(--cond);font-size:8px;font-weight:600;fill:currentColor;
+  stroke:none;text-anchor:middle}
+
+.conta{display:flex;flex-wrap:wrap;gap:var(--s4) var(--s6);align-items:flex-end;
+  padding-block-start:var(--s4);border-block-start:2px solid var(--tinta)}
+.campo .rot{display:block;font-size:.74rem;letter-spacing:.12em;color:var(--fumo)}
+.campo .v{font-size:1.7rem;line-height:1;font-weight:700}
+.campo .obs{display:block;font-family:var(--sans);font-size:.82rem;color:var(--fumo);
+  max-width:26ch;text-transform:none;letter-spacing:0}
+.wa-btn{margin-inline-start:auto;display:inline-flex;gap:var(--s2);align-items:center;
+  background:var(--anil);color:var(--etiqueta);text-decoration:none;
+  letter-spacing:.06em;font-size:1rem;padding:11px var(--s5);border-radius:var(--r)}
+.wa-btn:hover{background:var(--tinta)}
+.wa-btn i{width:9px;height:9px;border-radius:50%;background:var(--wa);flex:none}
+
+/* ── seções finais ── */
+section.faixa{border-block-start:1.5px dashed var(--linha2);padding-block:var(--s7)}
+.tab-lab{display:inline-block;background:var(--tinta);color:var(--fita);
+  font-size:.72rem;letter-spacing:.16em;padding:4px 12px;border-radius:var(--r);
+  margin-block-end:var(--s4)}
+section.faixa h2{font-size:clamp(1.6rem,3.6vw,2.3rem);letter-spacing:.02em;
+  margin-block-end:var(--s2)}
+section.faixa .lead{font-family:var(--sans);color:var(--fumo);max-width:58ch;
+  margin-block-end:var(--s5)}
+.recusa ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+  gap:var(--s4)}
+.recusa li{padding:var(--s4) var(--s4) var(--s5)}
+.recusa b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.03em;
+  display:block;font-size:1.05rem;margin-block-end:var(--s2)}
+.recusa span{font-family:var(--sans);font-size:.92rem;color:var(--fumo)}
+
+.tab-wrap{overflow-x:auto}
+table{width:100%;min-width:340px;border-collapse:collapse;border:1.5px solid var(--linha2);background:var(--etiqueta)}
+caption{font-family:var(--sans);text-align:start;font-size:.86rem;color:var(--fumo);
+  padding-block-end:var(--s2)}
+th,td{padding:var(--s3) var(--s4);border-block-end:1px dashed var(--linha);text-align:start;
+  font-size:.96rem}
+td{font-family:var(--sans)}
+th{font-size:.74rem;letter-spacing:.1em;color:var(--fumo)}
+td.num{text-align:end;font-size:1.1rem;font-weight:600}
+tbody tr:last-child td{border-block-end:0}
+
+.legenda ul{list-style:none;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));
+  gap:var(--s5)}
+.legenda li{display:flex;gap:var(--s3);align-items:flex-start}
+.legenda svg.iso{width:40px;height:40px;flex:none}
+.legenda b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.03em;
+  display:block;font-size:.98rem}
+.legenda span{font-family:var(--sans);font-size:.88rem;color:var(--fumo)}
+
+.loja{display:grid;grid-template-columns:1fr 1fr;gap:var(--s6);align-items:center}
+.loja .fotos{display:grid;grid-template-columns:1fr 1fr;gap:var(--s2)}
+/* height:auto junto do aspect-ratio: os atributos width/height do <img> viram altura
+   definida na folha do navegador e a foto sai deformada. */
+.loja img{width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;border-radius:var(--r);
+  border:1.5px solid var(--linha2)}
+.loja dl{font-family:var(--sans);font-size:.96rem}
+.loja dt{font-family:var(--cond);text-transform:uppercase;letter-spacing:.1em;font-size:.74rem;
+  color:var(--fumo);margin-block-start:var(--s3)}
+
+.nossa{background:var(--tinta);color:var(--fita)}
+.nossa h2{color:var(--fita)}
+.nossa .lead{color:var(--linha)}
+.nossa a{color:var(--fita);font-family:var(--cond);text-transform:uppercase;
+  letter-spacing:.06em;font-weight:600}
+.miuda{font-family:var(--sans);font-size:.8rem;color:var(--fumo);padding-block:var(--s5) var(--s7);
+  max-width:76ch}
+.miuda b{font-family:var(--cond);text-transform:uppercase;letter-spacing:.02em;color:var(--tinta)}
+
+@media(max-width:860px){
+  .dois{grid-template-columns:1fr;gap:var(--s5)}
+  .idx{position:static}
+  .corpo{grid-template-columns:1fr}
+  .simbolos{border-inline-start:0;border-block-start:1px dashed var(--linha2);
+    padding-inline-start:0;padding-block-start:var(--s4)}
+  .loja{grid-template-columns:1fr}
+  .wa-btn{margin-inline-start:0;width:100%;justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  .costura rect{animation:none;stroke-dashoffset:0;opacity:1}
+  *{transition:none!important}
+}
+</style>
+</head>
+<body>
+<a class="pular" href="#etiqueta">Pular para o veredito</a>
+
+<header class="topo"><div class="wrap">
+  <div class="marca">Lava Rápido <span>· São Vicente</span></div>
+  <p>Rua Frei Gaspar, 000 — Centro · seg a sex 8h–18h</p>
+</div></header>
+
+<main class="wrap abre" id="lista">
+  <p class="chapeu">Manual de manchas · etiqueta ISO 3758</p>
+  <h1>Sai ou<br>não sai?</h1>
+  <p class="sub">Antes de atravessar a cidade: diga o que aconteceu e qual é a peça.
+    A gente responde aqui — inclusive quando a resposta é <em>não sai</em>.</p>
+  <div class="tira" id="tira" aria-hidden="true">
+    <span class="rot-tira">a mesma língua da sua etiqueta</span>
+  </div>
+</main>
+
+<div class="wrap">
+  <div class="dois">
+    <aside class="idx">
+      <h2>1 · O que aconteceu</h2>
+      <ol id="manchas"></ol>
+    </aside>
+
+    <div>
+      <div class="pecas">
+        <h2>2 · Qual é a peça</h2>
+        <div class="chips" id="pecas"></div>
+      </div>
+
+      <div class="calor">
+        <input type="checkbox" id="calor">
+        <label for="calor"><b>Já secou no sol, na secadora ou levou ferro</b>
+          <span>Calor cozinha a proteína e assenta o tanino. Muda a resposta — por isso a
+          gente pergunta.</span></label>
+      </div>
+
+      <article class="tag" id="etiqueta" aria-live="polite"></article>
+    </div>
+  </div>
+</div>
+
+<section class="faixa recusa"><div class="wrap">
+  <span class="tab-lab">Não aceitamos</span>
+  <h2>O que a gente não pega</h2>
+  <p class="lead">Recusar na hora custa menos que devolver a peça pior. Nesses casos não
+    cobramos nada — e dizemos para onde ir.</p>
+  <ul>
+    <li class="sew"><b>Couro e camurça</b><span>Não é lavagem, é recuperação de curtidor. Se a gente
+      molhar, a peça endurece e mancha de vez. Indicamos a oficina certa.</span></li>
+    <li class="sew"><b>Peça com etiqueta arrancada</b><span>Sem a composição da fibra, qualquer processo
+      é aposta. Trazendo a etiqueta ou a nota, resolvemos.</span></li>
+    <li class="sew"><b>Mancha já tratada com alvejante</b><span>Cloro sobre ferrugem e sobre lã fixa a
+      marca e come a fibra. Depois disso não há volta — e não vamos fingir que há.</span></li>
+    <li class="sew"><b>Pintura, esmalte e resina curada</b><span>Depois de seca vira plástico dentro do
+      tecido. Sai o tecido junto.</span></li>
+  </ul>
+</div></section>
+
+<section class="faixa"><div class="wrap">
+  <span class="tab-lab">Tabela</span>
+  <h2>Preço e prazo por peça</h2>
+  <p class="lead">Preço fechado por peça, não por quilo — o quilo esconde o que é caro.
+    Prazo em dias úteis, contado da entrega no balcão.</p>
+  <div class="tab-wrap">
+    <table>
+      <caption>⚠️ DEMO — valores fictícios para demonstração do site.</caption>
+      <thead><tr><th scope="col">Peça</th><th scope="col">Fibra</th>
+        <th scope="col" style="text-align:end">Preço</th>
+        <th scope="col" style="text-align:end">Prazo</th></tr></thead>
+      <tbody id="tabela"></tbody>
+    </table>
+  </div>
+</div></section>
+
+<section class="faixa legenda"><div class="wrap">
+  <span class="tab-lab">Legenda ISO 3758</span>
+  <h2>Como ler a etiqueta da sua roupa</h2>
+  <p class="lead">São cinco símbolos e uma regra: <b>o X em cima significa proibido</b>.
+    Isso é norma internacional (ISO 3758), não invenção de lavanderia.</p>
+  <ul id="legenda"></ul>
+</div></section>
+
+<section class="faixa"><div class="wrap loja">
+  <div>
+    <span class="tab-lab">O balcão</span>
+    <h2>Onde deixar</h2>
+    <p class="lead">Balcão na rua, sem aplicativo e sem cadastro. Quem atende é quem lava.</p>
+    <dl>
+      <dt>Endereço</dt><dd>Rua Frei Gaspar, 000 — Centro, São Vicente</dd>
+      <dt>Horário</dt><dd>Segunda a sexta, 8h às 18h · sábado, 8h às 13h</dd>
+      <dt>Coleta</dt><dd>Grátis acima de R$ 80, no Centro e na Ilha Porchat</dd>
+    </dl>
+  </div>
+  <div class="fotos">
+    <img src="assets/l1.jpg" width="800" height="600" loading="lazy" alt="Balcão da lavanderia">
+    <img src="assets/l2.jpg" width="800" height="600" loading="lazy" alt="Peças passadas e penduradas">
+    <img src="assets/l3.jpg" width="800" height="600" loading="lazy" alt="Máquinas em operação">
+    <img src="assets/banner.jpg" width="800" height="600" loading="lazy" alt="Roupas dobradas prontas para retirada">
+  </div>
+</div></section>
+
+<div class="wrap"><p class="miuda">
+  <b>Sobre as respostas desta página.</b> O veredito cruza a família química da mancha com a
+  fibra da peça e vale como estimativa: mancha antiga, tratamento caseiro anterior e tingimento
+  instável mudam o resultado. Quem decide de verdade é a peça no balcão, com a etiqueta na mão.
+  Os símbolos usados aqui seguem a norma <b>ISO 3758</b>. Preços e prazos são
+  <b>⚠️ DEMO</b> — este é um site de demonstração da Vitrine Certa.
+</p></div>
+
+<section class="faixa nossa"><div class="wrap">
+  <h2>Quer um site assim para o seu negócio?</h2>
+  <p class="lead">Este é um site Premium da Vitrine Certa: um site que responde a pergunta do
+    cliente antes de ele ligar. Feito sob medida para o seu serviço, no ar em 48h.</p>
+  <p><a href="https://wa.me/5511970776856?text=Quero%20um%20site%20assim%20para%20o%20meu%20neg%C3%B3cio">Falar no WhatsApp →</a></p>
+</div></section>
+
+<script>
+/* ══ CONFIG DA CASA — é o único bloco que muda de cliente para cliente ══
+   ⚠️ DEMO: manchas, peças, preços e prazos são fictícios. */
+const CASA = {
+  nome:'Lava Rápido',
+  whats:'5511970776856',
+
+  /* famílias químicas: proteina · tanino · oleo · corante · combinada · bio */
+  manchas:[
+    {id:'vinho',    nome:'Vinho tinto',        fam:'tanino',   famNome:'tanino',              janela:48},
+    {id:'cafe',     nome:'Café ou chá',        fam:'tanino',   famNome:'tanino',              janela:72},
+    {id:'suor',     nome:'Suor amarelado',     fam:'proteina', famNome:'proteína + óleo',     janela:0},
+    {id:'sangue',   nome:'Sangue',             fam:'proteina', famNome:'proteína',            janela:24},
+    {id:'gordura',  nome:'Gordura ou azeite',  fam:'oleo',     famNome:'óleo',                janela:72},
+    {id:'graxa',    nome:'Graxa de motor',     fam:'oleo',     famNome:'óleo pesado',         janela:72},
+    {id:'batom',    nome:'Batom ou base',      fam:'combinada',famNome:'óleo + corante',      janela:48},
+    {id:'caneta',   nome:'Caneta ou tinta',    fam:'corante',  famNome:'corante',             janela:24},
+    {id:'cabelo',   nome:'Tinta de cabelo',    fam:'corante',  famNome:'corante oxidativo',   janela:12},
+    {id:'mofo',     nome:'Mofo',               fam:'bio',      famNome:'fungo',               janela:0}
+  ],
+
+  pecas:[
+    {id:'camisa',  nome:'Camisa social',    fibra:'algodao',   fibraNome:'algodão',       preco:14, prazo:2, claro:1,
+      simbolos:['lavar40','secarvaral','ferro2','secop']},
+    {id:'alfaiat', nome:'Calça alfaiataria',fibra:'poliester', fibraNome:'poliéster',     preco:18, prazo:2, claro:0,
+      simbolos:['lavar30','naoalvejar','naosecadora','ferro1','secop']},
+    {id:'vestido', nome:'Vestido de festa', fibra:'seda',      fibraNome:'seda',          preco:45, prazo:4, claro:1,
+      simbolos:['naolavar','naoalvejar','secarplano','ferro1','secop']},
+    {id:'terno',   nome:'Terno (2 peças)',  fibra:'la',        fibraNome:'lã',            preco:62, prazo:4, claro:0,
+      simbolos:['naolavar','naoalvejar','secarplano','ferro1','secop']},
+    {id:'jeans',   nome:'Calça jeans',      fibra:'indigo',    fibraNome:'índigo',        preco:16, prazo:2, claro:0,
+      simbolos:['lavar30','naoalvejar','secarsombra','ferro2','secof']},
+    {id:'edredom', nome:'Edredom de casal', fibra:'pluma',     fibraNome:'pluma',         preco:70, prazo:5, claro:1,
+      simbolos:['lavar40','naoalvejar','secadorabaixa','naoferro','secof']},
+    {id:'tenis',   nome:'Tênis de lona',    fibra:'lona',      fibraNome:'lona',          preco:35, prazo:3, claro:1,
+      simbolos:['lavar30','naoalvejar','secarsombra','naoferro','naoseco']},
+    {id:'jaleco',  nome:'Jaleco',           fibra:'algodao',   fibraNome:'algodão + poliéster', preco:12, prazo:1, claro:1,
+      simbolos:['lavar40','secarvaral','ferro2','secop']},
+    {id:'couro',   nome:'Jaqueta de couro', fibra:'couro',     fibraNome:'couro',         preco:0,  prazo:0, claro:0,
+      simbolos:['naolavar','naoalvejar','naosecadora','naoferro','secof']}
+  ]
+};
+
+/* ══ SÍMBOLOS ISO 3758 ══════════════════════════════════════════════════
+   Cinco formas base + o X de proibição. Desenhados aqui porque a etiqueta É o
+   objeto deste site — não dá para terceirizar em ícone genérico. */
+const X    = '<path class="x" d="M3.6 3.6 20.4 20.4M20.4 3.6 3.6 20.4"/>';
+const TUB  = n => `<path d="M3 9h18l-1.7 11H4.7z"/>${n ? `<text x="12" y="17.6">${n}</text>` : ''}`;
+const TRI  = '<path d="M12 4 21 20H3z"/>';
+const QUA  = '<path d="M4 5h16v14H4z"/>';
+const FER  = '<path d="M4.5 18h15l-1.6-6.3A4 4 0 0 0 14 8.5h-3.7a4 4 0 0 0-3.9 3.2z"/>';
+const CIR  = '<circle cx="12" cy="12" r="8"/>';
+const pt   = (...xs) => xs.map(x => `<circle class="cheio" cx="${x}" cy="14" r="1.1"/>`).join('');
+
+const SIMB = {
+  lavar30:      { d:TUB(30),                                    t:'Lavar a 30 °C' },
+  lavar40:      { d:TUB(40),                                    t:'Lavar a 40 °C' },
+  naolavar:     { d:TUB('') + X,                                t:'Não lavar em casa' },
+  naoalvejar:   { d:TRI + X,                                    t:'Não usar alvejante' },
+  secarvaral:   { d:QUA + '<path d="M12 8v8"/>',                t:'Secar no varal' },
+  secarplano:   { d:QUA + '<path d="M7 12h10"/>',               t:'Secar deitado' },
+  secarsombra:  { d:QUA + '<path d="M12 8v8"/><path d="M4.6 5.6 8 9"/>', t:'Secar na sombra' },
+  naosecadora:  { d:QUA + '<circle cx="12" cy="12" r="4.4"/>' + X, t:'Não vai à secadora' },
+  secadorabaixa:{ d:QUA + '<circle cx="12" cy="12" r="4.4"/><circle class="cheio" cx="12" cy="12" r="1.1"/>', t:'Secadora, calor baixo' },
+  ferro1:       { d:FER + pt(12),                               t:'Ferro morno' },
+  ferro2:       { d:FER + pt(10.2, 13.8),                       t:'Ferro médio' },
+  naoferro:     { d:FER + X,                                    t:'Não passar ferro' },
+  secop:        { d:CIR + '<text x="12" y="15">P</text>',        t:'A seco, solvente P' },
+  secof:        { d:CIR + '<text x="12" y="15">F</text>',        t:'A seco, solvente F' },
+  naoseco:      { d:CIR + X,                                    t:'Não pode a seco' }
+};
+const iso = id => `<svg class="iso" viewBox="0 0 24 24" role="img" aria-label="${SIMB[id].t}">${SIMB[id].d}</svg>`;
+
+/* ══ ESTADO ═════════════════════════════════════════════════════════════ */
+let MANCHA = 'vinho', PECA = 'camisa', CALOR = false;
+const $  = s => document.querySelector(s);
+const rs = v => 'R$ ' + v.toLocaleString('pt-BR');
+const mancha = () => CASA.manchas.find(m => m.id === MANCHA);
+const peca   = () => CASA.pecas.find(p => p.id === PECA);
+
+/* ══ O VEREDITO ═════════════════════════════════════════════════════════
+   Regras em ordem: a primeira que casar vence. Não é tabela de 90 células
+   escrita à mão — é química cruzada com fibra, então cada regra explica a si mesma. */
+function veredito(m, p, calor){
+  const f = p.fibra;
+
+  if (f === 'couro'){
+    return { g:0, processo:'não aceitamos',
+      porque:'Couro e camurça não se lavam: se recuperam. Água abre o poro e endurece a peça, '
+           + 'e o que era uma mancha vira duas — a sua e a do banho.',
+      cuidado:'Mandamos você direto a uma oficina de couro de confiança. Não cobramos por isso.' };
+  }
+
+  if (m.fam === 'corante'){
+    if (p.claro) return { g:0, processo:'não tem processo',
+      porque:'Corante não é sujeira <em>em cima</em> da fibra: é fibra tingida. Para tirar a cor da '
+           + 'mancha teríamos que tirar a cor do tecido junto — e a peça volta com uma marca clara '
+           + 'no lugar da escura. Trocamos um problema por outro.',
+      cuidado:'O que dá para fazer é conter: não esfregue e não molhe com água quente, '
+            + 'porque isso espalha a auréola.' };
+    return { g:1, processo:'aplicação local com solvente',
+      porque:'Em tecido escuro o corante da mancha e o do tecido brigam menos. Clareia bastante, '
+           + 'mas a marca não desaparece por completo — ela fica visível na luz certa.',
+      cuidado:'Vale mais em peça de uso diário que em peça de foto.' };
+  }
+
+  if (m.fam === 'oleo' || m.fam === 'combinada'){
+    if (f === 'poliester') return { g:1, processo:'pré-tratamento + lavagem quente',
+      porque:'O poliéster gosta de óleo — é fibra oleofílica. A gordura entra <em>dentro</em> do '
+           + 'filamento em vez de ficar na superfície, e com o tempo escurece em vez de clarear.',
+      cuidado:'Quanto mais cedo chegar, melhor: em poliéster a mancha de óleo trabalha contra você todo dia.' };
+    if (f === 'seda' || f === 'la') return { g:2, processo:'a seco, solvente P',
+      porque:'Óleo é justamente o que o solvente dissolve melhor — e seda e lã pedem solvente de '
+           + 'qualquer jeito. É o cruzamento mais favorável que existe aqui.',
+      cuidado:'Não tente água quente em casa antes: em lã, calor com água encolhe a peça de vez.' };
+    if (m.fam === 'combinada' && p.claro) return { g:1, processo:'duas etapas: solvente e depois enzima',
+      porque:'Batom e base são gordura <em>com</em> pigmento. A gordura sai; o pigmento em tecido '
+           + 'claro costuma deixar um fundo rosado que só se resolve em parte.',
+      cuidado:'Se a peça for de cerimônia, avalie com a gente antes de contar com ela.' };
+    return { g:2, processo:'detergente e a água mais quente que a fibra aguenta',
+      porque:'Gordura quebra com tensoativo e calor. Em algodão e lona esse é o caso mais simples '
+           + 'do balcão — sai por inteiro na primeira passagem.',
+      cuidado:'Só não seque antes: peça seca com gordura dentro fixa a mancha e dobra o trabalho.' };
+  }
+
+  if (m.fam === 'proteina'){
+    if (f === 'seda' || f === 'la') return { g:1, processo:'a seco, sem enzima',
+      porque:'Enzima não distingue a proteína da mancha da proteína da fibra — <em>seda e lã são '
+           + 'proteína</em>. O produto que resolveria a mancha comeria o tecido junto. Então aqui é '
+           + 'solvente e paciência, e o resultado é bom, não perfeito.',
+      cuidado:'Suor em seda costuma deixar um leve halo mesmo depois de tratado.' };
+    return { g:2, processo:'imersão enzimática a frio',
+      porque:'Proteína sai em água fria com enzima. Água quente cozinha a mancha e a prende na '
+           + 'fibra — é o erro mais comum, e o mais caro.',
+      cuidado:'Em casa, se acontecer, enxágue em água fria e traga molhado. Não use água morna.' };
+  }
+
+  if (m.fam === 'tanino'){
+    if (f === 'seda') return { g:1, processo:'a seco, solvente P',
+      porque:'Tanino sai bem com água — mas seda não perdoa água: fica o anel de água ao redor, '
+           + 'que é uma segunda mancha. Vamos de solvente, que é mais lento e menos completo.',
+      cuidado:'Nunca esfregue seda molhada: a fricção levanta o fio e a marca fica permanente.' };
+    if (f === 'pluma') return { g:2, processo:'lavagem completa e estufa',
+      porque:'Tanino sai; o assunto no edredom é a secagem. A mancha some na lavagem e o cuidado '
+           + 'vai todo para o recheio.',
+      cuidado:'Pluma volta seca por dentro ou mofa: por isso são 5 dias, não 2. Lavanderia que '
+            + 'devolve edredom no dia seguinte está devolvendo edredom úmido.' };
+    return { g:2, processo:'lavagem com detergente, sem sabão em barra',
+      porque:'Vinho, café e chá são taninos: saem com detergente e água. Sabão natural em barra é '
+           + 'que não serve — ele fixa o tanino e deixa a marca amarelada.',
+      cuidado:'Absorva com pano branco e sal na hora; não jogue água quente por cima.' };
+  }
+
+  /* mofo */
+  if (f === 'seda' || f === 'la' || f === 'pluma') return { g:1, processo:'a seco + ozônio',
+    porque:'O fungo já se alimentou da fibra. Tiramos a cor e o cheiro; a fibra onde ele comeu '
+         + 'continua fina — em seda e lã isso aparece contra a luz.',
+    cuidado:'Mofo volta se a peça for guardada úmida. Guarde só depois de fria e seca.' };
+  return { g:1, processo:'imersão oxidante + ozônio para o cheiro',
+    porque:'Mofo é organismo, não sujeira: ele <em>come</em> a celulose do algodão. A mancha clareia '
+         + 'muito e o cheiro sai por completo. O que não volta é a fibra onde ele já comeu — se houver '
+         + 'furo, ele continua ali.',
+    cuidado:'Quanto mais tempo guardado, mais fundo ele foi. Semana parada em saco fechado é o pior caso.' };
+}
+
+const ROTULO = ['Não sai', 'Sai em parte', 'Sai'];
+
+/* ══ PINTAR ═════════════════════════════════════════════════════════════ */
+function pintar(){
+  const m = mancha(), p = peca();
+  const v = veredito(m, p, CALOR);
+
+  /* o calor é modificador, não eixo: só rebaixa, nunca condena.
+     Proteína e tanino são as duas famílias que o calor prende. */
+  let aviso = '';
+  if (CALOR && (m.fam === 'proteina' || m.fam === 'tanino')){
+    if (v.g === 2){ v.g = 1;
+      aviso = 'Como já passou por calor, a mancha assentou: o que sairia inteiro agora sai em parte.'; }
+    else aviso = 'O calor anterior fecha ainda mais a margem — vamos ser francos sobre o resultado.';
+  }
+
+  document.querySelectorAll('#manchas button').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.id === MANCHA)));
+  document.querySelectorAll('#pecas button').forEach(b =>
+    b.setAttribute('aria-pressed', String(b.dataset.id === PECA)));
+
+  const prazo = v.g === 0 ? 0 : p.prazo + (v.g === 1 ? 1 : 0);
+  const janela = m.janela
+    ? `Chance cheia nas primeiras <b>${m.janela}h</b>`
+    : 'Aqui não é questão de horas: é de quanto tempo ficou guardada';
+
+  const preco = v.g === 0
+    ? `<span class="v">Não cobramos</span><span class="obs">Peça recusada é peça sem conta. Preferimos perder o serviço a devolver a peça pior.</span>`
+    : `<span class="v dado">${rs(p.preco)}</span><span class="obs">${
+        v.g === 1 ? 'Se a mancha não ceder nada, não cobramos: a lavagem se paga, a promessa não.'
+                  : 'Preço fechado da peça, com o tratamento da mancha incluído.'}</span>`;
+
+  $('#etiqueta').innerHTML =
+    `<svg class="costura" aria-hidden="true"><rect pathLength="100"/></svg>
+     <div class="veredito">
+       <p class="grau" data-g="${v.g}">${ROTULO[v.g]}</p>
+       <p class="caso"><b>${m.nome}</b> em <b>${p.nome.toLowerCase()}</b>
+          <br>${p.fibraNome} · mancha de ${m.famNome}</p>
+     </div>
+     <div class="corpo">
+       <div>
+         <p class="processo">${v.processo}</p>
+         <p class="porque">${v.porque}</p>
+         <p class="cuidado"><b>O que muda o resultado.</b> ${v.cuidado}${
+            aviso ? ` <b>${aviso}</b>` : ''}</p>
+       </div>
+       <div class="simbolos">
+         <h3>A etiqueta desta peça</h3>
+         <ul>${p.simbolos.map(s =>
+           `<li>${iso(s)}<span class="cap">${SIMB[s].t}</span></li>`).join('')}</ul>
+       </div>
+     </div>
+     <div class="conta">
+       <div class="campo"><span class="rot">Preço</span>${preco}</div>
+       <div class="campo"><span class="rot">Prazo</span>
+         <span class="v dado">${prazo ? prazo + (prazo === 1 ? ' dia' : ' dias') : '—'}</span>
+         <span class="obs">${prazo ? 'dias úteis, do balcão ao balcão' : 'a peça não fica conosco'}</span></div>
+       <div class="campo"><span class="rot">Janela</span>
+         <span class="obs" style="max-width:24ch">${janela}</span></div>
+       <a class="wa-btn" id="wa" target="_blank" rel="noopener"><i></i>Falar no WhatsApp</a>
+     </div>`;
+
+  const msg = v.g === 0
+    ? `Oi! Vi no site que ${m.nome.toLowerCase()} em ${p.nome.toLowerCase()} não sai `
+      + `(${v.processo}). Queria conversar sobre o que dá para fazer.`
+    : `Oi! Vi no site: ${m.nome.toLowerCase()} em ${p.nome.toLowerCase()} — ${ROTULO[v.g].toLowerCase()}, `
+      + `${v.processo}, ${rs(p.preco)} em ${prazo} dia${prazo === 1 ? '' : 's'} úteis. `
+      + `${CALOR ? 'A peça já passou por calor. ' : ''}Posso levar?`;
+  $('#wa').href = `https://wa.me/${CASA.whats}?text=${encodeURIComponent(msg)}`;
+
+  const q = new URLSearchParams({ mancha:MANCHA, peca:PECA });
+  if (CALOR) q.set('calor', '1');
+  history.replaceState(null, '', '?' + q + '#lista');
+}
+
+/* ══ MONTAGEM ═══════════════════════════════════════════════════════════ */
+$('#manchas').innerHTML = CASA.manchas.map((m, i) =>
+  `<li><button type="button" data-id="${m.id}" aria-pressed="false">
+     <span class="n dado">${String(i + 1).padStart(2, '0')}</span>
+     <span class="nm">${m.nome}<span class="fm">${m.famNome}</span></span>
+   </button></li>`).join('');
+
+$('#pecas').innerHTML = CASA.pecas.map(p =>
+  `<button type="button" data-id="${p.id}" aria-pressed="false">${p.nome}
+     <em>${p.fibraNome}</em></button>`).join('');
+
+$('#tabela').innerHTML = CASA.pecas.map(p =>
+  `<tr><td>${p.nome}</td><td>${p.fibraNome}</td>
+     <td class="num">${p.preco ? rs(p.preco) : 'não aceitamos'}</td>
+     <td class="num">${p.prazo ? p.prazo + (p.prazo === 1 ? ' dia' : ' dias') : '—'}</td></tr>`).join('');
+
+$('#legenda').innerHTML = [
+  ['lavar40',    'O tanque é a lavagem', 'O número é a temperatura máxima da água em graus.'],
+  ['naoalvejar', 'O triângulo é o alvejante', 'Cortado, como aqui, quer dizer: nada de cloro.'],
+  ['secarvaral', 'O quadrado é a secagem', 'Traço vertical é varal; horizontal, secar deitado.'],
+  ['ferro2',     'O ferro é o ferro', 'Um ponto é morno, dois é médio, três é quente.'],
+  ['secop',      'O círculo é a lavanderia', 'P e F são os solventes profissionais permitidos.'],
+  ['naolavar',   'O X é proibição', 'Qualquer símbolo cortado quer dizer não faça — em qualquer país.']
+].map(([s, t, d]) => `<li>${iso(s)}<div><b>${t}</b><span>${d}</span></div></li>`).join('');
+
+/* a tira do hero: os cinco símbolos base ampliados, a mesma língua da etiqueta real */
+$('#tira').insertAdjacentHTML('beforeend',
+  ['lavar40','naoalvejar','secarvaral','ferro2','secop'].map(s => iso(s)).join(''));
+
+document.addEventListener('click', e => {
+  const b = e.target.closest('#manchas button, #pecas button');
+  if (!b) return;
+  if (b.closest('#manchas')) MANCHA = b.dataset.id; else PECA = b.dataset.id;
+  pintar();
+});
+$('#calor').addEventListener('change', e => { CALOR = e.target.checked; pintar(); });
+
+/* ── entrada por URL: o link que a dona manda no WhatsApp cai no caso certo ── */
+const qs = new URLSearchParams(location.search);
+if (CASA.manchas.some(m => m.id === qs.get('mancha'))) MANCHA = qs.get('mancha');
+if (CASA.pecas.some(p => p.id === qs.get('peca')))     PECA   = qs.get('peca');
+if (qs.get('calor') === '1'){ CALOR = true; $('#calor').checked = true; }
+pintar();
+</script>
+</body>
+</html>
