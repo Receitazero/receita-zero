@@ -104,9 +104,48 @@ footer{background:var(--ink-2);border-top:1px solid var(--line);padding-block:va
   .reveal{clip-path:none;opacity:1}
   html{scroll-behavior:auto}
 }
+
+/* ═══ NAV HEADER FIXO (Plus UX) ═══ */
+.nav-header{position:fixed;top:0;left:0;right:0;z-index:100;background:color-mix(in srgb,var(--ink) 75%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line);transition:transform .3s ease,background .3s}
+.nav-header.scrolled{background:color-mix(in srgb,var(--ink) 90%,transparent);border-bottom-color:color-mix(in srgb,var(--line) 60%,transparent)}
+.nav-wrap{max-width:1120px;margin-inline:auto;padding:12px 24px;display:flex;align-items:center;justify-content:space-between}
+.nav-brand{font-family:var(--font-display);font-weight:700;font-size:1.15rem;color:var(--accent);text-decoration:none}
+.nav-toggle{display:none;flex-direction:column;gap:4px;width:32px;height:28px;background:none;border:none;cursor:pointer;z-index:101}
+.nav-toggle span{display:block;width:24px;height:2.5px;background:var(--paper);border-radius:2px;transition:all .3s}
+.nav-menu{display:flex;gap:var(--s-sm);align-items:center}
+.nav-link{color:var(--muted);text-decoration:none;font-size:.92rem;font-weight:500;transition:color .2s;position:relative}
+.nav-link:hover{color:var(--accent)}
+.nav-link::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--accent);transition:width .3s}
+.nav-link:hover::after{width:100%}
+@media(max-width:860px){
+  .nav-toggle{display:flex}
+  .nav-menu{position:fixed;top:0;right:-100%;flex-direction:column;background:color-mix(in srgb,var(--ink) 95%,transparent);backdrop-filter:blur(12px);width:min(280px,90vw);height:100vh;padding-top:80px;gap:var(--s-md);padding-inline:28px;transition:right .3s ease;border-left:1px solid var(--line)}
+  .nav-menu.open{right:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(1){transform:rotate(45deg) translate(6px,6px)}
+  .nav-toggle[aria-expanded="true"] span:nth-child(2){opacity:0}
+  .nav-toggle[aria-expanded="true"] span:nth-child(3){transform:-rotate(45deg) translate(6px,-6px)}
+}
+@media(prefers-reduced-motion:reduce){.nav-header,.nav-menu{transition:none}}
+
 </style>
 </head>
 <body>
+<header class="nav-header">
+  <div class="nav-wrap">
+    <a href="#top" class="nav-brand">Vitrine Certa</a>
+    <button class="nav-toggle" aria-label="Abrir menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+    <nav class="nav-menu">
+      <a href="#top" class="nav-link">Início</a>
+      <a href="#antesdepois" class="nav-link">Transformações</a>
+      <a href="#pacotes" class="nav-link">Pacotes</a>
+      <a href="#perks" class="nav-link">Benefícios</a>
+      <a href="#faq" class="nav-link">Dúvidas</a>
+      <a href="#contato" class="nav-link">Contato</a>
+    </nav>
+  </div>
+</header>
 <div class="progress"><i id="bar"></i></div>
 
 <header class="hero">
@@ -271,5 +310,24 @@ function vcLead(f){var d={};new FormData(f).forEach(function(v,k){d[k]=v});if(d.
 })();
 </script>
   <script src="../../references/leads.js"></script>
+
+<script>
+// NAV TOGGLE (Plus UX)
+(function(){
+  var toggle=document.querySelector(".nav-toggle");
+  var menu=document.querySelector(".nav-menu");
+  if(!toggle||!menu) return;
+  toggle.addEventListener("click",function(){
+    var expanded=toggle.getAttribute("aria-expanded")==="true";
+    toggle.setAttribute("aria-expanded",!expanded);
+    menu.classList.toggle("open");
+  });
+  var header=document.querySelector(".nav-header");
+  function onScroll(){if(header){header.classList.toggle("scrolled",scrollY>40);}}
+  addEventListener("scroll",onScroll,{passive:true}); onScroll();
+  var links=document.querySelectorAll(".nav-link");
+  links.forEach(function(l){l.addEventListener("click",function(){menu.classList.remove("open");toggle.setAttribute("aria-expanded","false");});});
+})();
+</script>
 </body>
 </html>
