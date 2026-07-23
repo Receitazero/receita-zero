@@ -158,6 +158,27 @@ body.demo .demo-badge{display:block}
 .sec-h h2{font-size:clamp(1.7rem,3.6vw,2.4rem);margin:.3rem 0 .4rem}
 .sec-h p{color:var(--fumo)}
 .tab-wrap{overflow-x:auto}
+/* o cão da carteirinha reage à ficha (motor "o indivíduo") — driven no #cart, espelhado por <use> */
+#cart #furTex,#cart #ruff,#cart #tongueSm,#cart #tongueBig,#cart #teeth,#cart #greyMuzzle,#cart #browWorried,#cart #browAngry,#cart #mouthSmall,#cart .ear{display:none}
+#cart[data-pelo=medio] #furTex,#cart[data-pelo=longo] #furTex,#cart[data-pelo=duplo] #furTex{display:block}
+/* forma da orelha = pelo */
+#cart[data-pelo=curto] .ear-short,#cart[data-pelo=medio] .ear-short{display:block}
+#cart[data-pelo=longo] .ear-long{display:block}
+#cart[data-pelo=duplo] .ear-pointy,#cart[data-pelo=duplo] #ruff{display:block}
+#cart[data-pelo=duplo] .topfur{display:none}
+#cart[data-temp=tranquilo] #tongueSm{display:block}
+#cart[data-temp=agitado] #tongueBig{display:block}
+#cart[data-temp=reativo] #teeth{display:block}
+#cart[data-temp=medroso] #mouthHappy{display:none}
+#cart[data-temp=medroso] #mouthSmall{display:block}
+#cart[data-temp=medroso] #browCalm,#cart[data-temp=reativo] #browCalm{display:none}
+#cart[data-temp=medroso] #browWorried{display:block}
+#cart[data-temp=reativo] #browAngry{display:block}
+#cart[data-idade=idoso] #greyMuzzle{display:block}
+/* 2ª cópia da carteirinha, ao lado dos chips */
+.out-col{display:flex;flex-direction:column;gap:1.1rem}
+.cartsvg{width:100%;max-width:288px;height:auto;margin-inline:auto;display:block}
+.out-col .cartsvg{margin-top:-.4rem}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -195,47 +216,89 @@ body.demo .demo-badge{display:block}
               <stop offset="0" stop-color="#C3CBD3"/><stop offset="1" stop-color="#6E7883"/>
             </linearGradient>
             <filter id="cardsh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="14" stdDeviation="16" flood-color="#1c0a14" flood-opacity=".45"/></filter>
+            <clipPath id="pw"><rect x="58" y="40" width="204" height="214" rx="4"/></clipPath>
           </defs>
-          <g transform="rotate(-2.5 160 172)" filter="url(#cardsh)">
+          <g id="cart" transform="rotate(-2.5 160 172)" filter="url(#cardsh)">
             <!-- cartão da carteirinha -->
             <rect x="44" y="26" width="232" height="296" rx="11" fill="#F1EADD" stroke="#C9BBA0" stroke-width="1.5"/>
             <!-- janela da foto -->
             <rect x="58" y="40" width="204" height="214" rx="4" fill="url(#photobg)"/>
-            <!-- ILUSTRAÇÃO DO CÃO -->
-            <g>
-              <!-- orelhas (atrás) -->
-              <path d="M112 92 C88 94 74 128 82 178 C86 206 110 202 124 176 C130 150 130 108 112 92 Z" fill="#A96C2B"/>
-              <path d="M208 92 C232 94 246 128 238 178 C234 206 210 202 196 176 C190 150 190 108 208 92 Z" fill="#A96C2B"/>
-              <!-- tufos do topo (assimétricos) -->
-              <path d="M150 78 l5 -12 l7 12 z" fill="#E9BC63"/><path d="M164 78 l4 -9 l6 10 z" fill="#E9BC63"/>
-              <!-- cabeça -->
-              <path d="M160 76 C118 76 95 112 95 156 C95 176 101 194 112 208 C126 226 142 236 160 236 C178 236 194 226 208 208 C219 194 225 176 225 156 C225 112 202 76 160 76 Z" fill="url(#gold)"/>
-              <!-- sombra do queixo (volume) -->
-              <path d="M120 206 C134 226 146 234 160 234 C174 234 186 226 200 206 C184 220 136 220 120 206 Z" fill="#9A6528" opacity=".35"/>
-              <!-- textura de pelo (imperfeição honesta) -->
-              <g stroke="#B87C31" stroke-width="2.2" stroke-linecap="round" opacity=".45">
-                <path d="M104 150 l-9 -5"/><path d="M104 166 l-10 -2"/><path d="M106 182 l-9 2"/>
-                <path d="M216 150 l9 -5"/><path d="M216 166 l10 -2"/><path d="M214 182 l9 2"/>
+            <!-- ILUSTRAÇÃO DO CÃO — reage aos 4 eixos da ficha (anatomia das refs Pollinations) -->
+            <g id="dog">
+              <g clip-path="url(#pw)">
+                <!-- JUBA fofa (pelo duplo) — emoldura o rosto, como no lulu -->
+                <g id="ruff">
+                  <path d="M90 142 C46 166 44 236 84 286 C104 312 126 296 142 312 C154 326 166 326 178 312 C194 296 216 312 236 286 C276 236 274 166 230 142 C244 196 204 236 160 236 C116 236 76 196 90 142 Z" fill="#E7B85E"/>
+                  <g stroke="#C98A38" stroke-width="2.4" stroke-linecap="round" opacity=".55">
+                    <path d="M72 210 l-12 6"/><path d="M78 250 l-12 10"/><path d="M100 288 l-8 12"/><path d="M248 210 l12 6"/><path d="M242 250 l12 10"/><path d="M220 288 l8 12"/>
+                  </g>
+                </g>
+                <!-- ORELHAS — forma pelo pelo, posição pelo temperamento -->
+                <g id="earWrapL">
+                  <path class="ear ear-short" d="M112 92 C88 94 74 128 82 178 C86 206 110 202 124 176 C130 150 130 108 112 92 Z" fill="#A96C2B"/>
+                  <g class="ear ear-long">
+                    <path d="M116 94 C90 96 72 122 70 168 C68 202 74 236 86 258 C92 250 96 238 102 250 C106 236 108 214 112 250 C116 226 118 198 120 168 C122 128 128 108 116 94 Z" fill="#A96C2B"/>
+                    <path d="M104 132 C98 168 100 210 108 240" stroke="#C98A38" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"/>
+                  </g>
+                  <g class="ear ear-pointy"><path d="M120 100 C110 76 96 64 90 70 C86 92 100 112 122 118 Z" fill="#B0722F"/><path d="M114 102 C108 86 98 78 94 82 C92 96 102 108 115 114 Z" fill="#8a5a26" opacity=".5"/></g>
+                </g>
+                <g id="earWrapR">
+                  <path class="ear ear-short" d="M208 92 C232 94 246 128 238 178 C234 206 210 202 196 176 C190 150 190 108 208 92 Z" fill="#A96C2B"/>
+                  <g class="ear ear-long">
+                    <path d="M204 94 C230 96 248 122 250 168 C252 202 246 236 234 258 C228 250 224 238 218 250 C214 236 212 214 208 250 C204 226 202 198 200 168 C198 128 192 108 204 94 Z" fill="#A96C2B"/>
+                    <path d="M216 132 C222 168 220 210 212 240" stroke="#C98A38" stroke-width="3" fill="none" stroke-linecap="round" opacity=".6"/>
+                  </g>
+                  <g class="ear ear-pointy"><path d="M200 100 C210 76 224 64 230 70 C234 92 220 112 198 118 Z" fill="#B0722F"/><path d="M206 102 C212 86 222 78 226 82 C228 96 218 108 205 114 Z" fill="#8a5a26" opacity=".5"/></g>
+                </g>
+                <g id="headGroup">
+                  <!-- tufos do topo (assimétricos) -->
+                  <path class="topfur" d="M150 78 l5 -12 l7 12 z" fill="#E9BC63"/><path class="topfur" d="M164 78 l4 -9 l6 10 z" fill="#E9BC63"/>
+                  <!-- cabeça -->
+                  <path d="M160 76 C118 76 95 112 95 156 C95 176 101 194 112 208 C126 226 142 236 160 236 C178 236 194 226 208 208 C219 194 225 176 225 156 C225 112 202 76 160 76 Z" fill="url(#gold)"/>
+                  <!-- sombra do queixo (volume) -->
+                  <path d="M120 206 C134 226 146 234 160 234 C174 234 186 226 200 206 C184 220 136 220 120 206 Z" fill="#9A6528" opacity=".35"/>
+                  <!-- textura de pelo curto/médio (imperfeição honesta) -->
+                  <g id="furTex" stroke="#B87C31" stroke-width="2.2" stroke-linecap="round" opacity=".45">
+                    <path d="M104 150 l-9 -5"/><path d="M104 166 l-10 -2"/><path d="M106 182 l-9 2"/>
+                    <path d="M216 150 l9 -5"/><path d="M216 166 l10 -2"/><path d="M214 182 l9 2"/>
+                  </g>
+                  <!-- focinho -->
+                  <path d="M160 166 C137 166 124 185 124 205 C124 226 141 240 160 240 C179 240 196 226 196 205 C196 185 183 166 160 166 Z" fill="#F6E6BE"/>
+                  <!-- focinho grisalho (idoso) -->
+                  <g id="greyMuzzle">
+                    <path d="M160 176 C142 176 130 191 130 206 C130 224 144 236 160 236 C176 236 190 224 190 206 C190 191 178 176 160 176 Z" fill="#ECE6DB" opacity=".78"/>
+                    <path d="M120 133 q11 -6 22 -1" stroke="#D9D0C2" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path d="M178 131 q11 -4 22 3" stroke="#D9D0C2" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  </g>
+                  <!-- olhos -->
+                  <g id="eyes">
+                    <ellipse cx="135" cy="150" rx="11" ry="13.5" fill="#2A211E"/><ellipse cx="135" cy="153" rx="8" ry="9" fill="#4A2C18"/><circle cx="139" cy="145" r="3.6" fill="#fff" opacity=".92"/>
+                    <ellipse cx="185" cy="150" rx="11" ry="13.5" fill="#2A211E"/><ellipse cx="185" cy="153" rx="8" ry="9" fill="#4A2C18"/><circle cx="189" cy="145" r="3.6" fill="#fff" opacity=".92"/>
+                  </g>
+                  <!-- sobrancelhas por temperamento -->
+                  <path id="browCalm" d="M124 132 q11 -7 22 -2 M174 130 q11 -5 22 2" stroke="#B87C31" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+                  <path id="browWorried" d="M126 126 q10 7 22 4 M172 130 q12 -7 22 -1" stroke="#9A6528" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <path id="browAngry" d="M122 140 q13 -9 25 -1 M173 139 q12 -8 25 1" stroke="#6f471c" stroke-width="3.6" fill="none" stroke-linecap="round"/>
+                  <!-- nariz -->
+                  <path d="M160 184 C149 184 142 191 142 198 C142 206 151 212 160 212 C169 212 178 206 178 198 C178 191 171 184 160 184 Z" fill="#2A211E"/>
+                  <ellipse cx="153" cy="193" rx="3" ry="2" fill="#5c4f48" opacity=".6"/>
+                  <!-- dentinhos (reativo) -->
+                  <g id="teeth" fill="#fff" stroke="#cfc7ba" stroke-width=".6"><path d="M150 223 l4 9 l4 -9 z"/><path d="M162 223 l4 9 l4 -9 z"/></g>
+                  <!-- boca alegre (padrão) -->
+                  <g id="mouthHappy">
+                    <path d="M160 212 L160 222" stroke="#2A211E" stroke-width="3" stroke-linecap="round"/>
+                    <path d="M160 222 C151 233 139 231 133 224" stroke="#2A211E" stroke-width="3" fill="none" stroke-linecap="round"/>
+                    <path d="M160 222 C169 233 181 231 187 224" stroke="#2A211E" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  </g>
+                  <!-- boca pequena fechada (medroso) -->
+                  <path id="mouthSmall" d="M149 224 q11 6 22 0" stroke="#2A211E" stroke-width="3" fill="none" stroke-linecap="round"/>
+                  <!-- línguas -->
+                  <path id="tongueSm" d="M153 224 C153 238 167 238 167 224 C167 231 160 234 153 224 Z" fill="#E98BA2"/>
+                  <path id="tongueBig" d="M149 222 C149 250 171 250 171 222 C171 238 160 242 149 222 Z" fill="#E98BA2"/>
+                </g>
               </g>
-              <!-- focinho -->
-              <path d="M160 166 C137 166 124 185 124 205 C124 226 141 240 160 240 C179 240 196 226 196 205 C196 185 183 166 160 166 Z" fill="#F6E6BE"/>
-              <!-- olhos -->
-              <ellipse cx="135" cy="150" rx="11" ry="13.5" fill="#2A211E"/><circle cx="139" cy="145" r="3.6" fill="#fff" opacity=".92"/>
-              <ellipse cx="185" cy="150" rx="11" ry="13.5" fill="#2A211E"/><circle cx="189" cy="145" r="3.6" fill="#fff" opacity=".92"/>
-              <!-- sobrancelhas -->
-              <path d="M124 132 q11 -7 22 -2" stroke="#B87C31" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-              <path d="M174 130 q11 -5 22 2" stroke="#B87C31" stroke-width="2.6" fill="none" stroke-linecap="round"/>
-              <!-- nariz -->
-              <path d="M160 184 C149 184 142 191 142 198 C142 206 151 212 160 212 C169 212 178 206 178 198 C178 191 171 184 160 184 Z" fill="#2A211E"/>
-              <ellipse cx="153" cy="193" rx="3" ry="2" fill="#5c4f48" opacity=".6"/>
-              <!-- boca + língua -->
-              <path d="M160 212 L160 222" stroke="#2A211E" stroke-width="3" stroke-linecap="round"/>
-              <path d="M160 222 C151 233 139 231 133 224" stroke="#2A211E" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <path d="M160 222 C169 233 181 231 187 224" stroke="#2A211E" stroke-width="3" fill="none" stroke-linecap="round"/>
-              <path d="M153 224 C153 238 167 238 167 224 C167 231 160 234 153 224 Z" fill="#E98BA2"/>
-              <!-- coleira -->
+              <!-- coleira + plaquinha (fixa no pescoço, fora do recorte) -->
               <path d="M108 236 C132 250 188 250 212 236 L212 248 C188 262 132 262 108 248 Z" fill="#5A2440"/>
-              <!-- plaquinha redonda (estado) -->
               <circle cx="160" cy="256" r="13" fill="url(#steel2)" stroke="#4B535C" stroke-width="1.5"/>
               <circle id="tagDot" cx="160" cy="256" r="6.5" fill="#1C7A44"/>
             </g>
@@ -293,7 +356,9 @@ body.demo .demo-badge{display:block}
         <button class="chip" data-k="idade" data-v="idoso" aria-pressed="false">Idoso (8+)</button>
       </div></fieldset>
     </div>
-    <!-- FICHA -->
+    <!-- COLUNA DE SAÍDA: a MESMA carteirinha (reativa) ao lado dos chips + a ficha -->
+    <div class="out-col">
+    <svg class="cartsvg" viewBox="0 0 320 344" role="img" aria-label="Prévia do cão na carteirinha, muda conforme você preenche"><use href="#cart"/></svg>
     <div class="ficha" id="ficha" data-estado="ok">
       <div class="carimbo">Avaliar antes</div>
       <div class="head"><span class="t">Carteira de banho</span><span class="n">AuAu &amp; Cia</span></div>
@@ -306,6 +371,7 @@ body.demo .demo-badge{display:block}
         <ul class="proto" id="f-proto"></ul>
       </div>
       <div class="foot"><a class="btn btn-solid" id="f-wa" href="#" target="_blank" rel="noopener">Agendar no WhatsApp →</a></div>
+    </div>
     </div>
   </div>
 </div></section>
@@ -446,6 +512,20 @@ function pintar(){
   $('#tagCap').textContent = nomeCao+' · PORTE '+sel.porte;
   const enamel = f.estado==='ok'?'#1C7A44': f.estado==='cuidado'?'#A8324F':'#3C4550';
   $('#tagDot').setAttribute('fill', enamel);
+
+  // === O CÃO REAGE À FICHA (motor "o indivíduo") ===
+  const svg=$('#cart');
+  svg.dataset.pelo=sel.pelo; svg.dataset.temp=sel.temp; svg.dataset.idade=sel.idade; svg.dataset.porte=sel.porte;
+  // porte → escala do focinho/cabeça (coleira fica fixa)
+  const K={P:.9,M:1,G:1.05,GG:1.1}[sel.porte];
+  $('#headGroup').setAttribute('transform',`translate(160,150) scale(${K}) translate(-160,-150)`);
+  // temperamento → posição das orelhas (medroso pra trás/lados, reativo eretas)
+  const orelha={tranquilo:[0,0],agitado:[-7,7],medroso:[34,-34],reativo:[-16,16]}[sel.temp];
+  $('#earWrapL').setAttribute('transform',`rotate(${orelha[0]} 116 104)`);
+  $('#earWrapR').setAttribute('transform',`rotate(${orelha[1]} 204 104)`);
+  // olhos maiores em filhote e medroso (arregalado); menores em reativo (intenso)
+  const oe = sel.idade==='filhote'?1.24 : sel.temp==='medroso'?1.12 : sel.temp==='reativo'?.94 : 1;
+  $('#eyes').setAttribute('transform',`translate(160,150) scale(${oe}) translate(-160,-150)`);
 
   // ficha
   $('#f-serv').textContent = f.serv;

@@ -42,12 +42,24 @@ A espinha da página é a própria **ficha que se emite**.
 
 Caderneta de vacinação com a **foto do cão** + carimbo de documento. Artefato que todo dono reconhece.
 - **Capa berry** (`--capa`) com kicker carimbado.
-- **Hero = a foto do cão na carteirinha**: ilustração autoral (golden, tons quentes, `url(#gold)`)
+- **A foto do cão na carteirinha**: ilustração autoral (golden, tons quentes, `url(#gold)`)
   num porta-retrato Polaroid inclinado, com cantoneiras de foto e **carimbo-selo de pata** no
   canto (referência robertaspizza: desenho autoral vence foto/blob). A **legenda viva** grava
   nome + porte embaixo; uma **plaquinha de aço na coleira** com ponto que muda de cor com o
   estado (verde=vaga · rosa=cuidado · aço=avaliar). *(A v1 do hero era só uma tag de aço gravada —
   lia como um borrão cinza; trocada pela foto do bicho, que é o que a carteirinha realmente tem.)*
+- **O cão SE REDESENHA com a ficha (o UAU do motor "o indivíduo"):** os 4 eixos mudam a
+  ilustração, não só a legenda. **Pelo = FORMA da orelha** (curto/médio = caída · longo = orelha
+  longa ondulada recortada na moldura · duplo = juba fofa + orelha pontuda); **temperamento =
+  POSIÇÃO da orelha + expressão** (tranquilo sorri · agitado ofega língua pra fora · medroso
+  orelha pra trás + sobrancelha preocupada + boca fechada · reativo orelha ereta + testa franzida
+  + dentinhos); **idade** (filhote = olhos maiores · idoso = focinho grisalho); **porte** = escala.
+  Anatomia aterrada em **refs Pollinations (R$0)** usadas só como olho (§5.1 da skill), nunca como
+  asset — o desenho continua vetor e reativo.
+- **A mesma carteirinha aparece 2×** (hero + ao lado dos chips) via `<symbol>`/`<use href="#cart">`:
+  o JS mexe num único `#cart` e as duas cópias atualizam juntas — assim você **vê o cão mudar
+  enquanto preenche**, sem duplicar lógica nem colidir ids. O desenho é recortado na janela da
+  foto (`clipPath #pw`), então orelha/juba que passam da moldura são cortadas como num retrato real.
 - **Páginas porcelana pautadas** — `repeating-linear-gradient` no `body` (as linhas da caderneta).
 - **Carimbo "AVALIAR ANTES"** (dupla borda de aço rotacionada) = forma, nunca cor sozinha.
 
