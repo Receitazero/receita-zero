@@ -99,3 +99,36 @@ Nichos válidos (chaves do `tenant_vitrinecerta.json`): `clinica`, `imobiliaria`
 
 ---
 *Gerado autonomamente pelo Hermes (PO) — Semana 2, Mês 1.*
+
+---
+
+## Pipeline de Lead → Site (Semana 3, antecipada — GATE 4=WAIVED)
+
+```
+Formulário do site DFY (vcLead → captureLead, references/leads.js)
+        │ POST JSON
+        ▼
+Apps Script (docs/LEAD-APPS-SCRIPT.js) grava linha na planilha (docs/LEADS-SHEETS.md)
+        │ gatilho onChange (status=novo)
+        ▼
+Bridge (references/sheets-atlas-bridge.js, :8737 POST /lead)
+        │ traduz p/ payload Z-API-like {phone, text.message, tenant:vitrinecerta}
+        ▼
+ATLAS F1 Receptionist (webhook_zapi.py :8080/webhook) qualifica o lead
+        │ resposta registrada em lead-engine/bridge-log.jsonl
+        ▼
+Operador (HITL) promove status → `qualificado` → brief (seções 1–2 acima)
+        ▼
+gera-site.js scaffolda site-dfy/<nicho>/cliente-<slug>/ (seção 3)
+        ▼
+Hermes/F1 injeta cardápio (GATE 2=C: R$29/un via F1 + prompt)
+        ▼
+HITL LGPD (GATE 6): humano aprova conteúdo do cliente ANTES de publicar
+  (docs/LGPD-VITRINE-CERTA.md) → GitHub Pages → cobrança (GATE 5, ver docs/COBRANCA-MP.md)
+```
+
+- Teste do bridge sem Sheets real: `node references/sheets-atlas-bridge.js --mock` → `BRIDGE_MOCK_OK`.
+- Identidade visual: quando cada nicho ganhar `DESIGN.md` (token spec Google), o
+  `gera-site.js` deve ler o YAML front matter (colors/typography) e injetar como
+  `var(--token)` no `:root` do scaffold — NUNCA hardcodar cor fora de token (gate 48
+  da skill Premium). Até lá, o scaffold herda os tokens do template do nicho.
