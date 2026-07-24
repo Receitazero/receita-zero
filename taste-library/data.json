@@ -1,0 +1,496 @@
+{
+  "_schema": "Biblioteca de Gosto — Vitrine Certa. Cada item = 1 referência PREMIADA (Awwwards/CSS Design Awards/FWA) por nicho. Método do vídeo 7FU98O0JLHs: agrupa por estilo, guarda vocabulário/keywords, gera image_prompt + brief. Todos os itens abaixo saíram de busca real por premiações (Brave, 24/jul).",
+  "_filtros": {
+    "estilo": [
+      "editorial serif",
+      "cinematic quiet",
+      "artesanal quente",
+      "swiss minimal",
+      "brutalist",
+      "organic warm",
+      "print tech paper",
+      "dither mono",
+      "retro futurista"
+    ],
+    "nicho_fit": [
+      "qualquer",
+      "pizzaria",
+      "pet",
+      "padaria",
+      "oficina",
+      "salao",
+      "clinica",
+      "lavanderia",
+      "imobiliaria"
+    ],
+    "fonte": [
+      "Awwwards",
+      "CSS Design Awards",
+      "FWA",
+      "Dribbble",
+      "Pinterest",
+      "Twitter/X",
+      "site real"
+    ],
+    "premiacao": [
+      "SOTD (Site of the Day)",
+      "Nominee",
+      "Honorable Mention",
+      "WOTY",
+      "n/a"
+    ],
+    "tipo_pagina": [
+      "hero",
+      "landing completa",
+      "pricing",
+      "form",
+      "galeria",
+      "componente"
+    ]
+  },
+  "itens": [
+    {
+      "id": "pizzaria-tasty-design",
+      "titulo": "Tasty Design — restaurant & catering (coletânea Awwwards)",
+      "shot": "shots/pizzaria-tasty-design.png",
+      "estilo": "artesanal quente",
+      "nicho_fit": [
+        "pizzaria"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Nominee",
+      "url": "https://www.awwwards.com/tasty-design-restaurant-and-catering-websites.html",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "fotografia de comida em destaque",
+        "tipografia apetitosa",
+        "menu imersivo",
+        "calor"
+      ],
+      "vocabulario": "Restaurante premiado: comida como herói (fotografia grande), tipografia com personalidade, seções de menu que dão água na boca, paleta quente.",
+      "image_prompt": "Warm artisanal restaurant hero, wood-fired oven glow, close-up food photography, rich earthy palette, appetizing, cinematic light, no text",
+      "brief": "Aesthetic: artesanal quente. Reference feeling (Awwwards Tasty Design): comida como herói, calor, apetite. Intent: cliente com fome pedir no WhatsApp. Guardrails: nunca Inter, nunca gradiente roxo, foto autoral de comida.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter",
+        "sem stock genérico"
+      ]
+    },
+    {
+      "id": "pet-kindred",
+      "titulo": "Kindred Pet Care",
+      "shot": "shots/pet-kindred.png",
+      "estilo": "organic warm",
+      "nicho_fit": [
+        "pet"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Honorable Mention",
+      "url": "https://www.awwwards.com/sites/kindred-pet-care",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "acolhedor",
+        "cores suaves",
+        "ilustração amigável",
+        "cuidado"
+      ],
+      "vocabulario": "Pet care premiado: sensação de cuidado e afeto, paleta suave e quente, cantos arredondados, ilustração amigável, foto de pet real.",
+      "image_prompt": "Warm friendly pet care hero, soft rounded shapes, gentle pastel-earth palette, happy real pet photo, caring cozy mood, no text",
+      "brief": "Aesthetic: organic warm. Reference feeling (Kindred Pet Care): cuidado, afeto, acolhimento. Intent: tutor agendar/pedir no WhatsApp. Guardrails: nunca Inter, nunca gradiente roxo, foto de pet real.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "pet-rooof",
+      "titulo": "ROOOF Pet Furniture",
+      "shot": "shots/pet-rooof.png",
+      "estilo": "swiss minimal",
+      "nicho_fit": [
+        "pet"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Honorable Mention",
+      "url": "https://www.awwwards.com/sites/rooof-pet-furniture",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "produto em destaque",
+        "grid limpo",
+        "minimalismo",
+        "muito respiro"
+      ],
+      "vocabulario": "Design de produto pet minimalista suíço: grid limpo, muito espaço negativo, produto isolado, tipografia neutra bem espaçada.",
+      "image_prompt": "Minimal swiss product shot, single pet furniture item, clean seamless background, lots of negative space, soft studio light, no text",
+      "brief": "Aesthetic: swiss minimal. Reference feeling (ROOOF): produto herói, respiro, clean. Intent: vitrine de produto/serviço pet. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "padaria-wildwood",
+      "titulo": "Wildwood Bakery — illustrated e-commerce",
+      "shot": "shots/_placeholder.svg",
+      "estilo": "artesanal quente",
+      "nicho_fit": [
+        "padaria"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Nominee",
+      "url": "https://www.awwwards.com/inspiration/wildwood-bakery-illustrated-e-commerce-website",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "ilustração autoral",
+        "textura de papel",
+        "handmade",
+        "aconchego"
+      ],
+      "vocabulario": "Padaria premiada: ilustração autoral desenhada à mão, textura de papel/kraft, sensação handmade e aconchegante, tipografia com caráter.",
+      "image_prompt": "Hand-illustrated bakery scene, kraft paper texture, warm handmade feel, artisan bread illustration, cozy palette, no photoreal, no text",
+      "brief": "Aesthetic: artesanal quente / print tech paper. Reference feeling (Wildwood Bakery): handmade, papel, aconchego. Intent: encomenda no WhatsApp. Guardrails: nunca Inter, nunca gradiente roxo, ilustração autoral.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "padaria-bernice",
+      "titulo": "Bernice Bakery",
+      "shot": "shots/padaria-bernice.png",
+      "estilo": "editorial serif",
+      "nicho_fit": [
+        "padaria"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Honorable Mention",
+      "url": "https://www.awwwards.com/sites/bernice-bakery",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "editorial",
+        "serifada elegante",
+        "fotografia clean",
+        "sofisticado"
+      ],
+      "vocabulario": "Padaria sofisticada estilo editorial: tipografia serifada elegante, layout de revista, fotografia clean, sensação premium.",
+      "image_prompt": "Editorial bakery photography, elegant serif mood, magazine layout feel, clean natural light, sophisticated warm neutrals, no text",
+      "brief": "Aesthetic: editorial serif. Reference feeling (Bernice Bakery): revista, elegância, premium. Intent: encomenda/vitrine. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "salao-don-barber",
+      "titulo": "DON BARBER & GROOM",
+      "shot": "shots/salao-don-barber.png",
+      "estilo": "brutalist",
+      "nicho_fit": [
+        "salao"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Honorable Mention",
+      "url": "https://www.awwwards.com/sites/don-barber-groom",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "masculino",
+        "alto contraste",
+        "tipografia forte",
+        "atitude"
+      ],
+      "vocabulario": "Barbearia premiada: estética masculina de alto contraste, tipografia grande e forte, preto/âmbar, atitude, textura vintage.",
+      "image_prompt": "High-contrast barbershop hero, bold masculine mood, black and amber palette, vintage grain, strong typography scene, no text",
+      "brief": "Aesthetic: brutalist / retro. Reference feeling (Don Barber): masculino, contraste, atitude. Intent: agendar no WhatsApp. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "salao-marco-ambrosi",
+      "titulo": "Marco Ambrosi Salon",
+      "shot": "shots/salao-marco-ambrosi.png",
+      "estilo": "editorial serif",
+      "nicho_fit": [
+        "salao"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Honorable Mention",
+      "url": "https://www.awwwards.com/sites/marco-ambrosi-salon",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "beleza editorial",
+        "elegante",
+        "fotografia de moda",
+        "refinado"
+      ],
+      "vocabulario": "Salão de beleza premiado estilo editorial de moda: fotografia refinada, tipografia serifada, muito respiro, sensação de revista de beleza.",
+      "image_prompt": "Editorial beauty salon photography, fashion magazine mood, refined elegant model shot, soft light, neutral sophisticated palette, no text",
+      "brief": "Aesthetic: editorial serif. Reference feeling (Marco Ambrosi): moda, refino, beleza editorial. Intent: agendar. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "clinica-halo-dental",
+      "titulo": "Halo Dental (Site of the Day)",
+      "shot": "shots/clinica-halo-dental.png",
+      "estilo": "swiss minimal",
+      "nicho_fit": [
+        "clinica"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "SOTD (Site of the Day)",
+      "url": "https://www.awwwards.com/sites/halo-dental",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "clean clínico",
+        "confiança",
+        "azul suave",
+        "espaço negativo"
+      ],
+      "vocabulario": "Clínica odontológica premiada SOTD: clean e confiável, muito espaço negativo, paleta suave (branco/azul/verde), tipografia clara, sensação de cuidado e higiene.",
+      "image_prompt": "Clean modern dental clinic hero, calm trustworthy mood, soft white and mint palette, lots of negative space, gentle light, no text",
+      "brief": "Aesthetic: swiss minimal. Reference feeling (Halo Dental SOTD): confiança, higiene, calma. Intent: agendar consulta no WhatsApp. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "imobiliaria-awwwards-re",
+      "titulo": "Best Real Estate websites (coletânea Awwwards)",
+      "shot": "shots/_placeholder.svg",
+      "estilo": "cinematic quiet",
+      "nicho_fit": [
+        "imobiliaria"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Nominee",
+      "url": "https://www.awwwards.com/websites/real-estate/",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "imóvel monumental",
+        "fotografia arquitetônica",
+        "elegante",
+        "escala"
+      ],
+      "vocabulario": "Imobiliária premiada: fotografia arquitetônica monumental, escala e silêncio, tipografia elegante, muito respiro, sensação de exclusividade.",
+      "image_prompt": "Cinematic architectural real estate hero, monumental modern house, golden hour light, vast quiet mood, elegant neutral palette, no text",
+      "brief": "Aesthetic: cinematic quiet. Reference feeling (Awwwards Real Estate): monumental, exclusivo, escala. Intent: agendar visita no WhatsApp. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "oficina-acoustic-garage",
+      "titulo": "Acoustic Garage (WOTY 2020 Nominee)",
+      "shot": "shots/oficina-acoustic-garage.png",
+      "estilo": "retro futurista",
+      "nicho_fit": [
+        "oficina"
+      ],
+      "fonte": "CSS Design Awards",
+      "premiacao": "WOTY",
+      "url": "https://www.cssdesignawards.com/woty2020/sites/acoustic-garage/",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "industrial",
+        "mecânico",
+        "detalhe técnico",
+        "energia"
+      ],
+      "vocabulario": "Garage/oficina premiada CSS Design Awards: estética industrial-técnica, detalhes mecânicos, energia, tipografia forte, sensação de precisão.",
+      "image_prompt": "Industrial garage workshop hero, technical mechanical detail, bold energetic mood, metal and amber palette, precision feel, no text",
+      "brief": "Aesthetic: retro futurista / industrial. Reference feeling (Acoustic Garage CSSDA): precisão técnica, energia. Intent: orçamento no WhatsApp. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "lavanderia-hampy",
+      "titulo": "Hampy",
+      "shot": "shots/lavanderia-hampy.png",
+      "estilo": "organic warm",
+      "nicho_fit": [
+        "lavanderia"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Nominee",
+      "url": "https://www.awwwards.com/sites/hampy",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "fresco",
+        "limpo",
+        "cores suaves",
+        "amigável"
+      ],
+      "vocabulario": "Serviço de lavanderia premiado: sensação de frescor e limpeza, paleta suave e clara, cantos arredondados, ilustração amigável, leveza.",
+      "image_prompt": "Fresh clean laundry service hero, soft airy palette, friendly rounded shapes, light bright mood, sense of freshness, no text",
+      "brief": "Aesthetic: organic warm / clean. Reference feeling (Hampy): frescor, leveza, amigável. Intent: solicitar coleta no WhatsApp. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "pizzaria-pizza-hut",
+      "titulo": "Pizza Hut Restaurants",
+      "shot": "shots/pizzaria-pizza-hut.png",
+      "estilo": "retro futurista",
+      "nicho_fit": [
+        "pizzaria"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Nominee",
+      "url": "https://www.awwwards.com/sites/pizza-hut-restaurants",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "vermelho vibrante",
+        "energia",
+        "produto em destaque",
+        "apetite"
+      ],
+      "vocabulario": "Rede de pizza premiada: vermelho vibrante, energia, produto grande em destaque, movimento, apetite imediato.",
+      "image_prompt": "Vibrant energetic pizza hero, bold red palette, close-up melting cheese pull, dynamic motion, appetizing, no text",
+      "brief": "Aesthetic: retro futurista / energético. Reference feeling (Pizza Hut): energia, apetite imediato. Intent: pedir no WhatsApp. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "padaria-ceremony-coffee",
+      "titulo": "Ceremony Coffee Roasters (Site of the Day)",
+      "shot": "shots/padaria-ceremony-coffee.png",
+      "estilo": "editorial serif",
+      "nicho_fit": [
+        "padaria"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "SOTD (Site of the Day)",
+      "url": "https://www.awwwards.com/sites/ceremony-coffee-roasters",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "café artesanal",
+        "editorial",
+        "ritual",
+        "premium"
+      ],
+      "vocabulario": "Cafeteria/roastery premiada SOTD: sensação de ritual e artesanato, tipografia editorial, fotografia de grão/xícara, paleta quente premium.",
+      "image_prompt": "Editorial coffee roastery hero, artisan ritual mood, close-up coffee beans and pour, warm premium palette, magazine feel, no text",
+      "brief": "Aesthetic: editorial serif. Reference feeling (Ceremony Coffee SOTD): ritual, artesanato, premium. Intent: encomenda/visita. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "pet-veterinary",
+      "titulo": "Website Design for Veterinary",
+      "shot": "shots/pet-veterinary.png",
+      "estilo": "swiss minimal",
+      "nicho_fit": [
+        "pet"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Nominee",
+      "url": "https://www.awwwards.com/sites/website-design-for-veterinary",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "clínico amigável",
+        "confiança",
+        "clean",
+        "pet + saúde"
+      ],
+      "vocabulario": "Clínica veterinária premiada: cruza cuidado clínico com afeto pet, clean e confiável, paleta suave, foto de pet real, tipografia clara.",
+      "image_prompt": "Clean friendly veterinary clinic hero, caring trustworthy mood, soft palette, happy pet with vet, gentle light, no text",
+      "brief": "Aesthetic: swiss minimal / clean. Reference feeling (Veterinary): cuidado clínico + afeto. Intent: agendar no WhatsApp. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "salao-salon-sona",
+      "titulo": "Salon Sona",
+      "shot": "shots/salao-salon-sona.png",
+      "estilo": "organic warm",
+      "nicho_fit": [
+        "salao"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Honorable Mention",
+      "url": "https://www.awwwards.com/sites/salon-sona",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "beleza acolhedora",
+        "tons quentes",
+        "elegante",
+        "bem-estar"
+      ],
+      "vocabulario": "Salão de beleza premiado: acolhimento e bem-estar, tons quentes e terrosos, elegância suave, fotografia de beleza natural.",
+      "image_prompt": "Warm cozy beauty salon hero, wellbeing mood, earthy warm palette, natural beauty photography, elegant soft light, no text",
+      "brief": "Aesthetic: organic warm. Reference feeling (Salon Sona): acolhimento, bem-estar. Intent: agendar. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "clinica-axel",
+      "titulo": "AXEL Clinic",
+      "shot": "shots/clinica-axel.png",
+      "estilo": "editorial serif",
+      "nicho_fit": [
+        "clinica"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "Honorable Mention",
+      "url": "https://www.awwwards.com/sites/axel-clinic",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "estética médica",
+        "sofisticado",
+        "confiança premium",
+        "clean"
+      ],
+      "vocabulario": "Clínica estética premiada: sofisticação médica premium, tipografia editorial, muito respiro, paleta neutra elegante, sensação de confiança e cuidado.",
+      "image_prompt": "Sophisticated aesthetic medical clinic hero, premium trustworthy mood, elegant neutral palette, editorial typography feel, clean calm light, no text",
+      "brief": "Aesthetic: editorial serif. Reference feeling (AXEL Clinic): sofisticação médica, confiança premium. Intent: agendar. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    },
+    {
+      "id": "imobiliaria-oh-architecture",
+      "titulo": "OH Architecture (Site of the Day)",
+      "shot": "shots/imobiliaria-oh-architecture.png",
+      "estilo": "swiss minimal",
+      "nicho_fit": [
+        "imobiliaria"
+      ],
+      "fonte": "Awwwards",
+      "premiacao": "SOTD (Site of the Day)",
+      "url": "https://www.awwwards.com/sites/oh-architecture",
+      "tipo_pagina": "landing completa",
+      "keywords": [
+        "arquitetura",
+        "grid rigoroso",
+        "minimalismo",
+        "portfólio"
+      ],
+      "vocabulario": "Arquitetura premiada SOTD: grid rigoroso, minimalismo suíço, fotografia arquitetônica, tipografia precisa, muito respiro, sensação de precisão e elegância.",
+      "image_prompt": "Minimal architecture portfolio hero, rigorous grid, monochrome architectural photography, precise typography, vast negative space, no text",
+      "brief": "Aesthetic: swiss minimal. Reference feeling (OH Architecture SOTD): precisão, grid, elegância. Intent: agendar visita. Guardrails: nunca Inter, nunca gradiente roxo.",
+      "guardrails_ok": [
+        "sem gradiente roxo",
+        "sem Inter"
+      ]
+    }
+  ]
+}
