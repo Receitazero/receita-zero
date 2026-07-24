@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vitrine Certa — Apresentação Comercial</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,900&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0B0714;--fg:#EFE9FF;--p:#2DD4BF;--ac:#C6FF00;--muted:rgba(239,233,255,.62);--card:rgba(45,212,191,.07);--line:rgba(45,212,191,.25)}
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:var(--bg);color:var(--fg);font-family:'Fraunces',serif;overflow:hidden}
+.brandmark{position:fixed;top:1.3rem;left:1.6rem;display:flex;align-items:center;gap:.6rem;z-index:20}
+.brandmark svg{flex:0 0 auto}
+.brandmark span{font-size:1.05rem;font-weight:600;letter-spacing:.02em}
+.brandmark b{color:var(--p)}
+.slide{display:none;height:100vh;padding:6.5rem 8vw 5rem;flex-direction:column;justify-content:center;animation:fade .5s ease}
+.slide.active{display:flex}
+@keyframes fade{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.eyebrow{color:var(--ac);text-transform:uppercase;letter-spacing:.22em;font-size:.75rem;margin-bottom:1rem}
+h1{font-size:clamp(2.4rem,5.5vw,4.4rem);font-weight:900;line-height:1.05}
+h1 em{color:var(--p);font-style:normal}
+h2{font-size:clamp(1.7rem,3.4vw,2.6rem);font-weight:900;margin-bottom:1.6rem}
+h2 em{color:var(--p);font-style:normal}
+.lead{font-size:1.15rem;color:var(--muted);max-width:46ch;margin-top:1.2rem;line-height:1.55}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:1.1rem;margin-top:1rem}
+.cards.c4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.3rem}
+.card h3{color:var(--p);font-size:1.05rem;margin-bottom:.5rem}
+.card p{color:var(--muted);font-size:.92rem;line-height:1.5}
+.dor{border-left:4px solid var(--ac);background:rgba(198,255,0,.06);padding:1rem 1.3rem;border-radius:0 12px 12px 0;margin-bottom:1.4rem}
+.dor b{color:var(--ac)}
+.steps{counter-reset:s;display:grid;gap:.9rem;margin-top:.6rem}
+.step{display:flex;gap:1rem;align-items:baseline}
+.step::before{counter-increment:s;content:counter(s);background:var(--p);color:var(--bg);font-weight:900;min-width:2rem;height:2rem;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:.95rem}
+.step p{color:var(--muted);line-height:1.5}
+.step b{color:var(--fg)}
+table{width:100%;border-collapse:collapse;margin-top:.8rem;font-size:.98rem}
+th{color:var(--p);text-align:left;padding:.7rem .9rem;border-bottom:2px solid var(--line);font-size:.85rem;text-transform:uppercase;letter-spacing:.08em}
+td{padding:.75rem .9rem;border-bottom:1px solid rgba(239,233,255,.09);color:var(--muted)}
+td b{color:var(--fg)}
+td .preco{color:var(--ac);font-weight:900;font-size:1.08rem}
+.tag{display:inline-block;background:rgba(198,255,0,.12);color:var(--ac);border-radius:99px;padding:.15rem .7rem;font-size:.72rem;letter-spacing:.06em;margin-left:.4rem}
+.case-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:2rem;align-items:center}
+.case-grid img{width:100%;border-radius:14px;border:1px solid var(--line);box-shadow:0 20px 60px rgba(0,0,0,.5)}
+.nichos{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.4rem}
+.nichos span{border:1px solid var(--line);border-radius:99px;padding:.35rem .95rem;font-size:.85rem;color:var(--muted)}
+.foot{position:fixed;bottom:1rem;left:0;right:0;text-align:center;font-size:.68rem;color:rgba(239,233,255,.35);z-index:15}
+nav{position:fixed;bottom:2.2rem;right:2rem;display:flex;gap:.6rem;align-items:center;z-index:20}
+nav button{background:var(--card);border:1px solid var(--line);color:var(--fg);width:2.6rem;height:2.6rem;border-radius:50%;font-size:1.1rem;cursor:pointer;font-family:inherit}
+nav button:hover{background:var(--p);color:var(--bg)}
+.dots{position:fixed;bottom:2.9rem;left:50%;transform:translateX(-50%);display:flex;gap:.45rem;z-index:20}
+.dot{width:.55rem;height:.55rem;border-radius:50%;background:rgba(239,233,255,.2);cursor:pointer}
+.dot.on{background:var(--ac)}
+@media (max-width:900px){.cards,.cards.c4{grid-template-columns:repeat(2,1fr)}.case-grid{grid-template-columns:1fr}}
+@media print{
+  @page{size:A4 landscape;margin:0}
+  body{overflow:visible}
+  .slide{display:flex!important;page-break-after:always;height:100vh}
+  nav,.dots{display:none}
+  *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+}
+</style>
+</head>
+<body>
+
+<div class="brandmark">
+  <svg width="30" height="30" viewBox="0 0 48 48" fill="none"><rect x="4" y="8" width="40" height="30" rx="4" stroke="#2DD4BF" stroke-width="3"/><path d="M14 20l7 9 13-14" stroke="#C6FF00" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/><rect x="18" y="40" width="12" height="3" rx="1.5" fill="#2DD4BF"/></svg>
+  <span><b>Vitrine</b> Certa</span>
+</div>
+
+<!-- 1. CAPA -->
+<section class="slide active">
+  <p class="eyebrow">Sites que vendem · para o comércio local</p>
+  <h1>Seu negócio merece um site que <em>vende</em> — não um cartão de visita esquecido.</h1>
+  <p class="lead">A Vitrine Certa cria sites premium para o pequeno negócio local: rápido, bonito e que converte visita em cliente no WhatsApp. Hospedagem grátis, sem taxa escondida.</p>
+  <div class="nichos">
+    <span>Clínica</span><span>Imobiliária</span><span>Lavanderia</span><span>Oficina</span><span>Padaria</span><span>Pet Shop</span><span>Pizzaria</span><span>Salão</span>
+  </div>
+</section>
+
+<!-- 2. O PROBLEMA -->
+<section class="slide">
+  <p class="eyebrow">O problema</p>
+  <h2>Quem não aparece no Google, <em>não existe</em> para o cliente novo.</h2>
+  <div class="cards">
+    <div class="card"><h3>Só Instagram não basta</h3><p>Perfil de rede social não aparece na busca do Google quando o cliente procura "pizzaria perto de mim". Site aparece.</p></div>
+    <div class="card"><h3>Site de agência custa caro</h3><p>R$2.000–R$5.000 para fazer + hospedagem mensal + cada alteração cobrada como projeto novo.</p></div>
+    <div class="card"><h3>Site "faça você mesmo" trava</h3><p>Construtores genéricos tomam seu tempo, ficam com cara de modelo pronto e não focam no que importa: o cliente chamar no WhatsApp.</p></div>
+  </div>
+</section>
+
+<!-- 3. COMO FUNCIONA -->
+<section class="slide">
+  <p class="eyebrow">Como funciona</p>
+  <h2>Do brief ao site no ar em <em>dias, não meses</em>.</h2>
+  <div class="steps">
+    <div class="step"><p><b>Você responde um brief simples pelo WhatsApp</b> — nome do negócio, fotos, cardápio/serviços, cores e seu número de contato. 15 minutos.</p></div>
+    <div class="step"><p><b>Montamos seu site no modelo do seu nicho</b> — cada nicho (pizzaria, pet, salão…) tem um design feito sob medida para o que o seu cliente procura.</p></div>
+    <div class="step"><p><b>Você aprova a prévia e o site vai ao ar</b> — com botão de WhatsApp em destaque, cardápio/serviços com preço e formulário que vira mensagem direto no seu celular.</p></div>
+  </div>
+</section>
+
+<!-- 4. CASE PIZZARIA -->
+<section class="slide">
+  <p class="eyebrow">Case · Pizzaria</p>
+  <div class="case-grid">
+    <div>
+      <h2>Cardápio online com pedido no <em>WhatsApp</em>.</h2>
+      <div class="dor"><b>A dor:</b> pedido perdido no telefone ocupado, cardápio de foto borrada no status.</div>
+      <p class="lead" style="margin-top:0">Site com cardápio interativo (foto, preço e tamanho), calculadora de pizza que já monta a mensagem do pedido, e botão "Pedir no WhatsApp" em cada seção. O cliente escolhe e chama — sem app, sem taxa de marketplace.</p>
+    </div>
+    <img src="../site-dfy/preview-pizzaria-cardapio.png" alt="Preview do site de pizzaria — cardápio interativo">
+  </div>
+</section>
+
+<!-- 5. CASE PET SHOP -->
+<section class="slide">
+  <p class="eyebrow">Case · Pet Shop</p>
+  <div class="case-grid">
+    <div>
+      <h2>O tutor agenda banho e tosa <em>sem ligar</em>.</h2>
+      <div class="dor"><b>A dor:</b> agenda no caderno, cliente que some porque "ia ligar depois".</div>
+      <p class="lead" style="margin-top:0">Site com serviços e preços claros, quiz interativo que engaja o tutor e botão de WhatsApp que já chega com a mensagem pronta ("quero agendar banho para o meu cão"). Menos telefone, mais agendamento.</p>
+    </div>
+    <img src="../site-dfy/preview-pet-quiz-wabtn.png" alt="Preview do site de pet shop — quiz e botão WhatsApp">
+  </div>
+</section>
+
+<!-- 6. PLANOS -->
+<section class="slide">
+  <p class="eyebrow">Investimento</p>
+  <h2>Planos simples, <em>sem taxa escondida</em>.</h2>
+  <table>
+    <tr><th>Plano</th><th>Preço</th><th>O que você recebe</th></tr>
+    <tr><td><b>Essencial</b></td><td><span class="preco">R$49/mês</span></td><td>Landing page, formulário de contato, botão WhatsApp, SEO básico. Comece a ser encontrado hoje.</td></tr>
+    <tr><td><b>Premium</b><span class="tag">MAIS PEDIDO</span></td><td><span class="preco">R$149/mês</span></td><td>Site narrativo com animações, cardápio/serviços interativos e mecânicas únicas do seu nicho. O site que impressiona.</td></tr>
+    <tr><td><b>Domínio Próprio</b></td><td><span class="preco">R$199/mês</span></td><td>Tudo do Premium + domínio .com.br, e-mail profissional (voce@seunegocio.com.br), SSL e backup diário.</td></tr>
+  </table>
+  <p class="lead" style="max-width:100%;font-size:.9rem">Hospedagem sempre grátis. Correção de bug é grátis, sempre — você só paga por conteúdo novo.</p>
+</section>
+
+<!-- 7. PACOTES DE ATUALIZAÇÃO -->
+<section class="slide">
+  <p class="eyebrow">Seu site sempre atualizado</p>
+  <h2>Mudou o cardápio? A gente <em>atualiza por você</em>.</h2>
+  <table>
+    <tr><th>Serviço</th><th>Preço</th></tr>
+    <tr><td><b>Correção de bugs</b> (link quebrado, erro de texto)</td><td><span class="preco">Grátis</span> — sempre incluído</td></tr>
+    <tr><td><b>Atualização avulsa</b> de cardápio, fotos ou preços</td><td><span class="preco">R$29</span> por atualização</td></tr>
+    <tr><td><b>Pacote Light</b> — 2 atualizações por mês</td><td><span class="preco">R$99/mês</span></td></tr>
+    <tr><td><b>Pacote Full</b> — atualizações ilimitadas + 1 melhoria por mês</td><td><span class="preco">R$199/mês</span></td></tr>
+    <tr><td><b>Melhorias de layout</b> (seção nova, redesign)</td><td>R$79–R$199 por melhoria</td></tr>
+  </table>
+</section>
+
+<!-- 8. PRÓXIMOS PASSOS -->
+<section class="slide">
+  <p class="eyebrow">Próximos passos</p>
+  <h2>Quer ver o seu negócio com um site que <em>vende</em>?</h2>
+  <div class="steps">
+    <div class="step"><p><b>Chame no WhatsApp</b> e diga o nome e o ramo do seu negócio.</p></div>
+    <div class="step"><p><b>Receba uma prévia do seu site</b> — sem compromisso, no modelo do seu nicho.</p></div>
+    <div class="step"><p><b>Aprovou? Site no ar</b> em poucos dias, a partir de R$49/mês.</p></div>
+  </div>
+  <p class="lead">Vitrine Certa — sites que vendem para o comércio local.</p>
+</section>
+
+<div class="foot">Vitrine Certa · Material comercial. Valores sujeitos a confirmação em proposta. Não constitui recomendação de investimento.</div>
+
+<nav>
+  <button id="prev" aria-label="Anterior">‹</button>
+  <button id="next" aria-label="Próximo">›</button>
+</nav>
+<div class="dots" id="dots"></div>
+
+<script>
+const slides=[...document.querySelectorAll('.slide')];let i=0;
+const dots=document.getElementById('dots');
+slides.forEach((_,k)=>{const d=document.createElement('div');d.className='dot'+(k===0?' on':'');d.onclick=()=>go(k);dots.appendChild(d);});
+function go(k){slides[i].classList.remove('active');document.querySelectorAll('.dot')[i].classList.remove('on');i=(k+slides.length)%slides.length;slides[i].classList.add('active');document.querySelectorAll('.dot')[i].classList.add('on');}
+document.getElementById('next').onclick=()=>go(i+1);
+document.getElementById('prev').onclick=()=>go(i-1);
+addEventListener('keydown',e=>{if(['ArrowRight','PageDown',' '].includes(e.key))go(i+1);if(['ArrowLeft','PageUp'].includes(e.key))go(i-1);});
+</script>
+</body>
+</html>
