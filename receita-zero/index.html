@@ -418,6 +418,13 @@ footer .logo{width:24px;height:24px}
       </div>
       <button id="gen-btn" class="btn btn-lamp" style="width:100%;justify-content:center;margin-top:.4rem">Gerar meu site grátis →</button>
       <p id="gen-err" class="gen-err" style="display:none"></p>
+      <div style="margin-top:var(--sp-md);padding-top:var(--sp-md);border-top:1px solid var(--linha);display:none" id="gen-photos-section">
+        <label for="gen-ig1" style="font-family:var(--mono);font-size:.72rem;color:var(--fumaca);margin-bottom:.35rem;letter-spacing:.04em">Fotos do Instagram (opcional)</label>
+        <input id="gen-ig1" type="text" placeholder="https://instagram.com/p/XXXXX (foto 1)" style="margin-bottom:.4rem" />
+        <input id="gen-ig2" type="text" placeholder="https://instagram.com/p/XXXXX (foto 2)" />
+        <input id="gen-ig3" type="text" placeholder="https://instagram.com/p/XXXXX (foto 3)" />
+        <p style="font-size:.78rem;color:var(--fraco);margin-top:.4rem">Cole links diretos de fotos do seu Instagram. Assim o site mostra suas fotos reais.</p>
+      </div>
     </div>
     <div id="gen-result" class="gen-result" style="display:none">
       <p class="gen-result-txt">Preview de <b id="gen-nome"></b> em <b id="gen-cidade-out"></b>:</p>
@@ -726,10 +733,15 @@ document.querySelectorAll('.price-filter button').forEach(function(btn){
 
 // === gerador ===
 (function(){
+  var IG_PROXY='https://images.weserv.io/?w=800&h=600&we=edge&url=';
   var link=document.getElementById('gen-link'),nicho=document.getElementById('gen-nicho'),cidade=document.getElementById('gen-cidade'),
       btn=document.getElementById('gen-btn'),err=document.getElementById('gen-err'),result=document.getElementById('gen-result'),
-      frame=document.getElementById('gen-frame'),nomeOut=document.getElementById('gen-nome'),cidadeOut=document.getElementById('gen-cidade-out'),wa=document.getElementById('gen-wa');
+      frame=document.getElementById('gen-frame'),nomeOut=document.getElementById('gen-nome'),cidadeOut=document.getElementById('gen-cidade-out'),wa=document.getElementById('gen-wa'),
+      ig1=document.getElementById('gen-ig1'),ig2=document.getElementById('gen-ig2'),ig3=document.getElementById('gen-ig3'),
+      photosSection=document.getElementById('gen-photos-section');
   if(!btn) return;
+  // Mostra a seção de fotos do Instagram
+  photosSection.style.display='block';
   function extraiNome(u){
     u=u.trim();
     try{
@@ -744,18 +756,41 @@ document.querySelectorAll('.price-filter button').forEach(function(btn){
     }catch(e){}
     return '';
   }
+  function extractIgPhoto(link){
+    try{
+      if(link.includes('instagram.com/p/')||link.includes('instagr.am/p/')){
+        var u=new URL(link);
+        var sc=u.pathname.split('/').filter(Boolean)[1];
+        if(sc) return sc;
+      }
+    }catch(e){}
+    return null;
+  }
   btn.addEventListener('click',function(){
     err.style.display='none';
     var nome=extraiNome(link.value), cid=cidade.value.trim(), nch=nicho.value;
     if(!nome && !link.value.trim()){err.textContent='Cole o link do Maps ou Instagram do seu negócio.';err.style.display='block';return;}
     if(!cid){err.textContent='Informe a cidade do seu negócio.';err.style.display='block';return;}
     var displayNome = nome || (link.value.trim().split('/').pop().slice(0,40)) || 'Seu Negócio';
+    // Coleta fotos do Instagram
+    var igLinks=[ig1.value.trim(),ig2.value.trim(),ig3.value.trim()].filter(Boolean);
+    var imgParams=[];
+    for(var i=0;i<igLinks.length;i++){
+      var sc=extractIgPhoto(igLinks[i]);
+      if(sc){
+        imgParams.push(IG_PROXY+'www.instagram.com/p/'+sc+'/');
+      }
+    }
+    // Monta a URL do iframe com nome, cidade e fotos
     var src='../site-dfy/'+nch+'/index.html?nome='+encodeURIComponent(displayNome)+'&cidade='+encodeURIComponent(cid);
+    for(var j=0;j<Math.min(3,imgParams.length);j++){
+      src+='&img'+(j+1)+'='+encodeURIComponent(imgParams[j]);
+    }
     frame.src=src; nomeOut.textContent=displayNome; cidadeOut.textContent=cid;
     wa.href='https://wa.me/5511970776856?text='+encodeURIComponent('Quero o site da '+displayNome+' ('+cid+') — plano Essencial R$49/mês');
     result.style.display='block';
     result.scrollIntoView({behavior:'smooth',block:'center'});
-    if(window.captureLead){captureLead({nome:displayNome,cidade:cid,nicho:nch,origem:'gerador',whatsapp:'',mensagem:link.value});}
+    if(window.captureLead){captureLead({nome:displayNome,cidade:cid,nicho:nch,origem:'gerador',whatsapp:'',mensagem:link.value,photos:imgParams.join(',')});}
   });
 })();
 </script>
