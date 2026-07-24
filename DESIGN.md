@@ -1,5 +1,34 @@
 # DESIGN.md — Vitrine Certa · Landing Mãe ("A JOIA da empresa")
 
+## v3 — ESPECTRO VIVO (24/jul/2026 — a v2 "luxo silencioso" foi REPROVADA)
+Feedback da dona sobre a v2 (âmbar único, calma, quase sem movimento): **"sem
+personalidade, queria mais cores, movimentos, transparências e efeitos — mas nada
+tão poluído"**. Lição: luxo-silencioso é estilo válido, mas ERRADO pro produto —
+o produto são 8 vitrines coloridas e brincalhonas; a marca-mãe tem que ser a
+vitrine mais viva da rua. Restrição a mais matou a personalidade.
+
+**Conceito v3 = "a vitrine que contém as 8 lojas".** A cor vem do ESPECTRO dos 8
+nichos (cada um sua cor real). Como fica colorido sem virar arco-íris poluído:
+- **1 cor ativa por vez.** A vitrine do hero cicla pelas 8 lojas (auto 3,4s,
+  pausa no hover, clicável pelos 8 orbs). A página inteira se re-tinge na cor da
+  loja ativa via `--accent`/`--accent-ink`. Nunca as 8 juntas gritando.
+- **Type/CTA ancoram, a LUZ viaja.** Botões=âmbar, wordmark=âmbar (casa estável);
+  quem viaja pelo espectro é kicker, "responde", vitrine, halo, spotlight, orbs,
+  hover dos cards. Disciplina anti-poluição (truque Linear/Stripe): UI neutra +
+  ambiente colorido. `--accent`=cor viva (glow/dark), `--accent-ink`=escurecida
+  legível (texto em fundo claro, todas ≥4.5 medidas).
+- **Movimento vivo e reativo:** spotlight que segue o cursor tingido pela cor ativa,
+  lâmpada que respira, contadores (48/8/49), cards que acendem na PRÓPRIA cor no hover,
+  a vitrine re-tinge o conteúdo (cada loja mostra sua ação: pedir/agendar/verificar).
+- **4 efeitos, mão leve:** vidro profundo (transparências reais + blur multicamada +
+  highlight interno), halos de luz coloridos, spotlight no cursor, grão (feTurbulence .05).
+- **Tudo respeita `prefers-reduced-motion`:** sem ciclo, sem spotlight, sem respiro,
+  contadores no valor final, reveal instantâneo.
+- Verificado: 0 falha de contraste (8 nichos × ink-no-claro + cor-no-escuro, tudo ≥4.5),
+  scroll-x limpo 320–1440 (pseudo-halo horizontal contido), 0 erro JS, AAPSON ausente.
+- Objeto (JS) canônico: `NICHOS[]` no `<script>` de `receita-zero/index.html` — cor/ink/
+  nome/ação por loja. Trocar o line-up = editar esse array.
+
 ## Decisões travadas com a dona (23/jul/2026 — substitui default onde diverge)
 Este DESIGN.md v2 foi gerado autônomo pelo Hermes; a dona revisou e travou:
 1. **Personalidade = confiante e afiada.** Voz que afirma e prova com o produto vivo,
