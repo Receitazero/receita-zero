@@ -1,185 +1,554 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="light">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- SEO Vitrine Certa -->
-<meta property="og:title" content="Clínica em São Vicente — site Premium | Vitrine Certa">
-<meta property="og:description" content="Clínica com agendamento online e tour virtual no WhatsApp. Site Premium da Vitrine Certa, pronto em 48h. A partir de R<meta name="viewport" content="width=device-width, initial-scale=1.0">49/mês.">
+<title>Clínica Andirá — atende meu convênio? A resposta honesta, em São Vicente</title>
+<meta name="description" content="Diga seu convênio e a especialidade: a clínica responde na hora se cobre, se tem co-participação, se está em carência e qual é a próxima vaga real — a de convênio e a particular.">
+<meta property="og:title" content="Clínica Andirá — atende meu convênio? A resposta honesta">
+<meta property="og:description" content="A pergunta que todo mundo faz no balcão, respondida sem enrolação: cobre ou não cobre, com carência ou não, e quando é a próxima vaga de verdade.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://receitazero.github.io/receita-zero/site-dfy/clínica/premium/index.html">
-<meta property="og:image" content="https://receitazero.github.io/receita-zero/site-dfy/clínica/premium/preview.png">
+<meta property="og:url" content="https://receitazero.github.io/receita-zero/site-dfy/cl%C3%ADnica/premium/index.html">
+<meta property="og:image" content="https://receitazero.github.io/receita-zero/site-dfy/cl%C3%ADnica/premium/preview.png">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "name": "Clínica em São Vicente",
-  "description": "Clínica com agendamento online e tour virtual no WhatsApp. Site Premium da Vitrine Certa, pronto em 48h. A partir de R<meta name="viewport" content="width=device-width, initial-scale=1.0">49/mês.",
-  "url": "https://receitazero.github.io/receita-zero/site-dfy/clínica/premium/index.html",
-  "image": "https://receitazero.github.io/receita-zero/site-dfy/clínica/premium/preview.png",
-  "address": {
-    "@type": "PostalAddress",
-    "addressLocality": "São Vicente",
-    "addressRegion": "SP",
-    "addressCountry": "BR"
-  },
-  "telephone": "+555511970776856",
-  "priceRange": "R<meta name="viewport" content="width=device-width, initial-scale=1.0">49-R<meta name="viewport" content="width=device-width, initial-scale=1.0">99",
-  "provider": {
-    "@type": "Organization",
-    "name": "Vitrine Certa",
-    "url": "https://receitazero.github.io/receita-zero/receita-zero/"
-  }
+  "@type": "MedicalClinic",
+  "name": "Clínica Andirá",
+  "description": "Clínica em São Vicente com verificação de convênio online: cobertura, co-participação, carência e próxima vaga real por especialidade.",
+  "url": "https://receitazero.github.io/receita-zero/site-dfy/cl%C3%ADnica/premium/index.html",
+  "areaServed": "São Vicente, SP",
+  "address": { "@type": "PostalAddress", "addressLocality": "São Vicente", "addressRegion": "SP", "addressCountry": "BR" },
+  "telephone": "+5511970776856",
+  "medicalSpecialty": ["ClínicaMédica","Cardiovascular","Dermatology","Orthopedic","Gynecologic","Pediatric"]
 }
 </script>
-<title>Clínica Vita — clínica premium em São Vicente</title>
-<meta name="description" content="Clínica premium em São Vicente: agendamento de consulta online, especialidades e tour virtual das instalações.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Spectral:wght@500;600;700&family=Public+Sans:wght@400;500;600;700&family=Spline+Sans+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
+/* Hallmark · macrostructure: 06 Conversational FAQ · motor: cobertura/elegibilidade (a regra de acesso que vira fila) · costume: guia de elegibilidade */
 :root{
-  --bg:#F4F8FC;--bg2:#EAF2FA;--surface:#FFFFFF;--surface2:#F0F6FB;--line:#D6E4F0;--line2:#BBD3E8;
-  --fg:#0E2A3F;--muted:#4A6884;--faint:#7C97B0;
-  --a1:#0EA5E9;--a2:#2563EB;--a3:#06B6D4;--off:#0E2A3F;
-  --grad:linear-gradient(120deg,var(--a2),var(--a1));
-  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
-  --font-body:'Inter',system-ui,sans-serif;
-  --font-display:'Sora',system-ui,sans-serif;
+  --paper:#EEF2F6;      /* página — branco clínico frio */
+  --card:#FFFFFF;       /* superfície de guia */
+  --card2:#F4F7FA;      /* campos / trilha */
+  --ink:#132335;        /* tinta quase-preta */
+  --muted:#46586B;      /* secundário */
+  --faint:#6E7F90;      /* legendas */
+  --line:#D3DDE7;       /* fio fino */
+  --line2:#78899A;      /* borda de campo (piso 3:1) */
+  --azul:#1A5A9E;       /* acento clínico credenciado (o único azul) */
+  --azulfundo:#14385F;  /* fundo escuro do cabeçalho da guia */
+  --coberto:#15743F;    /* verde: coberto */
+  --copart:#9A5B00;     /* âmbar: atenção / co-participação */
+  --carencia:#A32F49;   /* vermelho-rosa: carência / bloqueio */
+  --slate:#3D4F60;      /* neutro: não credenciado → só particular */
+  --disp:'Spectral',Georgia,serif;
+  --sans:'Public Sans',system-ui,sans-serif;
+  --mono:'Spline Sans Mono',ui-monospace,monospace;
+  --r:6px;
 }
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:clip}
-.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
-section{padding-block:var(--s-3xl)}
-h1,h2,h3{font-family:var(--font-display);line-height:1.08;letter-spacing:-.02em}
-.eyebrow{font-size:.76rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--a2);margin-bottom:var(--s-sm)}
-.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.9rem 1.7rem;border-radius:12px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;text-decoration:none}
-.btn-solid{background:var(--grad);color:#fff;box-shadow:0 14px 34px -14px color-mix(in srgb,var(--a2) 60%,transparent)}
-.btn-solid:hover{transform:translateY(-3px)}
-.btn-outline{background:var(--surface);border-color:var(--line2);color:var(--fg)}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1;transform:none}
-.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.85rem}
-.brand{font-family:var(--font-display);font-weight:800;font-size:1.25rem;color:var(--fg)}
-.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-/* HERO */
-.hero{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-2xl);align-items:center;padding-block:var(--s-3xl)}
-.hero h1{font-size:clamp(2.5rem,5.2vw,4rem);margin-bottom:var(--s-md)}
-.hero .lede{color:var(--muted);font-size:1.12rem;max-width:44ch;margin-bottom:var(--s-xl)}
-.hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
-.hero .fig{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/3.6;background:linear-gradient(160deg,var(--surface2),var(--surface));border:1px solid var(--line);box-shadow:0 40px 90px -40px color-mix(in srgb,var(--a2) 35%,transparent);display:grid;place-items:center}
-.hero .fig .cross{font-size:4rem}
-/* BOOKING */
-.book{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:var(--s-2xl);display:grid;grid-template-columns:1fr 1fr;gap:var(--s-2xl);box-shadow:0 30px 70px -40px color-mix(in srgb,var(--a2) 30%,transparent)}
-.book label{display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700;margin:.9rem 0 .3rem}
-.book select,.book input{width:100%;background:var(--surface2);border:1px solid var(--line2);border-radius:10px;padding:.8rem 1rem;font-size:1rem;color:var(--fg);font-family:var(--font-body)}
-.book .summary{background:var(--surface2);border:1px solid var(--line);border-radius:14px;padding:var(--s-lg)}
-.book .summary .row{display:flex;justify-content:space-between;padding:.4rem 0;border-bottom:1px dashed var(--line);font-size:.94rem;color:var(--muted)}
-.book .summary .row b{color:var(--fg)}
-.book .summary .tot{margin-top:.8rem;font-family:var(--font-display);font-size:1.4rem;font-weight:800;display:flex;justify-content:space-between}
-.book .summary .tot span:last-child{color:var(--a2)}
-/* TOUR scroll */
-.tour{position:relative;display:grid;gap:var(--s-lg)}
-.stop{display:grid;grid-template-columns:.5fr 1fr;gap:var(--s-2xl);align-items:center;background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:var(--s-xl);opacity:.45;transform:scale(.97);transition:.5s}
-.stop.in{opacity:1;transform:none}
-.stop .num{font-family:var(--font-display);font-size:2.4rem;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.stop h4{font-family:var(--font-display);font-size:1.3rem;margin-bottom:.3rem}
-.stop p{color:var(--muted);font-size:.95rem}
-.stop .pic{aspect-ratio:16/9;border-radius:14px;background:linear-gradient(135deg,color-mix(in srgb,var(--a1) 30%,#fff),color-mix(in srgb,var(--a2) 30%,#fff));display:grid;place-items:center;font-size:2rem}
-/* ESPEC */
-.specs{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-lg)}
-.spec{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:var(--s-xl);text-align:center}
-.spec .ico{font-size:1.8rem}
-.spec h4{font-family:var(--font-display);font-size:1.05rem;margin:.4rem 0}
-.spec p{color:var(--muted);font-size:.85rem}
-.cta-final{text-align:center}
-footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.85rem}
-@media(max-width:860px){.hero{grid-template-columns:1fr}.book{grid-template-columns:1fr}.stop{grid-template-columns:1fr}.specs{grid-template-columns:1fr 1fr}}
-@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--sans);line-height:1.6;
+  -webkit-font-smoothing:antialiased;overflow-x:clip;
+  /* linhas de guia médica: papel pautado clínico */
+  background-image:linear-gradient(var(--line) 1px,transparent 1px);
+  background-size:100% 30px;background-position:0 -1px;
+}
+.wrap{max-width:1080px;margin-inline:auto;padding-inline:22px}
+h1,h2,h3,h4{font-family:var(--disp);line-height:1.12;letter-spacing:-.01em;font-weight:600}
+.kick{font-family:var(--mono);font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;color:var(--azul);font-weight:600}
+a{color:inherit}
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:var(--r);font-family:var(--sans);font-weight:700;font-size:.98rem;cursor:pointer;border:1px solid transparent;text-decoration:none;transition:background .18s,border-color .18s}
+.btn-solid{background:var(--azul);color:#fff}
+.btn-solid:hover{background:#154e88}
+.btn-ghost{background:transparent;border-color:var(--line2);color:var(--ink)}
+.btn-ghost:hover{border-color:var(--azul);color:var(--azul)}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.7rem}
+.brand{display:flex;align-items:center;gap:.55rem;font-family:var(--disp);font-weight:700;font-size:1.18rem}
+.brand .rx{display:grid;place-items:center;width:30px;height:30px;border-radius:7px;background:var(--azulfundo);color:#fff;font-family:var(--mono);font-weight:600;font-size:.82rem}
+.nav a.lk{font-size:.9rem;color:var(--muted);text-decoration:none;font-weight:600}
+.nav-cta{display:flex;gap:.7rem;align-items:center}
+
+/* HERO — a pergunta */
+.hero{padding-block:3rem 2.2rem}
+.hero .grid{display:grid;grid-template-columns:1.02fr .98fr;gap:2.4rem;align-items:center}
+.hero h1{font-size:clamp(2.1rem,4.6vw,3.35rem);margin:.5rem 0 .9rem}
+.hero h1 em{font-style:italic;color:var(--azul)}
+.hero .lede{color:var(--muted);font-size:1.08rem;max-width:46ch;margin-bottom:1.5rem}
+.hero .cta{display:flex;gap:.7rem;flex-wrap:wrap}
+.hero .note{margin-top:1.1rem;font-size:.84rem;color:var(--faint);display:flex;align-items:center;gap:.5rem}
+.hero .note b{color:var(--muted);font-weight:700}
+
+/* card de balcão (a fala do recepcionista) */
+.desk{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.4rem 1.4rem 1.5rem;box-shadow:0 24px 60px -40px rgba(19,35,53,.5)}
+.desk .who{display:flex;align-items:center;gap:.7rem;margin-bottom:.9rem}
+.desk .who .av{width:38px;height:38px;border-radius:50%;background:var(--card2);border:1px solid var(--line);display:grid;place-items:center;font-size:1.1rem}
+.desk .who .nm{font-weight:700;font-size:.92rem}
+.desk .who .rl{font-size:.76rem;color:var(--faint)}
+.bubble{background:var(--card2);border:1px solid var(--line);border-radius:12px;border-top-left-radius:3px;padding:.8rem .95rem;font-size:.96rem;color:var(--ink);margin-bottom:.7rem}
+.bubble.you{background:#EAF1F8;border-color:#CFE0EE;border-top-left-radius:12px;border-top-right-radius:3px;text-align:right;color:var(--azulfundo);font-weight:600}
+.bubble .q{color:var(--faint);font-size:.78rem;display:block;margin-bottom:.15rem;font-weight:600;letter-spacing:.02em}
+
+/* SECTIONS */
+section{padding-block:3.2rem}
+.shead{max-width:52ch;margin-bottom:1.8rem}
+.shead h2{font-size:clamp(1.6rem,3.2vw,2.3rem);margin:.4rem 0 .5rem}
+.shead p{color:var(--muted)}
+
+/* VERIFICADOR — motor */
+.checker{display:grid;grid-template-columns:.85fr 1.15fr;gap:1.8rem;align-items:start}
+.form{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.5rem}
+.form h3{font-size:1.05rem;margin-bottom:.2rem}
+.form .sub{color:var(--faint);font-size:.85rem;margin-bottom:1.1rem}
+.field{margin-bottom:1rem}
+.field label{display:block;font-size:.74rem;text-transform:uppercase;letter-spacing:.09em;font-weight:700;color:var(--faint);margin-bottom:.35rem}
+.field select,.field input{width:100%;background:var(--card2);border:1px solid var(--line2);border-radius:var(--r);padding:.72rem .85rem;font-size:.98rem;color:var(--ink);font-family:var(--sans)}
+.field select:focus,.field input:focus{outline:2px solid color-mix(in srgb,var(--azul) 45%,transparent);outline-offset:1px;border-color:var(--azul)}
+.field .hint{font-size:.76rem;color:var(--faint);margin-top:.3rem}
+
+/* GUIA de elegibilidade (o costume) */
+.guia{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;position:relative;box-shadow:0 26px 64px -42px rgba(19,35,53,.55)}
+.guia .top{background:var(--azulfundo);color:#fff;padding:1rem 1.3rem;display:flex;justify-content:space-between;align-items:flex-start;gap:1rem}
+.guia .top .t1{font-family:var(--disp);font-weight:700;font-size:1.05rem;letter-spacing:.01em}
+.guia .top .t2{font-family:var(--mono);font-size:.7rem;letter-spacing:.12em;opacity:.8;margin-top:.15rem}
+.guia .top .prot{font-family:var(--mono);font-size:.72rem;text-align:right;opacity:.9;line-height:1.5}
+/* serrilha de guia destacável */
+.serr{height:12px;background:
+  radial-gradient(circle at 8px 12px,var(--paper) 6px,transparent 6.5px) repeat-x;
+  background-size:16px 12px;background-position:0 -6px;margin-block:-1px}
+.guia .body{padding:1.25rem 1.3rem 1.4rem}
+.badge{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--sans);font-weight:700;font-size:.82rem;letter-spacing:.03em;padding:.34rem .7rem;border-radius:100px;border:1.5px solid;text-transform:uppercase}
+.badge .dot{width:9px;height:9px;border-radius:50%;flex:none}
+.badge.coberto{color:var(--coberto);border-color:var(--coberto);background:color-mix(in srgb,var(--coberto) 9%,#fff)}
+.badge.coberto .dot{background:var(--coberto)}
+.badge.copart{color:var(--copart);border-color:var(--copart);background:color-mix(in srgb,var(--copart) 10%,#fff)}
+.badge.copart .dot{background:var(--copart)}
+.badge.carencia{color:var(--carencia);border-color:var(--carencia);background:color-mix(in srgb,var(--carencia) 8%,#fff)}
+.badge.carencia .dot{background:var(--carencia)}
+.badge.particular{color:var(--slate);border-color:var(--slate);background:color-mix(in srgb,var(--slate) 8%,#fff)}
+.badge.particular .dot{background:var(--slate)}
+.g-line{display:flex;justify-content:space-between;gap:1rem;padding:.6rem 0;border-bottom:1px dashed var(--line);font-size:.93rem}
+.g-line:last-of-type{border-bottom:0}
+.g-line .k{color:var(--muted)}
+.g-line .v{font-weight:700;text-align:right}
+.g-line .v small{display:block;font-weight:500;color:var(--faint);font-size:.76rem}
+.vaga-box{margin-top:.9rem;background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:.85rem .95rem}
+.vaga-box .vl{display:flex;justify-content:space-between;align-items:baseline;gap:.8rem}
+.vaga-box .vl .lbl{font-size:.74rem;text-transform:uppercase;letter-spacing:.08em;color:var(--faint);font-weight:700}
+.vaga-box .vl .dt{font-family:var(--disp);font-weight:700;font-size:1.15rem}
+.vaga-box .cmp{font-size:.8rem;color:var(--muted);margin-top:.4rem}
+.vaga-box .cmp b{color:var(--ink)}
+.honest{margin-top:.9rem;font-size:.86rem;color:var(--muted);border-left:3px solid var(--line2);padding-left:.8rem}
+.honest.warn{border-left-color:var(--carencia)}
+.honest.slate{border-left-color:var(--slate)}
+.guia .act{margin-top:1.1rem;display:flex;gap:.6rem;flex-wrap:wrap}
+.guia .act .btn{flex:1;justify-content:center;min-width:150px}
+/* carimbo (forma, não só cor) */
+.carimbo{position:absolute;top:70px;right:16px;transform:rotate(-11deg);border:2.5px double var(--carencia);color:var(--carencia);border-radius:8px;padding:.28rem .6rem;font-family:var(--mono);font-weight:600;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;opacity:.9;pointer-events:none;background:color-mix(in srgb,var(--carencia) 6%,#fff)}
+.carimbo.slate{border-color:var(--slate);color:var(--slate);background:color-mix(in srgb,var(--slate) 6%,#fff)}
+
+/* MATRIZ — o "não" público */
+.matriz-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--card)}
+table.matriz{border-collapse:collapse;width:100%;min-width:640px;font-size:.9rem}
+table.matriz th,table.matriz td{padding:.7rem .8rem;text-align:left;border-bottom:1px solid var(--line)}
+table.matriz thead th{background:var(--card2);font-family:var(--sans);font-weight:700;font-size:.76rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);position:sticky;top:0}
+table.matriz tbody tr:last-child td{border-bottom:0}
+table.matriz td.plan{font-weight:700}
+.cell{display:inline-flex;align-items:center;gap:.35rem;font-weight:600;font-size:.82rem}
+.cell .mk{width:8px;height:8px;border-radius:2px;flex:none}
+.cell.sim{color:var(--coberto)} .cell.sim .mk{background:var(--coberto)}
+.cell.cop{color:var(--copart)} .cell.cop .mk{background:var(--copart);border-radius:50%}
+.cell.nao{color:var(--slate)} .cell.nao .mk{background:none;border:1.5px solid var(--slate);border-radius:50%}
+.cell.car{color:var(--carencia)} .cell.car .mk{width:10px;height:2px;border-radius:0;background:var(--carencia)}
+.legenda{display:flex;flex-wrap:wrap;gap:1.1rem;margin-top:.9rem;font-size:.82rem;color:var(--muted)}
+
+/* ESPECIALIDADES */
+.esp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.esp-card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:1.15rem}
+.esp-card .ic{font-size:1.5rem}
+.esp-card h4{font-size:1.02rem;margin:.45rem 0 .3rem}
+.esp-card p{color:var(--muted);font-size:.85rem}
+.esp-card .wait{font-family:var(--mono);font-size:.76rem;color:var(--faint);margin-top:.6rem}
+
+/* CTA final + venda nossa */
+.final{background:var(--azulfundo);color:#EAF1F8;border-radius:16px;padding:2.6rem 1.8rem;text-align:center}
+.final h2{color:#fff;font-size:clamp(1.6rem,3vw,2.2rem)}
+.final p{color:#B9CBDD;max-width:48ch;margin:.7rem auto 1.4rem}
+.final .cta{display:flex;gap:.7rem;justify-content:center;flex-wrap:wrap}
+.final .btn-solid{background:#fff;color:var(--azulfundo)}
+.final .btn-solid:hover{background:#e7eef5}
+.final .btn-ghost{border-color:#3a5f85;color:#EAF1F8}
+.vitrine{margin-top:2.2rem;padding-top:1.4rem;border-top:1px solid var(--line);text-align:center;color:var(--faint);font-size:.85rem}
+.vitrine a{color:var(--azul);font-weight:700;text-decoration:none}
+footer{padding-block:1.6rem;text-align:center;color:var(--faint);font-size:.82rem}
+
+.demo-flag{display:none;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;color:var(--copart);border:1px solid var(--copart);border-radius:5px;padding:.12rem .4rem;text-transform:uppercase}
+body[data-demo] .demo-flag{display:inline-block}
+
+@media(max-width:860px){
+  .hero .grid{grid-template-columns:1fr;gap:1.6rem}
+  .checker{grid-template-columns:1fr}
+  .esp-grid{grid-template-columns:1fr 1fr}
+  .nav a.lk{display:none}
+}
+@media(max-width:520px){ .esp-grid{grid-template-columns:1fr} }
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
 <body>
-<nav class="nav"><div class="wrap"><div class="brand">Clínica<b>Vita</b></div><a class="btn btn-solid" href="#agendar" style="padding:.6rem 1.2rem;font-size:.9rem">Agendar</a></div></nav>
-
-<header class="hero"><div class="wrap">
-  <div class="reveal d1">
-    <span class="eyebrow">Clínica premium · São Vicente</span>
-    <h1>Cuidado de verdade, <span class="grad">sem espera</span></h1>
-    <p class="lede">Agende sua consulta online em minutos, escolha a especialidade e faça um tour virtual das nossas instalações. Equipe que escuta.</p>
-    <div class="cta"><a class="btn btn-solid" href="#agendar">Agendar consulta</a><a class="btn btn-outline" href="https://wa.me/5511970776856" target="_blank" rel="noopener">WhatsApp</a></div>
+<nav class="nav"><div class="wrap">
+  <div class="brand"><span class="rx">A+</span>Clínica Andirá</div>
+  <div class="nav-cta">
+    <a class="lk" href="#matriz">Convênios</a>
+    <a class="lk" href="#espec">Especialidades</a>
+    <a class="btn btn-solid" href="#checar" style="padding:.55rem 1.1rem;font-size:.88rem">Checar convênio</a>
   </div>
-  <div class="fig reveal d2"><div class="cross">🩺</div></div>
-</div></header>
+</div></nav>
 
-<section id="agendar"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Agendamento online</span><h2 class="reveal">Sua consulta em 3 cliques</h2></div>
-  <div class="book reveal">
-    <div>
-      <label for="esp">Especialidade</label>
-      <select id="esp">
-        <option value="Clínico Geral" data-v="150">Clínico Geral</option>
-        <option value="Cardiologia" data-v="280">Cardiologia</option>
-        <option value="Dermatologia" data-v="220">Dermatologia</option>
-        <option value="Ortopedia" data-v="260">Ortopedia</option>
-      </select>
-      <label for="data">Data</label>
-      <input id="data" type="date">
-      <label for="hora">Horário</label>
-      <select id="hora"><option>08:00</option><option>09:30</option><option>11:00</option><option>14:00</option><option>16:30</option><option>18:00</option></select>
+<header class="hero"><div class="wrap"><div class="grid">
+  <div>
+    <span class="kick">Clínica · Itararé, São Vicente <span class="demo-flag">demo</span></span>
+    <h1>“Atende meu convênio?”<br><em>A resposta honesta.</em></h1>
+    <p class="lede">A pergunta que todo mundo faz no balcão — e que nenhum site responde. Diga seu plano e a especialidade: a gente diz na hora se <b>cobre</b>, se tem <b>co-participação</b>, se está em <b>carência</b> — e qual é a <b>próxima vaga de verdade</b>, a de convênio e a particular.</p>
+    <div class="cta">
+      <a class="btn btn-solid" href="#checar">Checar meu convênio →</a>
+      <a class="btn btn-ghost" href="#matriz">Ver todos os convênios</a>
     </div>
-    <div class="summary">
-      <div class="row"><span>Especialidade</span><b id="sEsp">Clínico Geral</b></div>
-      <div class="row"><span>Data</span><b id="sData">—</b></div>
-      <div class="row"><span>Horário</span><b id="sHora">08:00</b></div>
-      <div class="tot"><span>Valor</span><span id="sVal">R$ 150</span></div>
-      <a class="btn btn-solid" id="sWa" href="https://wa.me/5511970776856" target="_blank" rel="noopener" style="margin-top:1rem;width:100%;justify-content:center">Confirmar no WhatsApp →</a>
+    <div class="note">🔒 <span><b>Sem cadastro.</b> A checagem é uma estimativa da clínica; a confirmação final é da operadora.</span></div>
+  </div>
+  <div class="desk" aria-label="Balcão da recepção">
+    <div class="who"><div class="av">🩺</div><div><div class="nm">Recepção · Clínica Andirá</div><div class="rl">responde de seg a sáb</div></div></div>
+    <div class="bubble you"><span class="q">você pergunta</span>“Vocês atendem SulAmérica pra dermatologia?”</div>
+    <div class="bubble"><span class="q">a maioria dos sites</span>“Sim, atendemos todos os convênios! Agende já.” <em style="color:var(--carencia)">(e você descobre o contrário no balcão)</em></div>
+    <div class="bubble"><span class="q">aqui</span>“SulAmérica cobre dermato, <b>com co-participação de R$ 55</b>. Próxima vaga de convênio: daqui a 12 dias. Particular tem <b>amanhã</b> por R$ 260. Qual prefere?”</div>
+  </div>
+</div></div></header>
+
+<!-- VERIFICADOR -->
+<section id="checar"><div class="wrap">
+  <div class="shead">
+    <span class="kick">Verificação de elegibilidade</span>
+    <h2>Seu convênio, sua especialidade — a guia sai na hora</h2>
+    <p>Não é “sim pra tudo”. Cada plano credencia especialidades diferentes, com regras diferentes. Escolha e veja a sua.</p>
+  </div>
+  <div class="checker">
+    <div class="form">
+      <h3>Monte sua checagem</h3>
+      <p class="sub">Nenhum dado é enviado — tudo roda no seu navegador.</p>
+      <div class="field">
+        <label for="conv">Convênio</label>
+        <select id="conv"></select>
+      </div>
+      <div class="field">
+        <label for="esp">Especialidade</label>
+        <select id="esp"></select>
+      </div>
+      <div class="field">
+        <label for="adesao">Entrada no plano <span style="text-transform:none;letter-spacing:0;font-weight:500;color:var(--faint)">(pra checar carência)</span></label>
+        <input id="adesao" type="date">
+        <div class="hint">Deixe em branco se já é cliente antigo do plano.</div>
+      </div>
+    </div>
+
+    <div class="guia" id="guia">
+      <div class="carimbo" id="carimbo" style="display:none"></div>
+      <div class="top">
+        <div><div class="t1">Guia de Elegibilidade</div><div class="t2">CLÍNICA ANDIRÁ · SÃO VICENTE/SP</div></div>
+        <div class="prot" id="prot">Nº ANDIRA-0000<br>emitida agora</div>
+      </div>
+      <div class="serr"></div>
+      <div class="body">
+        <div id="badgeWrap" style="margin-bottom:.9rem"></div>
+        <div class="g-line"><span class="k">Convênio</span><span class="v" id="gConv">—</span></div>
+        <div class="g-line"><span class="k">Especialidade</span><span class="v" id="gEsp">—</span></div>
+        <div class="g-line"><span class="k">Valor da consulta</span><span class="v" id="gVal">—</span></div>
+        <div class="g-line"><span class="k">Carência</span><span class="v" id="gCar">—</span></div>
+        <div class="g-line"><span class="k">Profissional</span><span class="v" id="gProf">—</span></div>
+        <div class="vaga-box">
+          <div class="vl"><span class="lbl">Próxima vaga</span><span class="dt" id="gVaga">—</span></div>
+          <div class="cmp" id="gCmp"></div>
+        </div>
+        <div class="honest" id="gHonest"></div>
+        <div class="act" id="gAct"></div>
+      </div>
     </div>
   </div>
 </div></section>
 
-<section id="tour"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Tour virtual</span><h2 class="reveal">Conheça a clínica</h2><p class="reveal" style="color:var(--muted)">Role e veja cada espaço aparecer.</p></div>
-  <div class="tour">
-    <div class="stop"><div><div class="num">01</div><h4>Recepção</h4><p>Check-in sem fila, café e wi-fi enquanto espera.</p></div><div class="pic">🛋️</div></div>
-    <div class="stop"><div><div class="num">02</div><h4>Consultórios</h4><p>Salas privativas e equipadas pra te ouvir de verdade.</p></div><div class="pic">🚪</div></div>
-    <div class="stop"><div><div class="num">03</div><h4>Exames</h4><p>Laboratório e imagem no mesmo andar. Sem ir pra outro lugar.</p></div><div class="pic">🔬</div></div>
+<!-- MATRIZ: o "não" público -->
+<section id="matriz"><div class="wrap">
+  <div class="shead">
+    <span class="kick">Nada de letra miúda</span>
+    <h2>O que cada convênio cobre — na cara</h2>
+    <p>A tabela que a concorrente esconde. Se um plano não credencia uma especialidade aqui, está escrito. Sem surpresa no balcão.</p>
+  </div>
+  <div class="matriz-wrap"><table class="matriz" id="matrizTbl"><thead></thead><tbody></tbody></table></div>
+  <div class="legenda">
+    <span class="cell sim"><span class="mk"></span>Coberto</span>
+    <span class="cell cop"><span class="mk"></span>Coberto com co-participação</span>
+    <span class="cell car"><span class="mk"></span>Coberto após carência</span>
+    <span class="cell nao"><span class="mk"></span>Não credenciado — só particular</span>
   </div>
 </div></section>
 
+<!-- ESPECIALIDADES -->
 <section id="espec"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)"><span class="eyebrow reveal">Especialidades</span><h2 class="reveal">O que atendemos</h2></div>
-  <div class="specs">
-    <div class="spec reveal"><div class="ico">❤️</div><h4>Cardiologia</h4><p>Do check-up à investigação.</p></div>
-    <div class="spec reveal"><div class="ico">🧴</div><h4>Dermatologia</h4><p>Pele e cabelo, sem tabu.</p></div>
-    <div class="spec reveal"><div class="ico">🦴</div><h4>Ortopedia</h4><p>Joelho, coluna e movimento.</p></div>
-    <div class="spec reveal"><div class="ico">🩺</div><h4>Clínico</h4><p>O primeiro olhar pra saúde.</p></div>
+  <div class="shead">
+    <span class="kick">O que atendemos</span>
+    <h2>Especialidades e a fila real de cada uma</h2>
+    <p>A espera não é igual pra todas — cardiologia lota, clínico geral tem quase sempre. O número embaixo é a média de dias por convênio.</p>
+  </div>
+  <div class="esp-grid" id="espGrid"></div>
+</div></section>
+
+<!-- FINAL -->
+<section><div class="wrap">
+  <div class="final">
+    <h2>Descubra em 20 segundos, sem ligar</h2>
+    <p>Cheque seu convênio, veja a próxima vaga e confirme no WhatsApp — com a guia já preenchida do jeito certo.</p>
+    <div class="cta">
+      <a class="btn btn-solid" href="#checar">Checar meu convênio</a>
+      <a class="btn btn-ghost" id="waGeral" href="https://wa.me/5511970776856" target="_blank" rel="noopener">Falar com a recepção</a>
+    </div>
+  </div>
+  <div class="vitrine">
+    Este é um site <b>Premium</b> feito pela <a href="https://receitazero.github.io/receita-zero/receita-zero/" target="_blank" rel="noopener">Vitrine Certa</a> — sites prontos pra pequenos negócios de São Vicente, no ar em 48h.
   </div>
 </div></section>
 
-<section class="cta-final"><div class="wrap">
-  <h2 class="reveal">Sua saúde não pode esperar</h2>
-  <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
-    <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20agendar%20Cl%C3%ADnica%20Vita" target="_blank" rel="noopener">Falar no WhatsApp</a>
-    <a class="btn btn-outline" href="#agendar">Agendar consulta</a>
-  </div>
-  <p style="color:var(--faint);margin-top:var(--s-xl);font-size:.9rem">Site premium Vitrine Certa · braço independente</p>
-</div></section>
-
-<footer><div class="wrap">Clínica Vita · clínica premium em São Vicente · © 2026</div></footer>
+<footer><div class="wrap">Clínica Andirá · dados fictícios de demonstração · São Vicente/SP · © 2026</div></footer>
 
 <script>
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
-setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1500);
-// BOOKING
-const esp=document.getElementById('esp'),data=document.getElementById('data'),hora=document.getElementById('hora');
-const sEsp=document.getElementById('sEsp'),sData=document.getElementById('sData'),sHora=document.getElementById('sHora'),sVal=document.getElementById('sVal'),sWa=document.getElementById('sWa');
-function calc(){const v=+esp.options[esp.selectedIndex].dataset.v;const nome=esp.value;sEsp.textContent=nome;sHora.textContent=hora.value;sVal.textContent='R$ '+v;const d=data.value?data.value:'[data]';sData.textContent=data.value||'—';sWa.href='https://wa.me/5511970776856?text='+encodeURIComponent('Quero agendar Clínica Vita: '+nome+' em '+d+' às '+hora.value+' (R$ '+v+')');}
-esp.addEventListener('change',calc);data.addEventListener('change',calc);hora.addEventListener('change',calc);calc();
-// TOUR stops
-const stops=document.querySelectorAll('.stop');
-const io2=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target);}}),{threshold:.25});
-stops.forEach(s=>io2.observe(s));
+/* ====== BLOCO REVENDÁVEL — trocar de clínica = editar só isto ====== */
+const CASA = {
+  nome:'Clínica Andirá', bairro:'Itararé, São Vicente', wa:'5511970776856',
+  abre:8, fecha:19,
+  // especialidades: rótulo, ícone, preço particular, fila-base em dias e o profissional
+  esp:{
+    clinico:{ nome:'Clínico Geral', ic:'🩺', part:190, fila:2, prof:'Dr. Bento Salles' },
+    cardio:{  nome:'Cardiologia',   ic:'❤️', part:330, fila:9, prof:'Dra. Íris Katz' },
+    derma:{   nome:'Dermatologia',  ic:'🧴', part:260, fila:12, prof:'Dra. Nara Lund' },
+    ortoped:{ nome:'Ortopedia',     ic:'🦴', part:300, fila:7, prof:'Dr. Caio Prado' },
+    gineco:{  nome:'Ginecologia',   ic:'🌸', part:270, fila:6, prof:'Dra. Vera Assis' },
+    pediatria:{nome:'Pediatria',    ic:'🧸', part:210, fila:3, prof:'Dr. Ravi Nunes' },
+  },
+  // convênios: o que credencia (esp cobertas), co-participação R$ e carência em dias
+  convenios:{
+    particular:{ nome:'Particular',      cobre:'all', copart:0,  carencia:0,   filaMult:0.3 },
+    unimed:{     nome:'Unimed',           cobre:['clinico','cardio','ortoped','gineco','pediatria'], copart:0,  carencia:0,   filaMult:1.0 },
+    bradesco:{   nome:'Bradesco Saúde',   cobre:['clinico','cardio','derma','gineco'],               copart:40, carencia:0,   filaMult:1.1 },
+    amil:{       nome:'Amil',             cobre:['clinico','ortoped','pediatria'],                   copart:0,  carencia:180, filaMult:1.2 },
+    sulamerica:{ nome:'SulAmérica',       cobre:['clinico','cardio','derma','ortoped','gineco','pediatria'], copart:55, carencia:0, filaMult:1.0 },
+  },
+};
+const DEMO = { conv:'sulamerica', esp:'derma', adesao:'', flag:true };
+/* ================================================================= */
+
+const $=s=>document.querySelector(s);
+const q=new URLSearchParams(location.search);
+const isDemo=q.has('demo');
+const MESES=['jan','fev','mar','abr','mai','jun','jul','ago','set','out','nov','dez'];
+const DIAS=['dom','seg','ter','qua','qui','sex','sáb'];
+
+// hora congelável p/ demo/link
+function agora(){
+  const h=q.get('agora');
+  const d=new Date(2026,6,23,10,30); // base fixa: 23/jul/2026 10:30 (determinístico)
+  if(h&&/^\d{1,2}:\d{2}$/.test(h)){const[H,M]=h.split(':').map(Number);d.setHours(H,M,0,0);}
+  return d;
+}
+function addDiasUteis(base,n){
+  const d=new Date(base);let add=0;
+  while(add<n){ d.setDate(d.getDate()+1); const wd=d.getDay(); if(wd!==0) add++; } // conta seg–sáb
+  return d;
+}
+function fmtData(d){ return `${DIAS[d.getDay()]} ${d.getDate()} ${MESES[d.getMonth()]}`; }
+function slotHora(esp){ const base=[8,9,10,11,14,15,16,17]; const i=(esp.length*3)%base.length; const h=base[i]; return String(h).padStart(2,'0')+':00'; }
+
+// popula selects, matriz, especialidades
+function boot(){
+  const cvS=$('#conv'), esS=$('#esp');
+  for(const[k,v]of Object.entries(CASA.convenios)) cvS.insertAdjacentHTML('beforeend',`<option value="${k}">${v.nome}</option>`);
+  for(const[k,v]of Object.entries(CASA.esp)) esS.insertAdjacentHTML('beforeend',`<option value="${k}">${v.nome}</option>`);
+  // matriz
+  const espKeys=Object.keys(CASA.esp);
+  let head='<tr><th>Convênio</th>'+espKeys.map(k=>`<th>${CASA.esp[k].nome}</th>`).join('')+'</tr>';
+  $('#matrizTbl thead').innerHTML=head;
+  let rows='';
+  for(const[ck,cv]of Object.entries(CASA.convenios)){
+    if(ck==='particular') continue;
+    let tds='';
+    for(const ek of espKeys){
+      const cob = cv.cobre==='all'||cv.cobre.includes(ek);
+      if(!cob) tds+=`<td><span class="cell nao"><span class="mk"></span>só particular</span></td>`;
+      else if(cv.carencia>0) tds+=`<td><span class="cell car"><span class="mk"></span>após carência</span></td>`;
+      else if(cv.copart>0) tds+=`<td><span class="cell cop"><span class="mk"></span>co-part R$ ${cv.copart}</span></td>`;
+      else tds+=`<td><span class="cell sim"><span class="mk"></span>coberto</span></td>`;
+    }
+    rows+=`<tr><td class="plan">${cv.nome}</td>${tds}</tr>`;
+  }
+  $('#matrizTbl tbody').innerHTML=rows;
+  // especialidades
+  let eg='';
+  for(const[k,v]of Object.entries(CASA.esp)){
+    eg+=`<div class="esp-card"><div class="ic">${v.ic}</div><h4>${v.nome}</h4><p>Particular a partir de R$ ${v.part}.</p><div class="wait">fila convênio ~${v.fila} d · particular ~${Math.max(1,Math.ceil(v.fila*0.3))} d</div></div>`;
+  }
+  $('#espGrid').innerHTML=eg;
+}
+
+// MOTOR de elegibilidade
+function emitir(convK,espK,adesaoStr){
+  const cv=CASA.convenios[convK], es=CASA.esp[espK];
+  const particular = convK==='particular';
+  const credenciado = particular || cv.cobre==='all' || cv.cobre.includes(espK);
+  const now=agora();
+  let status, valor, carLabel, honest, honestCls='', carimbo=null, filaDias, ateProfBadge;
+
+  if(particular){
+    status='particular';
+    valor='R$ '+es.part;
+    carLabel='—';
+    filaDias=Math.max(1,Math.ceil(es.fila*CASA.convenios.particular.filaMult));
+    honest=`Atendimento particular, com a agenda mais aberta. Emitimos recibo pra reembolso — se o seu plano reembolsa.`;
+  } else if(!credenciado){
+    status='soparticular';
+    valor='R$ '+es.part+' (particular)';
+    carLabel='—';
+    filaDias=Math.max(1,Math.ceil(es.fila*CASA.convenios.particular.filaMult));
+    honestCls='slate';
+    honest=`<b>${cv.nome} não credencia ${es.nome} nesta clínica.</b> A gente não vai fingir que sim. Dá pra atender <b>particular</b> — com a vaga mais cedo — ou você usa seu plano em outra unidade da rede.`;
+    carimbo={txt:'só particular',cls:'slate'};
+  } else {
+    // carência?
+    let bloqCarencia=false, liberaData=null;
+    if(!particular && cv.carencia>0){
+      const ad = adesaoStr ? new Date(adesaoStr+'T00:00:00') : null;
+      if(ad && !isNaN(ad)){
+        liberaData=new Date(ad); liberaData.setDate(liberaData.getDate()+cv.carencia);
+        if(liberaData>now) bloqCarencia=true;
+      } else {
+        // sem data → assumimos cliente antigo (sem carência), mas avisamos
+      }
+    }
+    if(bloqCarencia){
+      status='carencia';
+      valor= cv.copart>0 ? 'R$ '+cv.copart+' (co-part) após liberar' : 'coberto após liberar';
+      const dd=Math.ceil((liberaData-now)/86400000);
+      carLabel=`libera ${fmtData(liberaData)} · faltam ${dd} d`;
+      filaDias=Math.max(1,Math.ceil(es.fila*CASA.convenios.particular.filaMult));
+      honestCls='warn';
+      honest=`<b>Seu plano ${cv.nome} ainda está em carência pra ${es.nome}</b> (${cv.carencia} dias a partir da entrada). Pelo convênio, só a partir de <b>${fmtData(liberaData)}</b>. Se precisar antes, dá pra fazer <b>particular</b> por R$ ${es.part}.`;
+      carimbo={txt:'em carência',cls:''};
+    } else {
+      status = cv.copart>0 ? 'copart' : 'coberto';
+      valor = particular ? 'R$ '+es.part+' (particular)' : (cv.copart>0 ? 'Coberto · co-part R$ '+cv.copart : 'Coberto pelo plano · R$ 0');
+      carLabel = particular ? '—' : (cv.carencia>0 ? 'cliente sem carência pendente' : 'sem carência');
+      filaDias = Math.max(1,Math.ceil(es.fila*cv.filaMult));
+      if(particular){
+        honest=`Atendimento particular com a agenda mais aberta. Recibo pra reembolso, se o seu plano reembolsa.`;
+      } else if(cv.copart>0){
+        honest=`Coberto — você paga só a <b>co-participação de R$ ${cv.copart}</b> na recepção, o resto é com o plano. Isso vem no boleto do convênio, não é taxa nossa.`;
+        honestCls='';
+      } else {
+        honest=`Coberto integralmente pelo ${cv.nome}. Leve carteirinha e documento com foto.`;
+      }
+    }
+  }
+
+  // próxima vaga: convênio x particular
+  const vagaConv = credenciado && !particular ? addDiasUteis(now, filaDias) : null;
+  const vagaPart = addDiasUteis(now, Math.max(1,Math.ceil(es.fila*CASA.convenios.particular.filaMult)));
+  const vagaPrincipal = (status==='coberto'||status==='copart') ? vagaConv : vagaPart;
+
+  return {status, particular, credenciado, convNome:cv.nome, espNome:es.nome, prof:es.prof,
+    valor, carLabel, honest, honestCls, carimbo,
+    vagaPrincipal, vagaConv, vagaPart, filaDias,
+    slot:slotHora(es.nome), espPart:es.part};
+}
+
+const BADGE={
+  coberto:['coberto','Coberto pelo plano'],
+  copart:['copart','Coberto · com co-participação'],
+  carencia:['carencia','Em carência'],
+  particular:['particular','Particular'],
+  soparticular:['particular','Só particular'],
+};
+
+function render(){
+  const convK=$('#conv').value, espK=$('#esp').value, ad=$('#adesao').value;
+  const r=emitir(convK,espK,ad);
+  const [cls,label]=BADGE[r.status];
+  $('#badgeWrap').innerHTML=`<span class="badge ${cls}"><span class="dot"></span>${label}</span>`;
+  $('#gConv').textContent=r.convNome;
+  $('#gEsp').textContent=r.espNome;
+  $('#gVal').textContent=r.valor;
+  $('#gCar').textContent=r.carLabel;
+  $('#gProf').textContent=r.prof;
+
+  // próxima vaga principal
+  $('#gVaga').textContent = `${fmtData(r.vagaPrincipal)} · ${r.slot}`;
+  // comparação convênio x particular quando ambos existem
+  let cmp='';
+  if(r.status==='coberto'||r.status==='copart'){
+    cmp=`Pelo convênio: <b>${fmtData(r.vagaConv)}</b>. Quer antes? Particular tem <b>${fmtData(r.vagaPart)}</b> por R$ ${r.espPart}.`;
+  } else if(r.status==='carencia'){
+    cmp=`A vaga acima é <b>particular</b> (R$ ${r.espPart}) — a de convênio abre quando a carência liberar.`;
+  } else if(r.status==='particular'){
+    cmp=`Consulta particular: a agenda mais aberta da clínica. Recibo pra reembolso, se o seu plano reembolsa.`;
+  } else {
+    cmp=`A vaga acima é <b>particular</b> (R$ ${r.espPart}). Seu plano não credencia essa especialidade aqui.`;
+  }
+  $('#gCmp').innerHTML=cmp;
+
+  const h=$('#gHonest'); h.className='honest '+(r.honestCls||''); h.innerHTML=r.honest;
+
+  // carimbo (forma, não só cor)
+  const cm=$('#carimbo');
+  if(r.carimbo){ cm.style.display='block'; cm.textContent=r.carimbo.txt; cm.className='carimbo '+(r.carimbo.cls||''); }
+  else cm.style.display='none';
+
+  // protocolo
+  const seed=(convK.length*7+espK.length*13)%9000+1000;
+  $('#prot').innerHTML=`Nº ANDIRA-${seed}<br>emitida ${DIAS[agora().getDay()]} ${agora().getDate()} ${MESES[agora().getMonth()]}`;
+
+  // ações
+  const dataTxt=`${fmtData(r.vagaPrincipal)} ${r.slot}`;
+  const msg=`Olá! Vim pela guia do site. Convênio: ${r.convNome}. Especialidade: ${r.espNome}. Quero a vaga de ${dataTxt}.`;
+  const wa=`https://wa.me/${CASA.wa}?text=${encodeURIComponent(msg)}`;
+  let acts=`<a class="btn btn-solid" href="${wa}" target="_blank" rel="noopener">Confirmar no WhatsApp →</a>`;
+  if((r.status==='coberto'||r.status==='copart')){
+    const msgP=`Olá! Prefiro a vaga particular de ${r.espNome} em ${fmtData(r.vagaPart)}. Pode ser?`;
+    acts+=`<a class="btn btn-ghost" href="https://wa.me/${CASA.wa}?text=${encodeURIComponent(msgP)}" target="_blank" rel="noopener">Prefiro particular</a>`;
+  }
+  $('#gAct').innerHTML=acts;
+}
+
+// aplica params de URL / demo
+function applyParams(){
+  if(isDemo){ document.body.setAttribute('data-demo',''); }
+  const preset = isDemo ? DEMO : {};
+  const conv=q.get('conv')||preset.conv;
+  const esp=q.get('esp')||preset.esp;
+  const ades=q.get('adesao')||preset.adesao;
+  if(conv&&CASA.convenios[conv]) $('#conv').value=conv;
+  if(esp&&CASA.esp[esp]) $('#esp').value=esp;
+  if(ades) $('#adesao').value=ades;
+  $('#waGeral').href=`https://wa.me/${CASA.wa}`;
+}
+
+boot();
+applyParams();
+render();
+['conv','esp','adesao'].forEach(id=>$('#'+id).addEventListener('change',()=>{ render();
+  if(location.hash!=='#checar'){/* mantém foco na guia sem pular */}
+}));
 </script>
 </body>
 </html>
