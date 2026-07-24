@@ -1,0 +1,9 @@
+{
+  "site": "site-dfy/pizzaria/cliente-forno-dourado/index.html",
+  "itens": [
+    { "nome": "Marguerita da Casa", "desc": "Molho artesanal, mussarela de bufala e manjericao fresco.", "preco": "42", "tam": "media - 30cm", "img": "assets/p1.jpg" },
+    { "nome": "Portuguesa Suprema", "desc": "Presunto, ovo, ervilha, cebola e azeitona.", "preco": "49", "tam": "media - 30cm", "img": "assets/p2.jpg" },
+    { "nome": "Frango com Catupiry", "desc": "Frango desfiado, catupiry cremoso e milho.", "preco": "51", "tam": "media - 30cm", "img": "assets/p3.jpg" },
+    { "nome": "Doce de Nutella", "desc": "Nutella, morango e acucar de confeiteiro.", "preco": "58", "tam": "media - 30cm", "img": "assets/banner.jpg" }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "site": "site-dfy/pizzaria/cliente-forno-dourado/index.html",
+  "whatsapp": "5513988887777",
+  "cardapio": [
+    { "nome": "Marguerita da Casa", "preco": "45", "desc": "Molho artesanal, mussarela de bufala, tomate e manjericao fresco (receita nova)." },
+    { "nome": "Doce de Nutella", "preco": "62" }
+  ]
+}
