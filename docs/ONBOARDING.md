@@ -132,3 +132,25 @@ HITL LGPD (GATE 6): humano aprova conteúdo do cliente ANTES de publicar
   `gera-site.js` deve ler o YAML front matter (colors/typography) e injetar como
   `var(--token)` no `:root` do scaffold — NUNCA hardcodar cor fora de token (gate 48
   da skill Premium). Até lá, o scaffold herda os tokens do template do nicho.
+
+## Pacotes de Atualização (Semana 6, Mês 2 — cross-sell; GATE 5=B)
+
+Após o cliente contratar um plano mensal (Essencial/Premium/Domínio), oferecer os
+pacotes de atualização — estes SÃO os "planos de manutenção" cobrados à parte e que
+alimentam o MRR recorrente:
+
+| Pacote | Valor | Tipo MP | Inclui | Script de execução |
+|--------|-------|---------|--------|--------------------|
+| **Light** | R$99/mês | `preapproval` | 2 atualizações de cardápio/fotos por mês | `atualiza-site.js` (2x/mês) |
+| **Full** | R$199/mês | `preapproval` | Atualizações ilimitadas + 1 melhoria/mês | `atualiza-site.js` sob demanda |
+
+- **Cardápio avulso (fora do pacote):** R$29/un via `references/atualiza-site.js`
+  (pagamento único `preference` + Pix). Ver `docs/AUTOMACAO-CARDAPIO-ATUALIZACAO.md`.
+- **Bug/correção:** grátis (incluído) — não gera cobrança.
+- **Fluxo de upsell:** landing (Premium R$149) → upsell domínio (R$199) →
+  cross-sell pacote (Light R$99 / Full R$199) → manutenção avulsa (R$29).
+- **Cobrança:** Mercado Pago recorrente (`preapproval`), sem manual. Webhook
+  `mp-webhook.js` (a criar no GATE 👤) marca `status` na planilha. Ver `docs/COBRANCA-MP.md`.
+- **Ativação no onboarding:** ao fechar o contrato, registrar na planilha
+  (`docs/LEADS-SHEETS.md`) as colunas `plano` + `pacote` (Light/Full/vazio) para o
+  bridge gerar a assinatura certa.

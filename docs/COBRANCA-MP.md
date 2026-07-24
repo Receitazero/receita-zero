@@ -1,50 +1,160 @@
-# Vitrine Certa — Cobrança Mercado Pago (GATE 5=B, PREPARAÇÃO — NÃO implementado)
+# Vitrine Certa — Cobrança Mercado Pago (GATE 5=B) · APROFUNDADO Mês 2 / Semana 6
 
-> Semana 3 · Plano de integração. Secrets NÃO existem ainda (GATE 👤 execução).
-> NADA aqui é código em produção; é o caminho para quando o CEO liberar as credenciais.
+> **Status:** desenho de integração **completo**. Secrets NÃO existem ainda → a
+> implementação de código fica travada no **GATE 👤 de execução** (só o CEO deposita
+> `MP_ACCESS_TOKEN`/`MP_WEBHOOK_SECRET` no cofre). Nada aqui toca em secret.
+> Alinhado à precificação canônica (`vitrine-certa-precificacao`).
 
-## Modelo de cobrança (preços canônicos)
+---
 
-| Plano | Valor | Tipo MP |
-|-------|-------|---------|
-| Essencial | R$49/mês | Assinatura (preapproval) |
-| Plus | R$99/mês | Assinatura |
-| Premium | R$149/mês | Assinatura |
-| Domínio/Full | R$199/mês | Assinatura |
-| Cardápio avulso (GATE 2=C) | R$29/un | Pagamento único (preference + Pix) |
+## 1. Matriz de cobrança (canônica — fonte da verdade)
 
-## Endpoints MP a usar
+### 1.1 Planos mensais (assinatura recorrente — `preapproval`)
 
-1. **Assinaturas**: `POST https://api.mercadopago.com/preapproval`
-   - body: `{reason: "Vitrine Certa — Plano <X>", auto_recurring: {frequency:1, frequency_type:"months", transaction_amount:<valor>, currency_id:"BRL"}, payer_email, back_url, external_reference:"<lead_id>"}`
-2. **Pagamento único (cardápio R$29)**: `POST /checkout/preferences` (Pix + cartão).
-3. **Consulta**: `GET /preapproval/{id}` e `GET /v1/payments/{id}`.
+| Plano | Valor | Tipo MP | O que inclui |
+|-------|-------|---------|--------------|
+| **Essencial** | R$49/mês | `preapproval` (recorrente) | Landing, form, WhatsApp, SEO básico |
+| **Premium** | R$149/mês | `preapproval` | Site narrativo + mecânicas + motion + tracker |
+| **Domínio/Full** | R$199/mês | `preapproval` | Premium + domínio `.com.br` + e-mail + SSL + backup |
 
-## Webhook de retorno
+### 1.2 Pacotes de atualização (assinatura recorrente — cross-sell)
 
-- Endpoint próprio: reutilizar o padrão do bridge — `references/sheets-atlas-bridge.js`
-  ganhará rota `POST /mp-webhook` (ou script irmão `mp-webhook.js`) que:
-  1. valida `x-signature` do MP (HMAC com o secret do webhook);
-  2. em `payment.approved` / `preapproval.authorized` → atualiza `status` do lead na
-     planilha (`cliente`) e loga em `lead-engine/bridge-log.jsonl`;
-  3. em `payment.rejected`/cancelamento → aciona F4 Dunning do ATLAS (tenant vitrinecerta).
-- URL pública: mesma pendência do bridge (tunnel/VPS) — decidir junto.
+| Pacote | Valor | Tipo MP | O que inclui |
+|--------|-------|---------|--------------|
+| **Light** | R$99/mês | `preapproval` | 2 atualizações de cardápio/fotos por mês |
+| **Full (atualização)** | R$199/mês | `preapproval` | Atualizações ilimitadas + 1 melhoria/mês |
 
-## Secrets (NUNCA commitar)
+> ⚠️ Correção vs versão S3: NÃO existe "plano Plus R$99/mês". R$99 é o **pacote Light**
+> de atualização (cross-sell sobre um plano mensal), não um tier de site.
 
-| Secret | Onde fica |
-|--------|-----------|
+### 1.3 Avulsos (pagamento único — `preference` + Pix)
+
+| Item | Valor | Tipo MP |
+|------|-------|---------|
+| Atualização de cardápio/fotos (GATE 2=C) | R$29/un | `preference` (Pix + cartão) |
+| Melhoria de layout | R$79–R$199 | `preference` |
+| Nova funcionalidade | a partir de R$150 | `preference` |
+| Correção de bug | **grátis** | — (não gera cobrança) |
+
+---
+
+## 2. Fluxo de cobrança recorrente (ponta a ponta)
+
+```
+Lead aprova proposta
+   │
+   ▼
+[1] Hermes cria preapproval MP (plano escolhido)   ──▶  link de assinatura
+   │                                                      (Pix recorrente / cartão)
+   ▼
+[2] Cliente paga 1ª cobrança  ──▶  MP dispara webhook  preapproval.authorized
+   │
+   ▼
+[3] mp-webhook.js valida x-signature → marca status=ATIVO na planilha (LEADS-SHEETS)
+   │                                   → loga em lead-engine/bridge-log.jsonl
+   ▼
+[4] Publicação liberada (HITL: só publica após aprovação — GATE 6=A)
+   │
+   ▼  (ciclos seguintes, automáticos)
+[5] MP cobra mês a mês → webhook payment.approved → mantém ATIVO
+   │
+   └─ payment.rejected / cancelamento → status=INADIMPLENTE
+                                        → aciona F4 Dunning (ATLAS, tenant vitrinecerta)
+```
+
+- **Recorrência real:** o MP `preapproval` com `auto_recurring.frequency_type:"months"`
+  cobra sozinho todo mês. Não há cobrança manual (GATE 5=B satisfeito).
+- **Pix recorrente:** MP suporta Pix automático em assinatura (BR-native) — vantagem
+  sobre Stripe para o público PME.
+
+---
+
+## 3. Endpoints MP (referência de implementação)
+
+### 3.1 Assinatura (planos + pacotes recorrentes)
+```
+POST https://api.mercadopago.com/preapproval
+Authorization: Bearer $MP_ACCESS_TOKEN
+{
+  "reason": "Vitrine Certa — Plano Premium",
+  "auto_recurring": {
+    "frequency": 1, "frequency_type": "months",
+    "transaction_amount": 149.00, "currency_id": "BRL"
+  },
+  "payer_email": "<cliente>",
+  "back_url": "https://receitazero.github.io/receita-zero/receita-zero/",
+  "external_reference": "<lead_id>"
+}
+```
+
+### 3.2 Avulso (cardápio R$29, melhorias)
+```
+POST https://api.mercadopago.com/checkout/preferences
+{
+  "items": [{ "title": "Atualização de cardápio", "quantity": 1,
+              "unit_price": 29.00, "currency_id": "BRL" }],
+  "payment_methods": { "excluded_payment_types": [] },
+  "external_reference": "<lead_id>",
+  "back_urls": { "success": "...", "failure": "...", "pending": "..." }
+}
+```
+
+### 3.3 Consulta / reconciliação
+```
+GET /preapproval/{id}          # estado da assinatura
+GET /v1/payments/{id}          # estado de um pagamento
+```
+
+---
+
+## 4. Webhook de retorno — `references/mp-webhook.js` (a criar quando GATE abrir)
+
+- Reutiliza o padrão testado de `references/sheets-atlas-bridge.js` (rota + `--mock`).
+- Passos:
+  1. valida `x-signature` (HMAC-SHA256 com `MP_WEBHOOK_SECRET`);
+  2. `preapproval.authorized` / `payment.approved` → `status=ATIVO` na planilha + log;
+  3. `payment.rejected` / `preapproval.cancelled` → `status=INADIMPLENTE` → F4 Dunning;
+  4. idempotência por `payment.id` (não processa o mesmo evento 2×).
+- **URL pública:** mesma pendência do bridge (tunnel/VPS ou Cloud Function) — decidir
+  com o CEO. Enquanto não houver URL pública, testar 100% via `--mock`.
+
+---
+
+## 5. Secrets (GATE 👤 — NUNCA no repo)
+
+| Secret | Onde |
+|--------|------|
 | `MP_ACCESS_TOKEN` (produção) | cofre local `C:\Users\kauea\secrets\` (NTFS-hardened) |
 | `MP_WEBHOOK_SECRET` | idem |
-| Test credentials (sandbox) | idem, sufixo `_TEST` |
+| `MP_ACCESS_TOKEN_TEST` (sandbox) | idem |
 
-Scripts lerão via `process.env.MP_ACCESS_TOKEN` — jamais literal no repo. `.gitignore`
-já não cobre `secrets/` porque o cofre fica FORA do repo.
+Scripts lêem via `process.env.*`. O cofre fica **FORA** do repo.
 
-## Passos quando o GATE 👤 abrir
+---
 
-1. CEO cria app no painel MP (conta Receita-Zero, NÃO AAPSON) e deposita secrets no cofre.
-2. Testar em sandbox: criar preapproval de R$49 + simular webhook.
-3. Implementar `references/mp-webhook.js` + testes mock (mesmo padrão `--mock` do bridge).
-4. Ligar F4 Dunning para inadimplência (já existe no ATLAS).
-5. Só então divulgar link de pagamento aos clientes.
+## 6. Checklist para o CEO destravar (copy-paste)
+
+```
+[ ] 1. Criar aplicação no painel Mercado Pago (conta Receita-Zero, NÃO AAPSON)
+[ ] 2. Gerar Access Token de PRODUÇÃO + Access Token de TESTE (sandbox)
+[ ] 3. Configurar Webhook no painel MP → apontar para a URL pública decidida
+[ ] 4. Copiar o "Assinatura de webhook" (secret) do painel
+[ ] 5. Depositar MP_ACCESS_TOKEN, MP_ACCESS_TOKEN_TEST, MP_WEBHOOK_SECRET no cofre
+[ ] 6. Avisar Hermes → implementa mp-webhook.js + testa sandbox (preapproval R$49 + webhook simulado)
+```
+
+Feito isso, o GATE 5 sai de "decisão" (já=B) para "execução liberada" e a cobrança
+recorrente entra em produção.
+
+---
+
+## 7. Métricas de cobrança (para o KPI MRR do plano vivo)
+
+| Evento | Onde registra | KPI alimentado |
+|--------|---------------|----------------|
+| `preapproval.authorized` | planilha `status=ATIVO` | Clientes ativos, MRR |
+| `payment.approved` (recorrente) | log | MRR mês a mês |
+| `payment.rejected` | F4 Dunning | Churn / inadimplência |
+
+MRR alvo (plano vivo §8): R$149 (M2) → R$745+ (M4). Cada Premium = R$149; cada Light
+cross-sell = +R$99; cada Full = R$199.
