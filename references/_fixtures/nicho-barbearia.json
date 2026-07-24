@@ -1,0 +1,14 @@
+{
+  "nicho": "barbearia",
+  "base_dir": "site-dfy/salão",
+  "titulo": "Barbearia Navalha de Ouro",
+  "cidade": "São Paulo",
+  "whatsapp": "5511999990001",
+  "cores": { "primary": "#1a1a1a", "accent": "#c9a227" },
+  "termos": [
+    ["Salão", "Barbearia"],
+    ["salão", "barbearia"],
+    ["cabeleireira", "barbeiro"],
+    ["manicure", "barba e navalha"]
+  ]
+}
