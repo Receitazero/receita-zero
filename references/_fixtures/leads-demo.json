@@ -1,0 +1,33 @@
+{
+  "gerado_em": "2026-07-23T00:00:00-03:00",
+  "origem": "FIXTURE FICTICIA — dados 100% inventados, sem PII real",
+  "leads": [
+    {
+      "id": "L-001",
+      "nome_fantasia": "Padaria Pão Quente",
+      "nicho": "padaria",
+      "whatsapp": "+5500000000001",
+      "origem": "Indicação",
+      "status": "contatado",
+      "data_ultimo_contato": "2026-07-02"
+    },
+    {
+      "id": "L-002",
+      "nome_fantasia": "Salão Tesoura de Ouro",
+      "nicho": "salao",
+      "whatsapp": "+5500000000002",
+      "origem": "Landing Vitrine Certa",
+      "status": "novo",
+      "data_ultimo_contato": "2026-07-19"
+    },
+    {
+      "id": "L-003",
+      "nome_fantasia": "Pet Shop Patinhas Felizes",
+      "nicho": "pet",
+      "whatsapp": "+5500000000003",
+      "origem": "Google Maps",
+      "status": "contatado",
+      "data_ultimo_contato": "2026-06-28"
+    }
+  ]
+}
