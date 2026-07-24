@@ -1,0 +1,16 @@
+{
+  "nicho": "restaurante",
+  "base_dir": "site-dfy/pizzaria",
+  "titulo": "Restaurante Sabor da Casa",
+  "cidade": "Campinas",
+  "whatsapp": "5511999990002",
+  "cores": { "primary": "#7a2e1d", "accent": "#e8b04b" },
+  "termos": [
+    ["Pizzaria", "Restaurante"],
+    ["pizzaria", "restaurante"],
+    ["Pizzas", "Pratos"],
+    ["pizzas", "pratos"],
+    ["Pizza", "Prato"],
+    ["pizza", "prato"]
+  ]
+}
