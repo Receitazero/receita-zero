@@ -10,12 +10,14 @@
     "nome": "Vitrine Certa",
     "brandmark": "Vitrine Certa",
     "logo": "vitrinecerta-logo.svg",
+    "conceito": "vidro + lâmpada acesa · logo=janela de vitrine cujo vão forma um check (exposição + acerto)",
     "paleta": {
-      "bg": "#0B0714",
-      "primary": "#2DD4BF",
-      "accent": "#C6FF00",
-      "text": "#EFE9FF"
-    }
+      "bg": "#EEF0F4",
+      "primary": "#E8873A",
+      "accent": "#9C4D15",
+      "text": "#16181F"
+    },
+    "nota_isolamento_aapson": "NÃO usar tokens AAPSON (#0B0714/#A78BFA/#D9F03A/#C8743C/#EFE9FF/Fraunces). Paleta própria vidro+lâmpada. Ver DESIGN.md."
   },
   "tom": {
     "assintota": "cordial",

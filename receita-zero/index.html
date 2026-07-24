@@ -1,386 +1,549 @@
 <!DOCTYPE html>
-<html lang="pt-BR" data-theme="dark">
+<html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vitrine Certa — sites com IA em 48h, a partir de R$49/mês</title>
-<meta name="description" content="Vitrine Certa: sites para PME com IA, em 48h, a partir de R$49/mês. Cardápio, agendamento e WhatsApp integrado. Veja exemplos prontos.">
+<title>Vitrine Certa — o site que responde pelo seu comércio, no ar em 48h</title>
+<meta name="description" content="Vitrine Certa: sites para comércio local que RESPONDEM — cardápio que fecha pedido, agenda que marca, verificador que responde. No ar em 48h com o seu WhatsApp. R$49/mês, sem contrato.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2032%2032'%3E%3Crect%20x='4'%20y='6'%20width='24'%20height='21'%20rx='3'%20fill='none'%20stroke='%2316181F'%20stroke-width='2.2'/%3E%3Cpath%20d='M4%2012%20H28'%20stroke='%2316181F'%20stroke-width='2.2'/%3E%3Cpath%20d='M10.5%2018.5%20l3.8%203.8%20L22%2014.6'%20fill='none'%20stroke='%23E8873A'%20stroke-width='3'%20stroke-linecap='round'%20stroke-linejoin='round'/%3E%3C/svg%3E">
+<meta property="og:title" content="Vitrine Certa — o site que responde pelo seu comércio">
+<meta property="og:description" content="Sites para comércio local que funcionam de verdade. No ar em 48h com o seu WhatsApp. R$49/mês, sem contrato.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
+/* Hallmark · macrostructure: 14 Narrative Workflow · Vitrine Certa / Landing Mãe
+   objeto=vitrine (vidro+lâmpada) · acento=âmbar-mel (lâmpada acesa)
+   display=Space Grotesk ss01 + weight 300 · dados=JetBrains Mono tnum
+   personalidade=confiante e afiada · não é portfólio */
 :root{
-  --bg:#070710;--bg2:#0E0E1C;--surface:#15152B;--surface2:#1C1C38;--line:#2A2A52;--line2:#3A3A70;
-  --fg:#F4F4FF;--muted:#A6A6D8;--faint:#6E6EA0;
-  --a1:#7C5CFC;--a2:#22D3EE;--a3:#F472B6;--off:#F4F4FF;
-  --grad:linear-gradient(120deg,var(--a1),var(--a2),var(--a3));
-  --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
-  --font-body:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
-  --font-display:'Space Grotesk','Fraunces',Georgia,serif;
-  --font-mono:'JetBrains Mono',ui-monospace,monospace;
+  --vidro:#EEF0F4; --vidro2:#E4E8EF; --branco:#FBFCFE;
+  --linha:#CBD4E0; --linha2:#778799;
+  --tinta:#16181F; --fumaca:#525A6A; --fraco:#5A6373;
+  --claro:#FBFCFE; --claro2:#C3CBD6;
+  --noite:#15171E; --noite2:#1E212B; --noite-linha:#333846;
+  --lamp:#E8873A; --lamp-2:#9C4D15; --lamp-fundo:#FBEEDF;
+  --verde:#1B7A44; --wa:#1EA956;
+  --r:14px; --r-sm:3px;
+  --sp-xs:.4rem; --sp-sm:.7rem; --sp-md:1rem; --sp-lg:1.5rem; --sp-xl:2.3rem; --sp-2xl:3.4rem; --sp-3xl:5rem;
+  --disp:'Space Grotesk',Georgia,serif;
+  --sans:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
+  --mono:'JetBrains Mono',ui-monospace,monospace;
+  --sombra:0 24px 60px -30px rgba(232,135,58,.20), 0 8px 22px -14px rgba(22,24,31,.14);
+  --sombra-sm:0 3px 12px -6px rgba(22,24,31,.16);
 }
 *{box-sizing:border-box;margin:0}
-body{background:var(--bg);color:var(--fg);font-family:var(--font-body);line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:clip}
-/* animated aurora bg */
-body::before{content:'';position:fixed;inset:0;z-index:-2;background:
-  radial-gradient(40% 50% at 15% 10%,color-mix(in srgb,var(--a1) 30%,transparent),transparent 70%),
-  radial-gradient(40% 50% at 85% 20%,color-mix(in srgb,var(--a2) 22%,transparent),transparent 70%),
-  radial-gradient(50% 50% at 50% 100%,color-mix(in srgb,var(--a3) 20%,transparent),transparent 70%);
-  filter:blur(20px);animation:aurora 18s ease-in-out infinite alternate}
-@keyframes aurora{0%{transform:translate3d(0,0,0) scale(1)}100%{transform:translate3d(0,-2%,0) scale(1.08)}}
-.wrap{max-width:1080px;margin-inline:auto;padding-inline:24px}
-section{padding-block:var(--s-3xl)}
-h1,h2,h3{font-family:var(--font-display);line-height:1.05;letter-spacing:-.02em}
-a{color:var(--a2);text-decoration:none}
-.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.8rem;border-radius:999px;font-weight:700;font-size:1rem;cursor:pointer;border:1px solid transparent;transition:transform .25s,box-shadow .25s;position:relative}
-.btn:hover{transform:translateY(-3px)}
-.btn-solid{background:var(--grad);color:#0a0a12;font-weight:800;box-shadow:0 16px 40px -14px color-mix(in srgb,var(--a1) 70%,transparent)}
-.btn-solid:hover{box-shadow:0 22px 55px -12px color-mix(in srgb,var(--a2) 60%,transparent)}
-.btn-outline{background:color-mix(in srgb,var(--surface) 60%,transparent);border-color:var(--line2);color:var(--fg);backdrop-filter:blur(6px)}
-.eyebrow{display:inline-block;font-size:.78rem;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:var(--a2);margin-bottom:var(--s-sm)}
-.grad{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s cubic-bezier(.2,.8,.2,1),transform .7s cubic-bezier(.2,.8,.2,1)}
-.reveal.in{opacity:1;transform:none}
-.nav{position:sticky;top:0;z-index:50;background:color-mix(in srgb,var(--bg) 80%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.9rem}
-.brand{font-family:var(--font-display);font-weight:700;font-size:1.2rem}
-.brand b{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+html{scroll-behavior:smooth}
+body{background:var(--vidro);color:var(--tinta);font-family:var(--sans);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:clip}
+/* textura de vidro: um leve halo âmbar fixo no topo (luz da vitrine), 100% estático */
+body::before{content:'';position:fixed;inset:0;z-index:-1;pointer-events:none;background:
+  radial-gradient(60% 40% at 82% -6%, rgba(232,135,58,.10), transparent 60%),
+  radial-gradient(50% 34% at 8% 2%, rgba(22,24,31,.035), transparent 60%);}
+.wrap{max-width:1120px;margin-inline:auto;padding-inline:24px}
+section{padding-block:var(--sp-3xl)}
+h1,h2,h3{font-family:var(--disp);line-height:1.06;letter-spacing:-.02em;font-weight:300;font-feature-settings:"ss01"}
+h2{font-size:clamp(1.8rem,3.6vw,2.7rem)}
+h3{font-weight:500;letter-spacing:-.01em}
+p{max-width:64ch}
+a{color:var(--lamp-2);text-decoration:none}
+.kick{display:inline-block;font-family:var(--mono);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;font-weight:600;color:var(--lamp-2);margin-bottom:var(--sp-sm)}
+.lamp-word{color:var(--lamp-2)}
+.center{text-align:center}
+.sec-head{max-width:60ch;margin-inline:auto;margin-bottom:var(--sp-2xl)}
+.sec-head p{margin-inline:auto;color:var(--fumaca)}
+/* botões */
+.btn{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 1.7rem;border-radius:999px;font-family:var(--sans);font-weight:700;font-size:1rem;cursor:pointer;border:1.5px solid transparent;text-decoration:none;transition:background .18s,border-color .18s,transform .18s,box-shadow .18s;line-height:1}
+.btn:hover{transform:translateY(-2px)}
+.btn-lamp{background:var(--lamp);color:#241202;box-shadow:0 14px 30px -14px rgba(232,135,58,.7)}
+.btn-lamp:hover{background:#F0913F;box-shadow:0 20px 40px -14px rgba(232,135,58,.8)}
+.btn-ghost{background:transparent;border-color:var(--linha2);color:var(--tinta)}
+.btn-ghost:hover{border-color:var(--tinta);background:var(--branco)}
+.btn-wa{background:var(--wa);color:#052e16}
+.btn-wa:hover{background:#25c063}
+.btn-sm{padding:.6rem 1.15rem;font-size:.9rem}
+/* cartão de vidro */
+.vidro{background:color-mix(in srgb,var(--vidro2) 66%,transparent);border:1px solid var(--linha);border-radius:var(--r);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px)}
+/* logo */
+.logo{width:30px;height:30px;color:var(--tinta);flex:none}
+.brand{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--disp);font-weight:500;font-size:1.22rem;letter-spacing:-.02em;color:var(--tinta)}
+.brand small{font-family:var(--mono);font-size:.6rem;letter-spacing:.18em;color:var(--fraco);text-transform:uppercase;font-weight:500}
+/* NAV */
+.nav{position:sticky;top:0;z-index:60;background:color-mix(in srgb,var(--vidro) 82%,transparent);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-bottom:1px solid var(--linha)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;padding-block:.85rem;gap:1rem}
+.nav .links{display:flex;align-items:center;gap:1.4rem}
+.nav .links a.txt{color:var(--fumaca);font-weight:600;font-size:.94rem}
+.nav .links a.txt:hover{color:var(--tinta)}
+@media(max-width:680px){.nav .links a.txt{display:none}}
 /* HERO */
-.hero{padding-top:var(--s-3xl)}
-.hero .wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:var(--s-2xl);align-items:center}
-.hero h1{font-size:clamp(2.6rem,5.5vw,4.4rem);margin-bottom:var(--s-lg)}
-.hero p.lede{color:var(--muted);font-size:1.15rem;max-width:42ch;margin:0 0 var(--s-xl)}
+.hero{padding-top:var(--sp-2xl)}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--sp-2xl);align-items:center}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.3rem);margin-bottom:var(--sp-lg)}
+.hero .lede{color:var(--fumaca);font-size:1.13rem;max-width:46ch;margin-bottom:var(--sp-xl)}
 .hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
-.hero .tag{display:inline-flex;gap:.5rem;align-items:center;font-family:var(--font-mono);font-size:.8rem;color:var(--a2);border:1px solid var(--line2);padding:.35rem .8rem;border-radius:999px;margin-bottom:var(--s-lg)}
-/* mockup do site "vivo" */
-.mock{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--line2);background:var(--surface);box-shadow:0 40px 100px -30px color-mix(in srgb,var(--a1) 60%,transparent);aspect-ratio:4/3.4}
-.mock::after{content:'';position:absolute;inset:0;background:linear-gradient(120deg,transparent 40%,color-mix(in srgb,var(--a2) 14%,transparent));animation:shine 4s ease-in-out infinite;pointer-events:none}
-@keyframes shine{0%,100%{transform:translateX(-30%)}50%{transform:translateX(30%)}}
-.mock .bar{display:flex;gap:6px;padding:.6rem .8rem;border-bottom:1px solid var(--line);background:var(--bg2)}
-.mock .bar i{width:10px;height:10px;border-radius:50%;background:var(--line2);display:block}
-.mock .bar i:nth-child(1){background:#ff5f57}.mock .bar i:nth-child(2){background:#febc2e}.mock .bar i:nth-child(3){background:#28c840}
-.mock .body{position:relative;z-index:1;padding:1.1rem}
-.mock h4{font-family:var(--font-display);font-size:1.1rem;margin-bottom:.3rem}
-.mock .pill{display:inline-block;font-size:.7rem;font-family:var(--font-mono);color:var(--a2);border:1px solid var(--line2);border-radius:999px;padding:.15rem .6rem;margin:.2rem .3rem .2rem 0}
-.mock .row{margin-top:.7rem;height:10px;border-radius:6px;background:var(--surface2)}
-.mock .row.s{width:70%}
-.mock .btns{display:flex;gap:.5rem;margin-top:1rem}
-.mock .btns span{flex:1;height:26px;border-radius:999px;background:var(--grad);opacity:.85}
-/* marquee */
-.marquee{overflow:hidden;white-space:nowrap;padding:14px 0;margin-top:var(--s-2xl);border-block:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask-image:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
-.marquee span{display:inline-block;padding-inline:2.2rem;font-family:var(--font-display);font-weight:700;font-size:1.15rem;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent;animation:scrollx 22s linear infinite}
-@keyframes scrollx{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-/* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s-lg);counter-reset:step}
-.step{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:var(--s-xl);position:relative;transition:transform .25s,border-color .25s}
-.step:hover{transform:translateY(-6px);border-color:var(--line2)}
-.step .n{font-family:var(--font-mono);font-size:.85rem;color:var(--a2);margin-bottom:.6rem}
-.step h3{font-size:1.25rem;margin-bottom:.4rem}
-.step p{color:var(--muted);font-size:.92rem}
-/* interactive preview */
-.preview{background:var(--bg2);border:1px solid var(--line);border-radius:22px;padding:var(--s-xl);text-align:center}
-.preview .ctrl{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin:var(--s-md) 0 var(--s-lg)}
-.preview select{background:var(--surface);color:var(--fg);border:1px solid var(--line2);border-radius:999px;padding:.7rem 1.1rem;font-family:var(--font-body);font-size:.95rem}
-.preview .frame{border-radius:16px;overflow:hidden;border:1px solid var(--line2);background:var(--surface);aspect-ratio:16/10;display:flex;align-items:center;justify-content:center}
-.preview .frame iframe{width:100%;height:100%;border:0;background:#fff}
-.preview .hint{color:var(--faint);font-size:.85rem;margin-top:.8rem}
-.premium-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--s-lg);margin-top:var(--s-xl)}
-.pg{display:flex;flex-direction:column;gap:.2rem;background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:var(--s-lg);text-decoration:none;color:var(--fg);transition:transform .25s,border-color .25s,box-shadow .25s}
-.pg:hover{transform:translateY(-6px);border-color:var(--a1);box-shadow:0 24px 60px -30px color-mix(in srgb,var(--a1) 50%,transparent)}
-.pg b{font-family:var(--font-display);font-size:1.15rem}
-.pg span{color:var(--faint);font-size:.85rem}
-/* price filter */
-.price-filter{display:flex;justify-content:center;gap:.5rem;margin:var(--s-xl) 0 var(--s-lg);flex-wrap:wrap}
-.price-filter button{background:var(--surface2);color:var(--muted);border:1px solid var(--line2);border-radius:999px;padding:.55rem 1.1rem;font-family:var(--font-body);font-size:.9rem;cursor:pointer;transition:all .2s}
-.price-filter button:hover{color:var(--fg);border-color:var(--line)}
-.price-filter button.active{background:var(--a1);color:#0a0a12;border-color:var(--a1);font-weight:700}
-.price-filter button[data-tier="all"]{background:var(--grad);color:#0a0a12;border-color:transparent;font-weight:700}
-.pg[data-tier]{display:flex}
-.pg[data-tier].hide{display:none}
-@media(max-width:860px){.premium-grid{grid-template-columns:1fr 1fr}}
-/* plans */
-.plans{display:grid;grid-template-columns:repeat(2,1fr);gap:var(--s-lg);max-width:760px;margin:var(--s-xl) auto 0}
-.plan{background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:var(--s-xl);position:relative}
-.plan.premium{border-color:var(--a1);box-shadow:0 0 0 1px color-mix(in srgb,var(--a1) 40%,transparent),0 30px 70px -30px color-mix(in srgb,var(--a1) 50%,transparent)}
-.plan .badge{position:absolute;top:-12px;right:var(--s-lg);background:var(--grad);color:#0a0a12;font-weight:800;font-size:.72rem;padding:.3rem .8rem;border-radius:999px}
-.plan .price{font-family:var(--font-display);font-size:2.6rem;font-weight:800;margin:.4rem 0}
-.plan .price small{font-size:1rem;color:var(--muted);font-weight:500}
-.plan ul{list-style:none;padding:0;margin:var(--s-md) 0 var(--s-lg)}
-.plan li{padding:.4rem 0;color:var(--muted);font-size:.94rem;display:flex;gap:.5rem}
-.plan li::before{content:'✦';color:var(--a2)}
-.faq details{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:var(--s-md) var(--s-lg);margin-bottom:var(--s-sm);max-width:760px;margin-inline:auto}
-.faq summary{font-weight:700;cursor:pointer}
-.faq p{color:var(--muted);margin-top:.6rem;font-size:.94rem}
-.cta-final{text-align:center}
-.cta-final h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:var(--s-lg)}
-footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(--s-lg);text-align:center;color:var(--faint);font-size:.88rem}
+.hero .microcopy{margin-top:var(--sp-md);font-family:var(--mono);font-size:.78rem;color:var(--fraco);letter-spacing:.02em}
+/* a VITRINE viva do hero */
+.vitrine{position:relative;border-radius:20px;padding:0;overflow:hidden;border:1px solid var(--noite-linha);background:var(--noite);box-shadow:var(--sombra)}
+.vitrine .toldo{display:flex;gap:6px;align-items:center;padding:.7rem .9rem;border-bottom:1px solid var(--noite-linha);background:var(--noite2)}
+.vitrine .toldo i{width:9px;height:9px;border-radius:50%;background:#3a3f4d;display:block}
+.vitrine .toldo .url{margin-left:.4rem;font-family:var(--mono);font-size:.68rem;color:#9aa2b2;letter-spacing:.02em}
+.vitrine .glass{position:relative;padding:1.5rem 1.4rem 1.6rem}
+/* a lâmpada acesa */
+.vitrine .lamp{position:absolute;top:1.1rem;right:1.2rem;width:14px;height:14px;border-radius:50%;background:#4a4030;transition:background .35s,box-shadow .35s}
+.vitrine.aberto .lamp{background:var(--lamp);box-shadow:0 0 0 4px rgba(232,135,58,.18),0 0 26px 4px rgba(232,135,58,.55)}
+.vitrine .shopname{font-family:var(--disp);font-weight:500;color:var(--claro);font-size:1.25rem;letter-spacing:-.01em}
+.vitrine .addr{font-family:var(--mono);font-size:.72rem;color:#8b93a3;margin-top:.15rem;margin-bottom:1.1rem}
+/* badge de estado: FORMA + cor (cor=estado, legível sem cor) */
+.estado{display:inline-flex;align-items:center;gap:.5rem;font-weight:700;font-size:.92rem;padding:.4rem .85rem;border-radius:999px;border:1.5px solid;font-family:var(--sans)}
+.estado .mk{width:12px;height:12px;flex:none;display:block}
+.estado.on{color:#7ff0a8;border-color:#2f7d4e;background:rgba(47,125,78,.16)}
+.estado.on .mk{border-radius:2px;background:#7ff0a8}          /* quadrado cheio = aberto */
+.estado.off{color:#c3cbd6;border-color:#48505f;background:rgba(72,80,95,.2)}
+.estado.off .mk{border-radius:50%;border:2px solid #c3cbd6;background:transparent} /* anel vazado = fechado */
+.vitrine .statusline{margin-top:1rem;color:var(--claro2);font-size:.92rem;min-height:1.3em}
+.vitrine .statusline b{color:var(--claro)}
+.vitrine .wabtn{display:flex;width:fit-content;align-items:center;gap:.5rem;margin-top:1.1rem;padding:.7rem 1.2rem;border-radius:999px;font-weight:700;font-size:.92rem;transition:opacity .3s,background .3s;cursor:default}
+.vitrine.aberto .wabtn{background:var(--wa);color:#052e16}
+.vitrine:not(.aberto) .wabtn{background:var(--noite2);color:#7b8494;border:1px solid var(--noite-linha)}
+/* o interruptor "responde ao clique" */
+.switch{display:flex;width:fit-content;align-items:center;gap:.6rem;margin-top:1.3rem;cursor:pointer;user-select:none}
+.switch .track{width:46px;height:26px;border-radius:999px;background:#3a3f4d;position:relative;transition:background .3s}
+.switch .track::after{content:'';position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:var(--claro);transition:transform .3s}
+.vitrine.aberto .switch .track{background:var(--lamp)}
+.vitrine.aberto .switch .track::after{transform:translateX(20px)}
+.switch .lbl{font-family:var(--mono);font-size:.74rem;color:#8b93a3;letter-spacing:.02em}
+.vitrine .responde{position:absolute;bottom:.7rem;right:1rem;font-family:var(--mono);font-size:.64rem;color:#8b93a3;letter-spacing:.04em}
+/* faixa de prova (estática, não marquee infinito) */
+.prova{border-block:1px solid var(--linha);background:color-mix(in srgb,var(--vidro2) 50%,transparent)}
+.prova .wrap{display:flex;flex-wrap:wrap;gap:1rem 2.2rem;justify-content:center;align-items:center;padding-block:1.1rem;font-family:var(--mono);font-size:.82rem;color:var(--fumaca);letter-spacing:.01em}
+.prova b{color:var(--tinta);font-weight:600}
+.prova .dot{color:var(--lamp-2)}
+/* diferenciais */
+.difs{display:grid;grid-template-columns:1.2fr 1.2fr;gap:var(--sp-lg)}
+.dif{padding:var(--sp-xl);border-radius:var(--r);position:relative;overflow:hidden}
+.dif.big{background:var(--noite);color:var(--claro);border:1px solid var(--noite-linha);box-shadow:var(--sombra)}
+.dif.big h3{color:var(--claro);font-size:1.65rem;margin-bottom:.6rem}
+.dif.big p{color:var(--claro2)}
+.dif.big .num{font-family:var(--mono);font-size:.74rem;color:var(--lamp);letter-spacing:.18em;text-transform:uppercase;margin-bottom:1rem;display:block}
+.dif.sm{background:var(--branco);border:1px solid var(--linha)}
+.dif.sm h3{font-size:1.25rem;margin-bottom:.4rem}
+.dif.sm p{color:var(--fumaca);font-size:.95rem}
+.dif.sm .ic{font-size:1.4rem;margin-bottom:.7rem;display:block}
+.difs-row2{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-lg);margin-top:var(--sp-lg)}
+/* mini-prova dentro do dif "responde": chips que acendem */
+.livechips{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:1.1rem}
+.livechips a{font-family:var(--mono);font-size:.74rem;color:var(--claro2);border:1px solid var(--noite-linha);border-radius:999px;padding:.32rem .7rem;transition:border-color .2s,color .2s,background .2s}
+.livechips a:hover{border-color:var(--lamp);color:var(--lamp);background:rgba(232,135,58,.1)}
+/* passos */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-lg)}
+.step{background:var(--branco);border:1px solid var(--linha);border-radius:var(--r);padding:var(--sp-xl);position:relative;transition:transform .22s,box-shadow .22s}
+.step:hover{transform:translateY(-4px);box-shadow:var(--sombra-sm)}
+.step .n{font-family:var(--mono);font-size:.82rem;color:var(--lamp-2);font-weight:600;margin-bottom:.7rem}
+.step h3{font-size:1.2rem;margin-bottom:.4rem}
+.step p{color:var(--fumaca);font-size:.93rem}
+/* moldura de vitrine p/ o iframe (exemplos + gerador) */
+.frame-vitrine{border-radius:18px;overflow:hidden;border:1px solid var(--linha2);background:var(--branco);box-shadow:var(--sombra)}
+.frame-vitrine .toldo{display:flex;gap:6px;align-items:center;padding:.6rem .85rem;border-bottom:1px solid var(--linha);background:var(--vidro2)}
+.frame-vitrine .toldo i{width:9px;height:9px;border-radius:50%;background:#c2ccd8;display:block}
+.frame-vitrine .toldo .url{margin-left:.4rem;font-family:var(--mono);font-size:.68rem;color:var(--fraco)}
+.frame-vitrine iframe{width:100%;height:520px;border:0;background:#fff;display:block}
+.ctrl{display:flex;gap:.6rem;justify-content:center;flex-wrap:wrap;margin:var(--sp-md) 0 var(--sp-lg)}
+select{background:var(--branco);color:var(--tinta);border:1.5px solid var(--linha2);border-radius:999px;padding:.7rem 1.1rem;font-family:var(--sans);font-size:.95rem;font-weight:600;cursor:pointer}
+.hint{color:var(--fraco);font-size:.85rem;margin-top:.9rem;text-align:center}
 /* gerador */
-.gen-box{max-width:620px;margin:0 auto;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:var(--s-xl)}
-.gen-row{margin-bottom:var(--s-md)}
-.gen-2col{display:grid;grid-template-columns:1fr 1fr;gap:var(--s-md)}
-.gen-box input,.gen-box select{width:100%;background:var(--bg2);border:1px solid var(--line2);border-radius:10px;padding:12px 14px;font-family:var(--font-body);font-size:14px;color:var(--fg)}
-.gen-box input::placeholder{color:var(--faint)}
-.gen-err{color:#ff6b6b;font-size:.85rem;margin-top:var(--s-sm);text-align:center}
-.gen-result{max-width:760px;margin:var(--s-2xl) auto 0;text-align:center}
-.gen-result-txt{color:var(--muted);margin-bottom:var(--s-md)}
-.gen-result-txt b{color:var(--fg)}
-@media(max-width:560px){.gen-2col{grid-template-columns:1fr}}
-/* scroll motion */
-.mock{will-change:transform}
-.floaty{animation:floaty 7s ease-in-out infinite}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-.hero-fig{transition:transform .1s linear}
-.scroll-reveal{opacity:0;transform:translateY(40px) scale(.98);transition:opacity .9s cubic-bezier(.2,.8,.2,1),transform .9s cubic-bezier(.2,.8,.2,1)}
-.scroll-reveal.in{opacity:1;transform:none}
-@media(prefers-reduced-motion:reduce){.floaty,.hero::before{animation:none!important}.reveal,.scroll-reveal{transition:none;opacity:1;transform:none}}
-@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.steps{grid-template-columns:1fr}.plans{grid-template-columns:1fr}.mock{order:-1;max-width:420px;margin-inline:auto}}
+.gen-box{max-width:640px;margin:0 auto}
+.gen-box.vidro{padding:var(--sp-xl)}
+.gen-row{margin-bottom:var(--sp-md)}
+.gen-2col{display:grid;grid-template-columns:1fr 1fr;gap:var(--sp-md)}
+.gen-box input,.gen-box select{width:100%;background:var(--branco);border:1.5px solid var(--linha2);border-radius:10px;padding:13px 14px;font-family:var(--sans);font-size:15px;color:var(--tinta)}
+.gen-box input::placeholder{color:var(--fraco)}
+.gen-box label{display:block;font-family:var(--mono);font-size:.72rem;color:var(--fumaca);margin-bottom:.35rem;letter-spacing:.04em}
+.gen-err{color:#b3261e;font-size:.88rem;margin-top:var(--sp-sm);text-align:center;font-weight:600}
+.gen-result{max-width:820px;margin:var(--sp-2xl) auto 0;text-align:center}
+.gen-result-txt{color:var(--fumaca);margin:0 auto var(--sp-md)}
+.gen-result-txt b{color:var(--tinta)}
+/* grid premium */
+.price-filter{display:flex;justify-content:center;gap:.5rem;margin:0 auto var(--sp-xl);flex-wrap:wrap}
+.price-filter button{background:var(--branco);color:var(--fumaca);border:1.5px solid var(--linha2);border-radius:999px;padding:.55rem 1.15rem;font-family:var(--sans);font-weight:600;font-size:.9rem;cursor:pointer;transition:all .18s}
+.price-filter button:hover{color:var(--tinta);border-color:var(--tinta)}
+.price-filter button.active{background:var(--lamp);color:#241202;border-color:var(--lamp);font-weight:700}
+.premium-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:var(--sp-md)}
+.pg{display:flex;flex-direction:column;gap:.15rem;background:var(--branco);border:1px solid var(--linha);border-radius:var(--r);padding:var(--sp-lg);text-decoration:none;color:var(--tinta);transition:transform .2s,border-color .2s,box-shadow .2s}
+.pg:hover{transform:translateY(-4px);border-color:var(--lamp);box-shadow:var(--sombra-sm)}
+.pg b{font-family:var(--disp);font-weight:500;font-size:1.12rem}
+.pg span{color:var(--fraco);font-size:.84rem}
+.pg[data-tier].hide{display:none}
+/* planos */
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--sp-lg);max-width:960px;margin:0 auto}
+.plans.dois{grid-template-columns:1fr 1fr;max-width:760px}
+.plan{background:var(--branco);border:1px solid var(--linha);border-radius:18px;padding:var(--sp-xl);position:relative;display:flex;flex-direction:column}
+.plan.destaque{border-color:var(--lamp);box-shadow:var(--sombra)}
+.plan .badge{position:absolute;top:-12px;left:var(--sp-xl);background:var(--lamp);color:#241202;font-weight:700;font-size:.7rem;padding:.3rem .8rem;border-radius:999px;font-family:var(--mono);letter-spacing:.04em}
+.plan h3{font-size:1.3rem;margin-bottom:.2rem}
+.plan .price{font-family:var(--disp);font-size:2.6rem;font-weight:700;margin:.3rem 0;font-feature-settings:"ss01","tnum"}
+.plan .price small{font-size:1rem;color:var(--fumaca);font-weight:500;font-family:var(--sans)}
+.plan .sub{color:var(--fumaca);font-size:.92rem;margin-bottom:var(--sp-md)}
+.plan ul{list-style:none;padding:0;margin:0 0 var(--sp-lg);flex:1}
+.plan li{padding:.4rem 0;color:var(--fumaca);font-size:.93rem;display:flex;gap:.55rem;align-items:flex-start}
+.plan li::before{content:'';width:16px;height:16px;flex:none;margin-top:.18rem;background:var(--lamp-2);-webkit-mask:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 5' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");mask:no-repeat center/contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath d='M3 8.5l3.2 3.2L13 5' fill='none' stroke='black' stroke-width='2.2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.plan .btn{width:100%;justify-content:center}
+/* faq */
+.faq details{background:var(--branco);border:1px solid var(--linha);border-radius:12px;padding:var(--sp-md) var(--sp-lg);margin-bottom:.55rem;max-width:780px;margin-inline:auto}
+.faq summary{font-weight:700;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:1rem;align-items:center}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:'+';font-family:var(--mono);color:var(--lamp-2);font-size:1.3rem;line-height:1;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq p{color:var(--fumaca);margin-top:.6rem;font-size:.93rem;max-width:none}
+/* cta final */
+.cta-final .inner{background:var(--noite);border-radius:22px;padding:var(--sp-3xl) var(--sp-xl);text-align:center;position:relative;overflow:hidden;box-shadow:var(--sombra)}
+.cta-final .inner::before{content:'';position:absolute;top:-40%;right:-10%;width:60%;height:120%;background:radial-gradient(circle,rgba(232,135,58,.22),transparent 62%);pointer-events:none}
+.cta-final h2{color:var(--claro);position:relative;margin-bottom:.6rem}
+.cta-final p{color:var(--claro2);position:relative;max-width:52ch;margin:0 auto var(--sp-xl)}
+.cta-final .cta{display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;position:relative}
+/* footer */
+footer{border-top:1px solid var(--linha);padding-block:var(--sp-xl);color:var(--fumaca);font-size:.88rem}
+footer .wrap{display:flex;flex-wrap:wrap;gap:1rem;justify-content:space-between;align-items:center}
+footer .brand{font-size:1.05rem}
+footer .logo{width:24px;height:24px}
+/* reveal — clip-path (vidro sobe), sem translateY-slop */
+.reveal{clip-path:inset(0 0 100% 0);opacity:0;transition:clip-path .6s cubic-bezier(.22,1,.36,1),opacity .6s cubic-bezier(.22,1,.36,1)}
+.reveal.in{clip-path:inset(0 0 0 0);opacity:1}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{transition:none;opacity:1;clip-path:none}.btn:hover,.step:hover,.pg:hover{transform:none}}
+/* responsivo */
+@media(max-width:900px){.difs{grid-template-columns:1fr}.premium-grid{grid-template-columns:1fr 1fr}.plans,.plans.dois{grid-template-columns:1fr}}
+@media(max-width:820px){.hero .wrap{grid-template-columns:1fr}.hero .vitrine-wrap{order:-1;max-width:440px;margin-inline:auto;width:100%}.steps{grid-template-columns:1fr}}
+@media(max-width:560px){.gen-2col{grid-template-columns:1fr}.difs-row2{grid-template-columns:1fr}.frame-vitrine iframe{height:440px}}
+@media(max-width:390px){.premium-grid{grid-template-columns:1fr}.plans.dois{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
+
 <nav class="nav">
   <div class="wrap">
-    <div class="brand">Vitrine<b>Certa</b></div>
-    <a class="btn btn-solid" href="#planos" style="padding:.6rem 1.2rem;font-size:.92rem">Ver planos</a>
+    <a class="brand" href="#top" aria-label="Vitrine Certa — início">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="4" y="6" width="24" height="21" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/>
+        <path d="M4 12 H28" stroke="currentColor" stroke-width="2.2"/>
+        <path d="M10.5 18.5 l3.8 3.8 L22 14.6" fill="none" stroke="var(--lamp)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Vitrine Certa
+    </a>
+    <div class="links">
+      <a class="txt" href="#exemplos">Exemplos ao vivo</a>
+      <a class="txt" href="#planos">Planos</a>
+      <a class="btn btn-lamp btn-sm" href="#gerador">Montar o meu →</a>
+    </div>
   </div>
 </nav>
 
-<header class="hero">
+<header class="hero" id="top">
   <div class="wrap">
     <div class="hero-text">
-      <span class="tag reveal">⚡ feito com IA · pronto em 48h</span>
-      <h1 class="reveal d1">Seu negócio na <span class="grad">vitrine digital</span>, sem complicação</h1>
-      <p class="lede reveal d2">A gente monta o site do seu comércio com IA — cardápio, agendamento e botão de WhatsApp direto pro cliente. A partir de <b>R$49/mês</b>, cancela quando quiser.</p>
-      <div class="cta reveal d3">
-        <a class="btn btn-solid" href="#planos">Quero meu site</a>
-        <a class="btn btn-outline" href="#exemplos">Ver exemplos</a>
+      <span class="kick reveal">Sites para comércio local</span>
+      <h1 class="reveal">O site que <span class="lamp-word">responde</span> pelo seu comércio.</h1>
+      <p class="lede reveal">Aqui embaixo não tem foto de site — tem site <b>funcionando</b>: cardápio que fecha pedido, agenda que marca, verificador que responde na hora. O seu fica no ar em <b>48h</b>, com o <b>seu</b> WhatsApp.</p>
+      <div class="cta reveal">
+        <a class="btn btn-lamp" href="#exemplos">Ver um site respondendo →</a>
+        <a class="btn btn-ghost" href="#gerador">Montar o meu (48h)</a>
       </div>
+      <p class="microcopy reveal">R$49/mês · sem contrato · cancela quando quiser</p>
     </div>
-    <div class="hero-fig reveal d2">
-      <div class="mock floaty">
-        <div class="bar"><i></i><i></i><i></i></div>
-        <div class="body">
-          <h4>Pizza Forno a Lenha</h4>
-          <span class="pill">🍕 pizzaria</span><span class="pill">📍 São Vicente</span>
-          <div class="row"></div><div class="row s"></div>
-          <div class="btns"><span></span><span></span></div>
-          <p style="color:var(--faint);font-size:.78rem;margin-top:.8rem;font-family:var(--font-mono)">agendamento + WhatsApp ↗</p>
+    <div class="vitrine-wrap reveal">
+      <div class="vitrine aberto" id="vitrine">
+        <div class="toldo"><i></i><i></i><i></i><span class="url">forno-a-lenha.vitrinecerta.site</span></div>
+        <div class="glass">
+          <span class="lamp" aria-hidden="true"></span>
+          <div class="shopname">Forno a Lenha</div>
+          <div class="addr">Pizzaria · Itararé, São Vicente</div>
+          <span class="estado on" id="v-badge"><span class="mk"></span><span id="v-badge-txt">Aberto agora</span></span>
+          <div class="statusline" id="v-status">Fecha às <b>23h</b>. Peça agora que sai em 40 min.</div>
+          <div class="wabtn" id="v-wa">💬 <span id="v-wa-txt">Pedir no WhatsApp</span></div>
+          <div class="switch" id="v-switch" role="button" tabindex="0" aria-label="Alternar aberto/fechado">
+            <span class="track"></span>
+            <span class="lbl">clique — o site reage</span>
+          </div>
+          <span class="responde">estado ao vivo ↺</span>
         </div>
       </div>
     </div>
   </div>
 </header>
 
-<div class="marquee">
-  <span>★ PME local · R$49/mês · 48h · WhatsApp integrado · sem contrato · </span>
-  <span>★ PME local · R$49/mês · 48h · WhatsApp integrado · sem contrato · </span>
+<div class="prova">
+  <div class="wrap">
+    <span><b>48h</b> no ar</span><span class="dot">·</span>
+    <span><b>8</b> nichos com demo vivo</span><span class="dot">·</span>
+    <span><b>R$49</b>/mês, sem contrato</span><span class="dot">·</span>
+    <span>lead direto no <b>seu</b> WhatsApp</span><span class="dot">·</span>
+    <span>o <b>"não"</b> que os outros escondem</span>
+  </div>
 </div>
+
+<section id="porque">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="kick reveal">Por que o nosso vende</span>
+      <h2 class="reveal">Um site de R$500 é um folheto caro.<br>O nosso trabalha.</h2>
+    </div>
+    <div class="difs">
+      <div class="dif big reveal">
+        <span class="num">O diferencial</span>
+        <h3>Ele responde.</h3>
+        <p>Cardápio que monta o pedido, agenda que marca horário, verificador de convênio que diz sim ou não na hora. Não é imagem bonita parada — é o site fazendo o trabalho enquanto você atende. Clica num nicho e vê rodando:</p>
+        <div class="livechips">
+          <a href="../site-dfy/pizzaria/premium/index.html" target="_blank" rel="noopener">🍕 pizzaria</a>
+          <a href="../site-dfy/pet/premium/index.html" target="_blank" rel="noopener">🐾 pet</a>
+          <a href="../site-dfy/clínica/premium/index.html" target="_blank" rel="noopener">🦷 clínica</a>
+          <a href="../site-dfy/salão/premium/index.html" target="_blank" rel="noopener">💇 salão</a>
+          <a href="../site-dfy/oficina/premium/index.html" target="_blank" rel="noopener">🔧 oficina</a>
+          <a href="../site-dfy/padaria/premium/index.html" target="_blank" rel="noopener">🥖 padaria</a>
+          <a href="../site-dfy/lavanderia/premium/index.html" target="_blank" rel="noopener">🧺 lavanderia</a>
+          <a href="../site-dfy/imobiliária/premium/index.html" target="_blank" rel="noopener">🏠 imobiliária</a>
+        </div>
+      </div>
+      <div class="dif big reveal">
+        <span class="num">A velocidade</span>
+        <h3>No ar em 48h.</h3>
+        <p>Você manda o tipo de comércio e a cidade. A gente estrutura, você aprova, publica. Dois dias — não dois meses, não "te retorno orçamento". E já sai com o botão do <b>seu</b> WhatsApp, pra o cliente te chamar direto, sem intermediário e sem comissão por venda.</p>
+        <div class="livechips">
+          <a href="#gerador">▸ montar o meu agora</a>
+          <a href="#como">▸ ver os 3 passos</a>
+        </div>
+      </div>
+    </div>
+    <div class="difs-row2">
+      <div class="dif sm reveal">
+        <span class="ic">🚫</span>
+        <h3>Diz o "não" na cara.</h3>
+        <p>Fechado? Em carência? Fora da área de entrega? O site avisa — cor e forma, sem letra-miúda. A honestidade é o que faz o cliente confiar e voltar. É o oposto do "atendemos tudo!" que ninguém acredita.</p>
+      </div>
+      <div class="dif sm reveal">
+        <span class="ic">🔓</span>
+        <h3>R$49, cancela quando quiser.</h3>
+        <p>Sem taxa de setup, sem fidelidade, sem contrato de 12 meses. Você testa um mês; se não trouxer cliente, cancela e a gente devolve seus dados. A conta tem que fechar pra você, não pra gente.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
 <section id="como">
   <div class="wrap">
-    <div style="text-align:center;margin-bottom:var(--s-2xl)">
-      <span class="eyebrow reveal">Como funciona</span>
+    <div class="sec-head center">
+      <span class="kick reveal">Como funciona</span>
       <h2 class="reveal">Seu site em 3 passos, sem você mexer em nada</h2>
     </div>
     <div class="steps">
-      <div class="step reveal"><div class="n">01</div><h3>Você manda o nicho</h3><p>Conta o tipo de comércio e a cidade. A IA monta a estrutura, os textos e os serviços.</p></div>
-      <div class="step reveal"><div class="n">02</div><h3>A gente estrutura em 48h</h3><p>Cardápio, agendamento ou catálogo + botão de WhatsApp. Você só aprova.</p></div>
-      <div class="step reveal"><div class="n">03</div><h3>Seu cliente te acha</h3><p>Site no ar, ranqueando no Google local, com lead caindo direto no seu WhatsApp.</p></div>
+      <div class="step reveal"><div class="n">01</div><h3>Você manda o nicho</h3><p>Conta o tipo de comércio e a cidade. A gente monta a estrutura, os textos e os serviços a partir disso.</p></div>
+      <div class="step reveal"><div class="n">02</div><h3>Estruturamos em 48h</h3><p>Cardápio, agenda ou catálogo + o botão do seu WhatsApp. Você recebe o link, confere e aprova.</p></div>
+      <div class="step reveal"><div class="n">03</div><h3>Seu cliente te acha</h3><p>No ar, ranqueando na busca local, com o lead caindo direto no seu WhatsApp — nome e pedido já na mensagem.</p></div>
     </div>
+  </div>
+</section>
+
+<section id="exemplos">
+  <div class="wrap">
+    <div class="sec-head center">
+      <span class="kick reveal">Veja rodando</span>
+      <h2 class="reveal">Escolha um nicho e mexa no site dele</h2>
+      <p class="reveal">Cada um é um site real que a gente entrega. Clica nos botões, monta um pedido, marca um horário — é tudo de verdade. Depois é só trocar nome, fotos e preços pelo seu.</p>
+    </div>
+    <div class="ctrl reveal">
+      <select id="pv" aria-label="Escolher nicho para pré-visualizar">
+        <option value="../site-dfy/pizzaria/premium/index.html">🍕 Pizzaria</option>
+        <option value="../site-dfy/pet/premium/index.html">🐾 Pet shop</option>
+        <option value="../site-dfy/clínica/premium/index.html">🦷 Clínica</option>
+        <option value="../site-dfy/salão/premium/index.html">💇 Salão</option>
+        <option value="../site-dfy/oficina/premium/index.html">🔧 Oficina</option>
+        <option value="../site-dfy/padaria/premium/index.html">🥖 Padaria</option>
+        <option value="../site-dfy/lavanderia/premium/index.html">🧺 Lavanderia</option>
+        <option value="../site-dfy/imobiliária/premium/index.html">🏠 Imobiliária</option>
+      </select>
+    </div>
+    <div class="frame-vitrine reveal">
+      <div class="toldo"><i></i><i></i><i></i><span class="url" id="pv-url">pizzaria.vitrinecerta.site</span></div>
+      <iframe id="pvf" src="../site-dfy/pizzaria/premium/index.html" title="Exemplo de site ao vivo" loading="lazy"></iframe>
+    </div>
+    <p class="hint reveal">↑ um site de verdade rodando dentro desta página. Mexe nele.</p>
   </div>
 </section>
 
 <section id="gerador">
   <div class="wrap">
-    <div style="text-align:center;margin-bottom:var(--s-2xl)">
-      <span class="eyebrow reveal">Monte seu site em 1 minuto</span>
-      <h2 class="reveal">Cola seu Maps ou Instagram e veja o site pronto</h2>
-      <p class="reveal" style="color:var(--muted);max-width:56ch;margin:0 auto">A gente puxa o nome do seu negócio do link e monta um site-genérico personalizado na hora. Sem cadastro, sem cartão.</p>
+    <div class="sec-head center">
+      <span class="kick reveal">Monte em 1 minuto</span>
+      <h2 class="reveal">Cola seu Maps ou Instagram e veja o site nascer</h2>
+      <p class="reveal">A gente puxa o nome do seu negócio do link e monta um preview personalizado na hora. Sem cadastro, sem cartão.</p>
     </div>
-    <div class="gen-box reveal">
+    <div class="gen-box vidro reveal">
       <div class="gen-row">
-        <input id="gen-link" type="text" placeholder="Cole o link do Google Maps ou Instagram do seu negócio" />
+        <label for="gen-link">Link do seu negócio</label>
+        <input id="gen-link" type="text" placeholder="Cole o Google Maps ou o Instagram" />
       </div>
       <div class="gen-row gen-2col">
-        <select id="gen-nicho">
-          <option value="pizzaria">🍕 Pizzaria</option>
-          <option value="pet">🐾 Pet shop</option>
-          <option value="padaria">🥖 Padaria</option>
-          <option value="oficina">🔧 Oficina</option>
-          <option value="salão">💇 Salão</option>
-          <option value="clínica">🦷 Clínica</option>
-          <option value="lavanderia">🧺 Lavanderia</option>
-          <option value="imobiliária">🏠 Imobiliária</option>
-        </select>
-        <input id="gen-cidade" type="text" placeholder="Cidade (ex: São Vicente)" />
+        <div>
+          <label for="gen-nicho">Tipo de comércio</label>
+          <select id="gen-nicho">
+            <option value="pizzaria">🍕 Pizzaria</option>
+            <option value="pet">🐾 Pet shop</option>
+            <option value="padaria">🥖 Padaria</option>
+            <option value="oficina">🔧 Oficina</option>
+            <option value="salão">💇 Salão</option>
+            <option value="clínica">🦷 Clínica</option>
+            <option value="lavanderia">🧺 Lavanderia</option>
+            <option value="imobiliária">🏠 Imobiliária</option>
+          </select>
+        </div>
+        <div>
+          <label for="gen-cidade">Cidade</label>
+          <input id="gen-cidade" type="text" placeholder="ex: São Vicente" />
+        </div>
       </div>
-      <button id="gen-btn" class="btn btn-solid" style="width:100%;justify-content:center;margin-top:var(--s-md)">Gerar meu site grátis →</button>
+      <button id="gen-btn" class="btn btn-lamp" style="width:100%;justify-content:center;margin-top:.4rem">Gerar meu site grátis →</button>
       <p id="gen-err" class="gen-err" style="display:none"></p>
     </div>
     <div id="gen-result" class="gen-result" style="display:none">
       <p class="gen-result-txt">Preview de <b id="gen-nome"></b> em <b id="gen-cidade-out"></b>:</p>
-      <div class="frame reveal"><iframe id="gen-frame" src="" title="Preview do seu site"></iframe></div>
-      <div class="gen-cta" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--s-lg)">
-        <a id="gen-wa" class="btn btn-solid" href="#" target="_blank" rel="noopener">Quero esse site (R$49/mês)</a>
-        <a class="btn btn-outline" href="#planos">Ver todos os planos</a>
+      <div class="frame-vitrine reveal">
+        <div class="toldo"><i></i><i></i><i></i><span class="url">seu-negocio.vitrinecerta.site</span></div>
+        <iframe id="gen-frame" src="" title="Preview do seu site"></iframe>
+      </div>
+      <div style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center;margin-top:var(--sp-lg)">
+        <a id="gen-wa" class="btn btn-wa" href="#" target="_blank" rel="noopener">Quero esse (R$49/mês) →</a>
+        <a class="btn btn-ghost" href="#planos">Ver todos os planos</a>
       </div>
     </div>
   </div>
 </section>
 
-<section id="exemplos" class="preview">
+<section id="premium-link">
   <div class="wrap">
-    <div style="text-align:center">
-      <span class="eyebrow reveal">Veja rodando</span>
-      <h2 class="reveal">Escolha um nicho e veja o site dele</h2>
+    <div class="sec-head center">
+      <span class="kick reveal">A versão completa</span>
+      <h2 class="reveal">Cada nicho com a mecânica que ele precisa</h2>
+      <p class="reveal">O Premium (R$149/mês) entrega a mecânica única do seu tipo de comércio: cardápio imersivo, avatar do pet, orçamento ao vivo, agenda com antes/depois, verificador de convênio. Filtra por faixa e abre o exemplo real:</p>
     </div>
-    <div class="ctrl reveal">
-      <select id="pv">
-        <option value="../site-dfy/pet/index.html">🐾 Pet shop</option>
-        <option value="../site-dfy/pizzaria/index.html">🍕 Pizzaria</option>
-        <option value="../site-dfy/padaria/index.html">🥖 Padaria</option>
-        <option value="../site-dfy/oficina/index.html">🔧 Oficina</option>
-        <option value="../site-dfy/salão/index.html">💇 Salão</option>
-        <option value="../site-dfy/clínica/index.html">🦷 Clínica</option>
-        <option value="../site-dfy/lavanderia/index.html">🧺 Lavanderia</option>
-        <option value="../site-dfy/imobiliária/index.html">🏠 Imobiliária</option>
-      </select>
+    <div class="price-filter reveal">
+      <button data-tier="all" class="active">Todos</button>
+      <button data-tier="essencial">Essencial R$49</button>
+      <button data-tier="plus">Plus R$99</button>
+      <button data-tier="premium">Premium R$149</button>
     </div>
-    <div class="frame reveal"><iframe id="pvf" src="../site-dfy/pet/index.html" title="Exemplo de site"></iframe></div>
-    <p class="hint reveal">Cada exemplo é um site real que a gente entrega — só troca nome, fotos e preços.</p>
+    <div class="premium-grid reveal">
+      <a class="pg" data-tier="essencial" href="../site-dfy/pizzaria/index.html" target="_blank" rel="noopener">🍕 <b>Pizzaria</b><span>Cardápio + delivery</span></a>
+      <a class="pg" data-tier="plus" href="../site-dfy/pizzaria/plus/index.html" target="_blank" rel="noopener">🍕 <b>Pizzaria</b><span>Montar pizza clicável</span></a>
+      <a class="pg" data-tier="premium" href="../site-dfy/pizzaria/premium/index.html" target="_blank" rel="noopener">🍕 <b>Pizzaria</b><span>Cardápio imersivo</span></a>
+      <a class="pg" data-tier="essencial" href="../site-dfy/pet/index.html" target="_blank" rel="noopener">🐾 <b>Pet shop</b><span>Vitrine + contato</span></a>
+      <a class="pg" data-tier="plus" href="../site-dfy/pet/plus/index.html" target="_blank" rel="noopener">🐾 <b>Pet shop</b><span>Quiz de preço</span></a>
+      <a class="pg" data-tier="premium" href="../site-dfy/pet/premium/index.html" target="_blank" rel="noopener">🐾 <b>Pet shop</b><span>Avatar + calculadora</span></a>
+      <a class="pg" data-tier="essencial" href="../site-dfy/padaria/index.html" target="_blank" rel="noopener">🥖 <b>Padaria</b><span>Cardápio + encomenda</span></a>
+      <a class="pg" data-tier="plus" href="../site-dfy/padaria/plus/index.html" target="_blank" rel="noopener">🥖 <b>Padaria</b><span>Encomendar bolo</span></a>
+      <a class="pg" data-tier="premium" href="../site-dfy/padaria/premium/index.html" target="_blank" rel="noopener">🥖 <b>Padaria</b><span>Story + encomenda</span></a>
+      <a class="pg" data-tier="essencial" href="../site-dfy/oficina/index.html" target="_blank" rel="noopener">🔧 <b>Oficina</b><span>Serviços + contato</span></a>
+      <a class="pg" data-tier="plus" href="../site-dfy/oficina/plus/index.html" target="_blank" rel="noopener">🔧 <b>Oficina</b><span>Orçamento clicável</span></a>
+      <a class="pg" data-tier="premium" href="../site-dfy/oficina/premium/index.html" target="_blank" rel="noopener">🔧 <b>Oficina</b><span>Orçamento ao vivo</span></a>
+      <a class="pg" data-tier="essencial" href="../site-dfy/salão/index.html" target="_blank" rel="noopener">💇 <b>Salão</b><span>Serviços + agenda</span></a>
+      <a class="pg" data-tier="plus" href="../site-dfy/salão/plus/index.html" target="_blank" rel="noopener">💇 <b>Salão</b><span>Before/after slider</span></a>
+      <a class="pg" data-tier="premium" href="../site-dfy/salão/premium/index.html" target="_blank" rel="noopener">💇 <b>Salão</b><span>Agenda + antes/depois</span></a>
+      <a class="pg" data-tier="essencial" href="../site-dfy/clínica/index.html" target="_blank" rel="noopener">🦷 <b>Clínica</b><span>Especialidades + marcação</span></a>
+      <a class="pg" data-tier="plus" href="../site-dfy/clínica/plus/index.html" target="_blank" rel="noopener">🦷 <b>Clínica</b><span>Simulador de preço</span></a>
+      <a class="pg" data-tier="premium" href="../site-dfy/clínica/premium/index.html" target="_blank" rel="noopener">🦷 <b>Clínica</b><span>Verificador de convênio</span></a>
+      <a class="pg" data-tier="essencial" href="../site-dfy/lavanderia/index.html" target="_blank" rel="noopener">🧺 <b>Lavanderia</b><span>Serviços + coleta</span></a>
+      <a class="pg" data-tier="plus" href="../site-dfy/lavanderia/plus/index.html" target="_blank" rel="noopener">🧺 <b>Lavanderia</b><span>Simulador de preço</span></a>
+      <a class="pg" data-tier="premium" href="../site-dfy/lavanderia/premium/index.html" target="_blank" rel="noopener">🧺 <b>Lavanderia</b><span>Coleta + prazo ao vivo</span></a>
+      <a class="pg" data-tier="essencial" href="../site-dfy/imobiliária/index.html" target="_blank" rel="noopener">🏠 <b>Imobiliária</b><span>Imóveis + contato</span></a>
+      <a class="pg" data-tier="plus" href="../site-dfy/imobiliária/plus/index.html" target="_blank" rel="noopener">🏠 <b>Imobiliária</b><span>Filtro de imóveis</span></a>
+      <a class="pg" data-tier="premium" href="../site-dfy/imobiliária/premium/index.html" target="_blank" rel="noopener">🏠 <b>Imobiliária</b><span>Filtro + mini-mapa</span></a>
+    </div>
   </div>
 </section>
 
-<section id="premium-link"><div class="wrap">
-  <div style="text-align:center;margin-bottom:var(--s-2xl)">
-    <span class="eyebrow reveal">Quer a versão completa?</span>
-    <h2 class="reveal">Sites Premium — cada nicho com seu diferencial</h2>
-    <p class="reveal" style="color:var(--muted);max-width:60ch;margin:0 auto">O plano Premium (R$149/mês) entrega um site com mecânica única por nicho: cardápio imersivo, avatar do pet, orçamento ao vivo, agenda, tour virtual e muito mais. Filtre por faixa de preço e veja o exemplo real de cada:</p>
-  </div>
-  <div class="price-filter reveal">
-    <button data-tier="all" class="active">Todos os planos</button>
-    <button data-tier="essencial">Essencial R$49</button>
-    <button data-tier="plus">Plus R$99</button>
-    <button data-tier="premium">Premium R$149</button>
-  </div>
-  <div class="premium-grid reveal">
-    <!-- PET -->
-    <a class="pg" data-tier="essencial" href="../site-dfy/pet/index.html" target="_blank" rel="noopener">🐾 <b>Pet shop</b><span>Vitrine + contato</span></a>
-    <a class="pg" data-tier="plus" href="../site-dfy/pet/plus/index.html" target="_blank" rel="noopener">🐾 <b>Pet shop</b><span>Quiz de preço + WhatsApp</span></a>
-    <a class="pg" data-tier="premium" href="../site-dfy/pet/premium/index.html" target="_blank" rel="noopener">🐾 <b>Pet shop</b><span>Avatar + calculadora</span></a>
-    <!-- PIZZARIA -->
-    <a class="pg" data-tier="essencial" href="../site-dfy/pizzaria/index.html" target="_blank" rel="noopener">🍕 <b>Pizzaria</b><span>Cardápio + delivery</span></a>
-    <a class="pg" data-tier="plus" href="../site-dfy/pizzaria/plus/index.html" target="_blank" rel="noopener">🍕 <b>Pizzaria</b><span>Montar pizza clicável</span></a>
-    <a class="pg" data-tier="premium" href="../site-dfy/pizzaria/premium/index.html" target="_blank" rel="noopener">🍕 <b>Pizzaria</b><span>Cardápio imersivo</span></a>
-    <!-- PADARIA -->
-    <a class="pg" data-tier="essencial" href="../site-dfy/padaria/index.html" target="_blank" rel="noopener">🥖 <b>Padaria</b><span>Cardápio + encomenda</span></a>
-    <a class="pg" data-tier="plus" href="../site-dfy/padaria/plus/index.html" target="_blank" rel="noopener">🥖 <b>Padaria</b><span>Encomendar bolo</span></a>
-    <a class="pg" data-tier="premium" href="../site-dfy/padaria/premium/index.html" target="_blank" rel="noopener">🥖 <b>Padaria</b><span>Story + encomenda</span></a>
-    <!-- OFICINA -->
-    <a class="pg" data-tier="essencial" href="../site-dfy/oficina/index.html" target="_blank" rel="noopener">🔧 <b>Oficina</b><span>Serviços + contato</span></a>
-    <a class="pg" data-tier="plus" href="../site-dfy/oficina/plus/index.html" target="_blank" rel="noopener">🔧 <b>Oficina</b><span>Orçamento clicável</span></a>
-    <a class="pg" data-tier="premium" href="../site-dfy/oficina/premium/index.html" target="_blank" rel="noopener">🔧 <b>Oficina</b><span>Orçamento ao vivo</span></a>
-    <!-- SALÃO -->
-    <a class="pg" data-tier="essencial" href="../site-dfy/salão/index.html" target="_blank" rel="noopener">💇 <b>Salão</b><span>Serviços + agenda</span></a>
-    <a class="pg" data-tier="plus" href="../site-dfy/salão/plus/index.html" target="_blank" rel="noopener">💇 <b>Salão</b><span>Before/after slider</span></a>
-    <a class="pg" data-tier="premium" href="../site-dfy/salão/premium/index.html" target="_blank" rel="noopener">💇 <b>Salão</b><span>Agenda + antes/depois</span></a>
-    <!-- CLÍNICA -->
-    <a class="pg" data-tier="essencial" href="../site-dfy/clínica/index.html" target="_blank" rel="noopener">🦷 <b>Clínica</b><span>Especialidades + marcação</span></a>
-    <a class="pg" data-tier="plus" href="../site-dfy/clínica/plus/index.html" target="_blank" rel="noopener">🦷 <b>Clínica</b><span>Simulador de preço</span></a>
-    <a class="pg" data-tier="premium" href="../site-dfy/clínica/premium/index.html" target="_blank" rel="noopener">🦷 <b>Clínica</b><span>Booking + tour</span></a>
-    <!-- LAVANDERIA -->
-    <a class="pg" data-tier="essencial" href="../site-dfy/lavanderia/index.html" target="_blank" rel="noopener">🧺 <b>Lavanderia</b><span>Serviços + coleta</span></a>
-    <a class="pg" data-tier="plus" href="../site-dfy/lavanderia/plus/index.html" target="_blank" rel="noopener">🧺 <b>Lavanderia</b><span>Simulador de preço</span></a>
-    <!-- IMOBILIÁRIA -->
-    <a class="pg" data-tier="essencial" href="../site-dfy/imobiliária/index.html" target="_blank" rel="noopener">🏠 <b>Imobiliária</b><span>Imóveis + contato</span></a>
-    <a class="pg" data-tier="plus" href="../site-dfy/imobiliária/plus/index.html" target="_blank" rel="noopener">🏠 <b>Imobiliária</b><span>Filtro de imóveis</span></a>
-    <a class="pg" data-tier="premium" href="../site-dfy/imobiliária/premium/index.html" target="_blank" rel="noopener">🏠 <b>Imobiliária</b><span>Filtro + mini-mapa</span></a>
-  </div>
-</div></section>
-
 <section id="planos">
   <div class="wrap">
-    <div style="text-align:center;margin-bottom:var(--s-2xl)">
-      <span class="eyebrow reveal">Planos</span>
-      <h2 class="reveal">Simples e sem contrato</h2>
+    <div class="sec-head center">
+      <span class="kick reveal">Planos</span>
+      <h2 class="reveal">Simples, sem contrato, sem pegadinha</h2>
     </div>
     <div class="plans">
-          <div class="plan reveal">
-            <h3>Essencial</h3>
-            <div class="price">R$49<small>/mês</small></div>
-            <p style="color:var(--muted)">Zero entrada · cancela quando quiser</p>
-            <ul>
-              <li>Site da sua empresa</li>
-              <li>Hospedagem e domínio</li>
-              <li>Atualizações e suporte</li>
-              <li>Aparece no Google</li>
-            </ul>
-            <a class="btn btn-outline" style="width:100%;justify-content:center" href="https://wa.me/5511970776856?text=Quero%20o%20plano%20Essencial%20(R%2449/m%C3%AAs)" target="_blank" rel="noopener">Quero o Essencial</a>
-          </div>
-          <div class="plan reveal">
-            <h3>Plus</h3>
-            <div class="price">R$99<small>/mês</small></div>
-            <p style="color:var(--muted)">Tudo do Essencial + visual premium</p>
-            <ul>
-              <li>Site com motion e hover nas fotos</li>
-              <li>Seção "processo" do seu produto</li>
-              <li>Scroll-suave no celular</li>
-              <li>Visual mais cuidado que o Essencial</li>
-            </ul>
-            <a class="btn btn-outline" style="width:100%;justify-content:center" href="https://wa.me/5511970776856?text=Quero%20o%20plano%20Plus%20(R%2499/m%C3%AAs)" target="_blank" rel="noopener">Quero o Plus</a>
-          </div>
-          <div class="plan premium reveal">
-            <span class="badge">MAIS PROCURADO</span>
-            <h3>Premium</h3>
-            <div class="price">R$149<small>/mês</small></div>
-            <p style="color:var(--muted)">Tudo do Plus + mecânica única</p>
-            <ul>
-              <li>Mecânica única por nicho</li>
-              <li>Comanda interativa no WhatsApp</li>
-              <li>Tracker de entrega em tempo real</li>
-              <li>Suporte prioritário</li>
-            </ul>
-            <a class="btn btn-solid" style="width:100%;justify-content:center" href="https://wa.me/5511970776856?text=Quero%20o%20plano%20Premium%20(R%24149/m%C3%AAs)" target="_blank" rel="noopener">Quero o Premium</a>
-          </div>
-        </div>
-        <div style="text-align:center;margin-top:var(--s-xl)">
-          <a class="btn btn-outline reveal" href="#manutencao" style="padding:.6rem 1.2rem;font-size:.92rem">Ver manutenção e domínio próprio</a>
-        </div>
+      <div class="plan reveal">
+        <h3>Essencial</h3>
+        <div class="price">R$49<small>/mês</small></div>
+        <p class="sub">Zero entrada · cancela quando quiser</p>
+        <ul>
+          <li>Site da sua empresa, no ar em 48h</li>
+          <li>Hospedagem e endereço inclusos</li>
+          <li>Botão de WhatsApp direto</li>
+          <li>Aparece na busca do Google local</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/5511970776856?text=Quero%20o%20plano%20Essencial%20(R%2449/m%C3%AAs)" target="_blank" rel="noopener">Quero o Essencial</a>
+      </div>
+      <div class="plan reveal">
+        <h3>Plus</h3>
+        <div class="price">R$99<small>/mês</small></div>
+        <p class="sub">Tudo do Essencial + acabamento premium</p>
+        <ul>
+          <li>Motion e hover cuidados nas fotos</li>
+          <li>Seção "como funciona" do seu produto</li>
+          <li>Rolagem suave no celular</li>
+          <li>Visual mais caprichado</li>
+        </ul>
+        <a class="btn btn-ghost" href="https://wa.me/5511970776856?text=Quero%20o%20plano%20Plus%20(R%2499/m%C3%AAs)" target="_blank" rel="noopener">Quero o Plus</a>
+      </div>
+      <div class="plan destaque reveal">
+        <span class="badge">MAIS PROCURADO</span>
+        <h3>Premium</h3>
+        <div class="price">R$149<small>/mês</small></div>
+        <p class="sub">Tudo do Plus + a mecânica que responde</p>
+        <ul>
+          <li>Mecânica única do seu nicho</li>
+          <li>Pedido/agenda montados no site</li>
+          <li>Estados ao vivo (aberto, prazo, cobertura)</li>
+          <li>Suporte prioritário</li>
+        </ul>
+        <a class="btn btn-lamp" href="https://wa.me/5511970776856?text=Quero%20o%20plano%20Premium%20(R%24149/m%C3%AAs)" target="_blank" rel="noopener">Quero o Premium</a>
+      </div>
+    </div>
+    <div class="center" style="margin-top:var(--sp-xl)">
+      <a class="btn btn-ghost btn-sm reveal" href="#manutencao">Ver manutenção e domínio próprio</a>
+    </div>
   </div>
 </section>
 
 <section id="manutencao">
   <div class="wrap">
-    <div style="text-align:center;margin-bottom:var(--s-2xl)">
-      <span class="eyebrow reveal">Manutenção e domínio</span>
+    <div class="sec-head center">
+      <span class="kick reveal">Manutenção e domínio</span>
       <h2 class="reveal">Errinho é de graça. Evolução, a gente combina.</h2>
     </div>
     <div class="steps">
-      <div class="step reveal"><div class="n">BUG</div><h3>Correção grátis</h3><p>Link quebrado, texto errado, foto que não carrega — resolvemos sem custo, incluso no plano.</p></div>
-      <div class="step reveal"><div class="n">UPDATE</div><h3>Cardápio/fotos</h3><p>Trocar prato, preço ou foto: <b>R$29</b> por atualização. Ou pacote Light por R$99/mês (2/mês).</p></div>
-      <div class="step reveal"><div class="n">EVOLVE</div><h3>Melhoria</h3><p>Nova funcionalidade ou seção: a partir de <b>R$79</b>. Pacote Full R$199/mês = ilimitado + 1 melhoria.</p></div>
+      <div class="step reveal"><div class="n">BUG · GRÁTIS</div><h3>Correção sem custo</h3><p>Link quebrado, texto errado, foto que não carrega — resolvemos sem cobrar, incluso no plano.</p></div>
+      <div class="step reveal"><div class="n">UPDATE · R$29</div><h3>Cardápio e fotos</h3><p>Trocar prato, preço ou foto: R$29 por atualização. Ou pacote Light R$99/mês (2 por mês).</p></div>
+      <div class="step reveal"><div class="n">EVOLVE · R$79+</div><h3>Nova funcionalidade</h3><p>Seção ou recurso novo a partir de R$79. Pacote Full R$199/mês = ilimitado + 1 melhoria.</p></div>
     </div>
-    <div class="plans" style="margin-top:var(--s-2xl)">
+    <div class="plans dois" style="margin-top:var(--sp-2xl)">
       <div class="plan reveal">
         <h3>Domínio Próprio</h3>
         <div class="price">R$199<small>/mês</small></div>
-        <p style="color:var(--muted)">Tudo do Premium + seu endereço .com.br</p>
+        <p class="sub">Tudo do Premium + seu .com.br</p>
         <ul>
-          <li>Domínio próprio (ex: seunegocio.com.br)</li>
+          <li>Domínio próprio (seunegocio.com.br)</li>
           <li>E-mail profissional</li>
           <li>Certificado SSL + backup diário</li>
           <li>Infraestrutura gerenciada</li>
         </ul>
-        <a class="btn btn-solid" style="width:100%;justify-content:center" href="https://wa.me/5511970776856?text=Quero%20o%20Dom%C3%ADnio%20Pr%C3%B3prio%20(R%24199/m%C3%AAs)" target="_blank" rel="noopener">Quero domínio próprio</a>
+        <a class="btn btn-lamp" href="https://wa.me/5511970776856?text=Quero%20o%20Dom%C3%ADnio%20Pr%C3%B3prio%20(R%24199/m%C3%AAs)" target="_blank" rel="noopener">Quero domínio próprio</a>
       </div>
-      <div class="plan premium reveal">
+      <div class="plan destaque reveal">
         <span class="badge">RECOMENDADO</span>
         <h3>Pacote Full</h3>
         <div class="price">R$199<small>/mês</small></div>
-        <p style="color:var(--muted)">Premium + atualizações ilimitadas</p>
+        <p class="sub">Premium + atualizações ilimitadas</p>
         <ul>
           <li>Tudo do Premium</li>
           <li>Atualizações de cardápio/fotos ilimitadas</li>
           <li>1 melhoria de layout por mês</li>
           <li>Prioridade total no suporte</li>
         </ul>
-        <a class="btn btn-outline" style="width:100%;justify-content:center" href="https://wa.me/5511970776856?text=Quero%20o%20Pacote%20Full%20(R%24199/m%C3%AAs)" target="_blank" rel="noopener">Quero o Full</a>
+        <a class="btn btn-ghost" href="https://wa.me/5511970776856?text=Quero%20o%20Pacote%20Full%20(R%24199/m%C3%AAs)" target="_blank" rel="noopener">Quero o Full</a>
       </div>
     </div>
   </div>
@@ -388,145 +551,138 @@ footer{background:var(--bg2);border-top:1px solid var(--line);padding-block:var(
 
 <section class="faq">
   <div class="wrap">
-    <div style="text-align:center;margin-bottom:var(--s-xl)">
-      <span class="eyebrow reveal">Dúvidas</span>
+    <div class="sec-head center">
+      <span class="kick reveal">Dúvidas</span>
       <h2 class="reveal">Perguntas frequentes</h2>
     </div>
-    <details class="reveal" open><summary>Em 48h mesmo?</summary><p>Sim. O site do plano Essencial fica pronto em até 48h úteis após você enviar o nicho (tipo de comércio) e a cidade. Você recebe um link de pré-visualização, aprova e a gente publica. Se precisar de ajustes (cores, textos, fotos), entramos em uma rodada de revisão rápida sem custo extra.</p></details>
-    <details class="reveal"><summary>Tem fidelidade ou contrato?</summary><p>Não. Você paga mês a mês e cancela quando quiser, sem multa e sem burocracia. O site fica no ar enquanto a assinatura estiver ativa; se cancelar, tiramos do ar e devolvemos seus dados. Sem letras miúdas.</p></details>
-    <details class="reveal"><summary>Quem faz o site, é IA ou pessoa?</summary><p>Um sistema com IA monta a estrutura, os textos e os serviços a partir do seu nicho, e uma revisão humana passa um polimento final (tom de voz, coerência, conferência de preços). Você aprova o resultado antes de subir. Não é "gerador solto" — tem cuidado humano no meio.</p></details>
-    <details class="reveal"><summary>Onde o lead (cliente) cai?</summary><p>Direto no seu WhatsApp, numa mensagem já trazendo nome e o que o cliente quer. Além disso, se você ativar o painel de leads (plano Premium ou add-on), tudo também é registrado numa planilha sua para acompanhamento e follow-up. Sem intermediário, sem comissão por venda.</p></details>
-    <details class="reveal"><summary>Preciso saber de site ou programação?</summary><p>Não. Você só manda o nicho, a cidade e (se tiver) o link do Google Maps ou Instagram. A gente estrutura tudo. Para editar um preço ou um texto depois, é só pedir no WhatsApp e a gente ajusta, ou você mesmo edita num editor simples que disponibilizamos.</p></details>
-    <details class="reveal"><summary>Aparece no Google?</summary><p>Sim. Cada site é feito com título, descrição e cabeçalhos otimizados para a sua cidade (ex.: "padaria em São Vicente"), o que ajuda a ranquear nas buscas locais. Quanto mais antigo e com mais avaliações, melhor o posicionamento — por isso vale publicar cedo.</p></details>
-    <details class="reveal"><summary>Posso usar minhas fotos ou vocês fornecem?</summary><p>Os dois. Se você mandar fotos reais do seu comércio, a gente usa (fica muito melhor e mais confiável). Se não tiver, usamos fotos de alta qualidade do seu nicho como base, e você troca quando quiser. Nunca usamos imagens de terceiros sem direito.</p></details>
-    <details class="reveal"><summary>E se eu já tiver um site?</summary><p>A gente pode refazer do zero no padrão Vitrine Certa (mais rápido, moderno e com WhatsApp integrado) ou apenas importar seu conteúdo. Muitos clientes trocam justamente porque o site antigo não traz lead. O plano Premium inclui essa migração.</p></details>
-    <details class="reveal"><summary>Qual a diferença entre os planos?</summary><p><b>Essencial (R$49/mês):</b> site da sua empresa, hospedagem, domínio, atualizações e aparece no Google. <b>Plus (R$99/mês):</b> tudo do Essencial + visual premium com motion, hover nas fotos e seção de processo. <b>Premium (R$149/mês):</b> tudo do Plus + mecânica única por nicho (forno ao vivo, comanda, tracker), agendamento e suporte prioritário. Se você agenda horário ou vende pelo site, o Premium se paga sozinho.</p></details>
-    <details class="reveal"><summary>Como funciona o pagamento?</summary><p>Pix, cartão ou boleto, mês a mês. O primeiro mês pode ter promoção de lançamento. Não cobramos taxa de setup e não pedimos dados de cartão para o teste — você só paga quando aprovar o site no ar.</p></details>
-    <details class="reveal"><summary>Erro no site é cobrado?</summary><p>Não. Qualquer bug — link quebrado, texto errado, foto que não carrega — a gente corrige de graça, incluso no seu plano. Você reporta no WhatsApp e a gente resolve.</p></details>
-    <details class="reveal"><summary>Trocar cardápio ou fotos tem custo?</summary><p>Sim, R$29 por atualização de conteúdo (novo prato, preço ou foto). Se você atualiza frequente, vale o pacote Light (R$99/mês = 2 atualizações) ou Full (R$199/mês = ilimitado).</p></details>
-    <details class="reveal"><summary>Posso ter meu domínio próprio (.com.br)?</summary><p>Sim. O plano Domínio Próprio custa R$199/mês e inclui tudo do Premium + registro do seu .com.br, e-mail profissional, SSL e backup diário. A gente gerencia a infraestrutura, você só usa.</p></details>
-    <details class="reveal"><summary>Quero melhorar o site (nova funcionalidade). Como cobra?</summary><p>Melhorias são orçadas à parte: a partir de R$79 para ajustes de layout, ou pacote Full (R$199/mês) que já inclui 1 melhoria por mês + atualizações ilimitadas. Bugs continuam grátis.</p></details>
+    <details class="reveal" open><summary>Em 48h mesmo?</summary><p>Sim. O site do Essencial fica pronto em até 48h úteis depois que você envia o nicho e a cidade. Você recebe um link de pré-visualização, aprova e a gente publica. Ajustes de cor, texto ou foto entram numa rodada de revisão rápida sem custo extra.</p></details>
+    <details class="reveal"><summary>Tem fidelidade ou contrato?</summary><p>Não. Você paga mês a mês e cancela quando quiser, sem multa e sem burocracia. O site fica no ar enquanto a assinatura estiver ativa; se cancelar, tiramos do ar e devolvemos seus dados. Sem letra miúda.</p></details>
+    <details class="reveal"><summary>O site "que responde" funciona sem eu fazer nada?</summary><p>Funciona. O cardápio monta o pedido, a agenda mostra horários, o verificador responde — tudo no próprio site. Quando o cliente conclui, cai uma mensagem pronta no seu WhatsApp com nome e pedido. Você só recebe e confirma.</p></details>
+    <details class="reveal"><summary>Quem faz o site, é robô ou pessoa?</summary><p>Um sistema monta a estrutura, os textos e os serviços a partir do seu nicho, e uma revisão humana dá o polimento final (tom, coerência, conferência de preços). Você aprova antes de subir. Não é gerador solto — tem cuidado humano no meio.</p></details>
+    <details class="reveal"><summary>Onde o lead (cliente) cai?</summary><p>Direto no seu WhatsApp, numa mensagem já trazendo o nome e o que o cliente quer. No Premium (ou add-on), também fica registrado numa planilha sua para follow-up. Sem intermediário e sem comissão por venda.</p></details>
+    <details class="reveal"><summary>Preciso saber de site ou programação?</summary><p>Não. Você manda o nicho, a cidade e (se tiver) o link do Maps ou Instagram. A gente estrutura tudo. Para trocar um preço ou texto depois, é só pedir no WhatsApp — ou editar você mesma num editor simples que disponibilizamos.</p></details>
+    <details class="reveal"><summary>Aparece no Google?</summary><p>Sim. Cada site sai com título, descrição e cabeçalhos otimizados para a sua cidade (ex.: "padaria em São Vicente"), o que ajuda a ranquear nas buscas locais. Quanto antes publicar e mais avaliações juntar, melhor a posição.</p></details>
+    <details class="reveal"><summary>Posso usar minhas fotos?</summary><p>Pode, e fica melhor. Se mandar fotos reais do seu comércio, a gente usa. Se não tiver, usamos imagens de alta qualidade do nicho como base e você troca quando quiser. Nunca usamos imagem de terceiro sem direito.</p></details>
+    <details class="reveal"><summary>E se eu já tiver um site?</summary><p>A gente refaz no padrão Vitrine Certa (mais rápido, moderno e com WhatsApp integrado) ou importa o seu conteúdo. Muita gente troca justamente porque o site antigo não traz lead. O Premium inclui essa migração.</p></details>
+    <details class="reveal"><summary>Qual a diferença entre os planos?</summary><p><b>Essencial (R$49):</b> site, hospedagem, endereço, WhatsApp e Google. <b>Plus (R$99):</b> tudo isso + acabamento premium com motion e seção de processo. <b>Premium (R$149):</b> tudo do Plus + a mecânica única do nicho (pedido, agenda, estados ao vivo) e suporte prioritário. Se você agenda horário ou vende pelo site, o Premium se paga sozinho.</p></details>
+    <details class="reveal"><summary>Como funciona o pagamento?</summary><p>Pix, cartão ou boleto, mês a mês. Sem taxa de setup e sem pedir cartão para o teste — você só paga quando aprovar o site no ar.</p></details>
+    <details class="reveal"><summary>Trocar cardápio ou fotos tem custo?</summary><p>R$29 por atualização de conteúdo (prato, preço ou foto novos). Se atualiza com frequência, vale o pacote Light (R$99/mês = 2) ou Full (R$199/mês = ilimitado). Bug continua sendo de graça.</p></details>
   </div>
 </section>
 
 <section class="cta-final">
   <div class="wrap">
-    <h2 class="reveal">Pronto pra ter seu site em 48h?</h2>
-    <div class="reveal" style="display:flex;gap:.8rem;flex-wrap:wrap;justify-content:center">
-      <a class="btn btn-solid" href="https://wa.me/5511970776856?text=Quero%20meu%20site%20Vitrine%20Certa" target="_blank" rel="noopener">Falar no WhatsApp</a>
-      <a class="btn btn-outline" href="#exemplos">Ver exemplos</a>
+    <div class="inner reveal">
+      <h2>Pronta pra ter um site que trabalha?</h2>
+      <p>Manda o seu nicho e a cidade. Em 48h ele está no ar, respondendo, com o seu WhatsApp.</p>
+      <div class="cta">
+        <a class="btn btn-wa" href="https://wa.me/5511970776856?text=Quero%20meu%20site%20Vitrine%20Certa" target="_blank" rel="noopener">💬 Falar no WhatsApp</a>
+        <a class="btn btn-ghost" href="#exemplos" style="color:var(--claro);border-color:var(--noite-linha)">Ver um site respondendo</a>
+      </div>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">Vitrine Certa · sites com IA para PME · © 2026 · braço independente</div>
+  <div class="wrap">
+    <span class="brand">
+      <svg class="logo" viewBox="0 0 32 32" aria-hidden="true">
+        <rect x="4" y="6" width="24" height="21" rx="3" fill="none" stroke="currentColor" stroke-width="2.2"/>
+        <path d="M4 12 H28" stroke="currentColor" stroke-width="2.2"/>
+        <path d="M10.5 18.5 l3.8 3.8 L22 14.6" fill="none" stroke="var(--lamp)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      Vitrine Certa
+    </span>
+    <span>Sites que respondem, para comércio local · © 2026 · braço independente</span>
+  </div>
 </footer>
 
 <script src="../references/leads.js"></script>
 <script>
-const io=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.12,rootMargin:'0px 0px -40px 0px'});
-document.querySelectorAll('.reveal').forEach((el,i)=>{el.style.transitionDelay=(i%4*60)+'ms';io.observe(el);});
-setTimeout(()=>document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in')),1600);
-// preview interativo
-const pv=document.getElementById('pv'),pvf=document.getElementById('pvf');
-if(pv)pv.addEventListener('change',()=>{pvf.src=pv.value;});
-// price filter: mostra/esconde cards de exemplo por faixa de preço
-document.querySelectorAll('.price-filter button').forEach(btn=>{
-  btn.addEventListener('click',()=>{
+// reveal — clip-path sobe; fallback garante visibilidade
+(function(){
+  var els=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.14,rootMargin:'0px 0px -30px 0px'});
+    els.forEach(function(el){io.observe(el);});
+    setTimeout(function(){els.forEach(function(el){el.classList.add('in');});},1400);
+  }else{els.forEach(function(el){el.classList.add('in');});}
+})();
+
+// vitrine do hero: o site REAGE ao clique (prova de "responde") — cor=estado (forma+cor)
+(function(){
+  var v=document.getElementById('vitrine'),sw=document.getElementById('v-switch');
+  if(!v||!sw) return;
+  var bt=document.getElementById('v-badge-txt'),st=document.getElementById('v-status'),wa=document.getElementById('v-wa-txt'),bd=document.getElementById('v-badge');
+  function set(aberto){
+    v.classList.toggle('aberto',aberto);
+    bd.className='estado '+(aberto?'on':'off');
+    bt.textContent=aberto?'Aberto agora':'Fechado';
+    st.innerHTML=aberto?'Fecha às <b>23h</b>. Peça agora que sai em 40 min.':'Abre <b>18h</b>. Deixe o pedido pronto que a gente chama.';
+    wa.textContent=aberto?'Pedir no WhatsApp':'Avisar quando abrir';
+  }
+  function toggle(){set(!v.classList.contains('aberto'));}
+  sw.addEventListener('click',toggle);
+  sw.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();toggle();}});
+})();
+
+// exemplos: troca de nicho no iframe + label da URL
+(function(){
+  var pv=document.getElementById('pv'),pvf=document.getElementById('pvf'),url=document.getElementById('pv-url');
+  if(!pv) return;
+  pv.addEventListener('change',function(){
+    pvf.src=pv.value;
+    var m=pv.value.match(/site-dfy\/([^\/]+)\//);
+    if(url&&m) url.textContent=decodeURIComponent(m[1]).replace(/[áâã]/g,'a').replace(/í/g,'i').replace(/[óô]/g,'o')+'.vitrinecerta.site';
+  });
+})();
+
+// filtro de preço do grid premium
+document.querySelectorAll('.price-filter button').forEach(function(btn){
+  btn.addEventListener('click',function(){
     document.querySelector('.price-filter button.active').classList.remove('active');
     btn.classList.add('active');
-    const tier=btn.getAttribute('data-tier');
-    document.querySelectorAll('.pg').forEach(card=>{
-      card.classList.remove('hide');
-      if(tier!=='all' && card.getAttribute('data-tier')!==tier){card.classList.add('hide');}
+    var tier=btn.getAttribute('data-tier');
+    document.querySelectorAll('.pg').forEach(function(card){
+      card.classList.toggle('hide', tier!=='all' && card.getAttribute('data-tier')!==tier);
     });
   });
 });
-// scroll motion: parallax sutil no hero e aurora (mobile-safe, respeita reduced-motion)
-const heroFig=document.querySelector('.hero-fig');
-const aurora=document.body;
-let ticking=false;
-function onScroll(){
-  const y=window.scrollY||0;
-  if(heroFig && window.innerWidth>820){
-    heroFig.style.transform='translateY('+(y*0.06)+'px)';
-  }
-  if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-    document.body.style.setProperty('--sy',(y*0.02)+'px');
-  }
-  ticking=false;
-}
-window.addEventListener('scroll',()=>{if(!ticking){requestAnimationFrame(onScroll);ticking=true;}},{passive:true});
-onScroll();
-// scroll-reveal para seções (além do .reveal padrão)
-const sr=document.querySelectorAll('.scroll-reveal');
-if(sr.length){
-  const io2=new IntersectionObserver((es)=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io2.unobserve(e.target);}}),{threshold:.15});
-  sr.forEach(el=>io2.observe(el));
-  setTimeout(()=>sr.forEach(el=>el.classList.add('in')),1800);
-}
 
-// === GERADOR: Maps/Insta → preview do site genérico ===
+// gerador: Maps/Insta → nome → preview + WhatsApp + captura de lead
 (function(){
-  const link=document.getElementById('gen-link');
-  const nicho=document.getElementById('gen-nicho');
-  const cidade=document.getElementById('gen-cidade');
-  const btn=document.getElementById('gen-btn');
-  const err=document.getElementById('gen-err');
-  const result=document.getElementById('gen-result');
-  const frame=document.getElementById('gen-frame');
-  const nomeOut=document.getElementById('gen-nome');
-  const cidadeOut=document.getElementById('gen-cidade-out');
-  const wa=document.getElementById('gen-wa');
+  var link=document.getElementById('gen-link'),nicho=document.getElementById('gen-nicho'),cidade=document.getElementById('gen-cidade'),
+      btn=document.getElementById('gen-btn'),err=document.getElementById('gen-err'),result=document.getElementById('gen-result'),
+      frame=document.getElementById('gen-frame'),nomeOut=document.getElementById('gen-nome'),cidadeOut=document.getElementById('gen-cidade-out'),wa=document.getElementById('gen-wa');
   if(!btn) return;
-
   function extraiNome(u){
     u=u.trim();
     try{
-      // Google Maps: ?q=Nome ou /place/Nome/
       if(u.includes('maps.google')||u.includes('goo.gl')){
-        let m=u.match(/[?&]q=([^&]+)/); if(m) return decodeURIComponent(m[1]).replace(/\+/g,' ');
+        var m=u.match(/[?&]q=([^&]+)/); if(m) return decodeURIComponent(m[1]).replace(/\+/g,' ');
         m=u.match(/\/place\/([^/]+)\//); if(m) return decodeURIComponent(m[1]).replace(/\+/g,' ');
       }
-      // Instagram: instagram.com/pizzariadojoao ou @pizzariadojoao
       if(u.includes('instagram')||u.startsWith('@')){
-        let m=u.match(/(?:instagram\.com\/)?@?([a-z0-9._]+)/i);
-        if(m) return m[1].replace(/[._]/g,' ');
+        var i=u.match(/(?:instagram\.com\/)?@?([a-z0-9._]+)/i);
+        if(i) return i[1].replace(/[._]/g,' ');
       }
     }catch(e){}
     return '';
   }
-
-  btn.addEventListener('click',()=>{
+  btn.addEventListener('click',function(){
     err.style.display='none';
-    const nome=extraiNome(link.value);
-    const cid=cidade.value.trim();
-    const nch=nicho.value;
-    if(!nome && !link.value.trim()){
-      err.textContent='Cole o link do Maps ou Instagram do seu negócio.';
-      err.style.display='block'; return;
-    }
-    if(!cid){
-      err.textContent='Informe a cidade do seu negócio.';
-      err.style.display='block'; return;
-    }
-    const displayNome = nome || (link.value.trim().split('/').pop().slice(0,40)) || 'Seu Negócio';
-    const base='../site-dfy/'+nch+'/index.html';
-    const src=base+'?nome='+encodeURIComponent(displayNome)+'&cidade='+encodeURIComponent(cid);
-    frame.src=src;
-    nomeOut.textContent=displayNome;
-    cidadeOut.textContent=cid;
+    var nome=extraiNome(link.value), cid=cidade.value.trim(), nch=nicho.value;
+    if(!nome && !link.value.trim()){err.textContent='Cole o link do Maps ou Instagram do seu negócio.';err.style.display='block';return;}
+    if(!cid){err.textContent='Informe a cidade do seu negócio.';err.style.display='block';return;}
+    var displayNome = nome || (link.value.trim().split('/').pop().slice(0,40)) || 'Seu Negócio';
+    var src='../site-dfy/'+nch+'/index.html?nome='+encodeURIComponent(displayNome)+'&cidade='+encodeURIComponent(cid);
+    frame.src=src; nomeOut.textContent=displayNome; cidadeOut.textContent=cid;
     wa.href='https://wa.me/5511970776856?text='+encodeURIComponent('Quero o site da '+displayNome+' ('+cid+') — plano Essencial R$49/mês');
     result.style.display='block';
     result.scrollIntoView({behavior:'smooth',block:'center'});
-    // captura lead (silencioso se não configurado)
-    if(window.captureLead){
-      captureLead({nome:displayNome, cidade:cid, nicho:nch, origem:'gerador', whatsapp:'', mensagem:link.value});
-    }
+    if(window.captureLead){captureLead({nome:displayNome,cidade:cid,nicho:nch,origem:'gerador',whatsapp:'',mensagem:link.value});}
   });
 })();
-
 </script>
 </body>
 </html>
