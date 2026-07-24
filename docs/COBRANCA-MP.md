@@ -148,7 +148,33 @@ recorrente entra em produção.
 
 ---
 
-## 7. Métricas de cobrança (para o KPI MRR do plano vivo)
+## 7. Implementado (S8 — 24/jul) — `references/cobranca-mp.js`
+
+Módulo Node **sem dependência externa** (https nativo). Token lido de
+`~/.secrets/mp-access-token-vitrine` (fs, nunca logado).
+
+**API (module.exports):**
+- `criarAssinatura(plano, payerEmail, {dryRun, externalRef})` — POST `/preapproval`; planos `essencial` R$49 / `premium` R$149 / `full` R$199
+- `criarPixPacote(pacote, payerEmail, {dryRun, externalRef})` — POST `/v1/payments` Pix; pacotes `light` R$99 / `full` R$199
+- `statusAssinatura(id)` — GET `/preapproval/{id}`
+- `probe()` — GET `/users/me` + `/preapproval/search?limit=1` (read-only)
+
+**CLI:**
+```bash
+node references/cobranca-mp.js probe                               # sonda read-only
+node references/cobranca-mp.js assinatura premium email --dry-run  # imprime payload, NÃO chama API
+node references/cobranca-mp.js pix light email --dry-run
+node references/cobranca-mp.js status <preapproval_id>
+```
+
+**Evidência real (24/jul):** `probe` → `GET /users/me` **HTTP 200** (user 210205808, MLB)
+e `GET /preapproval/search?limit=1` **HTTP 200** (0 assinaturas). POSTs testados só em
+`--dry-run` — nenhuma cobrança real criada. Pendências: webhook (`mp-webhook.js`, §4)
+e 1º cliente real para o 1º POST sem `--dry-run`.
+
+---
+
+## 8. Métricas de cobrança (para o KPI MRR do plano vivo)
 
 | Evento | Onde registra | KPI alimentado |
 |--------|---------------|----------------|
