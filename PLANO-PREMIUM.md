@@ -34,9 +34,27 @@ Arquivo existe: `receita-zero/gerador.html` (beta). Funciona:
 - [x] Colar link Maps/Instagram → detecta nome (Maps q/place, Insta @)
 - [x] Selecionar nicho → pré-visualiza o layout SIMPLES do nicho num iframe
 - [x] API key opcional do Maps → puxa nome/endereço/foto via Place API (best-effort)
-- [x] Botão "Gerar meu site de verdade" → abre WhatsApp com resumo
-Próximas melhorias (futuro): heurística automática de nicho a partir do link; persistir rascunho em localStorage;
-conectar direto ao template Premium (upsell R$149); ligar ao motor de lead (GAS CRM isolado em `lead-engine/code.gs`).
+- [x] 3 campos para links diretos de fotos do Instagram (instagram.com/p/XXXXX) → injeta fotos reais no iframe via query params + postMessage
+- [x] Botão "Gerar meu site de verdade" → abre formulário de captura de lead (nome, e-mail, WhatsApp)
+- [x] Lead engine integrado: envia dados para Google Apps Script → planilha de leads
+- [x] Fallback: se lead engine falhar, abre WhatsApp direto com todos os dados
+
+### Motor de fotos reais (`references/vc-photos.js`)
+Script compartilhado por todos os 8 nichos. Recebe fotos via:
+1. Query params: `?img1=URL&img2=URL&img3=URL&nome=NOME&cidade=CIDADE`
+2. postMessage: `{type:'VC_PHOTOS', photos:[...], name:..., city:...}`
+
+Aplica fotos reais nos elementos `<img>` (hero, split, etc.) e atualiza nome/cidade no HTML.
+Fallback: usa fotos de exemplo do nicho (`assets/`) quando não há fotos reais.
+
+### Lead engine (`lead-engine/code.gs`)
+Google Apps Script isolado (R$0). Cada lead vira uma linha na planilha:
+`data | origem | nicho | nome | whatsapp | email | cidade | fotos | link | status`
+
+Para ativar:
+1. Criar planilha Google → Extensões > Apps Script → colar `code.gs`
+2. Publicar como Web App (Execute como: Eu, Acesso: Qualquer um)
+3. Copiar URL → substituir `YOUR_SCRIPT_ID` no `gerador.html`
 
 ## Landing (receita-zero/index.html)
 - Hero + "Veja rodando" (iframe dos Simples) + NOVO bloco "Quer a versão completa?" com grid de 8 links pros Premium

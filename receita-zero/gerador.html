@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Vitrine Certa — Gerador beta</title>
-<meta name="description" content="Gerador beta Vitrine Certa: cole o link do Google Maps ou Instagram do seu comércio e veja o site montado no layout Simples.">
+<meta name="description" content="Gerador beta Vitrine Certa: cole o link do Google Maps ou Instagram do seu comércio e veja o site montado com fotos reais no layout Simples.">
 <style>
 :root{
   --bg:#070710;--surface:#15152B;--surface2:#1C1C38;--line:#2A2A52;--line2:#3A3A70;
@@ -42,6 +42,9 @@ textarea{resize:vertical;min-height:64px}
 .meta b{color:var(--fg)}
 .pills{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
 .pill{font-size:.72rem;border:1px solid var(--line2);border-radius:999px;padding:.25rem .7rem;color:var(--a2)}
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.photo-thumb{width:100%;height:60px;object-fit:cover;border-radius:8px;border:1px solid var(--line2);background:var(--surface2);display:flex;align-items:center;justify-content:center;color:var(--faint);font-size:11px;text-align:center;padding:4px}
+.photo-thumb.has-img{background:var(--surface2);color:var(--a2)}
 footer{text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
 </style>
 </head>
@@ -66,21 +69,43 @@ footer{text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
       <option value="lavanderia">Lavanderia</option>
       <option value="imobiliária">Imobiliária</option>
     </select>
-    <label for="key">Google Maps API key (opcional — puxa fotos/endereço reais)</label>
-    <input id="key" placeholder="deixe em branco para usar dados de exemplo" />
+    <label for="key">Google Maps API key (opcional — puxa fotos/endereço reais do Maps)</label>
+    <input id="key" placeholder="deixe em branco para usar fotos de exemplo" />
+
+    <label for="ig1" style="margin-top:18px">Fotos do Instagram (opcional — links diretos)</label>
+    <input id="ig1" placeholder="https://instagram.com/p/XXXXX (foto 1)" />
+    <input id="ig2" placeholder="https://instagram.com/p/XXXXX (foto 2)" style="margin-top:8px" />
+    <input id="ig3" placeholder="https://instagram.com/p/XXXXX (foto 3)" style="margin-top:8px" />
+    <div class="note" id="ig-note" style="margin-top:8px">Dica: cole links diretos de fotos do seu Instagram (instagram.com/p/XXXXX). Assim o site mostra suas fotos reais. Sem links, usamos fotos de exemplo do nicho.</div>
+
     <div class="row">
       <button class="btn" id="gen">Montar pré-visualização</button>
       <button class="btn ghost" id="reset">Limpar</button>
     </div>
-    <div class="note" id="note">Dica: o link do Maps costuma trazer o nome do local no próprio endereço. Sem a API key, usamos fotos de exemplo do nicho — você troca pelas reais depois.</div>
+    <div class="note" id="note">Cole o link do Maps ou Instagram e selecione o nicho. Com API key ou links de fotos, o site mostra fotos reais do seu negócio.</div>
   </div>
 
   <div class="frame" id="frame"><iframe id="pv" title="Pré-visualização do site" src="about:blank"></iframe></div>
   <div class="meta" id="meta" style="display:none"></div>
   <div class="pills" id="pills" style="display:none"></div>
+  <div class="photo-grid" id="photo-grid" style="display:none"></div>
 
   <div class="row" id="cta" style="display:none">
     <button class="btn" id="finish">Gerar meu site de verdade →</button>
+  </div>
+
+  <!-- Formulário de captura de lead -->
+  <div class="card" id="lead-form" style="margin-top:24px;display:none">
+    <label for="lead-nome">Seu nome</label>
+    <input id="lead-nome" placeholder="João Silva" />
+    <label for="lead-email">Seu e-mail</label>
+    <input id="lead-email" type="email" placeholder="joao@exemplo.com" />
+    <label for="lead-whatsapp">Seu WhatsApp</label>
+    <input id="lead-whatsapp" placeholder="(11) 99999-9999" />
+    <div class="note" id="lead-note" style="margin-top:8px">Seus dados vão direto para a planilha de leads. Ninguém mais vê.</div>
+    <div class="row" style="margin-top:14px">
+      <button class="btn" id="send-lead">Quero meu site com essas fotos →</button>
+    </div>
   </div>
 
   <footer>Vitrine Certa · gerador beta · braço independente · © 2026</footer>
@@ -88,6 +113,8 @@ footer{text-align:center;color:var(--faint);font-size:.82rem;margin-top:40px}
 
 <script>
 const base='site-dfy/';
+const IG_PROXY='https://images.weserv.io/?w=800&h=600&we=edge&url='; // proxy gratuito para imagens do Instagram
+
 function extractName(link){
   try{
     if(link.includes('maps.google')||link.includes('goo.gl/maps')){
@@ -96,7 +123,7 @@ function extractName(link){
       if(q) return decodeURIComponent(q).replace(/\+/g,' ').split(',')[0].trim();
       const parts=decodeURIComponent(u.pathname).split('/').filter(Boolean);
       const place=parts.find(p=>p.startsWith('place/'));
-      if(place) return decodeURIComponent(place.replace('place/','')).replace(/\+/g,' ').split('/')[0].replace(/[-_]/g,' ').trim();
+      if(place) return decodeURIComponent(place.replace('place/','')).replace(/\\+/g,' ').split('/')[0].replace(/[-_]/g,' ').trim();
     }
     if(link.includes('instagram.com')){
       const u=new URL(link);
@@ -105,58 +132,259 @@ function extractName(link){
   }catch(e){}
   return '';
 }
+
+function extractInstagramPhotoUrl(link){
+  try{
+    if(link.includes('instagram.com/p/')||link.includes('instagr.am/p/')){
+      const u=new URL(link);
+      const shortCode=u.pathname.split('/').filter(Boolean)[1];
+      if(shortCode) return shortCode; // retorna o short code, resolvemos depois
+    }
+  }catch(e){}
+  return null;
+}
+
 function nichoLabel(v){return {pet:'Pet shop',pizzaria:'Pizzaria',padaria:'Padaria',oficina:'Oficina',salão:'Salão',clínica:'Clínica',lavanderia:'Lavanderia',imobiliária:'Imobiliária'}[v]||v;}
 
 const linkEl=document.getElementById('link'),nic=document.getElementById('nicho'),keyEl=document.getElementById('key');
+const ig1=document.getElementById('ig1'),ig2=document.getElementById('ig2'),ig3=document.getElementById('ig3');
 const frame=document.getElementById('frame'),pv=document.getElementById('pv'),meta=document.getElementById('meta'),pills=document.getElementById('pills'),cta=document.getElementById('cta'),note=document.getElementById('note');
+const photoGrid=document.getElementById('photo-grid');
+
+// Estado global de fotos coletadas
+let collectedPhotos=[];
+
+// Resolvemos o short code do Instagram para URL de imagem real via proxy
+async function resolveInstagramPhoto(shortCode){
+  // Estratégia: usar o embed do Instagram para pegar a imagem
+  // https://api.instagram.com/oembed?url=https://instagram.com/p/SHORTCODE/
+  try{
+    const embedUrl='https://graph.facebook.com/v18.0/instagram_oembed?redirect=false&url=https://www.instagram.com/p/'+shortCode+'/';
+    // Como não temos access token, usamos o proxy de imagem direto
+    // O Instagram redireciona instagram.com/p/SHORTCODE para a imagem
+    // Usamos o weserv.io como proxy CORS
+    return IG_PROXY+'www.instagram.com/p/'+shortCode+'/';
+  }catch(e){return null;}
+}
+
+// Puxamos fotos do Google Maps via API key
+async function fetchMapsPhotos(link, key){
+  try{
+    const u=new URL(link);
+    const q=u.searchParams.get('q')||u.searchParams.get('query')||extractName(link);
+    if(!q) return [];
+
+    // 1. findplacefromtext para pegar place_id
+    const findUrl='https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input='+encodeURIComponent(q)+'&inputtype=textquery&fields=place_id,name,formatted_address,photos&key='+key;
+    const r=await fetch(findUrl);
+    const j=await r.json();
+    if(j.status!=='OK'||!j.candidates||!j.candidates[0]) return [];
+
+    const c=j.candidates[0];
+    let photos=[];
+
+    // Se temos place_id, fazemos um request de place/details para mais fotos
+    if(c.place_id && key){
+      const detailsUrl='https://maps.googleapis.com/maps/api/place/details/json?place_id='+c.place_id+'&fields=name,formatted_address,photos&key='+key;
+      const r2=await fetch(detailsUrl);
+      const j2=await r2.json();
+      if(j2.status==='OK'&&j2.result&&j2.result.photos){
+        // Pega até 3 fotos
+        for(let i=0;i<Math.min(3,j2.result.photos.length);i++){
+          const photoRef=j2.result.photos[i].photo_reference;
+          const photoUrl='https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference='+photoRef+'&key='+key;
+          photos.push({url:photoUrl, source:'maps', name:c.name, address:c.formatted_address});
+        }
+      }
+    }
+
+    // Se não conseguiu via details, tenta as fotos do findplacefromtext
+    if(photos.length===0 && c.photos){
+      for(let i=0;i<Math.min(3,c.photos.length);i++){
+        const photoRef=c.photos[i].photo_reference;
+        const photoUrl='https://maps.googleapis.com/maps/api/place/photo?maxwidth=800&photoreference='+photoRef+'&key='+key;
+        photos.push({url:photoUrl, source:'maps', name:c.name, address:c.formatted_address});
+      }
+    }
+
+    return photos;
+  }catch(e){
+    console.error('Erro ao puxar fotos do Maps:',e);
+    return [];
+  }
+}
+
+// Monta a query string para o iframe
+function buildIframeSrc(nicho, name, city, photos){
+  const params=new URLSearchParams();
+  if(name) params.set('nome',name);
+  if(city) params.set('cidade',city);
+  // Passa até 3 fotos via query params
+  photos.forEach((p,i)=>{
+    if(i<3) params.set('img'+(i+1),encodeURIComponent(p.url));
+  });
+  const qs=params.toString();
+  return base+nicho+'/index.html'+(qs?'?'+qs:'');
+}
+
+// Envia as fotos para o iframe via postMessage (fallback caso query params não funcionem)
+function sendPhotosToIframe(photos){
+  if(pv.contentWindow){
+    pv.contentWindow.postMessage({
+      type:'VC_PHOTOS',
+      photos:photos.map(p=>p.url),
+      name:collectedPhotos.name||'',
+      city:collectedPhotos.city||''
+    },'*');
+  }
+}
 
 document.getElementById('gen').addEventListener('click',async()=>{
   const link=linkEl.value.trim();
   const n=nic.value;
   const name=extractName(link);
-  pv.src=base+n+'/index.html';
+  const key=keyEl.value.trim();
+
+  // Coleta fotos
+  collectedPhotos=[];
+  let city='';
+
+  // 1. Tenta puxar do Google Maps se tem key
+  if(key && (link.includes('maps.google')||link.includes('goo.gl/maps'))){
+    const mapsPhotos=await fetchMapsPhotos(link,key);
+    if(mapsPhotos.length>0){
+      collectedPhotos=mapsPhotos;
+      city=mapsPhotos[0].address||'';
+    }
+  }
+
+  // 2. Tenta puxar do Instagram (links diretos)
+  const igLinks=[ig1.value.trim(),ig2.value.trim(),ig3.value.trim()].filter(Boolean);
+  for(const igLink of igLinks){
+    const shortCode=extractInstagramPhotoUrl(igLink);
+    if(shortCode){
+      collectedPhotos.push({url:IG_PROXY+'www.instagram.com/p/'+shortCode+'/',source:'instagram'});
+    }
+  }
+
+  // 3. Se não coletou nada, usa fotos de exemplo (mas avisa)
+  if(collectedPhotos.length===0){
+    note.textContent='Sem fotos reais detectadas (não colou API key nem links de Instagram). Usando fotos de exemplo do nicho — troque pelas reais depois.';
+  } else {
+    note.textContent='Fotos reais coletadas: '+collectedPhotos.length+' foto(s) do '+(collectedPhotos[0].source==='maps'?'Google Maps':'Instagram')+'.';
+  }
+
+  // Monta o iframe com query params
+  const iframeSrc=buildIframeSrc(n,name,city,collectedPhotos);
+  pv.src=iframeSrc;
   frame.classList.add('show');
   meta.style.display='block';pills.style.display='flex';cta.style.display='flex';
+
+  // Metainfo
   let info='<b>Nicho:</b> '+nichoLabel(n);
-  if(name) info+=' &nbsp;·&nbsp; <b>Nome detectado:</b> '+name;
-  info+=' &nbsp;·&nbsp; <b>Link:</b> '+(link?link.slice(0,42)+'…':'não informado');
+  if(name) info+=' &nbsp;·&nbsp; <b>Nome:</b> '+name;
+  if(city) info+=' &nbsp;·&nbsp; <b>Cidade:</b> '+city;
+  info+=' &nbsp;·&nbsp; <b>Fotos:</b> '+collectedPhotos.length+' real(is)';
   meta.innerHTML=info;
-  let ps=['Layout Simples montado','WhatsApp integrado','Aparece no Google'];
-  if(link.includes('instagram.com')) ps.push('Instagram: usar fotos reais depois');
-  if(keyEl.value.trim()) ps.push('API key: puxando fotos/endereço reais…');
+
+  // Pills
+  let ps=['Layout Simples','WhatsApp integrado','No Google'];
+  if(collectedPhotos.length>0) ps.push('Fotos reais ✓');
+  if(key) ps.push('Maps API key');
+  if(igLinks.length>0) ps.push('Instagram fotos');
   pills.innerHTML=ps.map(p=>'<span class="pill">'+p+'</span>').join('');
-  note.textContent= link.includes('instagram.com')
-    ? 'Instagram não libera scrape de fotos via link — usamos fotos de exemplo do nicho e você envia as reais. O nome @ foi detectado.'
-    : 'Pré-visualização montada no layout Simples do nicho selecionado.';
-  // se tem key e é Maps, tenta Place details (best-effort)
-  if(keyEl.value.trim() && (link.includes('maps.google')||link.includes('goo.gl/maps'))){
-    try{
-      const u=new URL(link);const q=u.searchParams.get('q')||u.searchParams.get('query')||name;
-      const url='https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input='+encodeURIComponent(q)+'&inputtype=textquery&fields=name,formatted_address,photos&key='+keyEl.value.trim();
-      const r=await fetch(url);const j=await r.json();
-      if(j.status==='OK'&&j.candidates&&j.candidates[0]){
-        const c=j.candidates[0];
-        let extra='<b>Endereço:</b> '+(c.formatted_address||'—');
-        if(c.photos&&c.photos[0]) extra+=' &nbsp;·&nbsp; <b>Foto:</b> Google Maps ('+c.photos.length+')';
-        meta.innerHTML+='<br>'+extra;
-        pills.innerHTML+='<span class="pill">Dados reais do Maps ✓</span>';
-        note.textContent='Puxamos nome/endereço/foto do Google Maps via API key.';
-      }
-    }catch(e){ note.textContent='Não foi possível puxar dados do Maps (key inválida ou bloqueio). Usando exemplo.'; }
+
+  // Preview das fotos coletadas
+  photoGrid.innerHTML='';
+  photoGrid.style.display='grid';
+  collectedPhotos.forEach((p,i)=>{
+    const div=document.createElement('div');
+    div.className='photo-thumb has-img';
+    div.innerHTML='<img src="'+p.url+'" style="width:100%;height:100%;object-fit:cover;border-radius:8px" loading="lazy" onerror="this.parentElement.innerHTML=\''+(p.source==='maps'?'Maps':'Instagram')+' '+i+'\'"><div style="font-size:10px;color:var(--faint);margin-top:2px">'+p.source+'</div>';
+    photoGrid.appendChild(div);
+  });
+  if(collectedPhotos.length===0){
+    photoGrid.innerHTML='<div class="photo-thumb">Nenhuma foto real — usando exemplo do nicho</div>';
   }
+
+  // Envia via postMessage após carregar
+  pv.onload=()=>{
+    setTimeout(()=>sendPhotosToIframe(collectedPhotos),500);
+  };
+
   window.scrollTo({top:frame.offsetTop-20,behavior:'smooth'});
 });
 
 document.getElementById('reset').addEventListener('click',()=>{
-  linkEl.value='';keyEl.value='';frame.classList.remove('show');pv.src='about:blank';
+  linkEl.value='';keyEl.value='';ig1.value='';ig2.value='';ig3.value='';
+  collectedPhotos=[];
+  frame.classList.remove('show');pv.src='about:blank';
   meta.style.display='none';pills.style.display='none';cta.style.display='none';
-  note.textContent='Dica: o link do Maps costuma trazer o nome do local no próprio endereço. Sem a API key, usamos fotos de exemplo do nicho — você troca pelas reais depois.';
+  photoGrid.style.display='none';
+  note.textContent='Cole o link do Maps ou Instagram e selecione o nicho. Com API key ou links de fotos, o site mostra fotos reais do seu negócio.';
 });
 
 document.getElementById('finish').addEventListener('click',()=>{
   const n=nichoLabel(nic.value);const link=linkEl.value.trim();const name=extractName(link);
-  const msg='Quero meu site Vitrine Certa ('+n+(name?': '+name:'')+(link?' — link: '+link:'')+')';
+  const photos=collectedPhotos.length;
+  const msg='Quero meu site Vitrine Certa ('+n+(name?': '+name:'')+(link?' — link: '+link:'')+(photos>0?' — '+photos+' foto(s) real(is)':')');
   window.open('https://wa.me/5511970776856?text='+encodeURIComponent(msg),'_blank');
+});
+
+// Mostra o formulário de lead quando o usuário clica em "Gerar meu site"
+document.getElementById('finish').addEventListener('click',()=>{
+  document.getElementById('lead-form').style.display='block';
+  window.scrollTo({top:document.getElementById('lead-form').offsetTop-20,behavior:'smooth'});
+});
+
+// Envia lead para o motor de leads (Google Apps Script)
+document.getElementById('send-lead').addEventListener('click',async()=>{
+  const nome=document.getElementById('lead-nome').value.trim();
+  const email=document.getElementById('lead-email').value.trim();
+  const whatsapp=document.getElementById('lead-whatsapp').value.trim();
+  const link=linkEl.value.trim();
+  const n=nic.value;
+  const name=extractName(link);
+  const photos=collectedPhotos.map(p=>p.url).join(',');
+
+  if(!nome || !whatsapp){
+    alert('Por favor, preencha seu nome e WhatsApp.');
+    return;
+  }
+
+  // Envia para o lead engine (substitua pela URL do seu Google Apps Script)
+  const LEAD_URL='https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+
+  try{
+    const params=new URLSearchParams();
+    params.set('origem','gerador-vitrine-certa');
+    params.set('nicho',nichoLabel(n));
+    params.set('nome',nome);
+    params.set('email',email);
+    params.set('whatsapp',whatsapp);
+    params.set('cidade',name||'');
+    params.set('fotos',photos);
+    params.set('link',link);
+
+    const r=await fetch(LEAD_URL,{method:'POST',body:params});
+    const j=await r.json();
+
+    if(j.ok){
+      document.getElementById('lead-note').textContent='✅ Lead capturado! Nossa equipe entra em contato em até 1h.';
+      document.getElementById('lead-note').style.color='var(--a2)';
+      // Também abre WhatsApp como backup
+      const msg='Quero meu site Vitrine Certa ('+nichoLabel(n)+(name?': '+name:'')+(link?' — link: '+link:'')+(photos?' — '+collectedPhotos.length+' foto(s) real(is)':')');
+      setTimeout(()=>window.open('https://wa.me/5511970776856?text='+encodeURIComponent(msg),'_blank'),500);
+    } else {
+      throw new Error('Resposta inesperada');
+    }
+  }catch(e){
+    // Fallback: abre WhatsApp direto
+    const msg='Lead Vitrine Certa - '+nichoLabel(n)+'\nNome: '+nome+'\nEmail: '+email+'\nWhatsApp: '+whatsapp+'\nLink: '+link+'\nFotos: '+collectedPhotos.length+' real(is)';
+    window.open('https://wa.me/5511970776856?text='+encodeURIComponent(msg),'_blank');
+    document.getElementById('lead-note').textContent='✅ Redirecionado para WhatsApp (fallback). Nossa equipe entra em contato.';
+    document.getElementById('lead-note').style.color='var(--a2)';
+  }
 });
 </script>
 </body>

@@ -2,23 +2,23 @@
 <html lang="pt-BR" data-theme="light">
 <head>
 <meta charset="UTF-8">
-  <meta name="description" content="Padaria artesanal em Sao Vicente: cardapio, encomendas e retirada pelo WhatsApp. Site da sua padaria em 48h.">
+  <meta name="description" content="Pizzaria em Sao Vicente com forno a lenha, cardapio online e pedido no WhatsApp. Site pronto pra sua pizzaria em 48h.">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- SEO Vitrine Certa -->
-<meta property="og:title" content="Padaria em São Vicente — site Essencial | Vitrine Certa">
-<meta property="og:description" content="Padaria artesanal com encomendas e cardápio de produtos no WhatsApp. Site Essencial da Vitrine Certa, pronto em 48h. A partir de R$49/mês.">
+<meta property="og:title" content="Pizzaria em São Vicente — site Essencial | Vitrine Certa">
+<meta property="og:description" content="Pizzaria com forno a lenha, cardápio online e pedido no WhatsApp. Site Essencial da Vitrine Certa, pronto em 48h. A partir de R$49/mês.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://receitazero.github.io/receita-zero/site-dfy/padaria/index.html">
-<meta property="og:image" content="https://receitazero.github.io/receita-zero/site-dfy/padaria/preview.png">
+<meta property="og:url" content="https://receitazero.github.io/receita-zero/site-dfy/pizzaria/index.html">
+<meta property="og:image" content="https://receitazero.github.io/receita-zero/site-dfy/pizzaria/preview.png">
 <meta name="twitter:card" content="summary_large_image">
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  "name": "Padaria em São Vicente",
-  "description": "Padaria artesanal com encomendas e cardápio de produtos no WhatsApp. Site Essencial da Vitrine Certa, pronto em 48h. A partir de R$49/mês.",
-  "url": "https://receitazero.github.io/receita-zero/site-dfy/padaria/index.html",
-  "image": "https://receitazero.github.io/receita-zero/site-dfy/padaria/preview.png",
+  "name": "Pizzaria em São Vicente",
+  "description": "Pizzaria com forno a lenha, cardápio online e pedido no WhatsApp. Site Essencial da Vitrine Certa, pronto em 48h. A partir de R$49/mês.",
+  "url": "https://receitazero.github.io/receita-zero/site-dfy/pizzaria/index.html",
+  "image": "https://receitazero.github.io/receita-zero/site-dfy/pizzaria/preview.png",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "São Vicente",
@@ -34,12 +34,12 @@
   }
 }
 </script>
-<title>Padaria em Sao Vicente</title>
+<title>Forno Dourado — Santos</title>
 <style>
 :root{
-  --bg:#FBF4E9;--bg2:#F2E6D2;--surface:#FFFFFF;--surface2:#F6ECDA;--line:#E7D4B5;--line2:#D8BE96;
-  --fg:#2E1F12;--muted:#7A6650;--faint:#A98E72;
-  --a1:#B5723C;--a2:#C8772E;--a3:#E0B341;--off:#2E1F12;
+  --bg:#FBF6EF;--bg2:#F3E9DB;--surface:#FFFFFF;--surface2:#F7EFE3;--line:#EAD9C4;--line2:#DEC4A6;
+  --fg:#2A1B12;--muted:#7A6453;--faint:#A98F79;
+  --a1:#C0392B;--a2:#E67E22;--a3:#F1C40F;--off:#2A1B12;
   --s-xs:.4rem;--s-sm:.7rem;--s-md:1rem;--s-lg:1.5rem;--s-xl:2.2rem;--s-2xl:3rem;--s-3xl:4.5rem;
   --font-body:'Plus Jakarta Sans','Segoe UI',system-ui,sans-serif;
   --font-display:'Fraunces','Playfair Display',Georgia,serif;
@@ -58,14 +58,15 @@ a{color:var(--a1);text-decoration:none}
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
 .reveal.in{opacity:1;transform:none}
 /* HERO */
-.hero{position:relative;overflow:hidden;background:radial-gradient(60% 60% at 85% 0%,color-mix(in srgb,var(--a3) 18%,transparent),transparent 70%),var(--bg)}
+.hero{position:relative;overflow:hidden;background:radial-gradient(60% 60% at 85% 0%,color-mix(in srgb,var(--a2) 16%,transparent),transparent 70%),var(--bg)}
 .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:var(--s-2xl);align-items:center;max-width:1100px;margin-inline:auto;padding-block:var(--s-3xl)}
 .hero h1{font-size:clamp(2.2rem,4.5vw,3.6rem);margin-bottom:var(--s-lg)}
 .hero h1 em{color:var(--a1);font-style:italic}
 .hero p.lede{color:var(--muted);font-size:1.1rem;max-width:46ch;margin:0 0 var(--s-xl)}
 .hero .cta{display:flex;gap:.8rem;flex-wrap:wrap}
-.hero-fig{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px -30px color-mix(in srgb,var(--a1) 50%,transparent);aspect-ratio:4/3}
+.hero-fig{position:relative;border-radius:24px;overflow:hidden;box-shadow:0 30px 80px -30px color-mix(in srgb,var(--a1) 55%,transparent);aspect-ratio:4/3}
 .hero-fig img{width:100%;height:100%;object-fit:cover;object-position:center 45%;display:block}
+
 /* MARQUEE */
 .marquee{background:var(--a1);color:#fff;padding:14px 0;overflow:hidden;white-space:nowrap}
 .marquee span{display:inline-block;padding-inline:2rem;font-family:var(--font-display);font-weight:700;font-size:1.05rem;animation:scrollx 18s linear infinite}
@@ -80,18 +81,19 @@ a{color:var(--a1);text-decoration:none}
 .wa-btn{display:inline-flex;align-items:center;gap:.45rem;margin-top:1rem;background:#25D366;color:#fff;font-weight:700;font-size:.95rem;padding:.7rem 1.2rem;border-radius:999px;text-decoration:none;box-shadow:0 10px 24px -10px rgba(37,211,102,.6);transition:transform .2s,box-shadow .2s}
 .wa-btn:hover{transform:translateY(-2px);box-shadow:0 14px 30px -10px rgba(37,211,102,.7)}
 .wa-btn svg{width:18px;height:18px;fill:#fff}
-/* PRODUTOS */
-.prod .head{text-align:center;margin-bottom:var(--s-2xl)}
-.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--s-lg)}
-.prod-card{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s}
-.prod-card:hover{transform:translateY(-5px);box-shadow:0 22px 55px -28px color-mix(in srgb,var(--a1) 45%,transparent)}
-.prod-card img{width:100%;height:190px;object-fit:cover;object-position:center 50%;display:block}
-.prod-card .body{padding:var(--s-md) var(--s-lg) var(--s-lg)}
-.prod-card h4{font-family:var(--font-display);font-size:1.2rem;margin-bottom:.2rem}
-.prod-card .desc{color:var(--muted);font-size:.88rem;min-height:38px}
-.prod-card .row{display:flex;align-items:center;justify-content:space-between;margin-top:.8rem}
-.prod-card .price{font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--a1)}
-/* PERKS */
+/* CARDÁPIO (cópia do padrão comercial: foto+preço+tamanho) */
+.menu .head{text-align:center;margin-bottom:var(--s-2xl)}
+.pizza-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--s-lg)}
+.pizza{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;transition:transform .25s,box-shadow .25s}
+.pizza:hover{transform:translateY(-5px);box-shadow:0 22px 55px -28px color-mix(in srgb,var(--a1) 45%,transparent)}
+.pizza img{width:100%;height:190px;object-fit:cover;object-position:center 50%;display:block}
+.pizza .body{padding:var(--s-md) var(--s-lg) var(--s-lg)}
+.pizza h4{font-family:var(--font-display);font-size:1.2rem;margin-bottom:.2rem}
+.pizza .desc{color:var(--muted);font-size:.88rem;min-height:38px}
+.pizza .row{display:flex;align-items:center;justify-content:space-between;margin-top:.8rem}
+.pizza .price{font-family:var(--font-display);font-weight:700;font-size:1.3rem;color:var(--a1)}
+.pizza .sz{font-size:.78rem;color:var(--faint)}
+/* BENEFÍCIOS */
 .perks{background:var(--bg2)}
 .perks .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:var(--s-lg)}
 .perk{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:var(--s-lg)}
@@ -107,7 +109,7 @@ a{color:var(--a1);text-decoration:none}
 .contato{text-align:center}
 .contato form{max-width:480px;margin:var(--s-xl) auto 0;display:flex;flex-direction:column;gap:.8rem}
 .contato input,.contato textarea{background:var(--surface);border:1px solid var(--line2);border-radius:10px;padding:12px 14px;font-family:var(--font-body);font-size:14px;color:var(--off)}
-/* END CTA */
+/* END CTA (nossa venda só no fim) */
 .endcta{background:color-mix(in srgb,var(--a1) 10%,var(--bg));border-top:1px solid var(--line);padding-block:var(--s-3xl)}
 footer{background:var(--fg);color:var(--surface2);padding-block:var(--s-lg);text-align:center;font-size:.9rem}
 @media(max-width:760px){.hero .wrap{grid-template-columns:1fr;padding-block:var(--s-2xl)}.hero-fig{order:-1;max-width:360px;margin-inline:auto}.hero p.lede{margin-inline:auto}}
@@ -117,55 +119,55 @@ footer{background:var(--fg);color:var(--surface2);padding-block:var(--s-lg);text
 <header class="hero">
   <div class="wrap">
     <div class="hero-text">
-      <span class="eyebrow reveal">Padaria artesanal em São Vicente</span>
-      <h1 class="reveal d1">Pão quentinho, <em>feito todo dia</em> na sua porta</h1>
-      <p class="lede reveal d2">Fermentação natural, farinha de trigo e centeio moídos na semana e forno a lenha. Encomende o café da manhã ou o pão da semana.</p>
+      <span class="eyebrow reveal">Pizzaria em São Vicente</span>
+      <h1 class="reveal d1">Forno Dourado <em>· Santos</em></h1>
+      <p class="lede reveal d2">Massa de fermentação natural, ingredientes frescos e entrega em até 40 min. Monte a sua ou peça a tradicional — a gente leva quente.</p>
       <div class="cta reveal d3">
-        <a class="btn btn-solid" href="#produtos">Ver produtos</a>
-        <a class="btn btn-outline" href="https://wa.me/5511970776856?text=Quero%20encomendar%20p%C3%A3es" target="_blank" rel="noopener">Encomendar no Whats</a>
+        <a class="btn btn-solid" href="#cardapio">Ver cardápio</a>
+        <a class="btn btn-outline" href="https://wa.me/5513999990000?text=Quero%20pedir%20uma%20pizza" target="_blank" rel="noopener">Pedir no Whats</a>
       </div>
     </div>
     <div class="hero-fig reveal d2">
-      <img src="assets/banner.jpg" alt="Pão artesanal" loading="lazy">
+      <img src="assets/banner.jpg" alt="Pizza artesanal" loading="lazy">
     </div>
   </div>
 </header>
 
 <div class="marquee">
-  <span>★ 4.9 no Google · +1.500 clientes por semana · forno a lenha · encomenda pra festa · pão de fermentação natural · </span>
-  <span>★ 4.9 no Google · +1.500 clientes por semana · forno a lenha · encomenda pra festa · pão de fermentação natural · </span>
+  <span>★ 4.8 no Google · +2.000 pizzas entregues · forno a lenha · entrega em 40 min · massa natural · </span>
+  <span>★ 4.8 no Google · +2.000 pizzas entregues · forno a lenha · entrega em 40 min · massa natural · </span>
 </div>
 
 <section id="simule">
   <div class="wrap" style="text-align:center">
-    <span class="eyebrow reveal">Monte seu café</span>
-    <h2 class="reveal">Quanto custa a sua encomenda?</h2>
+    <span class="eyebrow reveal">Monte sua pizza</span>
+    <h2 class="reveal">Quanto custa a sua?</h2>
     <div class="quiz reveal">
-      <h3>Escolha o produto e a quantidade</h3>
-      <label for="q-prod">Produto</label>
-      <select id="q-prod">
-        <option>Pão francês (dúzia)</option><option>Pão de mel (unid.)</option><option>Bolo de fubá (forma)</option><option>Cesta de café da manhã</option>
+      <h3>Escolha o tamanho e o sabor</h3>
+      <label for="q-tam">Tamanho</label>
+      <select id="q-tam">
+        <option>Pequena (25cm)</option><option>Média (30cm)</option><option>Família (45cm)</option>
       </select>
-      <label for="q-qtd">Quantidade</label>
-      <select id="q-qtd">
-        <option>1</option><option>2</option><option>3</option><option>5</option>
+      <label for="q-sab">Sabor</label>
+      <select id="q-sab">
+        <option>Margherita</option><option>Pepperoni</option><option>Quatro Queijos</option><option>Calabresa</option>
       </select>
       <div class="sug" id="q-sug">Veja o preço e peça em 1 clique →</div>
     </div>
   </div>
 </section>
 
-<section id="produtos" class="prod">
+<section id="cardapio" class="menu">
   <div class="wrap">
     <div class="head">
-      <span class="eyebrow reveal">Vitrine</span>
-      <h2 class="reveal">O que sai do forno hoje</h2>
+      <span class="eyebrow reveal">Cardápio</span>
+      <h2 class="reveal">As mais pedidas</h2>
     </div>
-    <div class="pgrid">
-      <div class="prod-card reveal"><img src="assets/b1.jpg" alt="Pão francês"><div class="body"><h4>Pão francês</h4><p class="desc">Cassetinho crocante, miolo macio. Dúzia.</p><div class="row"><span class="price">R$ 14</span><span class="sz">dúzia</span></div></div></div>
-      <div class="prod-card reveal"><img src="assets/b2.jpg" alt="Pão de mel"><div class="body"><h4>Pão de mel</h4><p class="desc">Massa úmida com mel e chocolate.</p><div class="row"><span class="price">R$ 7</span><span class="sz">unid.</span></div></div></div>
-      <div class="prod-card reveal"><img src="assets/b3.jpg" alt="Bolo de fubá"><div class="body"><h4>Bolo de fubá</h4><p class="desc">Com goiabada, forma de 25cm.</p><div class="row"><span class="price">R$ 32</span><span class="sz">forma</span></div></div></div>
-      <div class="prod-card reveal"><img src="assets/banner.jpg" alt="Cesta café"><div class="body"><h4>Cesta café da manhã</h4><p class="desc">Pães, bolo, manteiga e café moído.</p><div class="row"><span class="price">R$ 49</span><span class="sz">cesta</span></div></div></div>
+    <div class="pizza-grid">
+      <div class="pizza reveal"><img src="assets/p1.jpg" alt="Marguerita da Casa"><div class="body"><h4>Marguerita da Casa</h4><p class="desc">Molho artesanal, mussarela de bufala e manjericao fresco.</p><div class="row"><span class="price">R$ 42</span><span class="sz">media - 30cm</span></div></div></div>
+      <div class="pizza reveal"><img src="assets/p2.jpg" alt="Portuguesa Suprema"><div class="body"><h4>Portuguesa Suprema</h4><p class="desc">Presunto, ovo, ervilha, cebola e azeitona.</p><div class="row"><span class="price">R$ 49</span><span class="sz">media - 30cm</span></div></div></div>
+      <div class="pizza reveal"><img src="assets/p3.jpg" alt="Frango com Catupiry"><div class="body"><h4>Frango com Catupiry</h4><p class="desc">Frango desfiado, catupiry cremoso e milho.</p><div class="row"><span class="price">R$ 51</span><span class="sz">media - 30cm</span></div></div></div>
+      <div class="pizza reveal"><img src="assets/banner.jpg" alt="Doce de Nutella"><div class="body"><h4>Doce de Nutella</h4><p class="desc">Nutella, morango e acucar de confeiteiro.</p><div class="row"><span class="price">R$ 58</span><span class="sz">media - 30cm</span></div></div></div>
     </div>
   </div>
 </section>
@@ -174,13 +176,13 @@ footer{background:var(--fg);color:var(--surface2);padding-block:var(--s-lg);text
   <div class="wrap">
     <div class="head" style="text-align:center;margin-bottom:var(--s-2xl)">
       <span class="eyebrow reveal">Por que a gente</span>
-      <h2 class="reveal">Pão de verdade</h2>
+      <h2 class="reveal">Pizza como tem que ser</h2>
     </div>
     <div class="grid">
-      <div class="perk reveal"><div class="ico">🔥</div><h3>Forno a lenha</h3><p>Crosta que só forno de verdade faz.</p></div>
-      <div class="perk reveal"><div class="ico">🌾</div><h3>Fermentação natural</h3><p>Sem melhorador, massa leve e durável.</p></div>
-      <div class="perk reveal"><div class="ico">📦</div><h3>Encomenda pra festa</h3><p>Cesta, bolo ou salgados pro seu evento.</p></div>
-      <div class="perk reveal"><div class="ico">🛵</div><h3>Entrega na manhã</h3><p>Pão quentinho no café da sua casa.</p></div>
+      <div class="perk reveal"><div class="ico">🔥</div><h3>Forno a lenha</h3><p>Assada na hora, crocante por fora e macia por dentro.</p></div>
+      <div class="perk reveal"><div class="ico">🌾</div><h3>Massa natural</h3><p>Fermentação lenta de 48h — leve e digestível.</p></div>
+      <div class="perk reveal"><div class="ico">🛵</div><h3>Entrega em 40 min</h3><p>Da esteira pra sua mesa quentinha.</p></div>
+      <div class="perk reveal"><div class="ico">🥬</div><h3>Ingredientes frescos</h3><p>San Marzano, mussarela de búfala, manjericão do dia.</p></div>
     </div>
   </div>
 </section>
@@ -191,23 +193,24 @@ footer{background:var(--fg);color:var(--surface2);padding-block:var(--s-lg);text
       <span class="eyebrow reveal">Dúvidas</span>
       <h2 class="reveal">Perguntas frequentes</h2>
     </div>
-    <details class="reveal"><summary>Vocês entregam?</summary><p>Sim, em São Vicente e região pela manhã. Pede no WhatsApp.</p></details>
-    <details class="reveal"><summary>Tem pão sem glúten?</summary><p>Sim, sob encomenda com 24h de antecedência.</p></details>
-    <details class="reveal"><summary>Faz bolo de aniversário?</summary><p>Fazemos bolo de rolo e de fubá pra festas pequenas.</p></details>
-    <details class="reveal"><summary>Posso retirar na loja?</summary><p>Pode, a partir das 7h. O pão sai do forno cedo.</p></details>
+    <details class="reveal"><summary>Faz delivery?</summary><p>Sim, em São Vicente e região. Pede pelo WhatsApp ou pelo site.</p></details>
+    <details class="reveal"><summary>Tem opção sem glúten?</summary><p>Sim, sob encomenda. Avise no pedido que a gente separa a massa.</p></details>
+    <details class="reveal"><summary>Posso retirar na loja?</summary><p>Pode. Fica pronta em 20 min após o pedido.</p></details>
+    <details class="reveal"><summary>Aceita qual pagamento?</summary><p>Pix, cartão na entrega ou no app. Tudo tranquilo.</p></details>
   </div>
 </section>
 
 <section id="contato" class="contato">
   <div class="wrap">
     <span class="eyebrow reveal">Fala com a gente</span>
-    <h2 class="reveal">Encomende o seu</h2>
-    <p class="reveal" style="color:var(--muted);margin:var(--s-md) 0 var(--s-xl)">Deixa o pedido e a gente confirma no WhatsApp.</p>
+    <h2 class="reveal">Pede a sua agora</h2>
+    <p class="reveal" style="color:var(--muted);margin:var(--s-md) 0 var(--s-xl)">Deixa seu contato e a gente confirma o pedido no WhatsApp.</p>
     <form class="reveal" onsubmit="return vcLead(this)">
       <input name="nome" placeholder="Seu nome" required>
       <input name="whatsapp" placeholder="Seu WhatsApp" required>
-      <textarea name="mensagem" rows="3" placeholder="O que precisa? (pão, bolo, cesta, quantidade, data)"></textarea>
-      <button class="btn btn-solid" type="submit" style="justify-content:center">Enviar encomenda</button>
+      <input name="endereco" placeholder="Endereço de entrega">
+      <textarea name="mensagem" rows="3" placeholder="Qual pizza? (tamanho, sabor, quantidade)"></textarea>
+      <button class="btn btn-solid" type="submit" style="justify-content:center">Enviar pedido</button>
     </form>
   </div>
 </section>
@@ -225,7 +228,7 @@ footer{background:var(--fg);color:var(--surface2);padding-block:var(--s-lg);text
 </section>
 
 <footer>
-  <div class="wrap">Padaria Quente · padaria artesanal em São Vicente · © 2026</div>
+  <div class="wrap">Forno a Lenha · pizzaria em São Vicente · © 2026</div>
 </footer>
 
 <script>
@@ -239,12 +242,15 @@ if('IntersectionObserver' in window){
   _rv.forEach(el=>el.classList.add('in'));
 }
 
-const qp=document.getElementById('q-prod'),qq=document.getElementById('q-qtd'),qg=document.getElementById('q-sug');
-const preco={'Pão francês (dúzia)':14,'Pão de mel (unid.)':7,'Bolo de fubá (forma)':32,'Cesta de café da manhã':49};
-function calc(){const p=qp.value,q=parseInt(qq.value,10);const v=preco[p]*q;qg.innerHTML='<b>'+p+' × '+q+' = R$'+v+'</b><br><a class="wa-btn" href="https://wa.me/5511970776856?text='+encodeURIComponent('Quero encomendar '+p+' × '+q+' — R$'+v)+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.16c-.24.68-1.42 1.31-1.96 1.36-.5.05-1.05.27-3.55-.74-2.91-1.15-4.77-4.08-4.91-4.27-.14-.19-1.15-1.53-1.15-2.92 0-1.39.73-2.07 1-2.36.24-.29.53-.36.71-.36.18 0 .35 0 .51.01.16.01.39-.06.61.47.25.58.86 2 .94 2.14.08.14.13.31.03.5-.11.19-.16.31-.32.48-.16.17-.34.37-.48.5-.16.14-.33.29-.14.57.19.27.85 1.4 1.82 2.27 1.25 1.12 2.31 1.46 2.64 1.62.33.16.52.13.71-.08.2-.22.84-.98 1.06-1.31.22-.34.44-.28.74-.17.31.11 1.96.93 2.3 1.1.34.17.56.25.65.39.08.13.08.78-.16 1.46z"/></svg>Encomendar no WhatsApp</a>';}
-qp.addEventListener('change',calc);qq.addEventListener('change',calc);calc();
+// quiz montar pizza
+const qt=document.getElementById('q-tam'),qs=document.getElementById('q-sab'),qg=document.getElementById('q-sug');
+const preco={'Pequena (25cm)':{Margherita:32,Pepperoni:38,'Quatro Queijos':44,Calabresa:40},
+  'Média (30cm)':{Margherita:38,Pepperoni:45,'Quatro Queijos':52,Calabresa:47},
+  'Família (45cm)':{Margherita:58,Pepperoni:68,'Quatro Queijos':78,Calabresa:72}};
+function calc(){const t=qt.value,s=qs.value;const v=preco[t][s];qg.innerHTML='<b>'+s+' ('+t+') a partir de R$'+v+'</b><br><a class="wa-btn" href="https://wa.me/5513999990000?text='+encodeURIComponent('Quero pedir '+s+' tamanho '+t+' — a partir de R$'+v)+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38a9.9 9.9 0 0 0 4.79 1.22h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm5.8 14.16c-.24.68-1.42 1.31-1.96 1.36-.5.05-1.05.27-3.55-.74-2.91-1.15-4.77-4.08-4.91-4.27-.14-.19-1.15-1.53-1.15-2.92 0-1.39.73-2.07 1-2.36.24-.29.53-.36.71-.36.18 0 .35 0 .51.01.16.01.39-.06.61.47.25.58.86 2 .94 2.14.08.14.13.31.03.5-.11.19-.16.31-.32.48-.16.17-.34.37-.48.5-.16.14-.33.29-.14.57.19.27.85 1.4 1.82 2.27 1.25 1.12 2.31 1.46 2.64 1.62.33.16.52.13.71-.08.2-.22.84-.98 1.06-1.31.22-.34.44-.28.74-.17.31.11 1.96.93 2.3 1.1.34.17.56.25.65.39.08.13.08.78-.16 1.46z"/></svg>Pedir no WhatsApp</a>';}
+qt.addEventListener('change',calc);qs.addEventListener('change',calc);calc();
 
-function vcLead(f){var d={};new FormData(f).forEach(function(v,k){d[k]=v});if(d.nome||d.whatsapp){captureLead({nome:d.nome,whatsapp:d.whatsapp,cidade:(d.endereco||''),nicho:location.pathname.split('/')[2],origem:'contato',mensagem:(d.mensagem||'')});}var d={};new FormData(f).forEach(function(v,k){d[k]=v});var m='Lead Vitrine Certa - '+location.pathname.split("/")[1]+'\n';for(var k in d){if(d[k])m+=k+': '+d[k]+'\n';}window.open('https://wa.me/5511970776856?text='+encodeURIComponent(m),'_blank');return false;}
+function vcLead(f){var d={};new FormData(f).forEach(function(v,k){d[k]=v});if(d.nome||d.whatsapp){captureLead({nome:d.nome,whatsapp:d.whatsapp,cidade:(d.endereco||''),nicho:location.pathname.split('/')[2],origem:'contato',mensagem:(d.mensagem||'')});}var d={};new FormData(f).forEach(function(v,k){d[k]=v});var m='Lead Vitrine Certa - '+location.pathname.split("/")[1]+'\n';for(var k in d){if(d[k])m+=k+': '+d[k]+'\n';}window.open('https://wa.me/5513999990000?text='+encodeURIComponent(m),'_blank');return false;}
 </script>
 <!-- PARAMS VC -->
 <script>
@@ -252,12 +258,12 @@ function vcLead(f){var d={};new FormData(f).forEach(function(v,k){d[k]=v});if(d.
   const p=new URLSearchParams(location.search);
   const nome=p.get('nome'), cid=p.get('cidade');
   if(!nome && !cid) return;
-  const nn=nome||'Padaria', cc=cid||'São Vicente';
+  const nn=nome||'Pizzaria', cc=cid||'São Vicente';
   const full=nn+' em '+cc;
   // troca ocorrências conhecidas
   const map={
-    'Padaria em São Vicente': full,
-    'Padaria em São Vicente': full,
+    'Pizzaria em São Vicente': full,
+    'Pizzaria em São Vicente': full,
     'em São Vicente': 'em '+cc,
     'Em São Vicente': 'Em '+cc,
     'São Vicente': cc
@@ -272,7 +278,6 @@ function vcLead(f){var d={};new FormData(f).forEach(function(v,k){d[k]=v});if(d.
   document.title=full;
 })();
 </script>
-  <script src="../../references/vc-photos.js"></script>
   <script src="../../references/leads.js"></script>
 </body>
 </html>
