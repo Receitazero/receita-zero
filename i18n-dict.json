@@ -1,0 +1,34 @@
+{
+  "hero_title": {
+    "pt": "O site que <span class=\"lamp-word\">responde</span> pelo seu comércio.",
+    "en": "The website that <span class=\"lamp-word\">answers</span> for your business."
+  },
+  "hero_lede": {
+    "pt": "Aqui embaixo não tem foto de site — tem site <b>funcionando</b>: cardápio que fecha pedido, agenda que marca, verificador que responde na hora. O seu fica no ar em <b>48h</b>, com o <b>seu</b> WhatsApp — e vira <b>ícone no celular do cliente</b>, como um app, sem pagar loja.",
+    "en": "Below is not a picture of a website — it is a <b>working</b> website: menu that closes the order, schedule that books, checker that answers instantly. Yours goes live in <b>48h</b>, with <b>your</b> WhatsApp — and becomes an <b>icon on your customer's phone</b>, like an app, without paying a store fee."
+  },
+  "cta_montar": {
+    "pt": "Montar o meu →",
+    "en": "Build mine →"
+  },
+  "prova_title": {
+    "pt": "Um site de R$500 é um folheto caro.<br>O nosso trabalha.",
+    "en": "A R$500 website is an expensive flyer.<br>Ours works."
+  },
+  "passos_title": {
+    "pt": "Seu site em 3 passos, sem você mexer em nada",
+    "en": "Your website in 3 steps, without you touching anything"
+  },
+  "precos_title": {
+    "pt": "Pague o ano e economize. Ou mês a mês, sem contrato.",
+    "en": "Pay yearly and save. Or month to month, no contract."
+  },
+  "nicho_title": {
+    "pt": "Cada nicho com a mecânica que ele precisa",
+    "en": "Each niche with the mechanics it needs"
+  },
+  "lang_toggle": {
+    "pt": "English",
+    "en": "Português"
+  }
+}
